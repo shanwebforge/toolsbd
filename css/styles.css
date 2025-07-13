@@ -546,8 +546,8 @@ html.dark-mode .download-note {
   }
   
   .category-button {
-    padding: 8px 15px;
-    font-size: 12px;
+    padding: 12px 20px !important;
+    font-size: 14px;
     bottom: -12px;
     border-radius: 8px;
   }

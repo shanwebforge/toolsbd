@@ -136,36 +136,89 @@ body {
   transition: box-shadow 0.3s ease, transform 0.2s ease;
   text-decoration: none !important;
   text-align: center;
+  max-width: 400px;
 }
-  .appbtn {
-    align-self: flex-start;
-    padding: 12px 25px;
-    background-color: #077A7D;
-    border: none;
-    color: white;
-    font-weight: 600;
-    font-size: 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  .appbtn:hover {
-    background-color: #066264;
-  
-  }
-  .download-note {
-  background-color: #e0f4e0; /* হালকা সবুজ */
+
+.download-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.appbtn {
+  position: relative;
+  padding: 12px 45px 12px 25px; /* Right padding increased for percentage */
+  background-color: #077A7D;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.btn-text {
+  display: inline-block;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-percent {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: white;
+  display: none; /* Hidden by default */
+}
+
+.appbtn:hover {
+  background-color: #066264;
+}
+
+.download-note {
+  background-color: #e0f4e0;
   color: #2e7d32;
   padding: 10px 15px;
   border-radius: 8px;
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   display: inline-block;
 }
 
-/* Optional: dark mode support */
+.install-btn {
+  padding: 12px 25px;
+  background-color: #077A7D;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  display: none;
+}
+
+.install-btn:hover {
+  background-color: #046164;
+}
+
+/* Dark mode styles */
 html.dark-mode .app-container {
-  background: #1e293b; /* dark navy */
+  background: #1e293b;
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #e0e0e0;
 }

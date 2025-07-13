@@ -57,9 +57,17 @@
 <div class="app-container">
   <div class="download-note">এই অ্যাপটি Android-এর জন্য তৈরি</div>
   
-  <a href="/assets/ToolsBD.apk" download>
-    <button class="appbtn">📲 অ্যাপ ডাউনলোড করুন</button>
-  </a>
+  <div class="download-wrapper">
+    <a href="/assets/ToolsBD.apk" download class="download-link" id="downloadLink">
+      <button class="appbtn" id="downloadBtn">
+        <span class="btn-text">📲 অ্যাপ ডাউনলোড করুন</span>
+        <span class="progress-bar" id="progressBar"></span>
+        <span class="progress-percent" id="progressPercent" style="display: none;">0%</span>
+      </button>
+    </a>
+  </div>
+  
+  <button class="install-btn" id="installBtn" style="display: none;">⚡ Install Now</button>
 </div>
 
 
@@ -208,12 +216,62 @@
     </a>
   </div>
 </main>
+<script>
+  const downloadLink = document.getElementById('downloadLink');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const progressBar = document.getElementById('progressBar');
+  const progressPercent = document.getElementById('progressPercent');
+  const installBtn = document.getElementById('installBtn');
+  let downloadComplete = false;
 
+  // Simulate download progress
+  downloadLink.addEventListener('click', function(e) {
+    if (!downloadComplete) {
+      e.preventDefault();
+      progressPercent.style.display = 'block'; // Show percentage when download starts
+      let progress = 0;
+      const progressInterval = setInterval(() => {
+        progress += Math.floor(Math.random() * 10) + 5;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(progressInterval);
+          downloadComplete = true;
+          installBtn.style.display = 'block';
+          downloadLink.href = "/assets/ToolsBD.apk";
+          downloadBtn.classList.add('download-complete');
+        }
+        progressPercent.textContent = progress + '%';
+        progressBar.style.width = progress + '%';
+      }, 300);
+    }
+  });
+
+  // Install button functionality
+  installBtn.addEventListener('click', function() {
+    window.location.href = "/assets/ToolsBD.apk";
+  });
+</script>
+
+<style>
+/* Previous CSS remains the same, just add this new rule */
+.progress-percent {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  z-index: 2;
+  color: white;
+  display: none; /* Hidden by default */
+}
+</style>
 
   <!-- ✅ Scripts -->
   <script src="/components/headerhome.js"></script>
   <script src="/components/footer.js"></script>
   <script src="script.js"></script>
+
+  
 
   <!-- ✅ Global Dark Mode Toggle Script -->
   <script>

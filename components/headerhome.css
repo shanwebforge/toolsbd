@@ -453,6 +453,32 @@ html.dark-mode .desktop-toggle {background-color: #1e293b;
 
 
 
+.search-icon {
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: inline-block;
+  }
+  .desktop-only {
+    display: none;
+  }
+}
+
+
+
 
 
 

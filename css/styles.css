@@ -15,7 +15,7 @@ body {
 
 @media (max-width: 768px) {
   body {
-    padding: 100px 20px 50px;
+    padding: 100px 10px 50px;
   }
 }
 
@@ -26,7 +26,7 @@ body {
   display: flex;
   align-items: stretch;
   max-width: 400px;
-  margin: 20px auto;
+  margin: 10px auto;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -119,8 +119,11 @@ body {
 @media (max-width: 600px) {
   .search-popup {
     width: 90%;
+  }
 
- 
+  .search-container {
+    margin-left: 12px;
+    margin-right: 12px;
   }
 }
 
@@ -173,16 +176,17 @@ body {
   width: 0%;
   transition: width 0.3s ease;
 }
-
 .progress-percent {
   position: absolute;
-  right: 15px;
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   font-size: 14px;
+  z-index: 2;
   color: white;
-  display: none; /* Hidden by default */
+  display: none; 
 }
+
 
 .appbtn:hover {
   background-color: #066264;
@@ -229,6 +233,14 @@ html.dark-mode .download-note {
   color: #fff;
 }
 
+@media (max-width: 600px) {
+  .app-container {
+  margin-left: 12px;
+  margin-right: 12px;
+
+
+  }
+}
 
 /* Namaj Section */
 .namaj-box {
@@ -321,6 +333,8 @@ html.dark-mode .download-note {
   .namaj-box {
     padding: 12px;
     border-radius: 10px;
+
+
   }
 
   .namaj-content {
@@ -381,10 +395,7 @@ html.dark-mode .download-note {
 
 
 /* Main Tools Section */
-.main-section {
-  margin-top: 30px;
-  margin-bottom: 50px;
-}
+
 
 /* category-grid: গ্রিড হিসেবেই রাখব, ২ কলাম ডেস্কটপে */
 .category-grid {
@@ -407,7 +418,7 @@ html.dark-mode .download-note {
   font-weight: bold;
   padding-bottom: 10px;
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-align: left;
 }
 
@@ -511,6 +522,10 @@ html.dark-mode .box-icon {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .main-section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
   .tools-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -649,4 +664,88 @@ html.dark-mode button:hover {
 
 html.dark-mode #result {
   color: #93fdc3;
+}
+
+
+
+
+
+
+
+/* ✅ Updated Download Section Styles */
+ /* ✅ Fixed CSS */
+  .download-section {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f2f2f2;
+    border-radius: 15px;
+    margin: 40px auto;
+    max-width: 600px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  }
+
+  .download-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+    /* These make it completely non-interactive */
+    cursor: default;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .app-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .store-btn.playstore {
+    background: #3ddc84;
+  }
+
+  .store-btn.applestore {
+    background: #000;
+  }
+
+  .store-btn:hover {
+    opacity: 0.85;
+  }
+
+  .store-btn i {
+    font-size: 22px;
+  }
+
+  /* Dark mode */
+  html.dark-mode .download-section {
+    background: #1e1e1e;
+    color: white;
+  }
+  
+  html.dark-mode .download-title {
+    color: white;
+  }
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .download-section {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
 }

@@ -1,0 +1,173 @@
+
+/* Reset & Global */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #edf6fc;
+  min-height: 100vh;
+  padding: 100px 70px 50px;
+  color: #000; /* light mode text */
+}
+
+
+@media (max-width: 768px) {
+  body {
+    padding: 100px 20px 50px;
+  }
+}
+
+/* Main Tools Section */
+.main-section {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+/* category-grid: গ্রিড হিসেবেই রাখব, ২ কলাম ডেস্কটপে */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+
+
+/* category-item এখন flexbox */
+.category-item {
+  background: #fff;
+  padding: 0px 20px 20px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 150px;
+  position: relative;
+
+  transition: transform 0.2s ease;
+  text-decoration: none;
+  color: inherit;
+
+  border-left: #077A7D solid 3px;
+  border-right: #077A7D solid 3px;
+}
+
+.category-item:hover {
+  transform: none;
+}
+
+/* icon এর সাইজ ও কালার */
+.category-icon {
+  font-size: 48px;
+  color: #077A7D;
+  flex-shrink: 0; /* আইকন ছোট হবে না */
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* content বক্স: title ও desc */
+.category-content {
+  flex-grow: 1;
+  text-align: left;
+}
+
+/* title */
+.category-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* description */
+.category-desc {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.3;
+}
+
+/* লিংক পুরো আইটেম জুড়ে clickable করার জন্য */
+.category-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Button style */
+.category-button {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #077A7D;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.category-button:hover {
+  background-color: #fff;
+  color: #077A7D;
+  border: solid 1px #077A7D;
+}
+ html.dark-mode .category-button:hover {
+  background-color: #1e293b;
+  color: #fff;
+  border: solid 1px #077A7D;
+}
+/* মোবাইল ভিউ */
+@media (max-width: 600px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+
+  .category-desc {
+    font-size: 14px;
+  }
+
+  .category-item {
+    height: auto;
+    flex-direction: row;
+    gap: 15px;
+    padding: 15px;
+    min-height: 120px;
+    padding: 0px 8px 12px 8px;
+  }
+
+  .category-icon {
+    font-size: 40px;
+    width: 50px;
+  }
+  
+  .category-button {
+    padding: 12px 20px !important;
+    font-size: 14px;
+    bottom: -12px;
+    border-radius: 8px;
+  }
+}
+
+
+
+/* =============================
+   🌙 Dark Mode (html.dark-mode)
+============================= */
+
+html.dark-mode body {
+  background: #000 !important;
+  color: #f1f5f9 !important;
+}
+
+html.dark-mode .category-item {
+    background-color: #1e293b;
+}

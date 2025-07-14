@@ -2,8 +2,8 @@
 
 header {
   background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   position: fixed;
   top: 0;
   left: 0;
@@ -260,8 +260,14 @@ body.dark-mode .mobile-canvas {
 
 /* Responsive */
 @media (max-width: 768px) {
-.header-container {
+header {
+    height: 60px;
+  }
+  .header-container {
     padding: 0 20px;
+  }
+  .canvas-header {
+    height: 20px;
   }
 #closeCanvas {
   font-size: 40px;

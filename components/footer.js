@@ -16,3 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Footer load error:", error.message);
     });
 });
+
+
+

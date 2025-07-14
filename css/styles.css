@@ -119,9 +119,13 @@ body {
 @media (max-width: 600px) {
   .search-popup {
     width: 90%;
-
- 
   }
+
+.search-container {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: -10px;
+}
 }
 
 .app-container {
@@ -217,6 +221,14 @@ body {
 
 }
 
+@media (max-width: 600px) {
+  .app-container {
+margin-left: 10px;
+margin-right: 10px;
+
+  }
+}
+
 /* Dark mode styles */
 html.dark-mode .app-container {
   background: #1e293b;
@@ -247,7 +259,7 @@ html.dark-mode .download-note {
   flex-wrap: wrap;
   border: 1px solid #077A7D;
   padding: 20px;
-  border-radius: 25px;
+  border-radius: 15px;
   box-shadow: 0 4px 15px rgba(7, 122, 125, 0.3);
 }
 
@@ -326,9 +338,10 @@ html.dark-mode .download-note {
   .namaj-content {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 12px;
+    padding: 10px;
     gap: 8px;
     justify-content: space-between;
+    border-radius: 10;
   }
 
   .left-box,
@@ -380,17 +393,20 @@ html.dark-mode .download-note {
 
 
 
-/* Main Tools Section */
+/* Catagory css */
 .main-section {
-  margin-top: 30px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0 10px;
 }
 
-/* category-grid: গ্রিড হিসেবেই রাখব, ২ কলাম ডেস্কটপে */
-.category-grid {
+/* Tools Grid */
+.tools-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .cat-title {
@@ -407,7 +423,7 @@ html.dark-mode .download-note {
   font-weight: bold;
   padding-bottom: 10px;
   color: #555;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   text-align: left;
 }
 
@@ -422,104 +438,88 @@ html.dark-mode .download-note {
   border-radius: 2px;
 }
 
-/* category-item এখন flexbox */
-.category-item {
+/* Box styling */
+.clickable-box {
   background: #fff;
-  padding: 0px 20px 20px 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   height: 150px;
-  position: relative;
-
-  transition: transform 0.2s ease;
-  text-decoration: none;
-  color: inherit;
-
-  border-left: #077A7D solid 3px;
-  border-right: #077A7D solid 3px;
-}
-
-.category-item:hover {
-  transform: none;
-}
-
-/* icon এর সাইজ ও কালার */
-.category-icon {
-  font-size: 48px;
-  color: #077A7D;
-  flex-shrink: 0; /* আইকন ছোট হবে না */
-  width: 60px;
+  padding: 20px 15px;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #000;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  text-decoration: none !important;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* content বক্স: title ও desc */
-.category-content {
-  flex-grow: 1;
-  text-align: left;
+/* Dark mode styles for clickable box */
+html.dark-mode .clickable-box {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #ddd;
 }
 
-/* title */
-.category-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+/* Hover effect */
+.clickable-box:hover {
+  box-shadow: 0 4px 12px rgba(135, 206, 250, 0.6);
+  transform: translateY(-3px);
 }
 
-/* description */
-.category-desc {
-  font-size: 18px;
-  color: #555;
-  line-height: 1.3;
+/* Icon inside box */
+.box-icon {
+  font-size: 40px;
+  color: #077A7D;
+  margin-bottom: 12px;
+  flex-shrink: 0;
 }
 
-/* লিংক পুরো আইটেম জুড়ে clickable করার জন্য */
-.category-link {
-  text-decoration: none;
-  color: inherit;
+/* Dark mode icon color */
+html.dark-mode .box-icon {
+  color: #077A7D;
+}
+
+/* Text with ellipsis */
+.clickable-box span.text {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
   display: block;
 }
 
-/* Button style */
-.category-button {
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #077A7D;
-  color: white;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  white-space: nowrap;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  z-index: 1;
+/* Link cleanup */
+.box-link {
+  text-decoration: none !important;
 }
 
-.category-button:hover {
-  background-color: #fff;
-  color: #077A7D;
-  border: solid 1px #077A7D;
+.box-link .clickable-box {
+  text-decoration: none !important;
 }
- html.dark-mode .category-button:hover {
-  background-color: #1e293b;
-  color: #fff;
-  border: solid 1px #077A7D;
+
+.box-link:hover,
+.box-link:focus {
+  text-decoration: none !important;
 }
-/* মোবাইল ভিউ */
-@media (max-width: 600px) {
-  .category-grid {
-    grid-template-columns: 1fr;
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tools-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
   }
 
+  .clickable-box {
+    height: 120px;
+    padding: 5px 5px;
+  }
   .cat-title-name {
     font-size: 18px;
   }
@@ -527,31 +527,22 @@ html.dark-mode .download-note {
   .category-title {
     font-size: 18px;
   }
-
-  .category-desc {
-    font-size: 14px;
+  .box-icon {
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+  .box-text {
+   font-size: 12px;
   }
 
-  .category-item {
-    height: auto;
-    flex-direction: row;
-    gap: 15px;
-    padding: 15px;
-    min-height: 120px;
-    padding: 0px 8px 12px 8px;
+  .clickable-box span.text {
+    font-size: 10px;
   }
+}
 
-  .category-icon {
-    font-size: 40px;
-    width: 50px;
-  }
-  
-  .category-button {
-    padding: 12px 20px !important;
-    font-size: 14px;
-    bottom: -12px;
-    border-radius: 8px;
-  }
+html.dark-mode body{
+  background: #121212;
+  color: #e0e0e0;
 }
 
 

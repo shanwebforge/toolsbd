@@ -255,13 +255,17 @@ html.dark-mode .download-note {
 .namaj-content {
   display: flex;
   justify-content: space-between;
+  background: #fff;
   gap: 10px;
   flex-wrap: wrap;
-  border: 1px solid #077A7D;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 20px;
-  border-radius: 25px;
-  box-shadow: 0 4px 15px rgba(7, 122, 125, 0.3);
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  text-decoration: none !important;
 }
+
+
 
 .left-box {
   width: 100%;
@@ -350,12 +354,14 @@ html.dark-mode .download-note {
     width: 48%;
   }
 
-  .left-box h2,
-  .left-box h3 {
+  .left-box h2 {
     font-size: 13px;
-    margin-bottom: 2px; /* একদম ঘেঁষে বসবে */
+    margin-bottom: 6px;
   }
-
+  .left-box h3 {
+    font-size: 14px;
+    margin-bottom: 6px !important;
+  }
   .left-box p.date-line {
     font-size: 11px;
     margin: 0px 0;
@@ -373,8 +379,8 @@ html.dark-mode .download-note {
 
   .right-box p {
     font-size: 12px;
-    padding: 10px 6px;
-    margin: 2px 12px;
+    padding: 8px 6px;
+    margin: 4px 10px;
   }
 
   .date-box {
@@ -388,13 +394,239 @@ html.dark-mode .download-note {
   }
 }
 
+html.dark-mode .namaj-content{
+  background-color: #1e293b;}
+
+html.dark-mode .left-box h3, .left-box h2 {
+  color: #fff !important;}
+
+
+
+/* Help Catagorys */
 
 
 
 
+.help-container {
+  background: #fff;
+  margin: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  text-decoration: none !important;
+  text-align: center;
+  margin-left: 18px;
+  margin-right: 18px;
+}
+.category-section {
+  padding: 20px;
+  position: relative;  /* অ্যারো absolute জন্য relative */
+  max-width: 1000px;
+  margin: auto;
+
+  
+}
+
+.category-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+}
+
+.category-slider {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  padding-bottom: 10px;
+}
+
+/* Scrollbar hide desktop/mobile */
+.category-slider::-webkit-scrollbar {
+  display: none;
+}
+.category-slider {
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.category-item {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+.category-box {
+  width: 90px;
+  height: 90px;
+  border-radius: 15px;
+  color: #fff;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.category-label {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  max-width: 100px;
+  word-break: break-word;
+}
+
+/* Gradient backgrounds */
+.box1 {
+  background: linear-gradient(to bottom right, #ff6a6a, #ff9999);
+}
+.box2 {
+  background: linear-gradient(to bottom right, #6a5aff, #a6a1ff);
+}
+.box3 {
+  background: linear-gradient(to bottom right, #4caf50, #81c784);
+}
+.box4 {
+  background: linear-gradient(to bottom right, #ffa726, #ffd180);
+}
+.box5 {
+  background: linear-gradient(to bottom right, #26c6da, #80deea);
+}
+.box6 {
+  background: linear-gradient(to bottom right, #ab47bc, #ce93d8);
+}
+.box7 {
+  background: linear-gradient(to bottom right, #ec407a, #f48fb1);
+}
+.box8 {
+  background: linear-gradient(to bottom right, #78909c, #b0bec5);
+}
+.box9 {
+  background: linear-gradient(to bottom right, #fdd835, #fff176);
+}
+.box10 {
+  background: linear-gradient(to bottom right, #8bc34a, #aed581);
+}
+.box11 {
+  background: linear-gradient(to bottom right, #ff7043, #ffab91);
+}
+.box12 {
+  background: linear-gradient(to bottom right, #00e676, #69f0ae);
+}
+
+@media (max-width: 600px) {
+  .category-section {
+  padding: 20px;
+  position: relative;
+  max-width: 75%;
+  margin: auto;
+}
+  .category-box {
+    width: 80px;
+    height: 80px;
+    font-size: 28px;
+  }
+
+  .category-label {
+    font-size: 12px;
+  }
+}
 
 
-/* Main Tools Section */
+html.dark-mode .category-title,
+html.dark-mode .category-label {
+  color: #ddd;
+}
+
+html.dark-mode .help-container {
+  background: #1e293b;}
+
+/* Add this to your existing CSS */
+html.dark-mode .category-section {
+  background: transparent !important;
+}
+
+html.dark-mode .category-slider {
+  background: transparent !important;
+  --scrollbar-bg: transparent !important;
+}
+
+html.dark-mode .category-item {
+  background: transparent !important;
+}
+
+html.dark-mode .category-box {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  border: 1px solid transparent; /* Helps contain gradients */
+}
+
+html.dark-mode .category-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: inherit;
+  border-radius: inherit;
+}
+
+/* Arrows - Outside the slider */
+.slider-arrow {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #077A7D;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  transition: background-color 0.3s ease;
+  z-index: 100;
+}
+
+.slider-arrow:hover {
+  background-color: #066264;
+}
+
+.arrow-left {
+  left: -40px;
+}
+
+.arrow-right {
+  right: -40px;
+}
+
+@media (max-width: 768px) {
+  .slider-arrow {
+    width: 32px;
+    height: 32px;
+  }
+  .arrow-left {
+    left: -18px;
+  }
+  .arrow-right {
+    right: -18px;
+  }
+}
+
 
 
 /* category-grid: গ্রিড হিসেবেই রাখব, ২ কলাম ডেস্কটপে */

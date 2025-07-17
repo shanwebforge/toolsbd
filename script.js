@@ -313,3 +313,25 @@ searchInput.addEventListener("keypress", (e) => {
     searchPopup.classList.remove("hidden");
   }
 });
+
+
+
+
+
+
+
+
+// Arrow
+ const slider = document.getElementById('categorySlider');
+    const leftArrow = document.getElementById('arrowLeft');
+    const rightArrow = document.getElementById('arrowRight');
+
+    const scrollAmount = 120; // scroll pixels per click
+
+    leftArrow.addEventListener('click', () => {
+      slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    rightArrow.addEventListener('click', () => {
+      slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });

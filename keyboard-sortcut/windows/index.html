@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="bn" class="dark-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Keyboard Shortcuts</title>
+    <!-- 🌙 Early apply dark mode (no flash) -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (!theme && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Dark mode preload error:', e);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="shortcut-section">
+  <h2 class="shortcut-title">Windows Keyboard Shortcuts</h2>
+  <div class="shortcut-table">
+    <div class="shortcut-row header">
+      <div class="shortcut-key">Shortcut</div>
+      <div class="shortcut-action">Description</div>
+    </div>
+
+    <div class="shortcut-row">
+      <div class="shortcut-key"><kbd>Ctrl</kbd> + <kbd>C</kbd></div>
+      <div class="shortcut-action">Copy</div>
+    </div>
+    <div class="shortcut-row">
+      <div class="shortcut-key"><kbd>Ctrl</kbd> + <kbd>V</kbd></div>
+      <div class="shortcut-action">Paste</div>
+    </div>
+    <div class="shortcut-row">
+      <div class="shortcut-key"><kbd>Ctrl</kbd> + <kbd>X</kbd></div>
+      <div class="shortcut-action">Cut</div>
+    </div>
+    <div class="shortcut-row">
+      <div class="shortcut-key"><kbd>Alt</kbd> + <kbd>Tab</kbd></div>
+      <div class="shortcut-action">Switch between open apps</div>
+    </div>
+    <div class="shortcut-row">
+      <div class="shortcut-key"><kbd>Win</kbd> + <kbd>D</kbd></div>
+      <div class="shortcut-action">Show/Hide desktop</div>
+    </div>
+    <div class="shortcut-row">
+      <div class="shortcut-key"><kbd>Win</kbd> + <kbd>L</kbd></div>
+      <div class="shortcut-action">Lock your PC</div>
+    </div>
+    <div class="shortcut-row">
+      <div class="shortcut-key"><kbd>Win</kbd> + <kbd>E</kbd></div>
+      <div class="shortcut-action">Open File Explorer</div>
+    </div>
+    <div class="shortcut-row">
+      <div class="shortcut-key"><kbd>Win</kbd> + <kbd>I</kbd></div>
+      <div class="shortcut-action">Open Settings</div>
+    </div>
+    <div class="shortcut-row">
+      <div class="shortcut-key"><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd></div>
+      <div class="shortcut-action">Open Task Manager</div>
+    </div>
+  </div>
+</div>
+
+<style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  margin: 0;
+ 
+}
+  .shortcut-section {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.shortcut-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.shortcut-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.shortcut-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  background-color: #f9f9f9;
+}
+
+.shortcut-row:last-child {
+  border-bottom: none;
+}
+
+.shortcut-row.header {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+.shortcut-key kbd {
+  background-color: #ddd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.shortcut-key,
+.shortcut-action {
+  width: 48%;
+  font-size: 16px;
+  color: #222;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .shortcut-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .shortcut-key,
+  .shortcut-action {
+    width: 100%;
+  }
+}
+
+/* Dark mode */
+html.dark-mode body {
+  background: #121212;
+  color: #ddd;
+}
+html.dark-mode .shortcut-title {
+  color: #fff;
+}
+html.dark-mode .shortcut-table {
+  border-color: #444;
+}
+html.dark-mode .shortcut-row {
+  background-color: #222;
+  border-bottom: 1px solid #444;
+}
+html.dark-mode .shortcut-row.header {
+  background-color: #333;
+  color: #fff;
+}
+html.dark-mode .shortcut-key,
+html.dark-mode .shortcut-action {
+  color: #ddd;
+}
+html.dark-mode .shortcut-key kbd {
+  background-color: #444;
+  color: #fff;
+}
+
+</style>
+  <script src="/components/headerhome.js"></script>
+  <script src="/components/footer.js"></script>
+</body>
+</html>

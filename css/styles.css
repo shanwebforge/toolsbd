@@ -403,10 +403,6 @@ html.dark-mode .left-box h3, .left-box h2 {
 
 
 /* Help Catagorys */
-
-
-
-
 .help-container {
   background: #fff;
   margin: auto;
@@ -629,6 +625,94 @@ html.dark-mode .category-box::after {
 
 
 
+
+/* Sortcut */
+.sort-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.sort-title-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.sort-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.sort-container a {
+  text-decoration: none;
+}
+
+.sort-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.sort-box:hover {
+  background: #f0f0f0;
+}
+
+.icon {
+  font-size: 20px;
+  color: #077A7D;
+}
+
+.sort-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;         /* ✅ এক লাইনে রাখবে */
+  overflow: hidden;            /* ✅ অতিরিক্ত অংশ কেটে ফেলবে */
+  text-overflow: ellipsis;     /* ✅ ... দেখাবে */
+  flex: 1;
+}
+
+/* Dark mode support */
+html.dark-mode body {
+  background: #121212;
+  color: #eee;
+}
+
+html.dark-mode .sort-box {
+  background: #1f1f1f;
+}
+
+html.dark-mode .sort-title-name,
+html.dark-mode .sort-title {
+  color: #eee;
+}
+
+html.dark-mode .icon {
+  color: #077A7D;
+}
+
+html.dark-mode .sort-box:hover {
+  background: #2a2a2a;
+}
+
+@media (max-width: 768px) {
+.sort-container {
+  
+  grid-template-columns: repeat(2, 1fr);
+ }
+}
+
+
+
 /* category-grid: গ্রিড হিসেবেই রাখব, ২ কলাম ডেস্কটপে */
 .category-grid {
   display: grid;
@@ -641,6 +725,7 @@ html.dark-mode .category-box::after {
   font-weight: bold;
   margin-bottom: 6px;
   text-align: left;
+  margin-left: 50px;
 }
 
 .cat-title-name {
@@ -771,7 +856,33 @@ html.dark-mode .box-icon {
     font-size: 12px;
     
   }
+  .cat-title {
+  font-size: 18px !important;
+  font-weight: bold;
+  margin-bottom: 6px;
+  text-align: left;
+  margin-left: 0px;
+}
+.cat-title-name {
+  display: inline-block;
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 4px;
+  color: #555;
+  margin-bottom: 10px;
+  text-align: left;
+}
 
+.cat-title-name::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+}
   .box-icon {
     font-size: 26px;
     margin-bottom: 8px;

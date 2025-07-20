@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xcode Keyboard Shortcuts</title>
+    <!-- 🌙 Early apply dark mode (no flash) -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (!theme && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Dark mode preload error:', e);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="shortcut-section">
+  <h2 class="shortcut-title">Xcode Keyboard Shortcuts</h2>
+
+  <div class="shortcut-table-wrapper">
+    <table class="shortcut-table">
+      <thead>
+        <tr>
+          <th>Shortcut</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- General -->
+        <tr><td><kbd>Cmd + N</kbd></td><td>নতুন ফাইল তৈরি</td></tr>
+        <tr><td><kbd>Cmd + O</kbd></td><td>ফাইল খুলুন</td></tr>
+        <tr><td><kbd>Cmd + S</kbd></td><td>সেভ করুন</td></tr>
+        <tr><td><kbd>Cmd + Shift + S</kbd></td><td>নতুন নামে সেভ করুন</td></tr>
+        <tr><td><kbd>Cmd + Z</kbd></td><td>Undo করুন</td></tr>
+        <tr><td><kbd>Cmd + Shift + Z</kbd></td><td>Redo করুন</td></tr>
+
+        <!-- Navigation -->
+        <tr><td><kbd>Cmd + Shift + O</kbd></td><td>Quick Open (সার্চ ফাইল/সিম্বোল)</td></tr>
+        <tr><td><kbd>Cmd + Ctrl + ← / →</kbd></td><td>ফাইল নেভিগেশন (Back / Forward)</td></tr>
+        <tr><td><kbd>Cmd + J</kbd></td><td>Jump to Definition</td></tr>
+        <tr><td><kbd>Cmd + Shift + J</kbd></td><td>Jump to Selection</td></tr>
+        <tr><td><kbd>Cmd + L</kbd></td><td>Go to Line</td></tr>
+
+        <!-- Editing -->
+        <tr><td><kbd>Cmd + X</kbd></td><td>Cut</td></tr>
+        <tr><td><kbd>Cmd + C</kbd></td><td>Copy</td></tr>
+        <tr><td><kbd>Cmd + V</kbd></td><td>Paste</td></tr>
+        <tr><td><kbd>Cmd + D</kbd></td><td>Duplicate Line</td></tr>
+        <tr><td><kbd>Cmd + /</kbd></td><td>Comment/Uncomment Line</td></tr>
+        <tr><td><kbd>Option + Cmd + /</kbd></td><td>Toggle Block Comment</td></tr>
+        <tr><td><kbd>Cmd + [</kbd></td><td>Indent Left</td></tr>
+        <tr><td><kbd>Cmd + ]</kbd></td><td>Indent Right</td></tr>
+        <tr><td><kbd>Ctrl + I</kbd></td><td>Re-indent Code</td></tr>
+
+        <!-- Build & Run -->
+        <tr><td><kbd>Cmd + B</kbd></td><td>Build Project</td></tr>
+        <tr><td><kbd>Cmd + R</kbd></td><td>Run Project</td></tr>
+        <tr><td><kbd>Cmd + .</kbd></td><td>Stop Running</td></tr>
+        <tr><td><kbd>Cmd + Shift + K</kbd></td><td>Clean Build Folder</td></tr>
+
+        <!-- Debugging -->
+        <tr><td><kbd>Cmd + Y</kbd></td><td>Toggle Breakpoint</td></tr>
+        <tr><td><kbd>Cmd + Ctrl + Y</kbd></td><td>Enable/Disable All Breakpoints</td></tr>
+        <tr><td><kbd>Cmd + Ctrl + I</kbd></td><td>Step Into</td></tr>
+        <tr><td><kbd>Cmd + Ctrl + O</kbd></td><td>Step Over</td></tr>
+        <tr><td><kbd>Cmd + Ctrl + U</kbd></td><td>Step Out</td></tr>
+        <tr><td><kbd>Cmd + Shift + C</kbd></td><td>Continue</td></tr>
+
+        <!-- Interface -->
+        <tr><td><kbd>Cmd + 0</kbd></td><td>Show/Hide Navigator</td></tr>
+        <tr><td><kbd>Cmd + 1</kbd></td><td>Show Project Navigator</td></tr>
+        <tr><td><kbd>Cmd + 2</kbd></td><td>Show Symbol Navigator</td></tr>
+        <tr><td><kbd>Cmd + 3</kbd></td><td>Show Find Navigator</td></tr>
+        <tr><td><kbd>Cmd + 4</kbd></td><td>Show Issue Navigator</td></tr>
+        <tr><td><kbd>Cmd + 5</kbd></td><td>Show Debug Navigator</td></tr>
+        <tr><td><kbd>Cmd + 6</kbd></td><td>Show Breakpoint Navigator</td></tr>
+        <tr><td><kbd>Cmd + 7</kbd></td><td>Show Report Navigator</td></tr>
+
+        <!-- Editor Tabs -->
+        <tr><td><kbd>Cmd + Shift + [</kbd></td><td>Previous Tab</td></tr>
+        <tr><td><kbd>Cmd + Shift + ]</kbd></td><td>Next Tab</td></tr>
+
+        <!-- Search -->
+        <tr><td><kbd>Cmd + F</kbd></td><td>Find</td></tr>
+        <tr><td><kbd>Cmd + Shift + F</kbd></td><td>Find in Project</td></tr>
+        <tr><td><kbd>Cmd + E</kbd></td><td>Use Selection for Find</td></tr>
+
+        <!-- Misc -->
+        <tr><td><kbd>Cmd + Shift + M</kbd></td><td>Show Issue Navigator</td></tr>
+        <tr><td><kbd>Cmd + ,</kbd></td><td>Open Preferences</td></tr>
+        <tr><td><kbd>Cmd + Option + Enter</kbd></td><td>Toggle Full Screen</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 20px;
+}
+
+.shortcut-section {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.shortcut-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.shortcut-table-wrapper {
+  overflow-x: auto;
+}
+
+.shortcut-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.shortcut-table th,
+.shortcut-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.shortcut-table thead {
+  background: #6c63ff;
+  color: white;
+}
+
+.shortcut-table kbd {
+  background: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ✅ Dark Mode */
+html.dark-mode body {
+  background: #121212;
+  color: #ddd;
+}
+
+html.dark-mode .shortcut-table {
+  background: #1f1f1f;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .shortcut-table thead {
+  background: #333;
+  color: #fff;
+}
+
+html.dark-mode .shortcut-table th,
+html.dark-mode .shortcut-table td {
+  border-color: #333;
+}
+
+html.dark-mode .shortcut-table kbd {
+  background: #333;
+  color: #fff;
+}
+
+</style>
+  <script src="/components/headerhome.js"></script>
+  <script src="/components/footer.js"></script>
+</body>
+</html>

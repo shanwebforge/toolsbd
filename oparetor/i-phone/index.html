@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Android - Sortcode</title>
+
+  <!-- 🌙 Early apply dark mode (no flash) -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (!theme && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Dark mode preload error:', e);
+      }
+    })();
+  </script>
+
+  <!-- ✅ Stylesheets -->
+  <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
+</head>
+<body>
+    <div class="shortcut-section">
+  <h2 class="shortcut-title">Android Keyboard Shortcuts</h2>
+<div class="shortcut-table">
+  <div class="shortcut-row header">
+    <div class="shortcut-key">Code</div>
+    <div class="shortcut-action">Function</div>
+  </div>
+
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#06#</kbd></div>
+    <div class="shortcut-action">Display IMEI number</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#07#</kbd></div>
+    <div class="shortcut-action">Show legal/regulatory & SAR info</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*3001#12345#*</kbd></div>
+    <div class="shortcut-action">Enter Field Test Mode (detailed signal data)</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#31#</kbd></div>
+    <div class="shortcut-action">Check caller ID status</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*67</kbd></div>
+    <div class="shortcut-action">Hide caller ID for outgoing call</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*82</kbd></div>
+    <div class="shortcut-action">Show your caller ID</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#21#</kbd></div>
+    <div class="shortcut-action">Check call forwarding status</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*21<em>number</em>#</kbd></div>
+    <div class="shortcut-action">Enable call forwarding to &lt;number&gt; </div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>##21#</kbd></div>
+    <div class="shortcut-action">Disable call forwarding</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#43#</kbd></div>
+    <div class="shortcut-action">Check call waiting status</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*43#</kbd></div>
+    <div class="shortcut-action">Enable call waiting</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>#43#</kbd></div>
+    <div class="shortcut-action">Disable call waiting</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#61#</kbd></div>
+    <div class="shortcut-action">Check number of missed calls forwarded</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>#61#</kbd></div>
+    <div class="shortcut-action">Check missed call status</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#62#</kbd></div>
+    <div class="shortcut-action">Check call forwarding when unreachable</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#004#</kbd></div>
+    <div class="shortcut-action">Check all call forwarding settings</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>##002#</kbd></div>
+    <div class="shortcut-action">Disable all call forwarding</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#30#</kbd></div>
+    <div class="shortcut-action">Check CLIP status (caller line display)</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#5005*25371#</kbd></div>
+    <div class="shortcut-action">Check emergency alerts status</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*#5005*25370#</kbd></div>
+    <div class="shortcut-action">Disable emergency alerts</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*3282#</kbd></div>
+    <div class="shortcut-action">Check data/billing cycle (e.g. AT&T)</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*777#</kbd></div>
+    <div class="shortcut-action">Check prepaid balance</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>*225#</kbd></div>
+    <div class="shortcut-action">Check postpaid balance (AT&T)</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>#263#</kbd></div>
+    <div class="shortcut-action">Disable Binge On (T‑Mobile)</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>#264#</kbd></div>
+    <div class="shortcut-action">Check Binge On status</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>112</kbd></div>
+    <div class="shortcut-action">European emergency number (redirects to 911 USA)</div>
+  </div>
+  <div class="shortcut-row">
+    <div class="shortcut-key"><kbd>911</kbd></div>
+    <div class="shortcut-action">Emergency services in USA</div>
+  </div>
+</div>
+</div>
+
+
+<style>
+    .shortcut-section {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.shortcut-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.shortcut-table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.shortcut-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  background-color: #f9f9f9;
+}
+
+.shortcut-row:last-child {
+  border-bottom: none;
+}
+
+.shortcut-row.header {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+.shortcut-key kbd {
+  background-color: #ddd;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 4px;
+  display: inline-block;
+}
+
+.shortcut-key,
+.shortcut-action {
+  width: 48%;
+  font-size: 16px;
+  color: #222;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .shortcut-row {
+    flex-direction: row; /* keep row even in mobile */
+    flex-wrap: wrap;     /* allow wrap if needed */
+    align-items: flex-start;
+  }
+
+  .shortcut-key,
+  .shortcut-action {
+    width: 50%;          /* each takes half */
+    font-size: 14px;
+  }
+}
+
+
+/* Dark mode */
+html.dark-mode body {
+  background-color: #000;
+}
+html.dark-mode .shortcut-title {
+  color: #fff;
+}
+html.dark-mode .shortcut-table {
+  border-color: #444;
+}
+html.dark-mode .shortcut-row {
+  background-color: #222;
+  border-bottom: 1px solid #444;
+}
+html.dark-mode .shortcut-row.header {
+  background-color: #333;
+  color: #fff;
+}
+html.dark-mode .shortcut-key,
+html.dark-mode .shortcut-action {
+  color: #ddd;
+}
+html.dark-mode .shortcut-key kbd {
+  background-color: #444;
+  color: #fff;
+}
+
+</style>
+
+
+
+  <!-- ✅ Scripts -->
+  <script src="/components/headerhome.js"></script>
+  <script src="/components/footer.js"></script>
+</body>
+</html>

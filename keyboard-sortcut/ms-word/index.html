@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Microsoft Word Keyboard Shortcuts</title>
+    <!-- 🌙 Early apply dark mode (no flash) -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (!theme && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Dark mode preload error:', e);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="shortcut-section">
+  <h2 class="shortcut-title">Microsoft Word Keyboard Shortcuts</h2>
+
+  <div class="shortcut-table-wrapper">
+    <table class="shortcut-table">
+      <thead>
+        <tr>
+          <th>Shortcut</th>
+          <th>Description (Bangla)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd>Ctrl + N</kbd></td><td>নতুন ডকুমেন্ট তৈরি করুন</td></tr>
+        <tr><td><kbd>Ctrl + O</kbd></td><td>পুরাতন ডকুমেন্ট খুলুন</td></tr>
+        <tr><td><kbd>Ctrl + S</kbd></td><td>ফাইল সংরক্ষণ করুন</td></tr>
+        <tr><td><kbd>Ctrl + P</kbd></td><td>প্রিন্ট মেনু খুলুন</td></tr>
+        <tr><td><kbd>Ctrl + C</kbd></td><td>নির্বাচিত লেখা কপি করুন</td></tr>
+        <tr><td><kbd>Ctrl + X</kbd></td><td>কাট করুন</td></tr>
+        <tr><td><kbd>Ctrl + V</kbd></td><td>পেস্ট করুন</td></tr>
+        <tr><td><kbd>Ctrl + Z</kbd></td><td>শেষ কাজ Undo করুন</td></tr>
+        <tr><td><kbd>Ctrl + Y</kbd></td><td>Redo করুন</td></tr>
+        <tr><td><kbd>Ctrl + B</kbd></td><td>Bold করুন</td></tr>
+        <tr><td><kbd>Ctrl + I</kbd></td><td>Italic করুন</td></tr>
+        <tr><td><kbd>Ctrl + U</kbd></td><td>Underline করুন</td></tr>
+        <tr><td><kbd>Ctrl + A</kbd></td><td>সব নির্বাচন করুন</td></tr>
+        <tr><td><kbd>Ctrl + F</kbd></td><td>Find বা খুঁজুন</td></tr>
+        <tr><td><kbd>Ctrl + H</kbd></td><td>Find & Replace</td></tr>
+        <tr><td><kbd>Ctrl + K</kbd></td><td>Hyperlink যুক্ত করুন</td></tr>
+        <tr><td><kbd>Ctrl + L</kbd></td><td>Left Alignment</td></tr>
+        <tr><td><kbd>Ctrl + E</kbd></td><td>Center Alignment</td></tr>
+        <tr><td><kbd>Ctrl + R</kbd></td><td>Right Alignment</td></tr>
+        <tr><td><kbd>Ctrl + J</kbd></td><td>Justify Alignment</td></tr>
+        <tr><td><kbd>Ctrl + M</kbd></td><td>Left Indent বাড়ান</td></tr>
+        <tr><td><kbd>Ctrl + T</kbd></td><td>Hanging Indent</td></tr>
+        <tr><td><kbd>Ctrl + Shift + M</kbd></td><td>Left Indent কমান</td></tr>
+        <tr><td><kbd>Ctrl + Shift + > / <</kbd></td><td>Font size বড়/ছোট করুন</td></tr>
+        <tr><td><kbd>Ctrl + 1</kbd></td><td>Single Line Spacing</td></tr>
+        <tr><td><kbd>Ctrl + 2</kbd></td><td>Double Line Spacing</td></tr>
+        <tr><td><kbd>Ctrl + 5</kbd></td><td>1.5 Line Spacing</td></tr>
+        <tr><td><kbd>Ctrl + Shift + L</kbd></td><td>Bullet List তৈরি করুন</td></tr>
+        <tr><td><kbd>Ctrl + Shift + N</kbd></td><td>Normal Style প্রয়োগ করুন</td></tr>
+        <tr><td><kbd>Ctrl + Space</kbd></td><td>Clear Formatting</td></tr>
+        <tr><td><kbd>Alt + Ctrl + F</kbd></td><td>Footnote যুক্ত করুন</td></tr>
+        <tr><td><kbd>Alt + Ctrl + D</kbd></td><td>Endnote যুক্ত করুন</td></tr>
+        <tr><td><kbd>Shift + F3</kbd></td><td>Small/capital/caps change</td></tr>
+        <tr><td><kbd>F7</kbd></td><td>Spelling & Grammar চেক করুন</td></tr>
+        <tr><td><kbd>Alt + Shift + D</kbd></td><td>Current Date ঢোকান</td></tr>
+        <tr><td><kbd>Alt + Shift + T</kbd></td><td>Current Time ঢোকান</td></tr>
+        <tr><td><kbd>Ctrl + Alt + V</kbd></td><td>Paste Special</td></tr>
+        <tr><td><kbd>Ctrl + W</kbd></td><td>ডকুমেন্ট বন্ধ করুন</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 20px;
+}
+
+.shortcut-section {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.shortcut-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.shortcut-table-wrapper {
+  overflow-x: auto;
+}
+
+.shortcut-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.shortcut-table th,
+.shortcut-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.shortcut-table thead {
+  background: #6c63ff;
+  color: white;
+}
+
+.shortcut-table kbd {
+  background: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ✅ Dark Mode */
+html.dark-mode body {
+  background: #121212;
+  color: #ddd;
+}
+
+html.dark-mode .shortcut-table {
+  background: #1f1f1f;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .shortcut-table thead {
+  background: #333;
+  color: #fff;
+}
+
+html.dark-mode .shortcut-table th,
+html.dark-mode .shortcut-table td {
+  border-color: #333;
+}
+
+html.dark-mode .shortcut-table kbd {
+  background: #333;
+  color: #fff;
+}
+
+</style>
+  <script src="/components/headerhome.js"></script>
+  <script src="/components/footer.js"></script>
+</body>
+</html>

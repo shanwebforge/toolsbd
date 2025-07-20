@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adobe Premiere Pro Keyboard Shortcuts</title>
+    <!-- 🌙 Early apply dark mode (no flash) -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (!theme && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Dark mode preload error:', e);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="shortcut-section">
+  <h2 class="shortcut-title">Adobe Premiere Pro Keyboard Shortcuts</h2>
+
+  <div class="shortcut-table-wrapper">
+    <table class="shortcut-table">
+      <thead>
+        <tr>
+          <th>Shortcut</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- General -->
+        <tr><td><kbd>Ctrl + N</kbd> / <kbd>Cmd + N</kbd></td><td>নতুন প্রোজেক্ট তৈরি</td></tr>
+        <tr><td><kbd>Ctrl + O</kbd> / <kbd>Cmd + O</kbd></td><td>প্রোজেক্ট খুলুন</td></tr>
+        <tr><td><kbd>Ctrl + S</kbd> / <kbd>Cmd + S</kbd></td><td>প্রোজেক্ট সেভ করুন</td></tr>
+        <tr><td><kbd>Ctrl + Z</kbd> / <kbd>Cmd + Z</kbd></td><td>Undo করুন</td></tr>
+        <tr><td><kbd>Ctrl + Shift + Z</kbd> / <kbd>Cmd + Shift + Z</kbd></td><td>Redo করুন</td></tr>
+
+        <!-- Timeline Navigation -->
+        <tr><td><kbd>Spacebar</kbd></td><td>Play/Pause</td></tr>
+        <tr><td><kbd>Arrow Left</kbd></td><td>Timeline এ এক ফ্রেম পেছনে যান</td></tr>
+        <tr><td><kbd>Arrow Right</kbd></td><td>Timeline এ এক ফ্রেম সামনে যান</td></tr>
+        <tr><td><kbd>Shift + Arrow Left</kbd></td><td>কীফ্রেমে পজিশন স্কিপ করুন (পেছনে)</td></tr>
+        <tr><td><kbd>Shift + Arrow Right</kbd></td><td>কীফ্রেমে পজিশন স্কিপ করুন (সামনে)</td></tr>
+
+        <!-- Editing -->
+        <tr><td><kbd>C</kbd></td><td>Razor Tool সিলেক্ট করুন (কাটিং)</td></tr>
+        <tr><td><kbd>V</kbd></td><td>Selection Tool সিলেক্ট করুন</td></tr>
+        <tr><td><kbd>B</kbd></td><td>Ripple Edit Tool সিলেক্ট করুন</td></tr>
+        <tr><td><kbd>N</kbd></td><td>Rolling Edit Tool সিলেক্ট করুন</td></tr>
+        <tr><td><kbd>Ctrl + K</kbd> / <kbd>Cmd + K</kbd></td><td>Timeline এ কাটুন</td></tr>
+        <tr><td><kbd>Delete</kbd></td><td>সিলেক্টেড ক্লিপ মুছুন</td></tr>
+        <tr><td><kbd>Ctrl + Z</kbd> / <kbd>Cmd + Z</kbd></td><td>Undo করুন</td></tr>
+
+        <!-- Markers -->
+        <tr><td><kbd>M</kbd></td><td>মার্কার যোগ করুন</td></tr>
+        <tr><td><kbd>Shift + M</kbd></td><td>পরবর্তী মার্কারে যান</td></tr>
+        <tr><td><kbd>Ctrl + Shift + M</kbd> / <kbd>Cmd + Shift + M</kbd></td><td>পূর্বের মার্কারে যান</td></tr>
+
+        <!-- Zoom -->
+        <tr><td><kbd>=</kbd></td><td>Timeline Zoom In করুন</td></tr>
+        <tr><td><kbd>-</kbd></td><td>Timeline Zoom Out করুন</td></tr>
+
+        <!-- Playback -->
+        <tr><td><kbd>J</kbd></td><td>প্লেব্যাক রিভার্স করুন</td></tr>
+        <tr><td><kbd>K</kbd></td><td>প্লেব্যাক বন্ধ করুন</td></tr>
+        <tr><td><kbd>L</kbd></td><td>প্লেব্যাক ফরোয়ার্ড করুন</td></tr>
+
+        <!-- Snapping -->
+        <tr><td><kbd>S</kbd></td><td>Snapping চালু/বন্ধ করুন</td></tr>
+
+        <!-- Export -->
+        <tr><td><kbd>Ctrl + M</kbd> / <kbd>Cmd + M</kbd></td><td>Export Settings খুলুন</td></tr>
+
+        <!-- Misc -->
+        <tr><td><kbd>Ctrl + Shift + E</kbd> / <kbd>Cmd + Shift + E</kbd></td><td>Export Frame</td></tr>
+        <tr><td><kbd>Ctrl + Shift + S</kbd> / <kbd>Cmd + Shift + S</kbd></td><td>Save As করুন</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 20px;
+}
+
+.shortcut-section {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.shortcut-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.shortcut-table-wrapper {
+  overflow-x: auto;
+}
+
+.shortcut-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.shortcut-table th,
+.shortcut-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.shortcut-table thead {
+  background: #6c63ff;
+  color: white;
+}
+
+.shortcut-table kbd {
+  background: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ✅ Dark Mode */
+html.dark-mode body {
+  background: #121212;
+  color: #ddd;
+}
+
+html.dark-mode .shortcut-table {
+  background: #1f1f1f;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .shortcut-table thead {
+  background: #333;
+  color: #fff;
+}
+
+html.dark-mode .shortcut-table th,
+html.dark-mode .shortcut-table td {
+  border-color: #333;
+}
+
+html.dark-mode .shortcut-table kbd {
+  background: #333;
+  color: #fff;
+}
+
+</style>
+  <script src="/components/headerhome.js"></script>
+  <script src="/components/footer.js"></script>
+</body>
+</html>

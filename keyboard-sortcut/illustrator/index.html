@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adobe Illustrator Keyboard Shortcuts</title>
+    <!-- 🌙 Early apply dark mode (no flash) -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (!theme && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Dark mode preload error:', e);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+
+<div class="shortcut-section">
+  <h2 class="shortcut-title">Adobe Illustrator Keyboard Shortcuts</h2>
+  
+  <div class="shortcut-table-wrapper">
+    <table class="shortcut-table">
+      <thead>
+        <tr><th>Command</th><th>Details</th></tr>
+      </thead>
+      <tbody>
+        <!-- File & Document -->
+        <tr><td><kbd>Ctrl + N</kbd></td><td>নতুন ফাইল তৈরি</td></tr>
+        <tr><td><kbd>Ctrl + O</kbd></td><td>ফাইল খুলুন</td></tr>
+        <tr><td><kbd>Ctrl + S</kbd></td><td>ফাইল সংরক্ষণ</td></tr>
+        <tr><td><kbd>Ctrl + Shift + S</kbd></td><td>নতুন নামে সেভ করুন</td></tr>
+        <tr><td><kbd>Ctrl + P</kbd></td><td>প্রিন্ট কনফিগারেশন</td></tr>
+
+        <!-- Edit & Transform -->
+        <tr><td><kbd>Ctrl + Z</kbd></td><td>Undo</td></tr>
+        <tr><td><kbd>Ctrl + Shift + Z</kbd></td><td>Redo</td></tr>
+        <tr><td><kbd>Ctrl + X</kbd></td><td>Cut</td></tr>
+        <tr><td><kbd>Ctrl + C</kbd></td><td>Copy</td></tr>
+        <tr><td><kbd>Ctrl + V</kbd></td><td>Paste Front</td></tr>
+        <tr><td><kbd>Ctrl + F</kbd></td><td>Paste in Front</td></tr>
+        <tr><td><kbd>Ctrl + B</kbd></td><td>Paste in Back</td></tr>
+        <tr><td><kbd>Ctrl + D</kbd></td><td>Transform Again (repeat last transform)</td></tr>
+        <tr><td><kbd>Ctrl + G</kbd></td><td>Group selected objects</td></tr>
+        <tr><td><kbd>Ctrl + Shift + G</kbd></td><td>Ungroup objects</td></tr>
+        <tr><td><kbd>Ctrl + 2</kbd></td><td>Lock selected objects</td></tr>
+        <tr><td><kbd>Ctrl + Alt + 2</kbd></td><td>Unlock all</td></tr>
+        <tr><td><kbd>Ctrl + 3</kbd></td><td>Hide selected objects</td></tr>
+        <tr><td><kbd>Ctrl + Alt + 3</kbd></td><td>Show all hidden</td></tr>
+
+        <!-- Layers & Artboards -->
+        <tr><td><kbd>Shift + Ctrl + N</kbd></td><td>নতুন Layer তৈরি করুন</td></tr>
+        <tr><td><kbd>Shift + O</kbd></td><td>Artboard টুল সক্রিয় করুন</td></tr>
+        <tr><td><kbd>Alt + Drag</kbd></td><td>আইটেম ডুপ্লিকেট করে টেনে আনুন</td></tr>
+
+        <!-- Tools -->
+        <tr><td><kbd>V</kbd></td><td>Selection Tool</td></tr>
+        <tr><td><kbd>A</kbd></td><td>Direct Selection Tool</td></tr>
+        <tr><td><kbd>P</kbd></td><td>Pen Tool</td></tr>
+        <tr><td><kbd>T</kbd></td><td>Type Tool</td></tr>
+        <tr><td><kbd>R</kbd></td><td>Rotate Tool</td></tr>
+        <tr><td><kbd>O</kbd></td><td>Reflect Tool</td></tr>
+        <tr><td><kbd>S</kbd></td><td>Scale Tool</td></tr>
+        <tr><td><kbd>E</kbd></td><td>Free Transform Tool</td></tr>
+        <tr><td><kbd>Shift + C</kbd></td><td>Anchor Point Tool</td></tr>
+        <tr><td><kbd>Shift + E</kbd></td><td>Fade Tool</td></tr>
+        <tr><td><kbd>Shift + R</kbd></td><td>Warp Tool</td></tr>
+        <tr><td><kbd>L</kbd></td><td>Ellipse Tool</td></tr>
+        <tr><td><kbd>M</kbd></td><td>Rectangle Tool</td></tr>
+        <tr><td><kbd>Shift + M</kbd></td><td>Shape Builder Tool</td></tr>
+        <tr><td><kbd>U</kbd></td><td>Paint Bucket Tool</td></tr>
+        <tr><td><kbd>Eyedropper</kbd></td><td>I - Color Picker Tool</td></tr>
+        <tr><td><kbd>B</kbd></td><td>Brush Tool</td></tr>
+        <tr><td><kbd>Shift + B</kbd></td><td>Blob Brush Tool</td></tr>
+        <tr><td><kbd>E</kbd></td><td>Erase Tool</td></tr>
+        <tr><td><kbd>Y</kbd></td><td>Magic Wand Tool</td></tr>
+        <tr><td><kbd>Shift + Y</kbd></td><td>Shaper Tool</td></tr>
+        <tr><td><kbd>G</kbd></td><td>Gradient Tool</td></tr>
+
+        <!-- View & Zoom -->
+        <tr><td><kbd>Ctrl + +</kbd></td><td>Zoom In</td></tr>
+        <tr><td><kbd>Ctrl + -</kbd></td><td>Zoom Out</td></tr>
+        <tr><td><kbd>Ctrl + 0</kbd></td><td>Fit Artboard in Window</td></tr>
+        <tr><td><kbd>Ctrl + 1</kbd></td><td>Actual Size (100%)</td></tr>
+        <tr><td><kbd>Ctrl + Y</kbd></td><td>Outline View toggle</td></tr>
+        <tr><td><kbd>Ctrl + H</kbd></td><td>Hide/Show Guides</td></tr>
+        <tr><td><kbd>Ctrl + ;</kbd></td><td>Guides toggle</td></tr>
+        <tr><td><kbd>Ctrl + Alt + ;</kbd></td><td>Lock Guides toggle</td></tr>
+        <tr><td><kbd>Ctrl + ' </kbd></td><td>Grid toggle</td></tr>
+
+        <!-- Color & Swatches -->
+        <tr><td><kbd>Ctrl + Shift + F9</kbd></td><td>Swatches Panel</td></tr>
+        <tr><td><kbd>Ctrl + F9</kbd></td><td>Gradient Panel</td></tr>
+        <tr><td><kbd>Ctrl + Shift + K</kbd></td><td>Color Picker</td></tr>
+
+        <!-- Align & Distribute -->
+        <tr><td><kbd>Shift + F7</kbd></td><td>Align Panel</td></tr>
+        <tr><td><kbd>Alt + Shift + F7</kbd></td><td>Pathfinder Panel</td></tr>
+
+        <!-- Export & Save for Web -->
+        <tr><td><kbd>Ctrl + Alt + Shift + S</kbd></td><td>Save for Web (Legacy)</td></tr>
+        <tr><td><kbd>Ctrl + Shift + E</kbd></td><td>Export As...</td></tr>
+
+        <!-- Preferences & Settings -->
+        <tr><td><kbd>Ctrl + K</kbd></td><td>Preferences</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+
+<style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 20px;
+}
+
+.shortcut-section {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.shortcut-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.shortcut-table-wrapper {
+  overflow-x: auto;
+}
+
+.shortcut-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.shortcut-table th,
+.shortcut-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.shortcut-table thead {
+  background: #6c63ff;
+  color: white;
+}
+
+.shortcut-table kbd {
+  background: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ✅ Dark Mode */
+html.dark-mode body {
+  background: #121212;
+  color: #ddd;
+}
+
+html.dark-mode .shortcut-table {
+  background: #1f1f1f;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .shortcut-table thead {
+  background: #333;
+  color: #fff;
+}
+
+html.dark-mode .shortcut-table th,
+html.dark-mode .shortcut-table td {
+  border-color: #333;
+}
+
+html.dark-mode .shortcut-table kbd {
+  background: #333;
+  color: #fff;
+}
+
+</style>
+  <script src="/components/headerhome.js"></script>
+  <script src="/components/footer.js"></script>
+</body>
+</html>

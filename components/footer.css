@@ -22,7 +22,7 @@ footer {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: #fff ;
+  color: #077A7D ;
   font-size: 13px;
   font-weight: 600;
   transition: transform 0.3s ease;
@@ -38,7 +38,9 @@ footer {
   font-size: 20px;
   margin-bottom: 3px;
 }
-
+.footer-menu a.menu-icon svg circle {
+  fill: #077A7D;
+}
 .footer-menu a.menu-icon:hover svg circle {
   fill: #077A7D;
 }

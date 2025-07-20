@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Keyboard Shortcuts</title>
+    <!-- 🌙 Early apply dark mode (no flash) -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (!theme && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Dark mode preload error:', e);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="shortcut-section">
+  <h2 class="shortcut-title">GitHub Keyboard Shortcuts</h2>
+
+  <div class="shortcut-table-wrapper">
+    <table class="shortcut-table">
+      <thead>
+        <tr>
+          <th>Shortcut</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Navigation -->
+        <tr><td><kbd>g</kbd> then <kbd>n</kbd></td><td>Go to Notifications</td></tr>
+        <tr><td><kbd>g</kbd> then <kbd>i</kbd></td><td>Go to Issues</td></tr>
+        <tr><td><kbd>g</kbd> then <kbd>p</kbd></td><td>Go to Pull Requests</td></tr>
+        <tr><td><kbd>g</kbd> then <kbd>b</kbd></td><td>Go to Your Repositories</td></tr>
+        <tr><td><kbd>g</kbd> then <kbd>d</kbd></td><td>Go to Your Dashboard</td></tr>
+        <tr><td><kbd>g</kbd> then <kbd>c</kbd></td><td>Go to Your Code</td></tr>
+
+        <!-- Actions -->
+        <tr><td><kbd>y</kbd></td><td>Permalink to a file (copies URL with commit hash)</td></tr>
+        <tr><td><kbd>t</kbd></td><td>Activate file finder</td></tr>
+        <tr><td><kbd>/</kbd></td><td>Focus the search bar</td></tr>
+        <tr><td><kbd>.</kbd></td><td>Open the repository in GitHub Codespaces (if available)</td></tr>
+        <tr><td><kbd>l</kbd></td><td>Open language filter in file list</td></tr>
+
+        <!-- Issue and PR -->
+        <tr><td><kbd>c</kbd></td><td>Create a new issue or pull request</td></tr>
+        <tr><td><kbd>e</kbd></td><td>Edit issue or comment</td></tr>
+        <tr><td><kbd>r</kbd></td><td>Reload the page</td></tr>
+        <tr><td><kbd>m</kbd></td><td>Toggle reaction emoji picker</td></tr>
+
+        <!-- Comments -->
+        <tr><td><kbd>Tab</kbd></td><td>Indent comment</td></tr>
+        <tr><td><kbd>Shift + Tab</kbd></td><td>Outdent comment</td></tr>
+
+        <!-- Pull Requests -->
+        <tr><td><kbd>u</kbd></td><td>Go to the conversation tab of a pull request</td></tr>
+        <tr><td><kbd>i</kbd></td><td>Go to the commits tab of a pull request</td></tr>
+        <tr><td><kbd>d</kbd></td><td>Go to the files changed tab of a pull request</td></tr>
+
+        <!-- Page navigation -->
+        <tr><td><kbd>n</kbd></td><td>Next comment or item</td></tr>
+        <tr><td><kbd>p</kbd></td><td>Previous comment or item</td></tr>
+
+        <!-- Misc -->
+        <tr><td><kbd>Shift + ?</kbd></td><td>Open shortcut help</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="shortcut-section">
+  <h2 class="shortcut-title">GitHub / Git All Commands</h2>
+
+  <div class="shortcut-table-wrapper">
+    <table class="shortcut-table">
+      <thead>
+        <tr>
+          <th>Command</th>
+          <th>Description (Bangla)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><kbd>git init</kbd></td><td>নতুন একটি গিট রেপোজিটরি শুরু করুন</td></tr>
+        <tr><td><kbd>git clone [url]</kbd></td><td>রিমোট রেপো কপি করুন লোকাল মেশিনে</td></tr>
+        <tr><td><kbd>git status</kbd></td><td>ফাইলের বর্তমান অবস্থা দেখায়</td></tr>
+        <tr><td><kbd>git add [file]</kbd></td><td>ফাইলকে স্টেজিং এরিয়াতে রাখুন</td></tr>
+        <tr><td><kbd>git add .</kbd></td><td>সব পরিবর্তন স্টেজ করুন</td></tr>
+        <tr><td><kbd>git commit -m "message"</kbd></td><td>পরিবর্তন রেকর্ড করুন একটি বার্তাসহ</td></tr>
+        <tr><td><kbd>git log</kbd></td><td>পূর্ববর্তী কমিট গুলো দেখায়</td></tr>
+        <tr><td><kbd>git branch</kbd></td><td>ব্রাঞ্চ লিস্ট করে এবং বর্তমানে কোনটিতে আছেন তা দেখায়</td></tr>
+        <tr><td><kbd>git branch [name]</kbd></td><td>নতুন ব্রাঞ্চ তৈরি করুন</td></tr>
+        <tr><td><kbd>git checkout [name]</kbd></td><td>অন্য ব্রাঞ্চে যান</td></tr>
+        <tr><td><kbd>git merge [branch]</kbd></td><td>অন্য ব্রাঞ্চ থেকে কোড মার্জ করুন</td></tr>
+        <tr><td><kbd>git pull</kbd></td><td>রিমোট রেপো থেকে কোড আনুন ও মার্জ করুন</td></tr>
+        <tr><td><kbd>git push</kbd></td><td>লোকাল কমিট গুলো রিমোটে পাঠান</td></tr>
+        <tr><td><kbd>git remote -v</kbd></td><td>রিমোট রেপো লিস্ট দেখায়</td></tr>
+        <tr><td><kbd>git remote add origin [url]</kbd></td><td>রিমোট রেপো সেট করুন</td></tr>
+        <tr><td><kbd>git config --global user.name "নাম"</kbd></td><td>গ্লোবাল ইউজারনেম সেট করুন</td></tr>
+        <tr><td><kbd>git config --global user.email "ইমেইল"</kbd></td><td>গ্লোবাল ইমেইল সেট করুন</td></tr>
+        <tr><td><kbd>git reset --hard</kbd></td><td>সব পরিবর্তন বাতিল করে পূর্ব অবস্থায় ফিরিয়ে নেয়</td></tr>
+        <tr><td><kbd>git stash</kbd></td><td>বর্তমান কাজ সাময়িকভাবে সংরক্ষণ করুন</td></tr>
+        <tr><td><kbd>git stash pop</kbd></td><td>সেই সংরক্ষিত কাজ আবার ফিরিয়ে আনুন</td></tr>
+        <tr><td><kbd>git fetch</kbd></td><td>রিমোট থেকে নতুন আপডেট আনে, কিন্তু মার্জ করে না</td></tr>
+        <tr><td><kbd>git diff</kbd></td><td>পরিবর্তনসমূহ তুলনা করে দেখায়</td></tr>
+        <tr><td><kbd>git rm [file]</kbd></td><td>ফাইল রেপো থেকে মুছে ফেলুন</td></tr>
+        <tr><td><kbd>git mv [old] [new]</kbd></td><td>ফাইলের নাম পরিবর্তন করুন</td></tr>
+        <tr><td><kbd>git tag</kbd></td><td>কমিটগুলোতে ট্যাগ অ্যাড করুন (রিলিজে কাজে লাগে)</td></tr>
+        <tr><td><kbd>git show</kbd></td><td>একটি কমিট বা ট্যাগের বিস্তারিত দেখুন</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+<style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 20px;
+}
+
+.shortcut-section {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.shortcut-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.shortcut-table-wrapper {
+  overflow-x: auto;
+}
+
+.shortcut-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.shortcut-table th,
+.shortcut-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.shortcut-table thead {
+  background: #6c63ff;
+  color: white;
+}
+
+.shortcut-table kbd {
+  background: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ✅ Dark Mode */
+html.dark-mode body {
+  background: #121212;
+  color: #ddd;
+}
+
+html.dark-mode .shortcut-table {
+  background: #1f1f1f;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .shortcut-table thead {
+  background: #333;
+  color: #fff;
+}
+
+html.dark-mode .shortcut-table th,
+html.dark-mode .shortcut-table td {
+  border-color: #333;
+}
+
+html.dark-mode .shortcut-table kbd {
+  background: #333;
+  color: #fff;
+}
+
+</style>
+  <script src="/components/headerhome.js"></script>
+  <script src="/components/footer.js"></script>
+</body>
+</html>

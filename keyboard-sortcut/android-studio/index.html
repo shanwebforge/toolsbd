@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark-mode">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Android Studio Keyboard Shortcuts</title>
+    <!-- 🌙 Early apply dark mode (no flash) -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (!theme && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Dark mode preload error:', e);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<div class="shortcut-section">
+  <h2 class="shortcut-title">Android Studio Keyboard Shortcuts</h2>
+
+  <div class="shortcut-table-wrapper">
+    <table class="shortcut-table">
+      <thead>
+        <tr>
+          <th>Shortcut</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- General -->
+        <tr><td><kbd>Ctrl + N</kbd> / <kbd>Cmd + N</kbd></td><td>নতুন ক্লাস তৈরি করুন</td></tr>
+        <tr><td><kbd>Ctrl + Shift + N</kbd> / <kbd>Cmd + Shift + N</kbd></td><td>ফাইল খুঁজুন</td></tr>
+        <tr><td><kbd>Ctrl + Alt + Shift + N</kbd> / <kbd>Cmd + Option + O</kbd></td><td>সিম্বল খুঁজুন</td></tr>
+        <tr><td><kbd>Ctrl + E</kbd> / <kbd>Cmd + E</kbd></td><td>সাম্প্রতিক ফাইল তালিকা</td></tr>
+
+        <!-- Editing -->
+        <tr><td><kbd>Ctrl + X</kbd> / <kbd>Cmd + X</kbd></td><td>কাট করুন (লাইন না সিলেক্ট করলে লাইন কেটে যায়)</td></tr>
+        <tr><td><kbd>Ctrl + C</kbd> / <kbd>Cmd + C</kbd></td><td>কপি করুন (লাইন না সিলেক্ট করলে লাইন কপি হয়)</td></tr>
+        <tr><td><kbd>Ctrl + V</kbd> / <kbd>Cmd + V</kbd></td><td>পেস্ট করুন</td></tr>
+        <tr><td><kbd>Ctrl + D</kbd> / <kbd>Cmd + D</kbd></td><td>লাইন ডুপ্লিকেট করুন</td></tr>
+        <tr><td><kbd>Ctrl + Y</kbd> / <kbd>Cmd + Backspace</kbd></td><td>লাইন মুছে ফেলুন</td></tr>
+        <tr><td><kbd>Ctrl + /</kbd> / <kbd>Cmd + /</kbd></td><td>লাইন কমেন্ট/আনকমেন্ট করুন</td></tr>
+        <tr><td><kbd>Ctrl + Shift + /</kbd> / <kbd>Cmd + Shift + /</kbd></td><td>ব্লক কমেন্ট/আনকমেন্ট করুন</td></tr>
+
+        <!-- Navigation -->
+        <tr><td><kbd>Ctrl + B</kbd> / <kbd>Cmd + B</kbd></td><td>ডেফিনিশনে যান</td></tr>
+        <tr><td><kbd>Ctrl + Alt + Left</kbd> / <kbd>Cmd + Option + Left</kbd></td><td>পেছনে যান</td></tr>
+        <tr><td><kbd>Ctrl + Alt + Right</kbd> / <kbd>Cmd + Option + Right</kbd></td><td>সামনে যান</td></tr>
+        <tr><td><kbd>Ctrl + F12</kbd> / <kbd>Cmd + F12</kbd></td><td>ফাইল স্ট্রাকচার দেখুন</td></tr>
+
+        <!-- Refactoring -->
+        <tr><td><kbd>Ctrl + Alt + Shift + T</kbd> / <kbd>Ctrl + T</kbd></td><td>রিফ্যাক্টরিং মেনু</td></tr>
+        <tr><td><kbd>Shift + F6</kbd></td><td>রিনেম করুন</td></tr>
+
+        <!-- Running -->
+        <tr><td><kbd>Shift + F10</kbd></td><td>রান করুন</td></tr>
+        <tr><td><kbd>Shift + F9</kbd></td><td>ডিবাগ চালু করুন</td></tr>
+
+        <!-- Debugging -->
+        <tr><td><kbd>F8</kbd></td><td>পরবর্তী লাইনে যান (Step Over)</td></tr>
+        <tr><td><kbd>F7</kbd></td><td>Step Into</td></tr>
+        <tr><td><kbd>Shift + F8</kbd></td><td>Step Out</td></tr>
+        <tr><td><kbd>Alt + F9</kbd></td><td>Run to Cursor</td></tr>
+        <tr><td><kbd>Ctrl + F8</kbd> / <kbd>Cmd + F8</kbd></td><td>ব্রেকপয়েন্ট টগল করুন</td></tr>
+
+        <!-- Search -->
+        <tr><td><kbd>Ctrl + F</kbd> / <kbd>Cmd + F</kbd></td><td>ফাইলে খুঁজুন</td></tr>
+        <tr><td><kbd>Ctrl + Shift + F</kbd> / <kbd>Cmd + Shift + F</kbd></td><td>প্রজেক্টে খুঁজুন</td></tr>
+
+        <!-- Version Control -->
+        <tr><td><kbd>Ctrl + K</kbd> / <kbd>Cmd + K</kbd></td><td>কমিট বার্তা পাঠান</td></tr>
+        <tr><td><kbd>Ctrl + T</kbd> / <kbd>Cmd + T</kbd></td><td>রিমোট রিপোজিটরি থেকে আপডেট নিন</td></tr>
+
+        <!-- Others -->
+        <tr><td><kbd>Alt + Enter</kbd></td><td>ইন্সপেকশন ও কোড ফিক্স</td></tr>
+        <tr><td><kbd>Ctrl + Shift + A</kbd> / <kbd>Cmd + Shift + A</kbd></td><td>একশন সার্চ</td></tr>
+        <tr><td><kbd>Ctrl + Shift + Space</kbd> / <kbd>Cmd + Shift + Space</kbd></td><td>স্মার্ট কমপ্লিশন</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<style>
+    body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  color: #222;
+  margin: 0;
+  padding: 20px;
+}
+
+.shortcut-section {
+  max-width: 800px;
+  margin: auto;
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+.shortcut-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.shortcut-table-wrapper {
+  overflow-x: auto;
+}
+
+.shortcut-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.shortcut-table th,
+.shortcut-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.shortcut-table thead {
+  background: #6c63ff;
+  color: white;
+}
+
+.shortcut-table kbd {
+  background: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+/* ✅ Dark Mode */
+html.dark-mode body {
+  background: #121212;
+  color: #ddd;
+}
+
+html.dark-mode .shortcut-table {
+  background: #1f1f1f;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .shortcut-table thead {
+  background: #333;
+  color: #fff;
+}
+
+html.dark-mode .shortcut-table th,
+html.dark-mode .shortcut-table td {
+  border-color: #333;
+}
+
+html.dark-mode .shortcut-table kbd {
+  background: #333;
+  color: #fff;
+}
+
+</style>
+  <script src="/components/headerhome.js"></script>
+  <script src="/components/footer.js"></script>
+</body>
+</html>

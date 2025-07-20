@@ -22,7 +22,7 @@ footer {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: #077A7D;
+  color: #fff ;
   font-size: 13px;
   font-weight: 600;
   transition: transform 0.3s ease;
@@ -31,11 +31,16 @@ footer {
 /* Only icon and text move up on hover */
 .footer-menu a:hover {
   transform: translateY(-7px);
+  color: #077A7D;
 }
 
 .footer-menu a i {
   font-size: 20px;
   margin-bottom: 3px;
+}
+
+.footer-menu a.menu-icon:hover svg circle {
+  fill: #077A7D;
 }
 
 /* Dark Mode */

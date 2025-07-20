@@ -122,8 +122,8 @@ body {
   }
 
   .search-container {
-    margin-left: 12px;
-    margin-right: 12px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
 }
 
@@ -235,8 +235,8 @@ html.dark-mode .download-note {
 
 @media (max-width: 600px) {
   .app-container {
-  margin-left: 12px;
-  margin-right: 12px;
+  margin-left: 15px;
+  margin-right: 15px;
 
 
   }
@@ -400,7 +400,8 @@ html.dark-mode .download-note {
 }
 
 html.dark-mode .namaj-content{
-  background-color: #1e293b;}
+  background-color: #1e293b;
+border: 1px solid rgba(255, 255, 255, 0.15);}
 
 html.dark-mode .left-box h3, .left-box h2 {
   color: #fff !important;}
@@ -1126,6 +1127,7 @@ html.dark-mode #result {
   html.dark-mode .download-section {
     background: #1e1e1e;
     color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
   
   html.dark-mode .download-title {

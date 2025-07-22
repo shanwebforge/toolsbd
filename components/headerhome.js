@@ -40,6 +40,28 @@ document.addEventListener("DOMContentLoaded", function () {
       toggleThemeDesktop?.addEventListener('change', toggleDarkMode);
       toggleThemeMobile?.addEventListener('change', toggleDarkMode);
 
+
+
+
+      // 🌙 Icon-based theme toggle (follow same logic)
+      const themeToggleIcon = document.getElementById('themeToggleIcon');
+
+      if (themeToggleIcon) {
+        // Set initial icon based on current theme
+        themeToggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+
+        // Icon click triggers same dark mode logic
+        themeToggleIcon.addEventListener('click', () => {
+          toggleDarkMode(); // Call your existing function
+
+          // After theme toggled, update icon
+          const nowDark = document.documentElement.classList.contains("dark-mode");
+          themeToggleIcon.className = nowDark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+      }
+
+
+
       // Open mobile canvas menu
       menuToggle?.addEventListener('click', () => {
         mobileCanvas.classList.add('active');
@@ -64,3 +86,40 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Header load error:", error.message);
     });
 });
+
+
+
+
+
+// Home Dark Toggle
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(() => {
+    const icon = document.getElementById('themeToggleIcon');
+    if (!icon) return;
+
+    // Detect initial state
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    
+    // FULL class names here!
+    icon.className = isDark ? 'fas fa-moon-over-sun' : 'fas fa-moon';
+
+    // On click, call the existing toggleDarkMode()
+    icon.addEventListener('click', () => {
+      if (typeof toggleDarkMode === 'function') {
+        toggleDarkMode(); // Call your existing function
+
+        // Update icon after toggle
+        const nowDark = document.documentElement.classList.contains("dark-mode");
+        icon.className = nowDark ? 'fas fa-moon-over-sun' : 'fas fa-moon';
+      } else {
+        console.warn('toggleDarkMode() function not found.');
+      }
+    });
+  }, 100); // Delay ensures header is loaded
+});
+
+
+
+

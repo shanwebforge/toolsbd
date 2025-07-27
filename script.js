@@ -37,6 +37,50 @@ document.querySelectorAll('img').forEach(function(img) {
 
 
 
+
+
+// App Download
+  const downloadLink = document.getElementById('downloadLink');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const progressBar = document.getElementById('progressBar');
+  const progressPercent = document.getElementById('progressPercent');
+  const installBtn = document.getElementById('installBtn');
+  let downloadComplete = false;
+  let apkBlobUrl = '';
+
+  // Simulate download progress
+  downloadLink.addEventListener('click', function(e) {
+    if (!downloadComplete) {
+      e.preventDefault();
+      progressPercent.style.display = 'block';
+      let progress = 0;
+      const progressInterval = setInterval(() => {
+        progress += Math.floor(Math.random() * 10) + 5;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(progressInterval);
+          downloadComplete = true;
+          installBtn.style.display = 'block';
+          downloadLink.href = "/assets/ToolsBD.apk";
+          downloadBtn.classList.add('download-complete');
+        }
+        progressPercent.textContent = progress + '%';
+        progressBar.style.width = progress + '%';
+      }, 300);
+    }
+  });
+
+  // Try opening the APK file directly for install
+  installBtn.addEventListener('click', function(e) {
+    // Direct link to APK will prompt download or open install screen in some browsers
+    window.location.href = "/assets/ToolsBD.apk";
+  });
+
+
+
+
+
+
 // 📦 ইউটিলিটি ফাংশন: ইংরেজি সংখ্যা → বাংলা সংখ্যা
 function banglaDigit(num) {
   const en = '0123456789'.split('');

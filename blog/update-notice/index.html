@@ -1,8 +1,35 @@
-<!-- all-updates.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="free tools updade">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="ToolsBD - Update" />
+  <title>ToolsBD - Updates Notice</title>
+  
+    <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
+    <!-- 🌙 Early apply dark mode (no flash) -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = theme === 'dark' || (!theme && prefersDark);
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Dark mode preload error:', e);
+      }
+    })();
+  </script>
+  <!-- all-updates.html -->
 <section>
   <h2 class="update-heading">All Updates</h2>
   <div id="updatesGrid" class="updates-grid"></div>
-  <a href="index.html" class="see-all-btn">Back to Home</a>
+  <a href="/index.html" class="see-all-btn">Back to Home</a>
 </section>
 
 <style>
@@ -12,6 +39,7 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
     padding: 1rem 0;
+    
   }
   .update-card {
     background: #f9f9f9;
@@ -28,13 +56,13 @@
     margin: 1rem auto;
     padding: 0.6rem 1.2rem;
     font-size: 1rem;
-    background: #333;
+    background: #077A7D;
     color: #fff;
     border-radius: 8px;
     text-decoration: none;
     text-align: center;
   }
-  .see-all-btn:hover { background: #000; }
+  .see-all-btn:hover { background: #046164; }
   html.dark-mode .update-card { background: #1f1f1f; color: #f0f0f0; box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05); }
   html.dark-mode .see-all-btn { background: #444; }
   html.dark-mode .see-all-btn:hover { background: #222; }
@@ -42,10 +70,11 @@
   @media (max-width: 480px) {
     .update-card h3 { font-size: 1rem; }
     .update-card p { font-size: 0.9rem; }
-    .update-heading { font-size: 1.25rem; }
+    .update-heading { font-size: 1.25rem; margin-top: 80px;}
   }
 </style>
-
+</head>
+<body>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
   import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
@@ -87,3 +116,7 @@
     });
   }
 </script>
+  <script src="/components/header.js"></script>
+<script src="/components/footer.js"></script>
+</body>
+</html>

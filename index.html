@@ -46,7 +46,7 @@
       }
     })();
   </script>
-  
+
 <!-- Firebase CDN -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
@@ -81,7 +81,7 @@
 
   seeAllBtn.addEventListener("click", () => {
     renderUpdates(allUpdates);
-    seeAllBtn.style.display = "none";
+    // seeAllBtn.style.display = "none"; // hide korchi na
   });
 
   function renderUpdates(updates) {
@@ -113,12 +113,13 @@
 <body>
 
 
-
-<section class="updates-section">
-  <h2>Latest Updates</h2>
-  <div class="updates-grid" id="updatesGrid"></div>
-  <button id="seeAllBtn">See All Updates</button>
+<section>
+  <h2 class="update-heading">Latest Updates</h2>
+  <div id="updatesGrid" class="updates-grid"></div>
+  <a href="/blog/update-notice" class="see-all-btn">See All Updates</a>
 </section>
+
+
 
 
 

@@ -1,0 +1,89 @@
+<!-- all-updates.html -->
+<section>
+  <h2 class="update-heading">All Updates</h2>
+  <div id="updatesGrid" class="updates-grid"></div>
+  <a href="index.html" class="see-all-btn">Back to Home</a>
+</section>
+
+<style>
+  /* আগের CSS একই রকম থাকবে */
+  .updates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  .update-card {
+    background: #f9f9f9;
+    color: #333;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+  }
+  .update-card:hover { transform: translateY(-2px); }
+  .update-heading { font-size: 1.5rem; margin-bottom: 1rem; text-align: center; }
+  .see-all-btn {
+    display: inline-block;
+    margin: 1rem auto;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    background: #333;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    text-align: center;
+  }
+  .see-all-btn:hover { background: #000; }
+  html.dark-mode .update-card { background: #1f1f1f; color: #f0f0f0; box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05); }
+  html.dark-mode .see-all-btn { background: #444; }
+  html.dark-mode .see-all-btn:hover { background: #222; }
+  html.dark-mode .update-heading { color: #fff; }
+  @media (max-width: 480px) {
+    .update-card h3 { font-size: 1rem; }
+    .update-card p { font-size: 0.9rem; }
+    .update-heading { font-size: 1.25rem; }
+  }
+</style>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC4qAilm3cAJ8FTnv8R66YhG1rEITgKsoM",
+    authDomain: "toolsbd24.firebaseapp.com",
+    projectId: "toolsbd24",
+    storageBucket: "toolsbd24.firebasestorage.app",
+    messagingSenderId: "661782480607",
+    appId: "1:661782480607:web:9e517726a1e282e15f4b6a",
+    measurementId: "G-JLKLZDLSWJ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const updatesGrid = document.getElementById("updatesGrid");
+
+  const updatesRef = collection(db, "updates");
+  const q = query(updatesRef, orderBy("timestamp", "desc"));
+
+  onSnapshot(q, (snapshot) => {
+    const allUpdates = [];
+    snapshot.forEach(doc => allUpdates.push(doc.data()));
+    renderUpdates(allUpdates);
+  });
+
+  function renderUpdates(updates) {
+    updatesGrid.innerHTML = "";
+    updates.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "update-card";
+      card.innerHTML = `
+        <h3>${item.title}</h3>
+        <p>${item.content}</p>
+      `;
+      updatesGrid.appendChild(card);
+    });
+  }
+</script>

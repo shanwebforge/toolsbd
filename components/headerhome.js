@@ -1,13 +1,130 @@
-document.addEventListener("DOMContentLoaded", function () {
+// ✅ 1. GLOBAL TRANSLATE INIT FUNCTION
+window.googleTranslateElementInit = function() {
+  console.log('Google Translate initialized');
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'en,bn',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+  
+  // Check for pending language change
+  if (window.pendingLangChange) {
+    console.log('Executing pending language change to', window.pendingLangChange);
+    triggerGoogleTranslate(window.pendingLangChange);
+    window.pendingLangChange = null;
+  }
+};
+
+// ✅ 2. LOAD GOOGLE TRANSLATE SCRIPT
+(function() {
+  const script = document.createElement('script');
+  script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+  script.async = true;
+  document.body.appendChild(script);
+  console.log('Google Translate script loaded');
+})();
+
+document.addEventListener("DOMContentLoaded", function() {
   fetch('/components/headerhome.html')
-    .then(res => {
-      if (!res.ok) throw new Error("Header file not found");
-      return res.text();
-    })
+    .then(res => res.text())
     .then(data => {
       const placeholder = document.createElement('div');
       placeholder.innerHTML = data;
       document.body.insertBefore(placeholder, document.body.firstChild);
+
+      const langToggleIcon = document.getElementById('langToggleIcon');
+      const langMenu = document.getElementById('langMenu');
+
+      if (langToggleIcon && langMenu) {
+        langToggleIcon.addEventListener('click', (e) => {
+          e.stopPropagation();
+          langMenu.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!langMenu.contains(e.target) && e.target !== langToggleIcon) {
+            langMenu.classList.add('hidden');
+          }
+        });
+
+        langMenu.querySelectorAll('li').forEach(li => {
+          li.addEventListener('click', () => {
+            const lang = li.getAttribute('data-lang');
+            console.log('Language selected:', lang);
+            langMenu.classList.add('hidden');
+            
+            if (lang === 'en') {
+              resetToEnglish();
+            } else {
+              translateToBangla();
+            }
+          });
+        });
+      }
+
+      function translateToBangla() {
+        console.log('Attempting to translate to Bangla');
+        
+        // Check if Google Translate is loaded
+        if (window.google && google.translate && google.translate.TranslateElement) {
+          console.log('Google Translate API is available');
+          triggerGoogleTranslate('bn');
+        } else {
+          console.log('Google Translate API not yet loaded, setting pending action');
+          window.pendingLangChange = 'bn';
+        }
+      }
+
+      function resetToEnglish() {
+        console.log('Resetting to English');
+        
+        // Clear translation cookies
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        document.cookie = 'googtrans=/en/en; path=/;';
+        
+        // If widget is loaded, reset it
+        if (document.querySelector('.goog-te-combo')) {
+          const select = document.querySelector('.goog-te-combo');
+          select.value = 'en';
+          select.dispatchEvent(new Event('change'));
+        }
+        
+        // Reload to ensure full reset
+        setTimeout(() => location.reload(), 300);
+      }
+
+      function triggerGoogleTranslate(lang) {
+        console.log('Triggering translation to', lang);
+        let attempts = 0;
+        const maxAttempts = 10;
+        
+        const interval = setInterval(() => {
+          attempts++;
+          const select = document.querySelector('.goog-te-combo');
+          
+          if (select) {
+            console.log('Found translate select element');
+            select.value = lang;
+            select.dispatchEvent(new Event('change'));
+            clearInterval(interval);
+            
+            // Set cookie manually
+            document.cookie = `googtrans=/en/${lang}; path=/; max-age=${30*24*60*60}`;
+            console.log('Translation cookie set for', lang);
+          } else if (attempts >= maxAttempts) {
+            console.log('Failed to find translate select element after', maxAttempts, 'attempts');
+            clearInterval(interval);
+          }
+        }, 300);
+      }
+
+
+
+
+
+
+
 
       const body = document.body;
       const menuToggle = document.getElementById('menuToggle');
@@ -119,6 +236,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }, 100); // Delay ensures header is loaded
 });
+
+
 
 
 

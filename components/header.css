@@ -140,6 +140,10 @@ header {
     .hidden {
       display: none;
     }
+
+    .logo-title {
+      font-size: 16px !important;
+    }
   
 }
 
@@ -161,7 +165,7 @@ header {
   height: 40px;
 }
 
-.logo {
+.logo-title {
   font-size: 1.2rem;
   font-weight: bold;
   white-space: nowrap;
@@ -169,6 +173,9 @@ header {
   text-overflow: ellipsis;
   max-width: 150px; /* Adjust as needed */
 }
+
+html.dark-mode .logo-title {
+  color: #e0f2f2;}
 
 /* Optional: Different styling for dynamic titles */
 .dynamic-title {

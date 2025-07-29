@@ -273,11 +273,26 @@ document.addEventListener("DOMContentLoaded", function () {
           window.location.href = '/';
         }
       });
+
+      // ✨ NEW: Page Title in Logo Div Functionality
+      const logoDiv = document.querySelector('.logo-title');
+      if (logoDiv) {
+        // Get clean page title (remove site name if present)
+        let pageTitle = document.title.split('|')[0].split('-')[0].trim();
+        
+        // Shorten if needed (15 chars max)
+        if (pageTitle.length > 15) {
+          pageTitle = pageTitle.substring(0, 30) + '...';
+        }
+        
+        // Insert into logo div
+        logoDiv.textContent = pageTitle;
+        
+        // Add styling classes
+        logoDiv.classList.add('dynamic-title');
+      }
     })
     .catch(error => {
       console.error("Header load error:", error.message);
     });
 });
-
-
-

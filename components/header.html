@@ -22,7 +22,7 @@
       </svg>
     </button>
     
-<div class="logo" id="pageTitleLogo">
+<div class="logo-title" id="pageTitleLogo">
   <!-- Title will be inserted by JavaScript -->
 </div>
 
@@ -147,29 +147,7 @@
 </header>
 
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const logoDiv = document.getElementById('pageTitleLogo');
-  if (logoDiv) {
-    // Get the page title from document title or fallback
-    let pageTitle = document.title || 'Untitled Page';
-    
-    // Remove any prefix/suffix you don't want (like "| SiteName")
-    pageTitle = pageTitle.split('|')[0].trim();
-    
-    // Limit to 15 characters and add ellipsis if longer
-    if (pageTitle.length > 15) {
-      pageTitle = pageTitle.substring(0, 15) + '...';
-    }
-    
-    // Insert into logo div
-    logoDiv.textContent = pageTitle;
-    
-    // Optional: Add CSS class for styling
-    logoDiv.classList.add('dynamic-title');
-  }
-});
-</script>
+
 
 
 <script>

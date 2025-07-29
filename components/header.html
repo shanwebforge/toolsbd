@@ -22,9 +22,9 @@
       </svg>
     </button>
     
-    <div class="logo">
-      <a href="/"><img src="/assets/logo.png" alt="ToolsBD" /></a>
-    </div>
+<div class="logo" id="pageTitleLogo">
+  <!-- Title will be inserted by JavaScript -->
+</div>
 
     <!-- Desktop Nav -->
     <nav class="nav-menu" id="navMenu">
@@ -43,10 +43,43 @@
       </ul>
     </nav>
 
-    <div class="menu-group">
-      <div class="menu-toggle" id="menuToggle"><i class="fas fa-list"></i></div>
-    </div>
+<!-- Top Menu Icons -->
+<div class="menu-group">
+  <div class="search-icon">
+    <i id="searchIconBtn" aria-label="Search" class="fas fa-search"></i>
   </div>
+  <div class="theme-toggle">
+    <i id="themeToggleIcon" class="fas fa-moon-stars"></i>
+  </div>
+  <div class="lang-toggle">
+    <i id="langToggleIcon" class="fas fa-globe"></i>
+    <ul id="langMenu" class="lang-menu hidden">
+      <li data-lang="en">English</li>
+      <li data-lang="bn">বাংলা</li>
+    </ul>
+  </div>
+  <div class="menu-toggle" id="menuToggle">
+    <i class="fas fa-list"></i>
+  </div>
+</div>
+<!-- Required for Google Translate to hook into -->
+<div id="google_translate_element" style="display: none;"></div>
+
+
+<div class="search-container hidden" id="searchContainer">
+  <input type="text" id="searchInput" placeholder="খোঁজ করুন..." />
+  <button id="searchBtn">
+    <i class="fas fa-search"></i>
+  </button>
+</div>
+
+<div id="searchPopup" class="search-popup hidden">
+  <div class="popup-header">
+    <span>সার্চ রেজাল্ট</span>
+    <button id="closePopup">&times;</button>
+  </div>
+  <div id="searchResults" class="search-results"></div>
+</div>
 
   <!-- Mobile Full Canvas -->
   <div id="mobileCanvas" class="mobile-canvas">
@@ -113,6 +146,32 @@
   </div>
 </header>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const logoDiv = document.getElementById('pageTitleLogo');
+  if (logoDiv) {
+    // Get the page title from document title or fallback
+    let pageTitle = document.title || 'Untitled Page';
+    
+    // Remove any prefix/suffix you don't want (like "| SiteName")
+    pageTitle = pageTitle.split('|')[0].trim();
+    
+    // Limit to 15 characters and add ellipsis if longer
+    if (pageTitle.length > 15) {
+      pageTitle = pageTitle.substring(0, 15) + '...';
+    }
+    
+    // Insert into logo div
+    logoDiv.textContent = pageTitle;
+    
+    // Optional: Add CSS class for styling
+    logoDiv.classList.add('dynamic-title');
+  }
+});
+</script>
+
+
 <script>
 // Robust back button implementation
 (function() {
@@ -142,4 +201,28 @@
     }
   });
 })();
+</script>
+
+<!-- ✅ Dark Mode Script (put at end of header or in footer) -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggles = document.querySelectorAll(".toggle-theme");
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = savedTheme === "dark" || (!savedTheme && prefersDark);
+
+    // Set initial mode
+    document.documentElement.classList.toggle("dark-mode", isDark);
+    toggles.forEach(t => t.checked = isDark);
+
+    // Handle toggle change
+    toggles.forEach(toggle => {
+      toggle.addEventListener("change", () => {
+        const enableDark = toggle.checked;
+        document.documentElement.classList.toggle("dark-mode", enableDark);
+        localStorage.setItem("theme", enableDark ? "dark" : "light");
+        toggles.forEach(t => t.checked = enableDark); // sync both toggles
+      });
+    });
+  });
 </script>

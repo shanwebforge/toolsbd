@@ -17,6 +17,136 @@ header {
   margin-bottom: 100px;
 }
 
+
+/* বাকি CSS আপনার মতোই থাকবে */
+
+
+    .search-icon {
+      cursor: pointer;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: stretch;
+      max-width: 400px;
+      margin: 20px auto;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border: 1px solid #077A7D;
+      margin-top: 20px;
+    }
+
+    .search-container input {
+      flex-grow: 1;
+      border: none;
+      padding: 12px 15px;
+      font-size: 16px;
+      outline: none;
+      border-right: 1px solid #077A7D;
+    }
+
+    .search-container button {
+      background: #077A7D;
+      border: none;
+      color: white;
+      padding: 0 18px;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+.search-container button:hover {
+  background: #055a5c;
+}
+
+
+/* Search Popup */
+.search-popup {
+  position: fixed;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  max-height: 800px;
+  background: white;
+  border: 1px solid #077A7D;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(7, 122, 125, 0.3);
+  overflow-y: auto;
+  z-index: 9999;
+
+}
+
+
+.search-popup.hidden {
+  display: none;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  background: #077A7D;
+  color: white;
+  padding: 10px 15px;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.popup-header button {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+}
+
+.search-results {
+  padding: 10px 15px;
+}
+
+.search-results p {
+  margin: 10px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  color: #077A7D;
+}
+
+.search-results p:hover {
+  background-color: #e0f2f2;
+}
+@media (max-width: 600px) {
+  .search-popup {
+    width: 85%;
+  }
+
+  .search-container {
+    margin-left: 15px;
+    margin-right: 15px;
+    overflow: auto;
+    margin-top: 50px;
+    margin-bottom: -50px;
+  }
+
+
+    .hidden {
+      display: none;
+    }
+  
+}
+
+
+
+
+
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -29,6 +159,22 @@ header {
 
 .logo img {
   height: 40px;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px; /* Adjust as needed */
+}
+
+/* Optional: Different styling for dynamic titles */
+.dynamic-title {
+  color: #333; /* Your preferred color */
+  font-family: 'Your Preferred Font', sans-serif;
+  padding: 5px 10px;
 }
 
 .menu-toggle {
@@ -106,12 +252,12 @@ header {
 .mobile-canvas {
   position: fixed;
   top: 0;
-  left: 100%;
+  right: 100%;
   width: 100vw;
   height: 100vh;
   background-color: #077A7D;
   color: #fff;
-  transition: left 0.3s ease;
+  transition: right 0.3s ease;
   z-index: 2000;
   display: flex;
   flex-direction: column;
@@ -120,7 +266,7 @@ header {
 }
 
 .mobile-canvas.active {
-  left: 0;
+  right: 0;
 }
 
 body.dark-mode .mobile-canvas {
@@ -269,7 +415,13 @@ body.dark-mode .mobile-canvas {
 .header-container {
     padding: 0 20px;
   }
+#closeCanvas {
+  font-size: 32px;
+  width: 40px;
+  height: 40px;
+  color: rgb(180, 4, 4);
 
+}
   .logo img {
     height: 25px;
   }
@@ -289,9 +441,82 @@ body.dark-mode .mobile-canvas {
   .nav-menu {
     display: none;
   }
+
+
+.search-icon {
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 5px !important;
+}
+.theme-toggle {
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 12px;
+}
+.lang-toggle {
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 12px;
+}
+.menu-toggle {
+  cursor: pointer;
+  font-size: 18px;
+  margin-right: 12px;
+  color: #1e293b;
+}
+.search-icon i,
+.theme-toggle i,
+.menu-toggle i, 
+.lang-toggle i {
+  font-size: 18px;
+  cursor: pointer;
+  color: inherit;
+}
 }
 
+/* ভাষার মেনু */
+.lang-menu {
+  position: absolute;
+  top: 95%;
+  right: 5%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  transform-origin: top right;
+  z-index: 99;
+  min-width: 120px;
+}
 
+.lang-menu.hidden {
+  transform: scaleY(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lang-menu li {
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.2s;
+}
+
+.lang-menu li:hover {
+  background: #f0f0f0;
+}
+
+/* dark mode */
+html.dark-mode .lang-menu {
+  background: #1f1f1f;
+  color: #fff;
+}
+
+html.dark-mode .lang-menu li:hover {
+  background: #333;
+}
+.hidden { display: none; }
 
 
 
@@ -453,7 +678,29 @@ html.dark-mode .desktop-toggle {background-color: #1e293b;
 
 
 
+.search-icon {
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+  color: inherit;
+}
 
+.mobile-only {
+  display: none;
+}
+
+.desktop-only {
+  display: inline-block;
+}
+
+@media (max-width: 768px) {
+  .mobile-only {
+    display: inline-block;
+  }
+  .desktop-only {
+    display: none;
+  }
+}
 
 
 /* Mobile Back Button - Original Icon Style with No Background */

@@ -118,8 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       // 🔍 Search Functionality End
 
-      // Rest of your existing code remains unchanged
-      // Language switcher functionality
+   
       const langToggleIcon = document.getElementById('langToggleIcon');
       const langMenu = document.getElementById('langMenu');
 

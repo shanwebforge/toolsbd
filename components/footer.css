@@ -50,3 +50,6 @@ html.dark-mode footer {
   background: #1e293b;
   border-top: 1px solid #333;
 }
+html.dark-mode .footer-menu a.menu-icon svg circle {
+  fill: #ffffff;
+}

@@ -28,4 +28,4 @@ const db = getFirestore(app);
 
 // Export for use in your app
 export { app, analytics, auth, db };
-import { auth, db } from "./firebase";
+

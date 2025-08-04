@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Home</title>
+  <link rel="stylesheet" href="/blog/css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <h1 class="logo">📝 My Blog</h1>
+      <nav class="nav-links">
+        <a href="login.html" class="nav-btn">Login</a>
+        <a href="register.html" class="nav-btn">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+ <!-- Post Card -->
+<div class="post-card">
+  <div class="post-thumb">
+    <img src="assets/sample-thumb.jpg" alt="Thumbnail">
+    <div class="thumb-overlay">
+      <h3 class="post-title">Post Title Here</h3>
+    </div>
+  </div>
+
+  <div class="post-content">
+    <div class="post-user">
+      <img src="assets/default-user.png" alt="User">
+      <div>
+        <strong>John Doe</strong><br/>
+        <span class="user-role">Admin</span>
+      </div>
+    </div>
+
+    <p class="post-description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sollicitudin...
+    </p>
+
+    <button class="read-more-btn">Read More</button>
+
+    <!-- Actions Line -->
+    <div class="post-actions-line">
+      <div class="reactions">
+        <span><i class="fas fa-thumbs-up"></i> <span class="count">15</span></span>
+        <span><i class="fas fa-thumbs-down"></i> <span class="count">2</span></span>
+        <span><i class="fas fa-share-alt"></i> Share</span>
+      </div>
+      <button class="nice-post-btn">লিখুন</button>
+    </div>
+  </div>
+</div>
+
+<!-- Categories -->
+<section class="category-section">
+  <h3>🧰 Tools & Technologies</h3>
+  <div class="category-grid">
+    <a href="/blog/catagory/islamic.html" class="cat-btn" data-collection="posts_islamic">Islamic</a>
+    <a href="/blog/catagory/ai.html" class="cat-btn" data-collection="posts_ai">Ai</a>
+    <a href="/blog/catagory/tools.html" class="cat-btn" data-collection="posts_tools">Tools Review</a>
+    <a href="/blog/catagory/laptop.html" class="cat-btn" data-collection="posts_laptop">Laptop/Desktop</a> 
+    <a href="/blog/catagory/proggraming.html" class="cat-btn" data-collection="posts_proggraming">Proggraming</a> 
+    <a href="/blog/catagory/graphics.html" class="cat-btn" data-collection="posts_designer">Graphics / Ui</a> 
+    <a href="/blog/catagory/marketar.html" class="cat-btn" data-collection="posts_marketar">Digital Marketing</a>
+    <a href="/blog/catagory/android.html" class="cat-btn" data-collection="posts_android">Android/I-Phone</a>
+    <a href="/blog/catagory/sim.html" class="cat-btn" data-collection="posts_sim">Sim Offer</a>
+    <a href="/blog/catagory/keyboard.html" class="cat-btn" data-collection="posts_keyboard">Kyeboard Sortcut</a>
+    <a href="/blog/catagory/educations.html" class="cat-btn" data-collection="posts_educations">Educations</a>
+    <a href="/blog/catagory/freelanching.html" class="cat-btn" data-collection="posts_freelanching">Frelanching</a>
+    <a href="/blog/catagory/media.html" class="cat-btn" data-collection="posts_media">Media</a>
+  </div>
+</section>
+
+
+
+
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 My Blog. All rights reserved.</p>
+  </footer>
+
+  <script src="/blog/js/posts.js"></script>
+</body>
+</html>

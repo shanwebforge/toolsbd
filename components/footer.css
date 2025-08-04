@@ -42,7 +42,7 @@ footer {
   fill: #077A7D;
 }
 .footer-menu a.menu-icon:hover svg circle {
-  fill: #077A7D;
+  fill: #077A7D !important;
 }
 
 /* Dark Mode */

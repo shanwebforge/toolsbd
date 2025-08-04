@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 480px;
+  margin: 30px auto;
+  background: white;
+  padding: 25px 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.profile-pic-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.profile-pic-label {
+  cursor: pointer;
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #3f51b5;
+  transition: border-color 0.3s ease;
+}
+
+.profile-pic-label:hover {
+  border-color: #1a237e;
+}
+
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+form input[type="text"],
+form input[type="date"],
+form input[type="password"],
+form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="date"]:focus,
+form input[type="password"]:focus,
+form textarea:focus {
+  border-color: #3f51b5;
+  outline: none;
+}
+
+.name-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.name-row input {
+  flex: 1;
+}
+
+form textarea {
+  resize: vertical;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.update-btn {
+  background-color: #3f51b5;
+  color: white;
+}
+
+.update-btn:hover {
+  background-color: #1a237e;
+}
+
+.delete-btn {
+  background-color: #e53935;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #ab000d;
+}
+
+.msg {
+  text-align: center;
+  font-weight: 600;
+  margin-top: 10px;
+  min-height: 24px;
+  color: red;
+}
+
+/* Responsive */
+
+@media (max-width: 480px) {
+  .name-row {
+    flex-direction: column;
+  }
+}

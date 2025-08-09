@@ -5,9 +5,6 @@ import {
 import {
   getAuth, onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
-import {
-  getStorage, ref, uploadBytes, getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.7.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBTwUExxQBIGW7y9a-FCCeMoT2vHvznwIY",
@@ -22,14 +19,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
-const storage = getStorage(app);
 
 const form = document.getElementById("addPostForm");
 const msg = document.getElementById("msg");
 const authorInput = document.getElementById("author");
+const thumbnailFileInput = document.getElementById('thumbnailFile');
+const thumbnailPreview = document.getElementById('thumbnailPreview');
 
 let currentUser = null;
 
+// ইউজার লগইন চেক
 onAuthStateChanged(auth, user => {
   if (user) {
     currentUser = user;
@@ -40,6 +39,41 @@ onAuthStateChanged(auth, user => {
   }
 });
 
+// ফাইল সিলেক্ট করলে প্রিভিউ দেখাবে
+thumbnailFileInput.addEventListener('change', () => {
+  const file = thumbnailFileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      thumbnailPreview.src = e.target.result;
+      thumbnailPreview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  } else {
+    thumbnailPreview.src = '';
+    thumbnailPreview.style.display = 'none';
+  }
+});
+
+// FreeImage.host এ ছবি আপলোড করার ফাংশন
+async function uploadImageToFreeImageHost(file) {
+  const formData = new FormData();
+  formData.append('source', file);
+
+  const response = await fetch('https://freeimage.host/api/1/upload', {
+    method: 'POST',
+    body: formData
+  });
+  const data = await response.json();
+
+  if (data.status_code === 200) {
+    return data.image.display_url;  // পাবলিক URL রিটার্ন করবে
+  } else {
+    throw new Error('Image upload failed');
+  }
+}
+
+// ফর্ম সাবমিট হ্যান্ডলার
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   msg.style.color = "black";
@@ -48,8 +82,7 @@ form.addEventListener("submit", async (e) => {
   const title = document.getElementById("title").value.trim();
   const category = document.getElementById("category").value;
   const description = document.getElementById("description").value.trim();
-  const file = document.getElementById("thumbnailFile").files[0];
-  const urlInput = document.getElementById("thumbnailUrl").value.trim();
+  const file = thumbnailFileInput.files[0];
 
   if (!title || !category || !description) {
     msg.style.color = "red";
@@ -57,25 +90,18 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  let thumbnailURL = "";
+  if (!file) {
+    msg.style.color = "red";
+    msg.textContent = "❌ Please upload a thumbnail image.";
+    return;
+  }
 
   try {
-    // ✅ Upload file if available
-    if (file) {
-      const fileRef = ref(storage, `thumbnails/${Date.now()}_${file.name}`);
-      await uploadBytes(fileRef, file);
-      thumbnailURL = await getDownloadURL(fileRef);
-    } else if (urlInput) {
-      thumbnailURL = urlInput;
-    } else {
-      msg.style.color = "red";
-      msg.textContent = "❌ Please provide a thumbnail (upload or URL).";
-      return;
-    }
+    msg.textContent = "Uploading image...";
+    const thumbnailURL = await uploadImageToFreeImageHost(file);
 
-    // ✅ Determine role (admin if email matches)
     let role = "User";
-    const adminEmails = ["youradminemail@gmail.com"]; // 🔐 Replace with your email
+    const adminEmails = ["youradminemail@gmail.com"]; // এখানে তোমার অ্যাডমিন ইমেইল বসাও
     if (adminEmails.includes(currentUser.email)) {
       role = "Admin";
     }
@@ -95,6 +121,8 @@ form.addEventListener("submit", async (e) => {
     msg.style.color = "green";
     msg.innerHTML = `✅ Post added! <a href="/blog/post.html?id=${docRef.id}&cat=${category}" target="_blank">View Post</a>`;
     form.reset();
+    thumbnailPreview.src = '';
+    thumbnailPreview.style.display = 'none';
 
   } catch (err) {
     console.error(err);

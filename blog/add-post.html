@@ -34,9 +34,8 @@
 
       <!-- Thumbnail Upload -->
       <label>Upload Thumbnail:</label>
-      <input type="file" id="thumbnailFile" accept="image/*" />
-      <p style="text-align:center;">OR</p>
-      <input type="url" id="thumbnailUrl" placeholder="Or paste image URL" />
+      <input type="file" id="thumbnailFile" accept="image/*" required />
+      <img id="thumbnailPreview" alt="Thumbnail Preview" style="display:none; max-width:200px; margin-top:10px;"/>
 
       <textarea id="description" placeholder="Post Description" rows="5" required></textarea>
       <button type="submit">Submit Post</button>

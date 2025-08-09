@@ -102,7 +102,7 @@ form.addEventListener("submit", async (e) => {
     const thumbnailURL = await uploadImageToFreeImageHost(file);
 
     let role = "User";
-    const adminEmails = ["youradminemail@gmail.com"]; // এখানে তোমার অ্যাডমিন ইমেইল বসাও
+    const adminEmails = ["shanwebfix@gmail.com"]; // এখানে তোমার অ্যাডমিন ইমেইল বসাও
     if (currentUser && adminEmails.includes(currentUser.email)) {
       role = "Admin";
     }

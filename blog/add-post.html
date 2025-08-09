@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Add New Post</title>
   <link rel="stylesheet" href="/blog/css/addpost.css" />
-  <script type="module" src="/blog/js/addpost.js" defer></script>
 </head>
 <body>
   <div class="form-container">
@@ -34,13 +33,16 @@
 
       <!-- Thumbnail Upload -->
       <label>Upload Thumbnail:</label>
-      <input type="file" id="thumbnailFile" accept="image/*" required />
-      <img id="thumbnailPreview" alt="Thumbnail Preview" style="display:none; max-width:200px; margin-top:10px;"/>
+      <input type="file" id="thumbnailFile" accept="image/*" />
+      <br/>
+      <img id="thumbnailPreview" alt="Thumbnail Preview" style="display:none; max-width: 200px; margin-top: 10px;" />
 
       <textarea id="description" placeholder="Post Description" rows="5" required></textarea>
       <button type="submit">Submit Post</button>
     </form>
     <p id="msg"></p>
   </div>
+
+  <script type="module" src="/blog/js/addpost.js"></script>
 </body>
 </html>

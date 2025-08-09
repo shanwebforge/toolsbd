@@ -60,7 +60,8 @@ async function uploadImageToFreeImageHost(file) {
   const formData = new FormData();
   formData.append('source', file);
 
-  const response = await fetch('https://freeimage.host/api/1/upload', {
+  // API key url এ যোগ করা লাগতে পারে, নিচের লাইন পরিবর্তন করে তোমার key যোগ করো যদি লাগে
+  const response = await fetch('https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5', {
     method: 'POST',
     body: formData
   });
@@ -69,7 +70,7 @@ async function uploadImageToFreeImageHost(file) {
   if (data.status_code === 200) {
     return data.image.display_url;  // পাবলিক URL রিটার্ন করবে
   } else {
-    throw new Error('Image upload failed');
+    throw new Error('Image upload failed: ' + (data.error?.message || 'Unknown error'));
   }
 }
 
@@ -102,7 +103,7 @@ form.addEventListener("submit", async (e) => {
 
     let role = "User";
     const adminEmails = ["youradminemail@gmail.com"]; // এখানে তোমার অ্যাডমিন ইমেইল বসাও
-    if (adminEmails.includes(currentUser.email)) {
+    if (currentUser && adminEmails.includes(currentUser.email)) {
       role = "Admin";
     }
 

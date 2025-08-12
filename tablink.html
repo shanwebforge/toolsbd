@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>10 Column × 4 Row Data Entry Table</title>
+  <style>
+    :root{--bg:#f6f8fa;--card:#fff;--accent:#0f62fe;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:20px;background:var(--bg);color:#111}
+    .container{max-width:1200px;margin:0 auto}
+    h1{font-size:1.25rem;margin-bottom:12px}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(24,39,75,0.06)}
+    .table-wrap{overflow:auto;border-radius:8px}
+    table{width:100%;border-collapse:collapse;min-width:900px}
+    thead th{position:sticky;top:0;background:linear-gradient(180deg,#ffffff,#fbfdff);z-index:2;padding:10px 12px;border-bottom:2px solid #eef2f7;text-align:left;font-weight:600}
+    tbody td{padding:8px 10px;border-bottom:1px solid #eef2f7}
+    tbody tr:nth-child(odd){background:linear-gradient(180deg,rgba(15,98,254,0.02),transparent)}
+    input[type=text], input[type=number], select{width:100%;padding:8px;background:transparent;border:1px solid #e6eef8;border-radius:6px;font-size:0.95rem}
+    input[type=text]:focus, input[type=number]:focus, select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(15,98,254,0.08)}
+    .controls{display:flex;gap:8px;align-items:center;margin-top:12px}
+    button{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;border:0;cursor:pointer}
+    .btn-ghost{background:transparent;color:var(--accent);border:1px solid rgba(15,98,254,0.12)}
+    pre{background:#0b1220;color:#dff;padding:12px;border-radius:8px;overflow:auto;margin-top:12px}
+    @media (max-width:720px){thead th,tbody td{padding:8px}} 
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>10 Column × 4 Row - Data Entry Table</h1>
+    <div class="card">
+      <form id="dataForm">
+        <div class="table-wrap">
+          <table aria-describedby="table-desc">
+            <caption id="table-desc" style="text-align:left;padding:8px 12px;color:var(--muted)">Enter data into the inputs below. Press <kbd>Tab</kbd> to move between fields.</caption>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <th>Column 4</th>
+                <th>Column 5</th>
+                <th>Column 6</th>
+                <th>Column 7</th>
+                <th>Column 8</th>
+                <th>Column 9</th>
+                <th>Column 10</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- 4 rows generated -->
+              <tr>
+                <td>1</td>
+                <td><input name="r0c1" type="text" placeholder="enter..." /></td>
+                <td><input name="r0c2" type="text" /></td>
+                <td><input name="r0c3" type="text" /></td>
+                <td><input name="r0c4" type="text" /></td>
+                <td><input name="r0c5" type="text" /></td>
+                <td><input name="r0c6" type="text" /></td>
+                <td><input name="r0c7" type="text" /></td>
+                <td><input name="r0c8" type="text" /></td>
+                <td><input name="r0c9" type="text" /></td>
+                <td><input name="r0c10" type="text" /></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><input name="r1c1" type="text" /></td>
+                <td><input name="r1c2" type="text" /></td>
+                <td><input name="r1c3" type="text" /></td>
+                <td><input name="r1c4" type="text" /></td>
+                <td><input name="r1c5" type="text" /></td>
+                <td><input name="r1c6" type="text" /></td>
+                <td><input name="r1c7" type="text" /></td>
+                <td><input name="r1c8" type="text" /></td>
+                <td><input name="r1c9" type="text" /></td>
+                <td><input name="r1c10" type="text" /></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><input name="r2c1" type="text" /></td>
+                <td><input name="r2c2" type="text" /></td>
+                <td><input name="r2c3" type="text" /></td>
+                <td><input name="r2c4" type="text" /></td>
+                <td><input name="r2c5" type="text" /></td>
+                <td><input name="r2c6" type="text" /></td>
+                <td><input name="r2c7" type="text" /></td>
+                <td><input name="r2c8" type="text" /></td>
+                <td><input name="r2c9" type="text" /></td>
+                <td><input name="r2c10" type="text" /></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><input name="r3c1" type="text" /></td>
+                <td><input name="r3c2" type="text" /></td>
+                <td><input name="r3c3" type="text" /></td>
+                <td><input name="r3c4" type="text" /></td>
+                <td><input name="r3c5" type="text" /></td>
+                <td><input name="r3c6" type="text" /></td>
+                <td><input name="r3c7" type="text" /></td>
+                <td><input name="r3c8" type="text" /></td>
+                <td><input name="r3c9" type="text" /></td>
+                <td><input name="r3c10" type="text" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="controls">
+          <button type="submit">Save / Export JSON</button>
+          <button type="button" class="btn-ghost" id="clearBtn">Clear all</button>
+          <div style="margin-left:auto;color:var(--muted);font-size:0.9rem">Rows: 4 • Columns: 10</div>
+        </div>
+
+        <pre id="output" aria-live="polite" style="display:none"></pre>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('dataForm');
+    const output = document.getElementById('output');
+    const clearBtn = document.getElementById('clearBtn');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = [];
+      // There are 4 rows; each row will gather 10 columns
+      for (let r = 0; r < 4; r++) {
+        const row = {};
+        for (let c = 1; c <= 10; c++) {
+          const name = `r${r}c${c}`;
+          const el = form.elements[name];
+          row[`col${c}`] = el ? el.value.trim() : '';
+        }
+        data.push(row);
+      }
+      // Show JSON in the pre element and console
+      output.style.display = 'block';
+      output.textContent = JSON.stringify({rows: data}, null, 2);
+      console.log('Exported data:', data);
+    });
+
+    clearBtn.addEventListener('click', () => {
+      Array.from(form.querySelectorAll('input')).forEach(i => i.value = '');
+      output.style.display = 'none';
+      output.textContent = '';
+    });
+
+    // Optional: quick keyboard improvement - Enter moves to next input
+    form.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && e.target.tagName === 'INPUT') {
+        e.preventDefault();
+        const inputs = Array.from(form.querySelectorAll('input'));
+        const idx = inputs.indexOf(e.target);
+        if (idx > -1 && idx < inputs.length - 1) inputs[idx + 1].focus();
+      }
+    });
+  </script>
+</body>
+</html>

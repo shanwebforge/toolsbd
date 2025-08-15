@@ -1,4 +1,41 @@
-/* Header Styles */
+
+/* ==== Layout offsets ==== */
+:root {
+  --header-h: 70px;   /* desktop header height */
+  --footer-h: 70px;    /* যদি footer fixed হয়, তার height দাও; না হলে 0 থাকুক */
+}
+@media (max-width: 768px) {
+  :root {
+    --header-h: 60px; /* mobile header height */
+  }
+}
+
+/* Body-তে টপ/বটম প্যাডিং দেই, যাতে কনটেন্ট header/footer-এর নিচে না ঢুকে */
+body {
+  padding-top: var(--header-h);
+  padding-bottom: var(--footer-h);
+}
+
+/* main-এর আগের জোরপূর্বক padding-top তুলে দাও */
+main {
+  padding-top: 0 !important;
+}
+
+/* Header */
+header {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  width: 100%;
+  z-index: 999;
+  height: var(--header-h);   /* হার্ড-কোডেড height এর বদলে ভেরিয়েবল */
+  display: flex;
+  align-items: center;
+
+  /* ⛔ এটা মুছে ফেলো: margin-bottom: 100px; (fixed এলিমেন্টে কাজের না) */
+}
+
 
 header {
   

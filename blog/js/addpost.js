@@ -23,8 +23,6 @@ const auth = getAuth(app);
 const form = document.getElementById("addPostForm");
 const msg = document.getElementById("msg");
 const authorInput = document.getElementById("author");
-const thumbnailFileInput = document.getElementById('thumbnailFile');
-const thumbnailPreview = document.getElementById('thumbnailPreview');
 
 let currentUser = null;
 
@@ -39,41 +37,6 @@ onAuthStateChanged(auth, user => {
   }
 });
 
-// ফাইল সিলেক্ট করলে প্রিভিউ দেখাবে
-thumbnailFileInput.addEventListener('change', () => {
-  const file = thumbnailFileInput.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = e => {
-      thumbnailPreview.src = e.target.result;
-      thumbnailPreview.style.display = 'block';
-    };
-    reader.readAsDataURL(file);
-  } else {
-    thumbnailPreview.src = '';
-    thumbnailPreview.style.display = 'none';
-  }
-});
-
-// FreeImage.host এ ছবি আপলোড করার ফাংশন
-async function uploadImageToFreeImageHost(file) {
-  const formData = new FormData();
-  formData.append('source', file);
-
-  // API key url এ যোগ করা লাগতে পারে, নিচের লাইন পরিবর্তন করে তোমার key যোগ করো যদি লাগে
-  const response = await fetch('https://freeimage.host/api/1/upload?key=6d207e02198a847aa98d0a2a901485a5', {
-    method: 'POST',
-    body: formData
-  });
-  const data = await response.json();
-
-  if (data.status_code === 200) {
-    return data.image.display_url;  // পাবলিক URL রিটার্ন করবে
-  } else {
-    throw new Error('Image upload failed: ' + (data.error?.message || 'Unknown error'));
-  }
-}
-
 // ফর্ম সাবমিট হ্যান্ডলার
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -83,26 +46,21 @@ form.addEventListener("submit", async (e) => {
   const title = document.getElementById("title").value.trim();
   const category = document.getElementById("category").value;
   const description = document.getElementById("description").value.trim();
-  const file = thumbnailFileInput.files[0];
+  const thumbnailURLInput = document.getElementById("thumbnailURL").value.trim();
+
+  // ডিফল্ট থাম্বনেইল
+  const defaultThumbnail = "https://i.ibb.co/mT7F2Lb/default-thumbnail.jpg";
+  const thumbnailURL = thumbnailURLInput || defaultThumbnail;
 
   if (!title || !category || !description) {
     msg.style.color = "red";
-    msg.textContent = "❌ Please fill all fields.";
-    return;
-  }
-
-  if (!file) {
-    msg.style.color = "red";
-    msg.textContent = "❌ Please upload a thumbnail image.";
+    msg.textContent = "❌ Please fill all required fields.";
     return;
   }
 
   try {
-    msg.textContent = "Uploading image...";
-    const thumbnailURL = await uploadImageToFreeImageHost(file);
-
     let role = "User";
-    const adminEmails = ["shanwebfix@gmail.com"]; // এখানে তোমার অ্যাডমিন ইমেইল বসাও
+    const adminEmails = ["shanwebfix@gmail.com"]; // অ্যাডমিন ইমেইল
     if (currentUser && adminEmails.includes(currentUser.email)) {
       role = "Admin";
     }
@@ -122,8 +80,6 @@ form.addEventListener("submit", async (e) => {
     msg.style.color = "green";
     msg.innerHTML = `✅ Post added! <a href="/blog/post.html?id=${docRef.id}&cat=${category}" target="_blank">View Post</a>`;
     form.reset();
-    thumbnailPreview.src = '';
-    thumbnailPreview.style.display = 'none';
 
   } catch (err) {
     console.error(err);

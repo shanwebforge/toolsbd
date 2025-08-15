@@ -13,7 +13,7 @@
       <input type="text" id="title" placeholder="Post Title" required />
       <input type="text" id="author" placeholder="Author Name" readonly />
       
-      <!-- category select -->
+      <!-- Category select -->
       <select id="category" required>
         <option value="">Select Category</option>
         <option value="posts_islamic">Islamic</option>
@@ -31,11 +31,8 @@
         <option value="posts_media">Media</option>
       </select>
 
-      <!-- Thumbnail Upload -->
-      <label>Upload Thumbnail:</label>
-      <input type="file" id="thumbnailFile" accept="image/*" />
-      <br/>
-      <img id="thumbnailPreview" alt="Thumbnail Preview" style="display:none; max-width: 200px; margin-top: 10px;" />
+      <!-- Thumbnail URL (optional) -->
+      <input type="text" id="thumbnailURL" placeholder="Thumbnail Image URL (optional)" />
 
       <textarea id="description" placeholder="Post Description" rows="5" required></textarea>
       <button type="submit">Submit Post</button>

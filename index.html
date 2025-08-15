@@ -103,6 +103,7 @@
 
   <!-- ✅ Stylesheets -->
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/blog/css/style.css" />
   <link rel="stylesheet" href="/components/headerhome.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -123,24 +124,35 @@
 
 
 
-<!-- ✅ Donload -->
-<div class="app-container">
-  <div class="download-note">এই অ্যাপটি Android-এর জন্য তৈরি</div>
-  
-  <div class="download-wrapper">
-    <a href="/assets/ToolsBD.apk" download class="download-link" id="downloadLink">
-      <button class="appbtn" id="downloadBtn">
-        <span class="btn-text">📲 অ্যাপ ডাউনলোড করুন</span>
-        <span class="progress-bar" id="progressBar"></span>
-        <span class="progress-percent" id="progressPercent" style="display: none;">0%</span>
-      </button>
-    </a>
-  </div>
-  
-  <button class="install-btn" id="installBtn" style="display: none;">⚡ Install Now</button>
-  <small class="install-note">⚠️ Install Now বাটনে ক্লিক করলে যদি ইনস্টল না হয়, তাহলে notification bar থেকে ফাইলটি খুলে Install করুন।</small>
+<!-- 🔔 App Download Popup -->
+<div id="appDownloadModal" class="app-modal" aria-hidden="true" role="dialog" aria-labelledby="appModalTitle">
+  <div class="app-modal-backdrop"></div>
 
+  <div class="app-modal-dialog" role="document">
+    <button class="app-modal-close" id="appModalClose" aria-label="Close">&times;</button>
+
+    <!-- ✅ তোমার আগের HTML ব্লক—একদম অপরিবর্তিত -->
+    <!-- ✅ Donload -->
+    <div class="app-container">
+      <div class="download-note">এই অ্যাপটি Android-এর জন্য তৈরি</div>
+      
+      <div class="download-wrapper">
+        <a href="/assets/ToolsBD.apk" download class="download-link" id="downloadLink">
+          <button class="appbtn" id="downloadBtn">
+            <span class="btn-text">📲 অ্যাপ ডাউনলোড করুন</span>
+            <span class="progress-bar" id="progressBar"></span>
+            <span class="progress-percent" id="progressPercent" style="display: none;">0%</span>
+          </button>
+        </a>
+      </div>
+      
+      <button class="install-btn" id="installBtn" style="display: none;">⚡ Install Now</button>
+      <small class="install-note">⚠️ Install Now বাটনে ক্লিক করলে যদি ইনস্টল না হয়, তাহলে notification bar থেকে ফাইলটি খুলে Install করুন।</small>
+    </div>
+    <!-- ✅ শেষ -->
+  </div>
 </div>
+
 
 
 
@@ -164,6 +176,12 @@
 
 
 
+  <!-- Recent Posts Section -->
+  <section class="recent-posts-section">
+    <h2 class="recent-posts-title">Recent Posts</h2>
+    <div id="postsContainer" class="posts-grid"></div>
+    <button id="loadMoreBtn" style="display:none;">Load More</button>
+  </section>
 
 <div id="key-section">লোড হচ্ছে...</div>
 <div id="sort-section">লোড হচ্ছে...</div>
@@ -231,7 +249,9 @@
   <script src="/components/headerhome.js"></script>
   <script src="/components/footer.js"></script>
   <script src="/scripts/script.js"></script>
+ <script type="module" src="/blog/js/loadRecentPosts.js"></script>
   <script src="/scripts/fetch.js"></script>
+  <script src="/scripts/dpop.js"></script>
 
   
 

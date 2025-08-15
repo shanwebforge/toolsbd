@@ -231,6 +231,68 @@ html.dark-mode .download-note {
   }
 }
 
+/* ===== Popup/Modal base ===== */
+.app-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: none;               /* hidden by default */
+  align-items: center;
+  justify-content: center;
+}
+.app-modal.show {
+  display: flex;
+}
+.app-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(2px);
+}
+.app-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: calc(100% - 32px);
+  max-width: 480px;            /* app-container এর 400px-কে একটু breathing space দিচ্ছি */
+  animation: app-pop-in 180ms ease-out;
+}
+
+/* Close (×) button */
+.app-modal-close {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  color: #111;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+}
+.app-modal-close:hover { transform: scale(1.06); }
+
+/* Pop animation */
+@keyframes app-pop-in {
+  from { transform: translateY(8px) scale(0.98); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Dark mode tweaks */
+html.dark-mode .app-modal-backdrop { background: rgba(0,0,0,0.6); }
+html.dark-mode .app-modal-close { background: #0b1220; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.6); }
+
+/* মোবাইলে একটু টপ/বটম গ্যাপ */
+@media (max-width: 600px) {
+  .app-modal-dialog { max-width: 92vw; }
+}
+
+
+
+
 /* Namaj Section */
 .namaj-box {
   background: #1e293b;

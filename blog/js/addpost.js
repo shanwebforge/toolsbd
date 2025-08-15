@@ -41,7 +41,7 @@ onAuthStateChanged(auth, user => {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   msg.style.color = "black";
-  msg.textContent = "Uploading post...";
+  msg.textContent = "পোস্ট আপলোড হচ্ছে...";
 
   const title = document.getElementById("title").value.trim();
   const category = document.getElementById("category").value;
@@ -49,7 +49,7 @@ form.addEventListener("submit", async (e) => {
   const thumbnailURLInput = document.getElementById("thumbnailURL").value.trim();
 
   // ডিফল্ট থাম্বনেইল
-  const defaultThumbnail = "https://i.ibb.co/mT7F2Lb/default-thumbnail.jpg";
+  const defaultThumbnail = "/assets/toolbd-t.webp";
   const thumbnailURL = thumbnailURLInput || defaultThumbnail;
 
   if (!title || !category || !description) {
@@ -78,12 +78,12 @@ form.addEventListener("submit", async (e) => {
     });
 
     msg.style.color = "green";
-    msg.innerHTML = `✅ Post added! <a href="/blog/post.html?id=${docRef.id}&cat=${category}" target="_blank">View Post</a>`;
+    msg.innerHTML = `✅ পোস্ট সংগ্রহ সফল! <a href="/blog/post.html?id=${docRef.id}&cat=${category}" target="_blank">View Post</a>`;
     form.reset();
 
   } catch (err) {
     console.error(err);
     msg.style.color = "red";
-    msg.textContent = "❌ Error: " + err.message;
+    msg.textContent = "❌ কিছু ভুল হচ্ছে: " + err.message;
   }
 });

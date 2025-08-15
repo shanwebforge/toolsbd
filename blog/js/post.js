@@ -42,7 +42,7 @@ async function loadPost() {
     postContainer.innerHTML = `
       <h1 class="post-title">${post.title}</h1>
       <div class="post-meta">
-        <img src="/blog/assets/default-user.png" alt="Author" />
+        <img src="/blog/assets/default-user.webp" alt="Author" />
         <div>
           <strong>${post.author}</strong><br />
           <span class="user-role">${post.role}</span>

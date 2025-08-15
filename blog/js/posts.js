@@ -43,7 +43,7 @@ async function loadPostsFromCollection(collectionName) {
         </div>
         <div class="post-content">
           <div class="post-user">
-            <img src="/blog/assets/default-user.png" alt="User">
+            <img src="/blog/assets/default-user.webp" alt="User">
             <div>
               <strong>${post.author}</strong><br/>
               <span class="user-role">${post.role}</span>

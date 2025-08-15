@@ -1,7 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import {
-  getFirestore, collection, getDocs
-} from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBTwUExxQBIGW7y9a-FCCeMoT2vHvznwIY",
@@ -16,7 +14,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// ✅ Function to load posts from specific collection
 async function loadPostsFromCollection(collectionName) {
   const container = document.getElementById('postsContainer');
   container.innerHTML = "<p>Loading...</p>";
@@ -33,23 +30,27 @@ async function loadPostsFromCollection(collectionName) {
 
   snapshot.forEach(doc => {
     const post = doc.data();
+    const thumbnail = post.thumbnail && post.thumbnail.trim() !== "" 
+      ? post.thumbnail 
+      : '/blog/assets/default-thumbnail.webp';
+
     const postHTML = `
       <div class="post-card">
         <div class="post-thumb">
-          <img src="${post.thumbnail}" alt="Thumbnail">
+          <img src="${thumbnail}" alt="Thumbnail">
           <div class="thumb-overlay">
-            <h3 class="post-title">${post.title}</h3>
+            <h3 class="post-title">${post.title || "Untitled"}</h3>
           </div>
         </div>
         <div class="post-content">
           <div class="post-user">
             <img src="/blog/assets/default-user.webp" alt="User">
             <div>
-              <strong>${post.author}</strong><br/>
-              <span class="user-role">${post.role}</span>
+              <strong>${post.author || "Anonymous"}</strong><br/>
+              <span class="user-role">${post.role || "User"}</span>
             </div>
           </div>
-          <p class="post-description">${post.description.substring(0, 100)}...</p>
+          <p class="post-description">${post.description ? post.description.substring(0, 100) : ""}...</p>
           <button class="read-more-btn" onclick="window.location.href='/blog/post.html?id=${doc.id}&cat=${collectionName}'">Read More</button>
           <div class="post-actions-line">
             <div class="reactions">
@@ -66,16 +67,16 @@ async function loadPostsFromCollection(collectionName) {
   });
 }
 
-// ✅ Attach click listeners to category buttons
+// Attach click listeners
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('.cat-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault(); // prevent <a> default
+      e.preventDefault();
       const collectionName = btn.dataset.collection;
       loadPostsFromCollection(collectionName);
     });
   });
 
-  // Load default category
+  // Load default category (যদি Firebase-এ posts_html থাকে)
   loadPostsFromCollection('posts_html');
 });

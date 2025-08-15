@@ -49,7 +49,7 @@ form.addEventListener("submit", async (e) => {
   const thumbnailURLInput = document.getElementById("thumbnailURL").value.trim();
 
   // ডিফল্ট থাম্বনেইল
-  const defaultThumbnail = "/assets/toolbd-t.webp";
+  const defaultThumbnail = "/blog/assets/default-thumbnail.webp";
   const thumbnailURL = thumbnailURLInput || defaultThumbnail;
 
   if (!title || !category || !description) {

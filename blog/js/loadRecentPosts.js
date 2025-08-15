@@ -1,6 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
 
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBTwUExxQBIGW7y9a-FCCeMoT2vHvznwIY",
   authDomain: "toolbd-blog.firebaseapp.com",
@@ -36,26 +37,32 @@ async function loadRecentPosts() {
     });
   }
 
-  // Timestamp অনুযায়ী sort করে recent 10
+  // Sort by timestamp
   allPosts.sort((a, b) => (b.timestamp?.seconds || 0) - (a.timestamp?.seconds || 0));
   const recentPosts = allPosts.slice(0, 10);
+
+  postsContainer.innerHTML = '';
 
   if (recentPosts.length === 0) {
     postsContainer.innerHTML = '<p>No posts found.</p>';
     return;
   }
 
-  postsContainer.innerHTML = '';
-
   recentPosts.forEach(post => {
-    const thumbnail = post.thumbnail || '/blog/assets/toolbd-t.webp';
+    // ✅ Proper check for thumbnail
+    let thumbnail = '/blog/assets/default-thumbnail.webp'; // default
+    if (post.thumbnail && typeof post.thumbnail === "string") {
+      const trimmed = post.thumbnail.trim();
+      if (trimmed !== "") thumbnail = trimmed;
+    }
+
     const description = post.description ? post.description.substring(0, 100) : "";
 
     const postCard = document.createElement('div');
     postCard.className = 'post-card';
     postCard.innerHTML = `
       <div class="post-thumb">
-        <img src="${thumbnail}" alt="Thumbnail">
+        <img src="${thumbnail}" onerror="this.src='/blog/assets/default-thumbnail.webp'" alt="Thumbnail">
         <div class="thumb-overlay">
           <h3 class="post-title">${post.title || "Untitled"}</h3>
         </div>
@@ -76,5 +83,4 @@ async function loadRecentPosts() {
   });
 }
 
-// Load on page ready
 document.addEventListener('DOMContentLoaded', loadRecentPosts);

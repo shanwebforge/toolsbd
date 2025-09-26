@@ -143,7 +143,6 @@ padding: 30px;
     padding: 12px;
     border-radius: 10px;
 
-
   }
 
   .toper-content {
@@ -152,8 +151,8 @@ padding: 30px;
     padding: 12px;
     gap: 8px;
     justify-content: space-between;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 13px;
+    margin-right: 13px;
   }
 
   .left-box,
@@ -162,9 +161,9 @@ padding: 30px;
   }
 
 .info-text {
-  font-size: 12 !important;   
-  font-weight: 600 !important;
-  padding: 8px !important;
+  font-size: 10 !important;   
+  font-weight: 500 !important;
+  padding: 12px 0px 12px 0px !important;
 }
 
 
@@ -173,7 +172,7 @@ padding: 30px;
 padding: 5px;
 }
 .ap-l {
-padding: 5px 10px 5px 10px;
+padding: 5px 8px 5px 8px;
 }
 .ap-l1 {
   border-radius: 8px;

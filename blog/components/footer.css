@@ -49,7 +49,11 @@ footer {
 .footer-menu a.menu-icon:hover svg circle {
   fill: #6A42C2 !important;
 }
-
+.f-bg {
+  background: #6A42C2;
+  padding: 5px;
+  color: #fff;
+}
 /* Dark Mode */
 html.dark-mode footer {
   background: #1e293b;

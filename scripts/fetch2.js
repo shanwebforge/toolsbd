@@ -12,6 +12,7 @@
       });
   }
 
+  loadSection("highlight-page/highlight.html", "toper-section");
   loadSection("/keyboard-sortcut/key-sort.html", "key-section");
   loadSection("/oparator/oparator.html", "sort-section");
   loadSection("/islamic/islamic.html", "islamic-section");

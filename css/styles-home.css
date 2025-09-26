@@ -1,0 +1,212 @@
+.toper-box {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+
+}
+
+.toper-content {
+  display: flex;
+  justify-content: space-between;
+  background: #fff;
+  gap: 10px;
+  flex-wrap: wrap;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  text-decoration: none !important;
+    margin-left: 40px;
+  margin-right: 40px;
+}
+
+
+
+.left-box {
+  width: 100%;
+  max-width: 500px;
+  text-align: left;
+}
+
+
+.right-box {
+  flex: 1;
+}
+.info-text {
+  padding: 14px !important;
+  color: #077a7d; 
+  font-size: 14;   
+  font-weight: 800;
+}
+
+.info-text i {
+  color: #077a7d; 
+  margin-right: 8px;
+}
+
+.highlight-number {
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+
+.highlight-number.tools {
+  background-color: #ec04ec;
+}
+.highlight-number.sort {
+  background-color: #f39c12;
+}
+.highlight-number.secret {
+  background-color: #e74c3c;
+}
+.highlight-number.total {
+  background-color: #2ecc71;
+}
+
+.ap-text
+{
+padding: 10px 30px 10px 20px;
+}
+.ap-l {
+padding: 30px;
+}
+
+.glow-text span {
+  font-size: 24px;
+  color: #077A7D;
+  opacity: 0.2;
+  text-shadow: none;
+  animation: flickerChar 3s infinite;
+  display: inline-block;
+  white-space: pre;
+}
+
+/* অ্যানিমেশন: জ্বলে–নিভে */
+@keyframes flickerChar {
+  0%, 100% {
+    opacity: 0.2;
+    text-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 5px #077A7D, 0 0 10px #ff00cc, 0 0 20px #ad1391;
+  }
+}
+
+/* প্রত্যেক অক্ষরে আলাদা delay */
+.glow-text span:nth-child(1) { animation-delay: 0s; }
+.glow-text span:nth-child(2) { animation-delay: 0.2s; }
+.glow-text span:nth-child(3) { animation-delay: 0.4s; }
+.glow-text span:nth-child(4) { animation-delay: 0.6s; }
+.glow-text span:nth-child(5) { animation-delay: 0.8s; }
+.glow-text span:nth-child(6) { animation-delay: 1.0s; }
+.glow-text span:nth-child(7) { animation-delay: 1.2s; }
+.glow-text span:nth-child(8) { animation-delay: 1.4s; }
+.glow-text span:nth-child(9) { animation-delay: 1.6s; }
+.glow-text span:nth-child(10) { animation-delay: 1.8s; }
+.glow-text span:nth-child(11) { animation-delay: 2.0s; }
+
+
+
+.ap-l1 {
+  background: linear-gradient(90deg, #4ca7aa, #077A7D) !important;
+  color: rgb(243, 63, 63) !important;
+  border-radius: 8px !important;
+  padding: 8px 15px !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 900 !important; 
+  /* Text stroke/outline */
+  -webkit-text-stroke: 0.2px rgb(247, 122, 122);
+  text-stroke: 0.2px rgb(250, 155, 155); 
+
+  /* Smooth hover */
+  transition: all 0.3s ease-in-out !important;
+  display: inline-block !important;
+}
+
+.ap-l1:hover {
+  background: linear-gradient(90deg, #4facfe, #00f2fe) !important;
+  box-shadow: 0 0 10px #00f2fe, 0 0 20px #4facfe !important;
+  transform: scale(1.05) !important;
+}
+
+
+
+@media (max-width: 600px) {
+  .toper-box {
+    padding: 12px;
+    border-radius: 10px;
+
+
+  }
+
+  .toper-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 8px;
+    justify-content: space-between;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
+  .left-box,
+  .right-box {
+    width: 48%;
+  }
+
+.info-text {
+  font-size: 12 !important;   
+  font-weight: 600 !important;
+  padding: 8px !important;
+}
+
+
+.ap-text
+{
+padding: 5px;
+}
+.ap-l {
+padding: 5px 10px 5px 10px;
+}
+.ap-l1 {
+  border-radius: 8px;
+  padding: 8px 20px 8px 20px;
+  text-decoration: none;
+}
+
+.glow-text span {
+  font-size: 18px;}
+
+}
+
+html.dark-mode .toper-content{
+  background-color: #1e293b;
+border: 1px solid rgba(255, 255, 255, 0.15);}
+
+html.dark-mode .left-box h3, .left-box h2 {
+  color: #fff !important;}
+html.dark-mode  .glow-text span {
+ 
+  color: #ffffff;
+
+}
+
+html.dark-mode .info-text {
+  padding: 5px;
+  color: #ffffff; 
+  font-size: 14;   
+  font-weight: 800;
+}
+
+html.dark-mode .info-text i {
+  color: #fff; 
+  margin-right: 8px;
+}
+

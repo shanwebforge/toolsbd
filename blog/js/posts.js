@@ -14,6 +14,13 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+// Helper: truncate description to 30 words
+function truncateWords(str, numWords) {
+  const words = str.split(/\s+/);
+  if (words.length <= numWords) return str;
+  return words.slice(0, numWords).join(' ') + '...';
+}
+
 async function loadPostsFromCollection(collectionName) {
   const container = document.getElementById('postsContainer');
   container.innerHTML = "<p>Loading...</p>";
@@ -30,39 +37,29 @@ async function loadPostsFromCollection(collectionName) {
 
   snapshot.forEach(doc => {
     const post = doc.data();
-    const thumbnail = post.thumbnail && post.thumbnail.trim() !== "" 
-      ? post.thumbnail 
-      : '/blog/assets/default-thumbnail.webp';
+    const description = post.description ? truncateWords(post.description, 30) : "";
 
     const postHTML = `
-      <div class="post-card">
-        <div class="post-thumb">
-          <img src="${thumbnail}" alt="Thumbnail">
-          <div class="thumb-overlay">
-            <h3 class="post-title">${post.title || "Untitled"}</h3>
-          </div>
-        </div>
-        <div class="post-content">
-          <div class="post-user">
-            <img src="/blog/assets/default-user.webp" alt="User">
-            <div>
-              <strong>${post.author || "Anonymous"}</strong><br/>
-              <span class="user-role">${post.role || "User"}</span>
+      <div class="post-card" onclick="window.location.href='/blog/post.html?id=${doc.id}&cat=${collectionName}'">
+        <h2 class="post-title">${post.title || "Untitled"}</h2>
+        <p class="post-description">${description}</p>
+        <div class="post-footer">
+          <div class="author-info">
+            <img class="author-img" src="/blog/assets/default-user.webp" alt="User">
+            <div class="author-details">
+              <strong class="author-name">${post.author || "Anonymous"}</strong>
+              <span class="author-role">${post.role || "User"}</span>
             </div>
           </div>
-          <p class="post-description">${post.description ? post.description.substring(0, 100) : ""}...</p>
-          <button class="read-more-btn" onclick="window.location.href='/blog/post.html?id=${doc.id}&cat=${collectionName}'">Read More</button>
-          <div class="post-actions-line">
-            <div class="reactions">
-              <span><i class="fas fa-thumbs-up"></i> ${post.likes || 0}</span>
-              <span><i class="fas fa-thumbs-down"></i> ${post.dislikes || 0}</span>
-              <span><i class="fas fa-share-alt"></i> Share</span>
-            </div>
-            <button class="nice-post-btn">Nice Post লিখুন</button>
+          <div class="post-stats">
+            <span class="like"><i class="fas fa-thumbs-up"></i> ${post.likes || 0}</span>
+            <span class="dislike"><i class="fas fa-thumbs-down"></i> ${post.dislikes || 0}</span>
+            <span class="share"><i class="fas fa-share-alt"></i></span>
           </div>
         </div>
       </div>
     `;
+
     container.innerHTML += postHTML;
   });
 }
@@ -77,6 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Load default category (যদি Firebase-এ posts_html থাকে)
+  // Load default category
   loadPostsFromCollection('posts_html');
 });

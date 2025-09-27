@@ -1,7 +1,3 @@
-
-main {
-  padding-bottom: 70px;
-}
 footer {
   position: fixed;
   bottom: 0;
@@ -12,7 +8,6 @@ footer {
   box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
   z-index: 1000;
   height: 60px;
-
 }
 
 .footer-menu {
@@ -27,38 +22,79 @@ footer {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  color: #6A42C2 ;
   font-size: 13px;
   font-weight: 600;
-  transition: transform 0.3s ease;
-}
-
-/* Only icon and text move up on hover */
-.footer-menu a:hover {
-  transform: translateY(-7px);
-  color: #6A42C2;
+  transition: color 0.3s ease, transform 0.3s ease;
+  color: #8d8c8c; /* Default color */
 }
 
 .footer-menu a i {
   font-size: 20px;
   margin-bottom: 3px;
+  color: #8d8c8c; /* Default icon color */
 }
+
 .footer-menu a.menu-icon svg circle {
-  fill: #6A42C2;
+  fill: #8d8c8c; /* Default SVG circle */
+}
+
+/* Hover effect → Black */
+.footer-menu a:hover {
+  transform: translateY(-7px);
+  color: #000;
+}
+.footer-menu a:hover i {
+  color: #000;
 }
 .footer-menu a.menu-icon:hover svg circle {
+  fill: #000 !important;
+}
+
+/* Active state → #077A7D */
+.footer-menu a.active {
+  color: #6A42C2;
+}
+.footer-menu a.active i {
+  color: #6A42C2;
+}
+.footer-menu a.active.menu-icon svg circle {
   fill: #6A42C2 !important;
 }
-.f-bg {
-  background: #6A42C2;
-  padding: 5px;
-  color: #fff;
-}
+
 /* Dark Mode */
 html.dark-mode footer {
   background: #1e293b;
   border-top: 1px solid #333;
 }
+
+html.dark-mode .footer-menu a {
+  color: #ccc; /* Default in dark mode */
+}
+
+html.dark-mode .footer-menu a i {
+  color: #ccc;
+}
+
 html.dark-mode .footer-menu a.menu-icon svg circle {
-  fill: #6A42C2;
+  fill: #ccc;
+}
+
+html.dark-mode .footer-menu a:hover {
+  color: #fff;
+}
+html.dark-mode .footer-menu a:hover i {
+  color: #fff;
+}
+html.dark-mode .footer-menu a.menu-icon:hover svg circle {
+  fill: #fff !important;
+}
+
+html.dark-mode .footer-menu a.active {
+  color: #6A42C2;
+}
+html.dark-mode .footer-menu a.active i {
+  color: #6A42C2;
+}
+html.dark-mode .footer-menu a.active.menu-icon svg circle {
+  fill: #6A42C2 !important;
 }

@@ -25,17 +25,17 @@ footer {
   font-size: 13px;
   font-weight: 600;
   transition: color 0.3s ease, transform 0.3s ease;
-  color: #ccc; /* Default color */
+  color: #8d8c8c; /* Default color */
 }
 
 .footer-menu a i {
   font-size: 20px;
   margin-bottom: 3px;
-  color: #ccc; /* Default icon color */
+  color: #8d8c8c; /* Default icon color */
 }
 
 .footer-menu a.menu-icon svg circle {
-  fill: #ccc; /* Default SVG circle */
+  fill: #8d8c8c; /* Default SVG circle */
 }
 
 /* Hover effect → Black */

@@ -1,7 +1,7 @@
 <footer>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <div class="footer-menu">
-    <a href="/index.html"><i class="fas fa-home"></i><span>Home</span><div class="hover-circle"></div></a>
+    <a href="/index.html" class="active"><i class="fas fa-home"></i><span>Home</span><div class="hover-circle"></div></a>
     <a href="/blog/"><i class="fas fa-blog"></i><span>Blog</span><div class="hover-circle"></div></a>
     <a href="/category/" class="menu-icon">
       <svg width="24" height="24" viewBox="0 0 24 24">
@@ -15,4 +15,18 @@
     <a href="/shop"><i class="fas fa-bell"></i><span>Shop</span><div class="hover-circle"></div></a>
     <a href="/blog/profile.html"><i class="fas fa-user"></i><span>Profile</span><div class="hover-circle"></div></a>
   </div>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  const links = document.querySelectorAll(".footer-menu a");
+  const currentPath = window.location.pathname;
+
+  links.forEach(link => {
+    if (link.getAttribute("href") === currentPath ||
+        (currentPath === "/" && link.getAttribute("href") === "/index.html")) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
 </footer>

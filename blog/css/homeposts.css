@@ -99,6 +99,7 @@
 
   .post-title {
     font-size: 1.5rem;
+    margin-bottom: -20px !important;
   }
 
   .post-description {
@@ -143,43 +144,12 @@
     gap: 3px;
   }
   .post-container {
-  margin-left: 12px;
-  margin-right: 12px;
+  margin-left: 14px !important;
+  margin-right: 14px;
 }
 }
 
-/* Extra small screens (phones) */
-@media screen and (max-width: 480px) {
-  .post-title {
-    font-size: 1.3rem;
-  }
 
-  .post-description {
-    font-size: 0.9rem;
-  }
-
-  .author-img {
-    width: 35px;
-    height: 35px;
-  }
-
-  .author-name {
-    font-size: 0.9rem;
-  }
-
-  .author-role {
-    font-size: 0.75rem;
-  }
-
-  .post-stats {
-    font-size: 0.85rem;
-    gap: 8px;
-  }
-    .post-container {
-  margin-left: 15px !important;
-  margin-right: 15px !important;
-}
-}
 
 
 html.dark-mode .post-card {

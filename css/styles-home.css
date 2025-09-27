@@ -21,13 +21,16 @@ body::before {
 
 /* 🌞 Light Mode (color + faint image) */
 body {
-  background-color: #fafdfd; /* Light base color */
+  background-color: #f0f4f8; /* Light base color */
 }
 body::before {
   background-image: url('/assets/home-bg.webp');
 }
 
-
+/* 🌙 Dark Mode (color + faint image) */
+.dark-mode body {
+  background-color: #0a0f1c; /* Dark base color */
+}
 .dark-mode body::before {
   background-image: url('/assets/home-bg.webp');
 }
@@ -47,43 +50,65 @@ body::before {
 }
 
 
+.stars-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;    /* সবসময় content-এর নিচে */
+  overflow: hidden;
+}
 
+/* ⭐ Single star */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px) drop-shadow(0 0 8px currentColor);
+  opacity: 0.9;
+  background: currentColor;
+  animation: floatStar linear infinite;
+}
 
-
-/* ⭐ container */
-  .dark-mode .stars-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    overflow: hidden;
+/* 🌠 Animation */
+@keyframes floatStar {
+  from {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
   }
-
-  /* ⭐ single star style */
-  .dark-mode .star {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(2px) drop-shadow(0 0 8px currentColor);
-    opacity: 0.9;
-    background: currentColor;
-    animation: floatStar linear infinite;
+  to {
+    transform: translate(var(--dx), var(--dy)) scale(1.3);
+    opacity: 0;
   }
+}
 
-  @keyframes floatStar {
-    from {
-      transform: translate(0, 0) scale(1);
-      opacity: 1;
-    }
-    to {
-      transform: translate(var(--dx), var(--dy)) scale(1.3);
-      opacity: 0;
-    }
+.dark-mode .stars-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;    /* সবসময় content-এর নিচে */
+  overflow: hidden;
+}
+
+/* ⭐ Single star */
+.dark-mode .star {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px) drop-shadow(0 0 8px currentColor);
+  opacity: 0.9;
+  background: currentColor;
+  animation: floatStar linear infinite;
+}
+
+/* 🌠 Animation */
+@keyframes floatStar {
+  from {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
   }
-
-
+  to {
+    transform: translate(var(--dx), var(--dy)) scale(1.3);
+    opacity: 0;
+  }
+}
 
 
 
@@ -291,6 +316,15 @@ padding: 5px 8px 5px 8px;
   text-decoration: none;
   font-size: 10px !important;
   color: #fff !important;
+
+  border-radius: 8px !important;
+  padding: 8px 15px !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 900 !important; 
+  /* Text stroke/outline */
+  -webkit-text-stroke: 0.2px rgb(247, 122, 122);
+  text-stroke: 0.2px rgb(250, 155, 155); 
 }
 
 .glow-text span {

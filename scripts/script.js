@@ -331,12 +331,6 @@ document.getElementById("arabic-date").innerText = `${islDay} ${islMonth} ${islY
     });
 
 
-
-
-
-
-
-
     
 
 

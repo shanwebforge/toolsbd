@@ -1,3 +1,92 @@
+/* Common setup */
+body {
+  position: relative;
+  z-index: 0;
+}
+
+/* Overlay setup */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.15; /* ছবিটা খুব হালকা হবে */
+}
+
+/* 🌞 Light Mode (color + faint image) */
+body {
+  background-color: #fafdfd; /* Light base color */
+}
+body::before {
+  background-image: url('/assets/home-bg.webp');
+}
+
+
+.dark-mode body::before {
+  background-image: url('/assets/home-bg.webp');
+}
+
+/* 🌞 Light Mode Mobile */
+@media (max-width: 768px) {
+  body::before {
+    background-image: url('/assets/home-bg.webp');
+  }
+}
+
+/* 🌙 Dark Mode Mobile */
+@media (max-width: 768px) {
+  .dark-mode body::before {
+    background-image: url('/assets/home-bg.webp');
+  }
+}
+
+
+
+
+
+/* ⭐ container */
+  .dark-mode .stars-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+  }
+
+  /* ⭐ single star style */
+  .dark-mode .star {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px) drop-shadow(0 0 8px currentColor);
+    opacity: 0.9;
+    background: currentColor;
+    animation: floatStar linear infinite;
+  }
+
+  @keyframes floatStar {
+    from {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: translate(var(--dx), var(--dy)) scale(1.3);
+      opacity: 0;
+    }
+  }
+
+
+
+
+
 .toper-box {
   background: #1e293b;
   padding: 20px;
@@ -78,38 +167,60 @@ padding: 30px;
 
 .glow-text span {
   font-size: 24px;
-  color: #077A7D;
+  color: #4d6d03;
   opacity: 0.2;
   text-shadow: none;
-  animation: flickerChar 3s infinite;
+  animation: flickerCharLight 4s infinite;
   display: inline-block;
   white-space: pre;
 }
 
-/* অ্যানিমেশন: জ্বলে–নিভে */
-@keyframes flickerChar {
+@keyframes flickerCharLight {
   0%, 100% {
     opacity: 0.2;
     text-shadow: none;
   }
   50% {
     opacity: 1;
-    text-shadow: 0 0 5px #077A7D, 0 0 10px #ff00cc, 0 0 20px #ad1391;
+    text-shadow: 0 0 5px #a7f020, 0 0 10px #afd40b, 0 0 20px #9dda0e;
   }
 }
 
-/* প্রত্যেক অক্ষরে আলাদা delay */
-.glow-text span:nth-child(1) { animation-delay: 0s; }
-.glow-text span:nth-child(2) { animation-delay: 0.2s; }
-.glow-text span:nth-child(3) { animation-delay: 0.4s; }
-.glow-text span:nth-child(4) { animation-delay: 0.6s; }
-.glow-text span:nth-child(5) { animation-delay: 0.8s; }
-.glow-text span:nth-child(6) { animation-delay: 1.0s; }
-.glow-text span:nth-child(7) { animation-delay: 1.2s; }
-.glow-text span:nth-child(8) { animation-delay: 1.4s; }
-.glow-text span:nth-child(9) { animation-delay: 1.6s; }
+
+.dark-mode .glow-text span {
+  font-size: 24px;
+  color: #077A7D;
+  opacity: 0.2;
+  text-shadow: none;
+  animation: flickerCharDark 3s infinite;
+  display: inline-block;
+  white-space: pre;
+}
+
+@keyframes flickerCharDark {
+  0%, 100% {
+    opacity: 0.2;
+    text-shadow: none;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 5px #abdfe0, 0 0 10px #ff00cc, 0 0 20px #ad1391;
+  }
+}
+
+/* প্রতি অক্ষরের delay (দুটো মোডেই কাজ করবে) */
+.glow-text span:nth-child(1)  { animation-delay: 0s; }
+.glow-text span:nth-child(2)  { animation-delay: 0.2s; }
+.glow-text span:nth-child(3)  { animation-delay: 0.4s; }
+.glow-text span:nth-child(4)  { animation-delay: 0.6s; }
+.glow-text span:nth-child(5)  { animation-delay: 0.8s; }
+.glow-text span:nth-child(6)  { animation-delay: 1.0s; }
+.glow-text span:nth-child(7)  { animation-delay: 1.2s; }
+.glow-text span:nth-child(8)  { animation-delay: 1.4s; }
+.glow-text span:nth-child(9)  { animation-delay: 1.6s; }
 .glow-text span:nth-child(10) { animation-delay: 1.8s; }
 .glow-text span:nth-child(11) { animation-delay: 2.0s; }
+
 
 
 
@@ -176,8 +287,10 @@ padding: 5px 8px 5px 8px;
 }
 .ap-l1 {
   border-radius: 8px;
-  padding: 8px 20px 8px 20px;
+  padding: 8px 10px 8px 10px !important;
   text-decoration: none;
+  font-size: 10px !important;
+  color: #fff !important;
 }
 
 .glow-text span {

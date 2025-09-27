@@ -73,9 +73,11 @@
 .right-panel {
   width: 70%;
   padding: 20px;
-  overflow-y: auto;
-  
+  position: sticky;
+  top: 0;  
+  align-self: flex-start;
 }
+
 
 .right-panel h2 {
   margin: 0 0 10px;
@@ -86,20 +88,31 @@
 }
 
 audio {
-  width: 100%;
+  width: 45%;
+  position: fixed;
   margin-top: 15px;
+ background: #00aa55;
+ border-radius: 15px;
 }
 
 /* ================== মোবাইল রেস্পন্সিভ ================== */
 @media screen and (max-width: 600px) {
-  .left-panel, .right-panel {
-    width: 100%;
+  .left-panel {
+    width: 45%;
+    padding: 10px;
+  }
+  
+  .right-panel {
+    width: 55%;
     padding: 10px;
   }
   .left-panel {
     border-right: none;
     border-bottom: 1px solid #ddd;
   }
+  audio {
+  width: 45%;
+}
   .left-panel h1 {
     font-size: 18px;
   }
@@ -119,6 +132,12 @@ audio {
   }
   .ayah-number {
     font-size: 14px;
+  }
+
+    .right-panel {
+    width: 100%; 
+    left: 0;
+    right: 0;
   }
 }
 /* ====== Dark Mode Styles ====== */
@@ -183,35 +202,37 @@ body.dark-mode audio {
 </div>
 
 
-  <script>
-  const surahListEl = document.getElementById('surahList');
-  const contentEl = document.getElementById('surahContent');
+<script>
+const surahListEl = document.getElementById('surahList');
+const contentEl = document.getElementById('surahContent');
 
-  // সূরা তালিকা লোড করা
-  fetch('https://api.alquran.cloud/v1/surah')
-    .then(r => r.json())
-    .then(r => {
-      r.data.forEach(s => {
-        const li = document.createElement('li');
-        li.textContent = `${s.englishName}`; // ✅ শুধু ইংরেজি নাম
-        li.onclick = () => selectSurah(s);
-        surahListEl.appendChild(li);
-      });
+// সূরা তালিকা লোড করা
+fetch('https://api.alquran.cloud/v1/surah')
+  .then(r => r.json())
+  .then(r => {
+    r.data.forEach(s => {
+      const li = document.createElement('li');
+      li.textContent = `${s.number}. ${s.englishName}`; // ✅ সূরা নম্বর + ইংরেজি নাম
+      li.onclick = () => selectSurah(s);
+      surahListEl.appendChild(li);
     });
+  });
 
-  function selectSurah(surah) {
-    document.querySelectorAll('#surahList li').forEach(li => li.classList.remove('active'));
-    const activeItem = Array.from(surahListEl.children).find(li => li.textContent === surah.englishName);
-    if (activeItem) activeItem.classList.add('active');
+function selectSurah(surah) {
+  document.querySelectorAll('#surahList li').forEach(li => li.classList.remove('active'));
+  const activeItem = Array.from(surahListEl.children)
+    .find(li => li.textContent === `${surah.number}. ${surah.englishName}`);
+  if (activeItem) activeItem.classList.add('active');
 
-    const audioSrc = `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${surah.number}.mp3`;
+  const audioSrc = `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${surah.number}.mp3`;
 
-    contentEl.innerHTML = `
-      <h2>${surah.englishName}</h2> <!-- ✅ শুধু ইংরেজি নাম -->
-      <audio controls autoplay src="${audioSrc}"></audio>
-    `;
-  }
+  contentEl.innerHTML = `
+    <h2>${surah.englishName}</h2> <!-- ✅ শুধু ইংরেজি নাম -->
+    <audio controls autoplay src="${audioSrc}"></audio>
+  `;
+}
 </script>
+
 
   <script src="/components/header.js"></script>
 <script src="/components/footer.js"></script>

@@ -17,13 +17,12 @@ const db = getFirestore(app);
 const DEFAULT_THUMBNAIL = '/blog/assets/default-thumbnail.webp';
 const DEFAULT_USER_IMG = '/blog/assets/default-user.webp';
 
-async function loadtoolsPosts() {
+async function loadToolsPosts() {
   const container = document.getElementById("postsContainer");
   container.innerHTML = "<p>Loading posts...</p>";
 
   const colRef = collection(db, "posts_tools");
   const snapshot = await getDocs(colRef);
-
   container.innerHTML = "";
 
   if (snapshot.empty) {
@@ -34,9 +33,8 @@ async function loadtoolsPosts() {
   snapshot.forEach(docSnap => {
     const post = docSnap.data();
     const postId = docSnap.id;
-
-    const thumbnail = post.thumbnail && post.thumbnail.trim() !== "" ? post.thumbnail : DEFAULT_THUMBNAIL;
-    const userImg = post.userImg && post.userImg.trim() !== "" ? post.userImg : DEFAULT_USER_IMG;
+    const thumbnail = post.thumbnail?.trim() ? post.thumbnail : DEFAULT_THUMBNAIL;
+    const userImg = post.userImg?.trim() ? post.userImg : DEFAULT_USER_IMG;
 
     const postCard = document.createElement('div');
     postCard.className = 'post-card';
@@ -50,7 +48,7 @@ async function loadtoolsPosts() {
           <img src="${userImg}" onerror="this.src='${DEFAULT_USER_IMG}'" alt="User">
           <div><strong>${post.author}</strong><br/><span>${post.role}</span></div>
         </div>
-        <p>${post.description.substring(0,100)}...</p>
+        <p>${post.description?.substring(0,100) || ""}...</p>
         <button class="read-more-btn" onclick="window.location.href='/blog/post.html?id=${postId}&cat=posts_tools'">Read More</button>
         <div class="post-actions-line">
           <div class="reactions">
@@ -66,6 +64,7 @@ async function loadtoolsPosts() {
 
     const docRef = doc(db, "posts_tools", postId);
 
+    // Realtime like/dislike
     onSnapshot(docRef, snapshot => {
       const data = snapshot.data();
       postCard.querySelector('.likeCount').innerText = data.likes || 0;
@@ -73,22 +72,45 @@ async function loadtoolsPosts() {
     });
   });
 
+  // Prevent multiple reactions per browser
+  function canReact(postId,type){
+    const reacted = JSON.parse(localStorage.getItem('postReactions')|| '{}');
+    return reacted[postId] !== type;
+  }
+  function saveReaction(postId,type){
+    const reacted = JSON.parse(localStorage.getItem('postReactions')|| '{}');
+    reacted[postId] = type;
+    localStorage.setItem('postReactions', JSON.stringify(reacted));
+  }
+
+  // Like button
   document.querySelectorAll('.likeBtn').forEach(btn => {
-    btn.onclick = async () => {
-      const ref = doc(db, "posts_tools", btn.dataset.id);
+    btn.onclick = async e => {
+      e.stopPropagation();
+      const postId = btn.dataset.id;
+      if (!canReact(postId,'like')) return;
+      const ref = doc(db, "posts_tools", postId);
       await updateDoc(ref, { likes: increment(1) });
+      saveReaction(postId,'like');
     };
   });
 
+  // Dislike button
   document.querySelectorAll('.dislikeBtn').forEach(btn => {
-    btn.onclick = async () => {
-      const ref = doc(db, "posts_tools", btn.dataset.id);
+    btn.onclick = async e => {
+      e.stopPropagation();
+      const postId = btn.dataset.id;
+      if (!canReact(postId,'dislike')) return;
+      const ref = doc(db, "posts_tools", postId);
       await updateDoc(ref, { dislikes: increment(1) });
+      saveReaction(postId,'dislike');
     };
   });
 
+  // Share button
   document.querySelectorAll('.shareBtn').forEach(btn => {
-    btn.onclick = () => {
+    btn.onclick = e => {
+      e.stopPropagation();
       const shareData = {
         title: btn.dataset.title,
         text: btn.dataset.desc,
@@ -97,10 +119,10 @@ async function loadtoolsPosts() {
       if (navigator.share) {
         navigator.share(shareData).catch(console.error);
       } else {
-        navigator.clipboard.writeText(shareData.url).then(() => alert("URL copied to clipboard"));
+        navigator.clipboard.writeText(shareData.url).then(()=> alert("URL copied to clipboard"));
       }
     };
   });
 }
 
-document.addEventListener("DOMContentLoaded", loadtoolsPosts);
+document.addEventListener("DOMContentLoaded", loadToolsPosts);

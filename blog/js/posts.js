@@ -14,7 +14,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Helper: truncate description to 30 words
 function truncateWords(str, numWords) {
   const words = str.split(/\s+/);
   if (words.length <= numWords) return str;
@@ -28,10 +27,10 @@ async function loadPostsFromCollection(collectionName) {
   const colRef = collection(db, collectionName);
   const snapshot = await getDocs(colRef);
 
-  container.innerHTML = ""; // Clear
+  container.innerHTML = "";
 
   if (snapshot.empty) {
-    container.innerHTML = "<p>No posts found in this category.</p>";
+    container.innerHTML = "<p>No posts found.</p>";
     return;
   }
 
@@ -64,16 +63,6 @@ async function loadPostsFromCollection(collectionName) {
   });
 }
 
-// Attach click listeners
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll('.cat-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const collectionName = btn.dataset.collection;
-      loadPostsFromCollection(collectionName);
-    });
-  });
-
-  // Load default category
   loadPostsFromCollection('posts_html');
 });

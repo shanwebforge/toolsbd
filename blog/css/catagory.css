@@ -171,3 +171,7 @@ html.dark-mode body {
 html.dark-mode .category-item {
     background-color: #1e293b;
 }
+html.dark-mode .category-desc {
+    font-size: 14px;
+    color: antiquewhite;
+  }

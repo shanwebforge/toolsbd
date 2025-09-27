@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog Home</title>
   <link rel="stylesheet" href="/blog/css/style.css"/>
+  <link rel="stylesheet" href="/blog/css/posts.css"/>
   <link rel="stylesheet" href="/blog/css/catagory.css"/>
   <link rel="stylesheet" href="/blog/components/headerhome.css" />
   <link rel="stylesheet" href="/blog/components/footer.css" />
@@ -15,11 +16,18 @@
 
 
   <!-- Recent Posts Section -->
-  <section class="recent-posts-section">
-    <h2 class="recent-posts-title">Recent Posts</h2>
-    <div id="postsContainer" class="posts-grid"></div>
-    <button id="loadMoreBtn" style="display:none;">Load More</button>
-  </section>
+   
+<section class="recent-posts-section">
+  <h2 class="recent-posts-title">Recent Posts</h2>
+  <div id="postsContainer" class="posts-grid"></div>
+</section>
+
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<!-- Our JS -->
+<script type="module" src="/blog/js/posts.js"></script>
+
 
 
 
@@ -181,6 +189,6 @@
   <script src="/blog/components/footer.js"></script>
   <script src="/scripts/script.js"></script>
   <script type="module" src="/blog/js/loadRecentPosts.js"></script>
-  <script src="/blog/js/posts.js"></script>
+
 </body>
 </html>

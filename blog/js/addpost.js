@@ -1,3 +1,4 @@
+// /blog/js/addpost.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import {
   getFirestore, collection, addDoc, serverTimestamp
@@ -6,6 +7,7 @@ import {
   getAuth, onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
+// Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyBTwUExxQBIGW7y9a-FCCeMoT2vHvznwIY",
   authDomain: "toolbd-blog.firebaseapp.com",
@@ -33,7 +35,7 @@ onAuthStateChanged(auth, user => {
     authorInput.value = user.displayName || user.email;
   } else {
     alert("Please login first!");
-    window.location.href = "login.html";
+    window.location.href = "/blog/login.html";
   }
 });
 
@@ -46,11 +48,12 @@ form.addEventListener("submit", async (e) => {
   const title = document.getElementById("title").value.trim();
   const category = document.getElementById("category").value;
   const description = document.getElementById("description").value.trim();
-  const thumbnailURLInput = document.getElementById("thumbnailURL").value.trim();
 
-  // ডিফল্ট থাম্বনেইল
-  const defaultThumbnail = "/blog/assets/default-thumbnail.webp";
-  const thumbnailURL = thumbnailURLInput || defaultThumbnail;
+  // Optional thumbnail from description (copy-paste auto detect)
+  let thumbnailURL = "";
+  const imgMatch = description.match(/(https?:\/\/.*\.(?:png|jpg|jpeg|webp))/i);
+  if (imgMatch) thumbnailURL = imgMatch[0];
+  if (!thumbnailURL) thumbnailURL = "/blog/assets/default-thumbnail.webp";
 
   if (!title || !category || !description) {
     msg.style.color = "red";
@@ -60,10 +63,8 @@ form.addEventListener("submit", async (e) => {
 
   try {
     let role = "User";
-    const adminEmails = ["shanwebfix@gmail.com"]; // অ্যাডমিন ইমেইল
-    if (currentUser && adminEmails.includes(currentUser.email)) {
-      role = "Admin";
-    }
+    const adminEmails = ["shantool@gmail.com"]; // Admin emails
+    if (currentUser && adminEmails.includes(currentUser.email)) role = "Admin";
 
     const docRef = await addDoc(collection(db, category), {
       title,
@@ -78,7 +79,7 @@ form.addEventListener("submit", async (e) => {
     });
 
     msg.style.color = "green";
-    msg.innerHTML = `✅ পোস্ট সংগ্রহ সফল! <a href="/blog/post.html?id=${docRef.id}&cat=${category}" target="_blank">View Post</a>`;
+    msg.innerHTML = `✅ পোস্ট সফলভাবে যোগ হয়েছে! <a href="/blog/post.html?id=${docRef.id}&cat=${category}" target="_blank">View Post</a>`;
     form.reset();
 
   } catch (err) {

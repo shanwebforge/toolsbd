@@ -2,10 +2,9 @@
 (function () {
   const modal = document.getElementById('appDownloadModal');
   const closeBtn = document.getElementById('appModalClose');
-  let reopenTimer = null;
 
-  const SHOW_AFTER_MS = 1200;      // প্রথমবার: পেজ লোডের ~1.2s পর
-  const REPEAT_MS = 240000;        // প্রতি 4 মিনিটে (4 * 60 * 1000)
+  const SHOW_AFTER_MS = 1200;   // প্রথমবার: পেজ লোডের ~1.2s পর
+  const REPEAT_MS = 4 * 60 * 1000; // প্রতি 8 মিনিটে
 
   function lockScroll(lock) {
     document.documentElement.style.overflow = lock ? 'hidden' : '';
@@ -17,6 +16,9 @@
     modal.classList.add('show');
     modal.setAttribute('aria-hidden', 'false');
     lockScroll(true);
+
+    // দেখার সময় localStorage এ সেভ কর
+    localStorage.setItem('lastAppModal', Date.now());
   }
 
   function hideModal() {
@@ -39,13 +41,24 @@
     if (e.key === 'Escape') hideModal();
   });
 
-  // লোড হলে দেখাও + প্রতি 4 মিনিটে দেখাও
+  // লোড হলে দেখাও
   window.addEventListener('load', () => {
-    // প্রথমবার
-    setTimeout(showModal, SHOW_AFTER_MS);
+    const lastShown = localStorage.getItem('lastAppModal');
+    const now = Date.now();
 
-    // বারবার
-    reopenTimer = setInterval(showModal, REPEAT_MS);
+    // যদি আগের দেখানো থেকে 8 মিনিট পেরিয়ে গেছে অথবা প্রথমবার
+    if (!lastShown || now - lastShown > REPEAT_MS) {
+      setTimeout(showModal, SHOW_AFTER_MS);
+    }
+
+    // প্রতি 8 মিনিট পর দেখানোর জন্য interval
+    setInterval(() => {
+      const last = localStorage.getItem('lastAppModal');
+      if (!last || Date.now() - last > REPEAT_MS) {
+        showModal();
+      }
+    }, 1000 * 60); // প্রতি মিনিটে চেক করবে
   });
 })();
+
 

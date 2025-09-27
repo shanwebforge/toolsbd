@@ -2,15 +2,27 @@
    🌞 Light Mode (Default)
 ============================= */
 
-/* Reset & Global */
 body {
-  font-family: sans-serif;
   margin: 0;
   background-color: #edf6fc;
   min-height: 100vh;
   padding: 100px 70px 50px;
-  color: #000; /* light mode text */
+  color: #000;
+  font-weight: 700;
 }
+
+/* Default English font stack */
+body {
+  font-family: "Alkatra", "Archivo Black", "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
+}
+
+/* Bangla font */
+:lang(bn), 
+[lang="bn"] {
+  font-family: "Hind Siliguri", "Galada", sans-serif;
+}
+
+
 
 
 @media (max-width: 768px) {
@@ -766,9 +778,7 @@ html.dark-mode body {
   color: #eee;
 }
 
-html.dark-mode .sort-box {
-  background: #1f1f1f;
-}
+
 
 html.dark-mode .sort-title-name,
 html.dark-mode .sort-title {
@@ -779,8 +789,14 @@ html.dark-mode .icon {
   color: #077A7D;
 }
 
+html.dark-mode .sort-box {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
 html.dark-mode .sort-box:hover {
-  background: #2a2a2a;
+  box-shadow: 0 4px 6px rgba(56, 189, 248, 0.5);
 }
 
 @media (max-width: 768px) {
@@ -1171,37 +1187,9 @@ html.dark-mode #result {
   }
 
   .store-btn i {
-    font-size: 22px;
+    font-size: 18px;
   }
 
-  /* Dark mode */
-  html.dark-mode .download-section {
-    background: #1e1e1e;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
-  
-  html.dark-mode .download-title {
-    color: white;
-  }
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .download-section {
-  margin-left: 14px;
-  margin-right: 14px;
- }
- .download-title {
-  font-size: 24px;}
-}
-
-
-
-
-
-
-/* Social Icon */
    .social-container {
       display: flex;
       justify-content: center;
@@ -1239,14 +1227,55 @@ html.dark-mode #result {
       color: #077A7D;
     }
 
+
+
+  /* Dark mode */
+  html.dark-mode .download-section {
+    background: #1e293b;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  html.dark-mode .download-title {
+    color: white;
+  }
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .download-section {
+  margin-left: 14px;
+  margin-right: 14px;
+ }
+ .download-title {
+  font-size: 18px;
+margin-top: -20px;
+margin-bottom: 15px;}
+
+.social-container a {
+      width: 32px !important;
+      height: 32px !important;}
+
+.store-btn {
+  
+    align-items: center;
+    gap: 10px;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: 16px;}
+}
+
+
+
     /* Dark Mode */
     html.dark-mode body {
-      background-color: #121212;
+      background-color: #1e293b;
       color: #e0e0e0;
     }
 
     html.dark-mode .social-container {
-      background-color: #1e1e1e;
+      background-color: #1e293b;
     }
 
     html.dark-mode .social-container a {
@@ -1265,17 +1294,19 @@ html.dark-mode #result {
     /* Responsive */
     @media (max-width: 600px) {
       .social-container {
-        gap: 12px;
+        gap: 10px;
+        margin-bottom: -40px !important;
       }
 
       .social-container a {
         width: 44px;
         height: 44px;
         font-size: 18px;
+        border-radius: 5px;
       }
 
       .share-title {
-        margin-top: 30px;
-      font-size: 24px;}
+        margin-top: 18px;
+      font-size: 16px;}
       
     }

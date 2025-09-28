@@ -4,9 +4,8 @@
   margin: 0 auto;
   padding: 40px 20px;
   background: transparent !important;
-  /* Overflow control */
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
 }
 
 .update-heading {
@@ -20,35 +19,24 @@
 .slider-container {
   position: relative;
   width: 100%;
-  /* Important: Hide horizontal overflow only */
-  overflow-x: hidden;
-  overflow-y: hidden; /* Scroll bar remove */
-  padding: 10px 0;
+  overflow: hidden;
+  padding: 20px 0;
   background: transparent !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .updates-slider {
   display: flex;
   transition: transform 0.3s ease;
   gap: 20px;
-  padding: 10px 0;
   width: 100%;
-  /* Prevent any overflow issues */
-  box-sizing: border-box;
-  /* Scroll bar remove */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  max-width: 1200px;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.updates-slider::-webkit-scrollbar {
-  display: none;
-}
-
-/* PC Version - Post Box */
 .update-card {
-  flex: 0 0 calc(20% - 16px);
-  min-width: 0;
+  flex: 0 0 calc(33.333% - 14px); /* 3 cards per view on desktop */
   background: white;
   border-radius: 12px;
   padding: 25px;
@@ -59,10 +47,9 @@
   min-height: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  /* Prevent content overflow */
-  overflow: hidden;
-  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .update-card:active {
@@ -80,12 +67,8 @@
   color: #222;
   font-weight: 600;
   line-height: 1.4;
-  text-align: left;
-  /* Prevent text overflow */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  text-align: center;
+  width: 100%;
 }
 
 .update-card p {
@@ -94,55 +77,55 @@
   color: #666;
   line-height: 1.6;
   flex-grow: 1;
-  text-align: left;
-  /* Prevent text overflow */
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  text-align: center;
+  width: 100%;
 }
 
 .update-card small {
   color: #888;
   font-size: 0.85rem;
-  text-align: left;
-}
-
-.dots-container {
-  display: flex !important;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 30px;
-  flex-wrap: wrap;
-  visibility: visible !important;
-  opacity: 1 !important;
+  text-align: center;
+  display: block;
   width: 100%;
-  position: relative;
-  z-index: 10;
 }
 
-.dot {
-  width: 12px;
-  height: 12px;
+/* Arrow Buttons - PC Version */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: white;
+  border: 1px solid #d1d5db;
   border-radius: 50%;
-  background: #ddd;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: 2px solid transparent;
-  visibility: visible !important;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   opacity: 1 !important;
-  display: inline-block !important; /* Changed to inline-block */
-  flex-shrink: 0;
+  visibility: visible !important;
 }
 
-.dot:hover {
-  background: #aaa;
-  transform: scale(1.2);
-}
-
-.dot.active {
+.slider-arrow:hover {
   background: #007bff;
-  transform: scale(1.2);
+  color: white;
+  border-color: #007bff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-arrow-left {
+  left: 20px; /* PC version - slightly inside */
+}
+
+.slider-arrow-right {
+  right: 20px; /* PC version - slightly inside */
 }
 
 .loading-updates, .no-updates {
@@ -155,7 +138,7 @@
   width: 100%;
 }
 
-/* Dark Mode Styles */
+/* Dark Mode */
 html.dark-mode .update-heading {
   color: #ffffff;
 }
@@ -182,140 +165,150 @@ html.dark-mode .update-card small {
   color: #a0aec0;
 }
 
-html.dark-mode .dot {
-  background: #4a5568;
+html.dark-mode .slider-arrow {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
 }
 
-html.dark-mode .dot:hover {
-  background: #718096;
-}
-
-html.dark-mode .dot.active {
+html.dark-mode .slider-arrow:hover {
   background: #63b3ed;
+  border-color: #63b3ed;
+  color: white;
 }
 
-html.dark-mode .loading-updates,
-html.dark-mode .no-updates {
-  color: #a0aec0;
-}
-
-/* Responsive Design */
-@media (max-width: 1200px) {
-  .update-card { 
-    flex: 0 0 calc(25% - 15px);
-  }
-}
-
+/* Tablet */
 @media (max-width: 1024px) {
-  .update-card { 
-    flex: 0 0 calc(33.333% - 14px);
+  .update-card {
+    flex: 0 0 calc(50% - 10px); /* 2 cards per view on tablet */
+  }
+  
+  .slider-arrow-left {
+    left: 15px;
+  }
+  
+  .slider-arrow-right {
+    right: 15px;
   }
 }
 
+/* Mobile - Single Card Centered */
 @media (max-width: 768px) {
-  .update-card { 
-    flex: 0 0 calc(50% - 10px);
-    padding: 20px;
-  }
-  .latest-updates-section { 
-    padding: 30px 15px;
-  }
-  .update-heading { 
-    font-size: 1.7rem;
-  }
-}
-
-/* Mobile Version Fix */
-@media (max-width: 480px) {
   .latest-updates-section {
-    padding: 20px 10px;
-    width: 100%;
-    overflow: hidden;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   .slider-container {
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden; /* Scroll bar remove */
-    padding: 0;
+    overflow: hidden;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
   
   .updates-slider {
     display: flex;
     gap: 15px;
-    padding: 10px;
-    width: max-content;
+    width: 100%;
+    max-width: 320px;
+    justify-content: flex-start;
   }
   
   .update-card {
-    flex: 0 0 280px !important;
-    width: 280px !important;
+    flex: 0 0 100% !important;
+    width: 100% !important;
     min-height: 160px;
-    margin: 0;
     padding: 20px;
+    margin: 0 !important;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+  }
+  
+  .update-card.active {
+    transform: scale(1);
+  }
+  
+  /* Mobile Arrow Buttons - More inside */
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+  }
+  
+  .slider-arrow-left {
+    left: 10px !important; /* Mobile - more inside */
+  }
+  
+  .slider-arrow-right {
+    right: 10px !important; /* Mobile - more inside */
   }
   
   .update-heading {
     font-size: 1.5rem;
     margin-bottom: 20px;
-  }
-  
-  .dots-container {
-    margin-top: 25px;
-    display: flex !important;
-    visibility: visible !important;
-    justify-content: center;
+    text-align: center;
+    width: 100%;
   }
 }
 
 /* Small mobile devices */
-@media (max-width: 360px) {
+@media (max-width: 480px) {
+  .latest-updates-section {
+    padding: 20px 10px;
+  }
+  
+  .updates-slider {
+    max-width: 300px;
+  }
+  
   .update-card {
-    flex: 0 0 260px !important;
-    width: 260px !important;
-    padding: 18px;
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-height: 140px;
+    padding: 15px;
+  }
+  
+  .slider-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+  
+  /* Even more inside for small mobile */
+  .slider-arrow-left {
+    left: 5px !important;
+  }
+  
+  .slider-arrow-right {
+    right: 5px !important;
+  }
+  
+  .update-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .update-card p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
   }
 }
 
-/* Touch device improvements */
-@media (hover: none) and (pointer: coarse) {
-  .update-card:hover {
-    transform: none;
-  }
-}
-
-/* Prevent text selection and improve touch */
+/* Prevent text selection */
 .updates-slider {
   user-select: none;
   -webkit-user-select: none;
-  -webkit-overflow-scrolling: touch;
-  touch-action: pan-y;
 }
 
-/* Ensure everything visible and no overflow */
-.latest-updates-section * {
-  background: transparent !important;
-}
-
-.slider-container,
-.updates-slider {
-  background: transparent !important;
-}
-
-/* Global fix to prevent layout breaking */
-body {
-  overflow-x: hidden;
-}
-
-/* Force dots to be visible with high specificity */
-#dotsContainer.dots-container {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-#dotsContainer.dots-container .dot {
-  display: inline-block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+/* Hide dots container */
+.dots-container {
+  display: none !important;
 }

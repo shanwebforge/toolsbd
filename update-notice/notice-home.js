@@ -5,7 +5,6 @@ let app, db;
 let currentIndex = 0;
 let cardPerView = 5;
 let isDragging = false, startX = 0, startScrollLeft = 0;
-let autoSlideInterval;
 let totalSlides = 0;
 
 export function initUpdatesSlider() {
@@ -54,7 +53,6 @@ export function initUpdatesSlider() {
     }
     
     renderSlides(updates, slider, dotsContainer);
-    startAutoSlide();
   });
 
   function updateCardPerView() {
@@ -88,7 +86,7 @@ function renderSlides(updates, slider, dotsContainer) {
     slider.appendChild(card);
   });
 
-  // Create dots based on total slides
+  // Create exactly 5 dots (as requested)
   createDots(dotsContainer);
 
   // Add drag events
@@ -101,17 +99,20 @@ function renderSlides(updates, slider, dotsContainer) {
 function createDots(dotsContainer) {
   dotsContainer.innerHTML = "";
   
-  // Calculate total dots based on slides and visible cards
-  const totalDots = Math.max(totalSlides - cardPerView + 1, 1);
+  // Always create exactly 5 dots
+  const totalDots = 5;
   
   for (let i = 0; i < totalDots; i++) {
     const dot = document.createElement("span");
     dot.className = "dot";
     if (i === 0) dot.classList.add("active");
     dot.addEventListener("click", () => { 
-      currentIndex = i; 
+      // Calculate actual slide index based on dot click
+      const maxIndex = Math.max(totalSlides - cardPerView, 0);
+      const slideIndex = Math.floor((i / totalDots) * (maxIndex + 1));
+      currentIndex = Math.min(slideIndex, maxIndex);
+      
       updateSlider(document.getElementById("updatesSlider")); 
-      resetAutoSlide();
     });
     dotsContainer.appendChild(dot);
   }
@@ -124,12 +125,14 @@ function addDragEvents(slider) {
     startScrollLeft = currentIndex * (100 / cardPerView);
     slider.style.cursor = 'grabbing';
     slider.style.transition = 'none';
-    clearInterval(autoSlideInterval);
+    
+    // Prevent default to avoid text selection and page scroll
+    e.preventDefault();
   }
 
   const dragging = (e) => {
     if (!isDragging) return;
-    e.preventDefault();
+    
     const currentX = e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
     const diff = (currentX - startX) / slider.offsetWidth * 100;
     const newScroll = startScrollLeft - diff;
@@ -139,16 +142,18 @@ function addDragEvents(slider) {
     const boundedScroll = Math.max(0, Math.min(newScroll, maxScroll));
     
     slider.style.transform = `translateX(-${boundedScroll}%)`;
+    
+    // Prevent default to avoid page scroll
+    e.preventDefault();
   }
 
-  const dragStop = () => {
+  const dragStop = (e) => {
     if (!isDragging) return;
     isDragging = false;
     slider.style.cursor = 'grab';
     slider.style.transition = 'transform 0.3s ease';
     
     // Snap to nearest card
-    const sliderElement = document.getElementById("updatesSlider");
     const draggedPercentage = parseFloat(slider.style.transform.replace('translateX(-', '').replace('%)', '')) || 0;
     currentIndex = Math.round(draggedPercentage / (100 / cardPerView));
     
@@ -156,8 +161,7 @@ function addDragEvents(slider) {
     const maxIndex = Math.max(totalSlides - cardPerView, 0);
     currentIndex = Math.max(0, Math.min(currentIndex, maxIndex));
     
-    updateSlider(sliderElement);
-    startAutoSlide();
+    updateSlider(slider);
   }
 
   // Remove existing events
@@ -169,16 +173,14 @@ function addDragEvents(slider) {
   slider.removeEventListener('touchend', dragStop);
   slider.removeEventListener('mouseleave', dragStop);
 
-  // Add new events
+  // Add new events with proper options
   slider.addEventListener('mousedown', dragStart);
   slider.addEventListener('touchstart', dragStart, { passive: false });
   slider.addEventListener('mousemove', dragging);
   slider.addEventListener('touchmove', dragging, { passive: false });
   slider.addEventListener('mouseup', dragStop);
-  slider.addEventListener('touchend', dragStop);
+  slider.addEventListener('touchend', dragStop, { passive: true });
   slider.addEventListener('mouseleave', dragStop);
-
-  slider.style.cursor = 'grab';
 }
 
 function updateSlider(slider) {
@@ -189,7 +191,7 @@ function updateSlider(slider) {
   
   // Mobile e perfect centering
   if (window.innerWidth <= 480 && cardPerView === 1) {
-    const cardWidth = 300;
+    const cardWidth = 280; // Match CSS mobile card width
     const containerWidth = slider.parentElement.offsetWidth;
     const totalMoveableSlides = Math.max(totalSlides - 1, 0);
     
@@ -206,27 +208,19 @@ function updateSlider(slider) {
     slider.style.transform = `translateX(-${translateX}%)`;
   }
 
-  // Dots update
+  // Update dots - always show 5 dots with active state based on position
   const dots = document.querySelectorAll(".dot");
-  dots.forEach(d => d.classList.remove("active"));
-  if(dots[currentIndex]) {
-    dots[currentIndex].classList.add("active");
+  const maxIndex = Math.max(totalSlides - cardPerView, 0);
+  
+  if (maxIndex > 0) {
+    const activeDotIndex = Math.floor((currentIndex / maxIndex) * 4); // Map to 0-4 for 5 dots
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === Math.min(activeDotIndex, 4));
+    });
+  } else {
+    // Only one slide, show first dot as active
+    dots.forEach((dot, index) => {
+      dot.classList.toggle("active", index === 0);
+    });
   }
-}
-
-function startAutoSlide() {
-  clearInterval(autoSlideInterval);
-  autoSlideInterval = setInterval(() => {
-    const slider = document.getElementById("updatesSlider");
-    if (!slider || totalSlides <= cardPerView) return;
-    
-    const maxIndex = Math.max(totalSlides - cardPerView, 0);
-    currentIndex = (currentIndex + 1) % (maxIndex + 1);
-    updateSlider(slider);
-  }, 5000);
-}
-
-function resetAutoSlide() {
-  clearInterval(autoSlideInterval);
-  startAutoSlide();
 }

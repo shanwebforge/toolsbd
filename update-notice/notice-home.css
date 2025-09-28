@@ -27,9 +27,10 @@
   transition: transform 0.3s ease;
   gap: 20px;
   padding: 10px 0;
+  width: 100%;
 }
 
-/* PC Version - Post Box Size Increase */
+/* PC Version - Post Box */
 .update-card {
   flex: 0 0 calc(20% - 16px);
   min-width: 0;
@@ -40,7 +41,6 @@
   border: 1px solid #e1e5e9;
   transition: all 0.3s ease;
   cursor: pointer;
-  width: 280px;
   min-height: 180px;
   display: flex;
   flex-direction: column;
@@ -77,14 +77,13 @@
 }
 
 .dots-container {
-  display: flex;
+  display: flex !important;
   justify-content: center;
   gap: 10px;
   margin-top: 30px;
   flex-wrap: wrap;
   visibility: visible !important;
   opacity: 1 !important;
-  display: flex !important;
 }
 
 .dot {
@@ -117,6 +116,7 @@
   font-style: italic;
   font-size: 1.1rem;
   background: transparent !important;
+  width: 100%;
 }
 
 /* Dark Mode Styles */
@@ -167,21 +167,18 @@ html.dark-mode .no-updates {
 @media (max-width: 1200px) {
   .update-card { 
     flex: 0 0 calc(25% - 15px);
-    width: 250px;
   }
 }
 
 @media (max-width: 1024px) {
   .update-card { 
     flex: 0 0 calc(33.333% - 14px);
-    width: 240px;
   }
 }
 
 @media (max-width: 768px) {
   .update-card { 
     flex: 0 0 calc(50% - 10px);
-    width: 220px;
     padding: 20px;
   }
   .latest-updates-section { 
@@ -192,17 +189,16 @@ html.dark-mode .no-updates {
   }
 }
 
-/* Mobile Version Fix - Center Everything */
+/* Mobile Version Fix */
 @media (max-width: 480px) {
   .latest-updates-section {
     padding: 20px 10px;
-    display: block;
     width: 100%;
   }
   
   .slider-container {
     width: 100%;
-    overflow: visible;
+    overflow: hidden;
     padding: 0;
   }
   
@@ -210,55 +206,34 @@ html.dark-mode .no-updates {
     display: flex;
     gap: 15px;
     padding: 10px;
-    justify-content: flex-start;
     width: max-content;
   }
   
   .update-card {
-    flex: 0 0 300px !important; /* Fixed width for mobile */
-    width: 300px !important;
+    flex: 0 0 280px !important;
+    width: 280px !important;
     min-height: 160px;
-    margin: 0 10px;
+    margin: 0;
     padding: 20px;
-    text-align: left; /* Text left align */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .update-card h3,
-  .update-card p,
-  .update-card small {
-    text-align: left; /* Ensure text is left aligned */
-    width: 100%;
   }
   
   .update-heading {
     font-size: 1.5rem;
     margin-bottom: 20px;
-    text-align: center;
   }
   
   .dots-container {
     margin-top: 25px;
-    justify-content: center;
     display: flex !important;
     visibility: visible !important;
-    opacity: 1 !important;
-  }
-  
-  .dot {
-    display: inline-block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
   }
 }
 
 /* Small mobile devices */
 @media (max-width: 360px) {
   .update-card {
-    flex: 0 0 280px !important;
-    width: 280px !important;
+    flex: 0 0 260px !important;
+    width: 260px !important;
     padding: 18px;
   }
 }
@@ -274,6 +249,7 @@ html.dark-mode .no-updates {
 .updates-slider {
   user-select: none;
   -webkit-user-select: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Ensure everything visible */
@@ -284,16 +260,4 @@ html.dark-mode .no-updates {
 .slider-container,
 .updates-slider {
   background: transparent !important;
-}
-
-/* Force dots to be visible */
-#dotsContainer {
-  display: flex !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-/* Fix slider movement */
-.updates-slider {
-  transform: translateX(0);
 }

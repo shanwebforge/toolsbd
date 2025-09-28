@@ -20,7 +20,14 @@ header {
 
 /* বাকি CSS আপনার মতোই থাকবে */
 
+.m-icon {
 
+  filter: invert(1);
+}
+
+html.dark-mode .m-icon {
+  filter: invert(0);
+}
     .search-icon {
       cursor: pointer;
     }

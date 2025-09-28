@@ -10,7 +10,9 @@
         console.error(err);
       });
   }
+  
 
+  loadSection("/update-notice/notice-home.html", "latest-updates-section");
   loadSection("/highlight-page/highlight.html", "toper-section");
   loadSection("/keyboard-sortcut/key-sort.html", "key-section");
   loadSection("/oparator/oparator.html", "sort-section");

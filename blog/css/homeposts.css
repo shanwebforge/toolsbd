@@ -147,6 +147,25 @@
   margin-left: 14px !important;
   margin-right: 14px;
 }
+
+.seemore {
+  background: linear-gradient(135deg, #077A7D, #0aa0a3);
+  color: white;
+  padding: 8px 30px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: block;
+  width: fit-content;
+  margin: 20px auto;
+  text-align: center;
+  transition: background 0.3s; /* hover এ smooth effect */
+}
+
+.seemore:hover {
+  background: linear-gradient(135deg, #0aa0a3, #077A7D);
+}
+
+
 }
 
 
@@ -167,3 +186,54 @@ html.dark-mode .post-description {
 html.dark-mode .post-stats {
   color: #e0e0e0;
 }
+
+
+
+
+
+
+
+
+
+/* Notice Home Css */
+
+.latest-updates-section {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #f9f9f9;
+  overflow: hidden;
+  position: relative;
+}
+html.dark-mode .latest-updates-section { background: #1f1f1f; }
+
+.update-heading {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #077A7D;
+}
+html.dark-mode .update-heading { color: #0aa0a3; }
+
+.slider-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.updates-slider {
+  display: flex;
+  transition: transform 0.3s ease;
+  gap: 1rem;
+}
+
+.update-card {
+  min-width: 100%;
+  box-sizing: border-box;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+html.dark-mode .update-card { background: #2a2a2a; color: #f0f0f0; box-shadow: 0 2px 8px rgba(255,255,255,0.05); }

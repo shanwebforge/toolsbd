@@ -125,11 +125,34 @@
 
 <div id="toper-section">লোড হচ্ছে...</div>
 
-<section>
+
+<section class="latest-updates-section">
   <h2 class="update-heading">Latest Updates</h2>
-  <div id="updatesGrid" class="updates-grid"></div>
-  <a href="/blog/update-notice" class="see-all-btn">See All Updates</a>
+  <div class="slider-container">
+    <div id="updatesSlider" class="updates-slider">
+      <div class="loading-updates">Loading updates...</div>
+    </div>
+    <div id="dotsContainer" class="dots-container"></div>
+  </div>
 </section>
+
+<link rel="stylesheet" href="/update-notice/notice-home.css" />
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const module = await import('/update-notice/notice-home.js');
+      if (typeof module.initUpdatesSlider === 'function') {
+        module.initUpdatesSlider();
+      }
+    } catch (error) {
+      console.error('Error loading updates slider:', error);
+    }
+  });
+</script>
+
+
+
 
 
 
@@ -191,6 +214,7 @@
 <div class="post-container"><section class="recent-posts-section">
   <div class="cat-title"><p class="cat-title-name">Recent Posts</p></div>
   <div id="postsContainer" class="posts-grid"></div>
+  <a class="seemore" href="/blog/">See All Posts</a>
 </section></div>
 
 <!-- Font Awesome for icons -->
@@ -262,10 +286,11 @@
 
 
   <!-- ✅ Scripts -->
+
   <script src="/components/headerhome.js"></script>
   <script src="/components/footer.js"></script>
   <script src="/scripts/script.js"></script>
- <script type="module" src="/blog/js/loadRecentPosts.js"></script>
+ <script type="module" src="/blog/js/loadRecentPostsHome.js"></script>
   <script src="/scripts/fetch.js"></script>
   <script src="/scripts/dpop.js"></script>
   <script src="/scripts/sadow.js"></script>

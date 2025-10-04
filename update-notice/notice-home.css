@@ -6,14 +6,14 @@
   padding: 40px 20px;
   background: transparent !important;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden; /* prevent horizontal scroll */
 }
 
 /* Slider container */
 .slider-container {
   position: relative;
   width: 100%;
-  overflow: hidden;
+  overflow-x: hidden; /* prevent horizontal overflow */
   padding: 20px 0;
 }
 
@@ -23,12 +23,14 @@
   transition: transform 0.3s ease;
   gap: 20px;
   will-change: transform;
+  box-sizing: border-box; /* important */
+  padding: 0 10px; /* prevent cards touching edges */
 }
 
-/* Update cards - FIXED: Better width calculation */
+/* Update cards */
 .update-card {
-  flex: 0 0 calc(33.333% - 14px);
-  box-sizing: border-box;
+  flex: 0 0 auto; /* do not force fixed width */
+  width: calc((100% - 40px)/3); /* 3 cards with gap 20px */
   min-height: 180px;
   background: #fff;
   border-radius: 12px;
@@ -43,6 +45,7 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   border: 1px solid #e1e5e9;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
 }
 
 .update-card:hover {
@@ -90,7 +93,7 @@
   font-weight: bold;
   color: #333;
   cursor: pointer;
-  z-index: 20;
+  z-index: 50;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   transition: all 0.2s ease;
 }
@@ -103,126 +106,29 @@
   right: 10px; 
 }
 
-.slider-arrow:hover {
-  background: #007bff;
-  color: #fff;
-  border-color: #007bff;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.slider-arrow:active {
-  transform: translateY(-50%) scale(0.95);
-}
-
-.slider-arrow.disabled {
-  opacity: 0.3;
-  pointer-events: none;
-  cursor: not-allowed;
-}
-
-/* No updates message */
-.no-updates {
-  width: 100%;
-  text-align: center;
-  padding: 40px 0;
-  font-size: 18px;
-  color: #555;
-  background: #f8f9fa;
-  border-radius: 12px;
-  border: 1px dashed #dee2e6;
-}
-
-/* Loading state */
-.slider-loading {
-  width: 100%;
-  text-align: center;
-  padding: 40px 0;
-  font-size: 16px;
-  color: #666;
-}
-
-/* Tablet responsive - FIXED: Better responsive design */
+/* Tablet responsive */
 @media (max-width: 768px) {
-  .latest-updates-section {
-    padding: 30px 15px;
-  }
-  
-  .update-card { 
-    flex: 0 0 calc(50% - 10px);
-    min-width: calc(50% - 10px); /* Added for better mobile support */
+  .update-card {
+    width: calc((100% - 20px)/2); /* 2 cards per row */
     min-height: 160px;
     padding: 20px;
   }
-
-  .update-card h3 {
-    font-size: 16px;
-  }
-
-  .update-card p {
-    font-size: 13px;
-  }
-
-  .slider-arrow {
-    width: 44px;
-    height: 44px;
-    font-size: 20px;
-  }
-  
-  /* Remove hover effects on touch devices */
-  @media (hover: none) {
-    .slider-arrow:hover {
-      background: #fff;
-      color: #333;
-      border-color: #d1d5db;
-      transform: translateY(-50%);
-    }
-    
-    .update-card:hover {
-      transform: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-  }
 }
 
-/* Mobile responsive - FIXED: Better mobile overflow handling */
+/* Mobile responsive */
 @media (max-width: 480px) {
-  .latest-updates-section {
-    padding: 20px 10px;
-  }
-  
-  .slider-container {
-    padding: 10px 0;
-    margin: 0 -10px; /* Compensate for card padding */
-  }
-  
-  .update-card { 
-    flex: 0 0 90%;
-    min-width: 90%; /* Ensure cards don't overflow */
+  .update-card {
+    width: 90%; /* single card centered */
+    margin: 0 auto;
     min-height: 140px;
     padding: 15px;
-    margin: 0 5%; /* Center cards on mobile */
-  }
-
-  .slider-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 18px;
-  }
-
-  .slider-arrow-left {
-    left: 5px;
-  }
-
-  .slider-arrow-right {
-    right: 5px;
   }
 }
 
 /* Extra small devices */
 @media (max-width: 360px) {
-  .update-card { 
-    flex: 0 0 95%;
-    min-width: 95%;
-    margin: 0 2.5%;
+  .update-card {
+    width: 95%;
+    margin: 0 auto;
   }
 }

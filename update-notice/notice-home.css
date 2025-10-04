@@ -1,3 +1,10 @@
+/* Prevent body overflow globally */
+body, html {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
 /* Latest Updates Section */
 .latest-updates-section {
   width: 100%;
@@ -6,15 +13,17 @@
   padding: 40px 20px;
   background: transparent !important;
   position: relative;
-  overflow-x: hidden; /* prevent horizontal scroll */
+  overflow: hidden; /* keep everything inside */
+  box-sizing: border-box;
 }
 
 /* Slider container */
 .slider-container {
   position: relative;
   width: 100%;
-  overflow-x: hidden; /* prevent horizontal overflow */
+  overflow: hidden; /* hide extra part */
   padding: 20px 0;
+  box-sizing: border-box;
 }
 
 /* Updates slider */
@@ -23,14 +32,13 @@
   transition: transform 0.3s ease;
   gap: 20px;
   will-change: transform;
-  box-sizing: border-box; /* important */
-  padding: 0 10px; /* prevent cards touching edges */
+  box-sizing: border-box;
 }
 
 /* Update cards */
 .update-card {
-  flex: 0 0 auto; /* do not force fixed width */
-  width: calc((100% - 40px)/3); /* 3 cards with gap 20px */
+  flex: 0 0 auto; /* prevent auto stretching */
+  max-width: 100%; /* never overflow parent */
   min-height: 180px;
   background: #fff;
   border-radius: 12px;
@@ -46,34 +54,7 @@
   border: 1px solid #e1e5e9;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-sizing: border-box;
-}
-
-.update-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.update-card:active {
-  cursor: grabbing;
-}
-
-.update-card h3 {
-  margin: 0 0 12px 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-}
-
-.update-card p {
-  margin: 0 0 10px 0;
-  font-size: 14px;
-  color: #666;
-  line-height: 1.4;
-}
-
-.update-card small {
-  font-size: 12px;
-  color: #888;
+  overflow: hidden;
 }
 
 /* Arrow Buttons */
@@ -95,21 +76,15 @@
   cursor: pointer;
   z-index: 50;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: all 0.2s ease;
 }
 
-.slider-arrow-left { 
-  left: 10px; 
-}
-
-.slider-arrow-right { 
-  right: 10px; 
-}
+/* Arrow positions */
+.slider-arrow-left { left: 10px; }
+.slider-arrow-right { right: 10px; }
 
 /* Tablet responsive */
 @media (max-width: 768px) {
   .update-card {
-    width: calc((100% - 20px)/2); /* 2 cards per row */
     min-height: 160px;
     padding: 20px;
   }
@@ -118,17 +93,17 @@
 /* Mobile responsive */
 @media (max-width: 480px) {
   .update-card {
-    width: 90%; /* single card centered */
-    margin: 0 auto;
     min-height: 140px;
     padding: 15px;
+    margin: 0 auto;
   }
 }
 
 /* Extra small devices */
 @media (max-width: 360px) {
   .update-card {
-    width: 95%;
+    min-height: 130px;
+    padding: 12px;
     margin: 0 auto;
   }
 }

@@ -1,8 +1,9 @@
 /* Prevent body overflow globally */
 body, html {
-  overflow-x: hidden;
+  overflow-x: hidden; /* horizontal scroll gone */
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 /* Latest Updates Section */
@@ -13,15 +14,16 @@ body, html {
   padding: 40px 20px;
   background: transparent !important;
   position: relative;
-  overflow: hidden; /* keep everything inside */
+  overflow: hidden; /* prevent slider overflow */
   box-sizing: border-box;
+  display: block; /* ensure natural height */
 }
 
 /* Slider container */
 .slider-container {
   position: relative;
   width: 100%;
-  overflow: hidden; /* hide extra part */
+  overflow-x: hidden; /* prevent horizontal scroll */
   padding: 20px 0;
   box-sizing: border-box;
 }
@@ -33,12 +35,13 @@ body, html {
   gap: 20px;
   will-change: transform;
   box-sizing: border-box;
+  padding: 0 10px; /* edge spacing */
 }
 
 /* Update cards */
 .update-card {
-  flex: 0 0 auto; /* prevent auto stretching */
-  max-width: 100%; /* never overflow parent */
+  flex: 0 0 auto; /* prevent stretching */
+  max-width: 100%; /* never exceed parent */
   min-height: 180px;
   background: #fff;
   border-radius: 12px;

@@ -1,8 +1,7 @@
-
 body, html {
   overflow-x: hidden;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   padding: 0;
   box-sizing: border-box;
 }
@@ -15,16 +14,16 @@ body, html {
   padding: 40px 20px;
   background: transparent !important;
   position: relative;
-  overflow: hidden; /* prevent slider overflow */
+  overflow: hidden;
   box-sizing: border-box;
-  display: block; /* ensure natural height */
+  display: block;
 }
 
 /* Slider container */
 .slider-container {
   position: relative;
   width: 100%;
-  overflow-x: hidden; /* prevent horizontal scroll */
+  overflow-x: hidden;
   padding: 20px 0;
   box-sizing: border-box;
 }
@@ -36,13 +35,13 @@ body, html {
   gap: 20px;
   will-change: transform;
   box-sizing: border-box;
-  padding: 0 10px; /* edge spacing */
+  padding: 0 10px;
 }
 
 /* Update cards */
 .update-card {
-  flex: 0 0 auto; /* prevent stretching */
-  max-width: 100%; /* never exceed parent */
+  flex: 0 0 auto;
+  max-width: 100%;
   min-height: 180px;
   background: #fff;
   border-radius: 12px;
@@ -59,6 +58,12 @@ body, html {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   box-sizing: border-box;
   overflow: hidden;
+}
+
+/* Update card hover effect */
+.update-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 /* Arrow Buttons */
@@ -80,6 +85,19 @@ body, html {
   cursor: pointer;
   z-index: 50;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+/* Arrow hover effect */
+.slider-arrow:hover {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-arrow:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
 /* Arrow positions */
@@ -88,18 +106,58 @@ body, html {
 
 /* Tablet responsive */
 @media (max-width: 768px) {
+  .slider-container {
+  position: relative;
+  width: 100%;
+  overflow-x: hidden;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
   .update-card {
     min-height: 160px;
     padding: 20px;
   }
+
+  .slider-arrow {
+    width: 34px;
+    height: 34px;
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #077A7D;
+  }
+
+  /* Arrow hover tablet */
+  .slider-arrow:hover {
+    background: transparent;
+    color: #077A7D;
+    border-color: #d1d5db;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .slider-arrow-left { left: 10px; }
+  .slider-arrow-right { right: 10px; }
 }
 
 /* Mobile responsive */
 @media (max-width: 480px) {
   .update-card {
     min-height: 140px;
-    padding: 15px;
+    padding: 10px 40px;
     margin: 0 auto;
+  }
+  .update-card h3 {
+    font-size: 16px;
+    margin: -12px;
+    color: #077A7D;
+  }
+
+  .update-card p {
+    font-size: 12px;  /* description */
+  }
+
+  .update-card small {
+    font-size: 10px; 
+    color: #9e9d9d;
   }
 }
 
@@ -110,4 +168,38 @@ body, html {
     padding: 12px;
     margin: 0 auto;
   }
+}
+
+/* Dark mode */
+html.dark-mode {
+  background: #1e293b;
+}
+
+html.dark-mode .update-card {
+  background: #1e293b;
+  border: 1px solid #333;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #ddd;
+}
+
+html.dark-mode .update-card h3 {
+  color: #fff;
+}
+
+html.dark-mode .update-card p,
+html.dark-mode .update-card small {
+  color: #aaa;
+}
+
+html.dark-mode .slider-arrow {
+  background: #1e293b;
+  color: #ddd;
+  border: 1px solid;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .slider-arrow:hover {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.1);
 }

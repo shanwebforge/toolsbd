@@ -128,31 +128,7 @@
 <div id="count-section">লোড হচ্ছে...</div>
 
 
-<section class="latest-updates-section">
-  <h2 class="update-heading">Latest Updates</h2>
-  <div class="slider-container">
-    <div id="updatesSlider" class="updates-slider">
-      <div class="loading-updates">Loading updates...</div>
-    </div>
-    <!-- Dots container hide kora, arrow show kora -->
-    <div id="dotsContainer" class="dots-container" style="display: none;"></div>
-  </div>
-</section>
 
-<link rel="stylesheet" href="/update-notice/notice-home.css" />
-
-<script type="module">
-  document.addEventListener('DOMContentLoaded', async () => {
-    try {
-      const module = await import('/update-notice/notice-home.js');
-      if (typeof module.initUpdatesSlider === 'function') {
-        module.initUpdatesSlider();
-      }
-    } catch (error) {
-      console.error('Error loading updates slider:', error);
-    }
-  });
-</script>
 
 
 

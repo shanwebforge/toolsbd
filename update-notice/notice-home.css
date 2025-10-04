@@ -1,7 +1,8 @@
-/* Prevent body overflow globally */
+
 body, html {
-  overflow-x: hidden; /* horizontal scroll gone */
-  margin: 0;
+  overflow-x: hidden;
+  margin-top: 50px;
+  margin-bottom: 50px;
   padding: 0;
   box-sizing: border-box;
 }

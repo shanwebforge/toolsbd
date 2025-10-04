@@ -12,11 +12,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -999;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  opacity: 0.15; /* ছবিটা খুব হালকা হবে */
+  opacity: 0.15;
 }
 
 /* 🌞 Light Mode (color + faint image) */
@@ -27,10 +27,15 @@ body::before {
   background-image: url('/assets/home-bg.webp');
 }
 
-/* 🌙 Dark Mode (color + faint image) */
+/* 🌙 Dark Mode Background (fixed) */
 .dark-mode body {
-  background-color: #0a0f1c; /* Dark base color */
+  background-color: #0a0f1c;
+  padding-top: 50px;
+  margin-top: 0px;
 }
+
+
+
 .dark-mode body::before {
   background-image: url('/assets/home-bg.webp');
 }
@@ -54,7 +59,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -1;    /* সবসময় content-এর নিচে */
+  z-index: 9999;   /* সব কিছুর উপরে */
   overflow: hidden;
 }
 
@@ -64,7 +69,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -1;    /* সবসময় content-এর নিচে */
+  z-index: 9999;
   overflow: hidden;
 }
 

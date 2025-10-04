@@ -150,6 +150,30 @@ body, html {
     margin: -12px;
     color: #077A7D;
   }
+/* 🌐 Mobile styles */
+
+  .update-heading {
+    display: block;     
+    margin: 0 auto;       
+    text-align: center;         
+    background-color: #077A7D;
+    color: #fff !important;
+    padding: 10px 15px 20px 15px;
+
+    border-radius: 8px 8px 0px 0px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: -35px;
+
+    transform-origin: center center;
+    animation: pinnedBounce 2s infinite ease-in-out;
+    width: fit-content; 
+    color: antiquewhite
+  
+  }
+
+
+
 
   .update-card p {
     font-size: 12px;  /* description */
@@ -160,7 +184,14 @@ body, html {
     color: #9e9d9d;
   }
 }
-
+/* 🎯 Bounce animation */
+@keyframes pinnedBounce {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(8deg); }   /* ডানে উঠবে, বাম নিচে নামবে */
+  50%  { transform: rotate(0deg); }   /* আবার মাঝখানে ফিরে আসবে */
+  75%  { transform: rotate(-8deg); }  /* বামে উঠবে, ডান নিচে নামবে */
+  100% { transform: rotate(0deg); }   /* আবার মাঝখানে */
+}
 /* Extra small devices */
 @media (max-width: 360px) {
   .update-card {

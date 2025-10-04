@@ -6,6 +6,17 @@
 </section>
 
 <style>
+  /* Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
 .latest-updates-section {
   max-width: 800px;
   margin: 2rem auto;

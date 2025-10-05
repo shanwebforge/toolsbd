@@ -1,42 +1,58 @@
 export function initUpdatesSlider() {
-  const slider = document.querySelector('.tools-slider-wrapper');
-  if (!slider) return;
+  const sliders = document.querySelectorAll('.tools-slider-wrapper');
+  if (!sliders.length) return;
 
-  let isDown = false;
-  let startX;
-  let scrollLeft;
+  sliders.forEach(slider => {
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let velocity = 0;
+    let momentumID;
 
-  slider.addEventListener('mousedown', (e) => {
-    isDown = true;
-    slider.style.cursor = 'grabbing';
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  });
+    const smoothMomentum = () => {
+      if (Math.abs(velocity) > 0.5) {
+        slider.scrollLeft -= velocity;
+        velocity *= 0.95; // friction
+        momentumID = requestAnimationFrame(smoothMomentum);
+      } else {
+        cancelAnimationFrame(momentumID);
+      }
+    };
 
-  slider.addEventListener('mouseleave', () => isDown = false);
-  slider.addEventListener('mouseup', () => isDown = false);
+    const startDrag = (x) => {
+      isDown = true;
+      startX = x - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+      velocity = 0;
+      cancelAnimationFrame(momentumID);
+      slider.style.cursor = 'grabbing';
+    };
 
-  slider.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const walk = x - startX;
-    slider.scrollLeft = scrollLeft - walk;
-  });
+    const stopDrag = () => {
+      isDown = false;
+      slider.style.cursor = 'grab';
+      momentumID = requestAnimationFrame(smoothMomentum);
+    };
 
-  // touch support
-  slider.addEventListener('touchstart', (e) => {
-    isDown = true;
-    startX = e.touches[0].pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  });
+    const onMove = (x) => {
+      if (!isDown) return;
+      const walk = x - startX;
+      velocity = walk - (scrollLeft - slider.scrollLeft);
+      slider.scrollLeft = scrollLeft - walk;
+    };
 
-  slider.addEventListener('touchend', () => isDown = false);
+    // Mouse events
+    slider.addEventListener('mousedown', (e) => startDrag(e.pageX));
+    slider.addEventListener('mousemove', (e) => onMove(e.pageX));
+    slider.addEventListener('mouseup', stopDrag);
+    slider.addEventListener('mouseleave', () => isDown && stopDrag());
 
-  slider.addEventListener('touchmove', (e) => {
-    if (!isDown) return;
-    const x = e.touches[0].pageX - slider.offsetLeft;
-    const walk = x - startX;
-    slider.scrollLeft = scrollLeft - walk;
+    // Touch events
+    slider.addEventListener('touchstart', (e) => startDrag(e.touches[0].pageX));
+    slider.addEventListener('touchmove', (e) => onMove(e.touches[0].pageX));
+    slider.addEventListener('touchend', stopDrag);
+
+    // Initial cursor
+    slider.style.cursor = 'grab';
   });
 }

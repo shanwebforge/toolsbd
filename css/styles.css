@@ -977,12 +977,15 @@ html.dark-mode .box-icon {
     font-size: 12px;
     
   }
-  .cat-title {
+.cat-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* title left, arrow right */
   font-size: 18px !important;
   font-weight: bold;
   margin-bottom: 6px;
-  text-align: left;
   margin-left: 0px;
+  text-align: left;
 }
 .cat-title-name {
   display: inline-block;
@@ -1003,6 +1006,28 @@ html.dark-mode .box-icon {
   height: 2px;
   width: 100%;
   border-radius: 2px;
+}
+
+
+.cat-title-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;           /* circular নয়, শুধু padding */
+  background-color: #077A7D;   /* green background */
+  border-radius: 6px;          /* smooth edges */
+  color: #fff;                 /* white arrow */
+  text-decoration: none;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.cat-title-link:hover {
+  background-color: #066264;   /* dark green on hover */
+}
+
+.cat-title-link i {
+  pointer-events: none; /* icon click pass */
 }
   .box-icon {
     font-size: 26px;
@@ -1057,6 +1082,9 @@ html.dark-mode body{
   box-sizing: border-box;
   word-wrap: break-word;  /* long text wraps to new line */
 }
+
+
+
 
 /* Mobile responsive */
 @media (max-width: 768px) {

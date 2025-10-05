@@ -167,6 +167,20 @@
     }
   });
 </script>
+
+<script type="module">
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const module = await import('/scripts/cat-slide.js');
+      if (typeof module.initUpdatesSlider === 'function') {
+        module.initUpdatesSlider();
+      }
+    } catch (error) {
+      console.error('Error loading updates slider:', error);
+    }
+  });
+</script>
+
 <div id="count-section">লোড হচ্ছে...</div>
 
 
@@ -323,6 +337,7 @@
   <script src="/components/headerhome.js"></script>
   <script src="/components/footer.js"></script>
   <script src="/scripts/script.js"></script>
+  
  <script type="module" src="/blog/js/loadRecentPostsHome.js"></script>
   <script src="/scripts/fetch.js"></script>
   <script src="/scripts/dpop.js"></script>

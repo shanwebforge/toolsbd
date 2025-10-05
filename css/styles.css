@@ -1021,6 +1021,58 @@ html.dark-mode body{
 
 
 
+
+
+/* Slider wrapper */
+.tools-slider-wrapper {
+  overflow-x: hidden; /* hide scrollbar */
+  cursor: grab;
+  width: 100%;
+}
+
+/* Drag container */
+.tools-grid {
+  display: flex;          /* horizontal flex */
+  gap: 20px;              /* spacing between boxes */
+  padding: 0 10px;
+  box-sizing: border-box;
+  user-select: none;      /* prevent text selection while dragging */
+}
+
+/* Each box fixed size */
+.box-link {
+  flex: 0 0 180px;        /* fixed width, won't shrink */
+  max-width: 180px;
+}
+
+/* Keep box height fixed */
+.clickable-box {
+  height: 150px;          /* fixed height for desktop */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  box-sizing: border-box;
+  word-wrap: break-word;  /* long text wraps to new line */
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .box-link {
+    flex: 0 0 140px;
+    max-width: 140px;
+  }
+  .clickable-box {
+    height: 120px;
+  }
+}
+
+
+
+
+
 /* =============================
    🌙 Dark Mode (html.dark-mode)
 ============================= */

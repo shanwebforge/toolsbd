@@ -54,7 +54,12 @@ button:hover {
 }
 
 
+@media (max-width: 768px) {
+  h2 {
+    font-size: 16px !important;
+  }
 
+}
 
 /* Dark Mode */
 html.dark-mode body {

@@ -113,78 +113,54 @@ document.querySelectorAll('img').forEach(function(img) {
 
 
 
-// 📦 ইউটিলিটি ফাংশন: ইংরেজি সংখ্যা → বাংলা সংখ্যা
+
+// 📦 ইংরেজি → বাংলা সংখ্যা কনভার্টার
 function banglaDigit(num) {
   const en = '0123456789'.split('');
   const bn = '০১২৩৪৫৬৭৮৯'.split('');
   return num.toString().split('').map(d => en.includes(d) ? bn[en.indexOf(d)] : d).join('');
 }
 
-// 🕐 টাইম কনভার্টার: HH:MM → বাংলা AM/PM সহ
+// 🕐 টাইম ফরম্যাটার (বাংলা এএম/পিএম সহ)
 function formatTimeToBangla(timeStr) {
   let [h, m] = timeStr.split(':').map(Number);
   const ampm = h >= 12 ? 'পি.এম' : 'এ.এম';
   h = h % 12 || 12;
-  return `${banglaDigit(h)}:${banglaDigit(m)} ${ampm}`;
+  return `${banglaDigit(h)}:${banglaDigit(m.toString().padStart(2, '0'))} ${ampm}`;
 }
 
-// 📍 লোকেশন নাম বের করা এবং ঠিকানাসহ ফেরত দেওয়া
-async function reverseGeocode(lat, lon) {
-  const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&addressdetails=1`;
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    const address = data.address;
-    const locationName =
-      address.hamlet ||
-      address.suburb ||
-      address.village ||
-      address.town ||
-      address.county ||
-      address.city ||
-      address.district ||
-      address.state ||
-      "অজানা";
-
-    const full = [
-      address.hamlet,
-      address.suburb,
-      address.village,
-      address.town,
-      address.county,
-      address.district,
-      address.state
-    ]
-      .filter(Boolean)
-      .join(", ");
-
-    return { name: locationName, full };
-  } catch {
-    return { name: "অজানা", full: "Bangladesh" };
-  }
-}
-
-function formatTimeToBangla(time) {
-  const banglaDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
-  return time.replace(/\d/g, d => banglaDigits[d]);
-}
-
+// 🕓 কত সময় বাকি তা বের করা
 function getTimeRemaining(time) {
   const now = new Date();
   const [h, m] = time.split(':').map(Number);
   const target = new Date();
-  target.setHours(h, m, 0, 0);
+
+  // Bangladesh Timezone (UTC+6)
+  target.setUTCHours(h - 6, m, 0, 0);
+
   if (target < now) target.setDate(target.getDate() + 1);
 
   let diff = target - now;
   const hours = Math.floor(diff / 1000 / 60 / 60);
   const minutes = Math.floor((diff / 1000 / 60) % 60);
 
-  return `${hours} ঘণ্টা ${minutes} মিনিট বাকি`;
+  return `${banglaDigit(hours)} ঘণ্টা ${banglaDigit(minutes)} মিনিট বাকি`;
 }
 
+// 📍 লোকেশন বের করা
+async function reverseGeocode(lat, lon) {
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+    const data = await res.json();
+    return { full: data.address.city || data.address.town || data.address.state || "অজানা" };
+  } catch {
+    return { full: "অজানা" };
+  }
+}
+
+// 🌙 নামাজের সময় লোড করা (বাংলাদেশ টাইম অনুযায়ী)
 async function getPrayerTimes(lat, lon, displayName) {
-  const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2&school=1`;
+  const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2&school=1&timezonestring=Asia/Dhaka`;
   try {
     const res = await fetch(url);
     const data = await res.json();
@@ -213,19 +189,11 @@ async function getPrayerTimes(lat, lon, displayName) {
   }
 }
 
-async function reverseGeocode(lat, lon) {
-  try {
-    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
-    const data = await res.json();
-    return { full: data.address.city || data.address.town || data.address.state || "অজানা" };
-  } catch {
-    return { full: "অজানা" };
-  }
-}
-
+// 📍 ইউজারের লোকেশন নেওয়া
 function getUserLocation() {
   if (!navigator.geolocation) {
     document.getElementById("location").textContent = "⚠️ লোকেশন পাওয়া যায়নি";
+    getPrayerTimes(23.8103, 90.4125, "ঢাকা");
     return;
   }
 
@@ -240,6 +208,7 @@ function getUserLocation() {
 }
 
 getUserLocation();
+
 
 
 

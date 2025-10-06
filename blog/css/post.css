@@ -1,8 +1,17 @@
+/* 🌙 Base Styling */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   background: #f0f2f5;
   padding: 2rem;
+  color: #222;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* 🌓 Dark Mode */
+html.dark-mode body {
+  background: #0d1117;
+  color: #e6edf3;
 }
 
 .post-container {
@@ -12,12 +21,24 @@ body {
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+/* Dark Mode Box */
+html.dark-mode .post-container {
+  background: #161b22;
+  box-shadow: 0 0 20px rgba(255,255,255,0.05);
 }
 
 .post-title {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #333;
+  transition: color 0.3s;
+}
+
+html.dark-mode .post-title {
+  color: #fff;
 }
 
 .post-meta {
@@ -25,12 +46,14 @@ body {
   align-items: center;
   gap: 1rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .post-meta img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  border: 2px solid #077A7D;
 }
 
 .user-role {
@@ -38,10 +61,15 @@ body {
   color: gray;
 }
 
+html.dark-mode .user-role {
+  color: #aaa;
+}
+
 .post-thumbnail {
   max-width: 100%;
   border-radius: 8px;
   margin: 1rem 0;
+  display: block;
 }
 
 .post-description {
@@ -49,6 +77,11 @@ body {
   line-height: 1.7;
   margin-top: 1rem;
   color: #444;
+  transition: color 0.3s;
+}
+
+html.dark-mode .post-description {
+  color: #ccc;
 }
 
 .post-actions {
@@ -56,9 +89,59 @@ body {
   display: flex;
   gap: 1.5rem;
   font-size: 1.2rem;
+  flex-wrap: wrap;
 }
 
 .post-actions i {
   margin-right: 0.5rem;
   color: #555;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+html.dark-mode .post-actions i {
+  color: #bbb;
+}
+
+.post-actions i:hover {
+  color: #077A7D;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 1rem;
+  }
+
+  .post-container {
+    padding: 1.2rem;
+  }
+
+  .post-title {
+    font-size: 1.5rem;
+  }
+
+  .post-meta img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .post-description {
+    font-size: 1rem;
+  }
+
+  .post-actions {
+    justify-content: space-around;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-title {
+    font-size: 1.3rem;
+  }
+
+  .post-description {
+    line-height: 1.5;
+  }
 }

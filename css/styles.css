@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  background-color: #edf6fc;
+  background-color: #fde7ce !important;
   min-height: 100vh;
   padding: 100px 70px 50px;
   color: #000;
@@ -30,7 +30,19 @@ body {
     padding: 100px 10px 50px;
   }
 }
+/* Desktop version */
+@media (min-width: 769px) {
+  body {
+    margin: 0;
+    background-color: #edf6fc;
+    min-height: 100vh;
+    padding: 50px 100px 70px 100px !important;
 
+    color: #000;
+    font-weight: 700;
+    font-family: "Alkatra", "Archivo Black", "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
+  }
+}
 /* ✅ notice borad */
   .updates-grid {
     display: grid;
@@ -272,14 +284,14 @@ html.dark-mode .download-note {
 /* Close (×) button */
 .app-modal-close {
   position: absolute;
-  top: -14px;
-  right: -14px;
+  top: 8px;
+  right: 22px;
   width: 36px;
   height: 36px;
   border-radius: 50%;
   border: none;
-  background: #fff;
-  color: #111;
+  background: #df3704;
+  color: #fff;
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
@@ -295,7 +307,7 @@ html.dark-mode .download-note {
 
 /* Dark mode tweaks */
 html.dark-mode .app-modal-backdrop { background: rgba(0,0,0,0.6); }
-html.dark-mode .app-modal-close { background: #0b1220; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.6); }
+html.dark-mode .app-modal-close { background: #df3704; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.6); }
 
 /* মোবাইলে একটু টপ/বটম গ্যাপ */
 @media (max-width: 600px) {
@@ -305,171 +317,194 @@ html.dark-mode .app-modal-close { background: #0b1220; color: #fff; box-shadow: 
 
 
 
-/* Namaj Section */
-.namaj-box {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
 
+
+
+
+
+.container {
+  max-width: 1200px;
+  width: 100%;
 }
 
-.namaj-content {
+.header {
   display: flex;
   justify-content: space-between;
-  background: #fff;
-  gap: 10px;
-  flex-wrap: wrap;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-  text-decoration: none !important;
-    margin-left: 40px;
-  margin-right: 40px;
-}
-
-
-
-.left-box {
-  width: 100%;
-  max-width: 500px;
-  text-align: left;
-}
-
-.left-box h2,
-.left-box h3 {
-  color: #077A7D;
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.left-box p.date-line {
-  font-size: 14px;
-  margin: 4px 0;
-  color: #f1f5f9;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 #location {
-  font-size: 14px;
-  color: #555;
-}
-
-.date-box {
-  background: #1e293b;
-  padding: 30px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 10px #077A7D;
-}
-
-.date-name {
-  display: inline-block;
-  position: relative;
-  font-size: 28px;
-  font-weight: bold;
-  padding-bottom: 10px;
+  font-size: 1.2rem;
   color: #077A7D;
-  margin-bottom: 30px;
 }
 
-.date-name::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  width: 100%;
-  background: #077A7D;
-  border-radius: 5px;
+#location i {
+  margin-right: 5px;
 }
 
-.right-box {
-  flex: 1;
+.prayer-title {
+  font-size: 1.3rem;
+  color: #333;
+  text-align: left;
 }
 
-.right-box p {
-  margin: 8px 0;
-  padding: 8px 10px;
-  background: #077A7D;
-  border-radius: 6px;
-  font-size: 16px;
-  color: #ffffff;
+.prayer-list {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
-@media (max-width: 600px) {
-  .namaj-box {
-    padding: 12px;
-    border-radius: 10px;
+.prayer-box {
+  flex: 1 1 0;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+  height: 100px;
+}
 
+.prayer-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
 
-  }
+.prayer-time {
+  font-size: 1rem;
+  color: #077A7D;
+  margin-bottom: 8px;
+}
 
-  .namaj-content {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 12px;
-    gap: 8px;
-    justify-content: space-between;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
+.time-remaining {
+  font-size: 0.9rem;
+  color: #555;
+  font-weight: bold;
+}
 
-  .left-box,
-  .right-box {
-    width: 48%;
-  }
-
-  .left-box h2 {
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-  .left-box h3 {
-    font-size: 14px;
-    margin-bottom: 6px !important;
-  }
-  .left-box p.date-line {
-    font-size: 11px;
-    margin: 0px 0;
-  }
+/* Responsive */
+@media (max-width: 1024px) {
+  .header {
+  margin-bottom: 0px;
+}
+  .prayer-box {
+  height: 100px;
+}
+  .prayer-name { font-size: 10px !important; }
+  .prayer-time { font-size: 14px !important;}
+  .time-remaining { font-size: 10px !important; }
 
   #location {
-    font-size: 11px;
-    margin-top: 1px;
-  }
+  font-size: 12px;
+}
 
-  .left-box p {
-    margin: 3px 0;  /* vertical spacing কমানো */
-    line-height: 1.2;
-  }
+#location i {
+  margin-right: 5px;
+}
 
-  .right-box p {
-    font-size: 12px;
-    padding: 8px 6px;
-    margin: 4px 10px;
-  }
+.prayer-title {
+  font-size: 12px;
+}
+}
 
+@media (max-width: 768px) {
+    .prayer-box {
+  height: 100px;
+}
+  .prayer-name { font-size: 0.95rem; }
+  .prayer-time { font-size: 0.9rem; }
+  .time-remaining { font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+    .prayer-box {
+  height: 100px;
+}
+  .prayer-name { font-size: 0.85rem; }
+  .prayer-time { font-size: 0.8rem; }
+  .time-remaining { font-size: 0.75rem; }
+}
+
+
+html.dark-mode .prayer-box {
+    background: #1e293b;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+html.dark-mode .prayer-name { color: white; font-size: 10px;}
+html.dark-mode .prayer-time { color: white; font-size: 14px; font-weight: 900;}
+html.dark-mode .time-remaining { color: #ddd; font-size: 10px;}
+html.dark-mode .prayer-title { color: white;}
+ 
+.date-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+.date-box p {
+  margin: 5px 0;
+  flex: 1 1 30%;
+  font-size: 1rem;
+}
+
+.date-box strong {
+  color: #fff;
+  margin-right: 5px;
+  background: #077A7D;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .date-box {
-    padding: 12px;
-    border-radius: 8px;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;       /* এক লাইনে না ধরলে পরের লাইনে যাবে */
+    justify-content: center;
+    gap: 6px;              /* p গুলোর মাঝে সামান্য ফাঁক */
   }
 
-  .date-name {
-    font-size: 18px;
-    margin-bottom: 16px;
+  .date-box p {
+    font-size: 12px !important;
+    margin: 0;
+    padding: 2px 6px;
+    line-height: 1.1;
+    font-weight: bold !important;
+    display: inline-flex;   /* inline এর মতো আচরণ কিন্তু alignment ঠিক রাখবে */
+    white-space: nowrap;    /* শব্দ ভাঙবে না */
   }
 }
 
-html.dark-mode .namaj-content{
-  background-color: #1e293b;
-border: 1px solid rgba(255, 255, 255, 0.15);}
-
-html.dark-mode .left-box h3, .left-box h2 {
-  color: #fff !important;}
 
 
+@media (max-width: 480px) {
+  .date-box p {
+    font-size: 0.85rem;
+  }
+}
+html.dark-mode .date-box {
+    background: #1e293b !important;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+html.dark-mode .date-box strong {color: #fff; font-weight: bold !important;}
 
 /* Help Catagorys */
 .help-container {
@@ -738,8 +773,19 @@ html.dark-mode .category-box::after {
   gap: 16px;
 }
 
-.sort-container a {
-  text-decoration: none;
+
+.sort-slide {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto); 
+  gap: 16px;
+  min-width: 80%; 
+  box-sizing: border-box;
+}
+.sort-slide a {
+  text-decoration: none; /* link underline বন্ধ করে দেয় */
+  color: inherit;        /* icon/text color ঠিক রাখে */
+  display: inline-block; /* optional, layout ঠিক রাখতে */
 }
 
 .sort-box {
@@ -753,6 +799,7 @@ html.dark-mode .category-box::after {
   transition: background 0.3s, transform 0.2s;
 }
 
+
 .sort-box:hover {
   background: #f0f0f0;
 }
@@ -760,6 +807,7 @@ html.dark-mode .category-box::after {
 .icon {
   font-size: 20px;
   color: #077A7D;
+
 }
 
 .sort-title {
@@ -800,10 +848,19 @@ html.dark-mode .sort-box:hover {
 }
 
 @media (max-width: 768px) {
-.sort-container {
-  
+
+/* Slide view 2x2 */
+.sort-slide {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
- }
+  grid-template-rows: repeat(2, auto); 
+  gap: 16px;
+  min-width: 80%; 
+  box-sizing: border-box;
+}
+
+
+
 .sort-title {
   font-size: 12px !important;
   font-weight: bold;
@@ -830,6 +887,21 @@ html.dark-mode .sort-box:hover {
   width: 100%;
   border-radius: 2px;
 }
+
+.sort-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cat-title-link i {
+  font-size: 20px;
+  color: #077A7D;
+  transition: color 0.3s ease;
+}
+.sort-title:hover .cat-title-link i {
+  color: #fff;
+}
+
 }
 
 
@@ -1013,22 +1085,28 @@ html.dark-mode .box-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 12px;           /* circular নয়, শুধু padding */
-  background-color: #077A7D;   /* green background */
-  border-radius: 6px;          /* smooth edges */
-  color: #fff;                 /* white arrow */
+  padding: 8px 12px;     
+  background-color: #077A7D;  
+  border-radius: 6px;  
+  color: #fff; 
   text-decoration: none;
   font-size: 16px;
   transition: background 0.3s ease;
 }
 
 .cat-title-link:hover {
-  background-color: #066264;   /* dark green on hover */
+  background-color: #077A7D;
 }
 
 .cat-title-link i {
-  pointer-events: none; /* icon click pass */
+  color: #077A7D;
+  transition: color 0.3s ease;
 }
+
+.cat-title-link:hover i {
+  color: #fff;
+}
+
   .box-icon {
     font-size: 26px;
     margin-bottom: 8px;
@@ -1050,29 +1128,29 @@ html.dark-mode body{
 
 /* Slider wrapper */
 .tools-slider-wrapper {
-  overflow-x: hidden; /* hide scrollbar */
+  overflow-x: hidden; 
   cursor: grab;
   width: 100%;
 }
 
 /* Drag container */
 .tools-grid {
-  display: flex;          /* horizontal flex */
-  gap: 20px;              /* spacing between boxes */
+  display: flex;  
+  gap: 20px;    
   padding: 0 10px;
   box-sizing: border-box;
-  user-select: none;      /* prevent text selection while dragging */
+  user-select: none;   
 }
 
-/* Each box fixed size */
+
 .box-link {
-  flex: 0 0 180px;        /* fixed width, won't shrink */
+  flex: 0 0 180px;  
   max-width: 180px;
 }
 
-/* Keep box height fixed */
+
 .clickable-box {
-  height: 150px;          /* fixed height for desktop */
+  height: 150px;  
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1080,7 +1158,7 @@ html.dark-mode body{
   text-align: center;
   padding: 15px;
   box-sizing: border-box;
-  word-wrap: break-word;  /* long text wraps to new line */
+  word-wrap: break-word; 
 }
 
 
@@ -1095,6 +1173,18 @@ html.dark-mode body{
   .clickable-box {
     height: 120px;
   }
+
+  .cat-title-link {
+    background: transparent;
+  margin-top: 10px;
+  padding: 4px 10px;     
+  border: #077A7D 1px solid !important;  
+  border-radius: 6px;  
+  color: #fff; 
+  text-decoration: none;
+  font-size: px;
+
+}
 }
 
 

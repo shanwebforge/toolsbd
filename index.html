@@ -125,7 +125,21 @@
 
 <div id="intro-section">লোড হচ্ছে...</div>
 
-<div id="img-slide-section">লোড হচ্ছে...</div>
+<script type="module">
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const module = await import('/scripts/date.js');
+      if (typeof module.initUpdatesSlider === 'function') {
+        module.initUpdatesSlider();
+      }
+    } catch (error) {
+      console.error('Error loading updates slider:', error);
+    }
+  });
+</script>
+
+<div id="count-section">লোড হচ্ছে...</div>
+
   <script src="/scripts/img-slide.js"></script>
   <script>
     function loadSection(url, elementId, callback){
@@ -152,7 +166,7 @@
     </div>
 
 </section>
-
+<div id="img-slide-section">লোড হচ্ছে...</div>
 <link rel="stylesheet" href="/update-notice/notice-home.css" />
 
 <script type="module">
@@ -181,7 +195,7 @@
   });
 </script>
 
-<div id="count-section">লোড হচ্ছে...</div>
+
 
 
 
@@ -207,19 +221,20 @@
       <div class="download-note">এই অ্যাপটি Android-এর জন্য তৈরি</div>
       
       <div class="download-wrapper">
-        <a href="/assets/ToolsBD.apk" download class="download-link" id="downloadLink">
+
+      </div>
+      
+      <button class="install-btn" id="installBtn" style="display: none;">⚡ Install Now</button>
+      <small class="install-note">⚠️ Install Now বাটনে ক্লিক করলে যদি ইনস্টল না হয়, তাহলে notification bar থেকে ফাইলটি খুলে Install করুন।</small>
+                 <a href="/assets/ToolsBD.apk" download class="download-link" id="downloadLink">
           <button class="appbtn" id="downloadBtn">
             <span class="btn-text">📲 অ্যাপ ডাউনলোড করুন</span>
             <span class="progress-bar" id="progressBar"></span>
             <span class="progress-percent" id="progressPercent" style="display: none;">0%</span>
           </button>
         </a>
-      </div>
-      
-      <button class="install-btn" id="installBtn" style="display: none;">⚡ Install Now</button>
-      <small class="install-note">⚠️ Install Now বাটনে ক্লিক করলে যদি ইনস্টল না হয়, তাহলে notification bar থেকে ফাইলটি খুলে Install করুন।</small>
     </div>
-    <!-- ✅ শেষ -->
+
   </div>
 </div>
 
@@ -227,33 +242,11 @@
 
 
 
-
-
-
-
-  <div class="main-section">
-    <div class="namaj-content">
-      <div class="left-box">
-        <h3>🕌 নামাজের সময় >> </h3>
-        <p id="location">📍 লোকেশন লোড হচ্ছে...</p>
-        <h2 class="date-name">আজ</h2>
-        <p><strong>বাংলা:</strong> <span id="bangla-date"></span></p>
-        <p><strong>Arabic:</strong> <span id="arabic-date"></span></p>
-        <p><strong>English:</strong> <span id="english-date"></span></p>
-      </div>
-      <div class="right-box" id="prayer-list">
-        <p>⏱ সময় লোড হচ্ছে...</p>
-      </div>
-    </div>
-  </div>
-
-
-
   <!-- Recent Posts Section -->
 <div class="post-container"><section class="recent-posts-section">
-  <div class="cat-title"><p class="cat-title-name">Recent Posts</p></div>
+  <div class="cat-title"><p class="cat-title-name">Recent Posts</p>
+    <a href="/blog/" class="cat-title-link"><i class="fas fa-right-from-bracket"></i></a></div>
   <div id="postsContainer" class="posts-grid"></div>
-  <a class="seemore" href="/blog/">See All Posts</a>
 </section></div>
 
 <!-- Font Awesome for icons -->
@@ -337,6 +330,7 @@
   <script src="/components/headerhome.js"></script>
   <script src="/components/footer.js"></script>
   <script src="/scripts/script.js"></script>
+  <script src="/scripts/namaj.js"></script>
   
  <script type="module" src="/blog/js/loadRecentPostsHome.js"></script>
   <script src="/scripts/fetch.js"></script>

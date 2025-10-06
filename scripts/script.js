@@ -164,7 +164,25 @@ async function reverseGeocode(lat, lon) {
   }
 }
 
-// 🕌 নামাজের সময় লোড (সঠিক location ভিত্তিক)
+function formatTimeToBangla(time) {
+  const banglaDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  return time.replace(/\d/g, d => banglaDigits[d]);
+}
+
+function getTimeRemaining(time) {
+  const now = new Date();
+  const [h, m] = time.split(':').map(Number);
+  const target = new Date();
+  target.setHours(h, m, 0, 0);
+  if (target < now) target.setDate(target.getDate() + 1);
+
+  let diff = target - now;
+  const hours = Math.floor(diff / 1000 / 60 / 60);
+  const minutes = Math.floor((diff / 1000 / 60) % 60);
+
+  return `${hours} ঘণ্টা ${minutes} মিনিট বাকি`;
+}
+
 async function getPrayerTimes(lat, lon, displayName) {
   const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2&school=1`;
   try {
@@ -172,11 +190,10 @@ async function getPrayerTimes(lat, lon, displayName) {
     const data = await res.json();
     const t = data.data.timings;
 
-    document.getElementById("location").textContent = `📍 লোকেশন: ${displayName}`;
+    document.getElementById("location").innerHTML = `<i class="fas fa-map-marker-alt"></i> ${displayName}`;
 
     const prayers = [
       { name: "🕋 ফজর", time: t.Fajr },
-      { name: "🌅 সূর্যোদয়", time: t.Sunrise },
       { name: "🕌 যোহর", time: t.Dhuhr },
       { name: "🕒 আসর", time: t.Asr },
       { name: "🌇 মাগরিব", time: t.Maghrib },
@@ -184,14 +201,28 @@ async function getPrayerTimes(lat, lon, displayName) {
     ];
 
     document.getElementById("prayer-list").innerHTML = prayers.map(p => `
-      <p>${p.name} — ${formatTimeToBangla(p.time)}</p>
+      <div class="prayer-box">
+        <div class="prayer-name">${p.name}</div>
+        <div class="prayer-time">${formatTimeToBangla(p.time)}</div>
+        <div class="time-remaining">${getTimeRemaining(p.time)}</div>
+      </div>
     `).join('');
+
   } catch (err) {
     document.getElementById("prayer-list").innerHTML = `<p>❌ নামাজের সময় লোড ব্যর্থ</p>`;
   }
 }
 
-// 🧭 ইউজার লোকেশন ধরো এবং লোড করো
+async function reverseGeocode(lat, lon) {
+  try {
+    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+    const data = await res.json();
+    return { full: data.address.city || data.address.town || data.address.state || "অজানা" };
+  } catch {
+    return { full: "অজানা" };
+  }
+}
+
 function getUserLocation() {
   if (!navigator.geolocation) {
     document.getElementById("location").textContent = "⚠️ লোকেশন পাওয়া যায়নি";
@@ -204,14 +235,10 @@ function getUserLocation() {
     const location = await reverseGeocode(lat, lon);
     await getPrayerTimes(lat, lon, location.full);
   }, () => {
-    const fallbackLat = 23.8103;
-    const fallbackLon = 90.4125;
-    getPrayerTimes(fallbackLat, fallbackLon, "ঢাকা");
-    document.getElementById("location").textContent = `📍 লোকেশন: ঢাকা`;
+    getPrayerTimes(23.8103, 90.4125, "ঢাকা");
   });
 }
 
-// 🚀 শুরু করো
 getUserLocation();
 
 
@@ -226,72 +253,8 @@ getUserLocation();
 
 
 
-// English Date
-const banglaNumbers = ["০", "১", "২", "৩", "৪", "৫", "৬", "৭", "৮", "৯"];
-const banglaMonths = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
-const banglaWeekdays = ["রবিবার", "সোমবার", "মঙ্গলবার", "বুধবার", "বৃহস্পতিবার", "শুক্রবার", "শনিবার"];
 
-// ইংরেজি সংখ্যা, আরবি সংখ্যা → বাংলা সংখ্যা কনভার্টার
-function convertToBanglaNumber(str) {
-  const en = "0123456789";
-  const ar = "٠١٢٣٤٥٦٧٨٩";
-  return str.toString().split('').map(char => {
-    if (en.includes(char)) return banglaNumbers[parseInt(char)];
-    if (ar.includes(char)) return banglaNumbers[ar.indexOf(char)];
-    return char;
-  }).join('');
-}
 
-// বাংলা তারিখ
-const today = new Date();
-const bdDay = convertToBanglaNumber(today.getDate());
-const bdMonth = banglaMonths[today.getMonth()];
-const bdYear = convertToBanglaNumber(today.getFullYear());
-const bdWeekday = banglaWeekdays[today.getDay()];
-document.getElementById("bangla-date").innerText = `${bdWeekday}, ${bdDay} ${bdMonth}, ${bdYear}`;
-
-// ইংরেজি তারিখ
-const englishDate = today.toLocaleDateString("en-GB", {
-  weekday: "long",
-  day: "numeric",
-  month: "long",
-  year: "numeric"
-});
-document.getElementById("english-date").innerText = englishDate;
-
-// ইসলামিক তারিখ বাংলা সংখ্যায়
-const islamicFormatter = new Intl.DateTimeFormat("ar-SA-u-ca-islamic", {
-  day: "numeric",
-  month: "long",
-  year: "numeric"
-});
-const parts = islamicFormatter.formatToParts(today);
-
-// আরবি মাস বাংলায়
-const arabicToBanglaMonth = {
-  "محرم": "মুহাররম",
-  "صفر": "সফর",
-  "ربيع الأول": "রবিউল আউয়াল",
-  "ربيع الآخر": "রবিউস সানি",
-  "جمادى الأولى": "জুমাদাল উলা",
-  "جمادى الآخرة": "জুমাদাল সানি",
-  "رجب": "রজব",
-  "شعبان": "শাবান",
-  "رمضان": "রমজান",
-  "شوال": "শাওয়াল",
-  "ذو القعدة": "জ্বিলকদ",
-  "ذو الحجة": "জ্বিলহজ্জ"
-};
-
-let islDay = "", islMonth = "", islYear = "";
-
-parts.forEach(part => {
-  if (part.type === "day") islDay = convertToBanglaNumber(part.value);
-  if (part.type === "month") islMonth = arabicToBanglaMonth[part.value] || part.value;
-  if (part.type === "year") islYear = convertToBanglaNumber(part.value);
-});
-
-document.getElementById("arabic-date").innerText = `${islDay} ${islMonth} ${islYear}`;
 
 
 

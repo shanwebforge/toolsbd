@@ -90,9 +90,9 @@ body, html {
 
 /* Arrow hover effect */
 .slider-arrow:hover {
-  background: #007bff;
+  background: #077A7D;
   color: #fff;
-  border-color: #007bff;
+  border-color: #077A7D;
   transform: translateY(-50%) scale(1.1);
 }
 
@@ -112,6 +112,8 @@ body, html {
   overflow-x: hidden;
   padding: 20px 0;
   box-sizing: border-box;
+  margin-top: -50px;
+  margin-bottom: -50px;
 }
   .update-card {
     min-height: 160px;
@@ -141,7 +143,7 @@ body, html {
 /* Mobile responsive */
 @media (max-width: 480px) {
   .update-card {
-    min-height: 140px;
+    min-height: 130px;
     padding: 10px 40px;
     margin: 0 auto;
   }
@@ -150,28 +152,27 @@ body, html {
     margin: -12px;
     color: #077A7D;
   }
-/* 🌐 Mobile styles */
 
-  .update-heading {
-    display: block;     
-    margin: 0 auto;       
-    text-align: center;         
-    background-color: #077A7D;
-    color: #fff !important;
-    padding: 10px 15px 20px 15px;
+.update-heading {
+  display: block;     
+  margin: 0 auto;       
+  text-align: center;         
+  background-color: #fff;
+  color: #077A7D !important;  
+  padding: 3px 10px;
 
-    border-radius: 8px 8px 0px 0px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: -35px;
+  border-radius: 8px 8px 0 0;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 24px !important;
 
-    transform-origin: center center;
-    animation: pinnedBounce 2s infinite ease-in-out;
-    width: fit-content; 
-    color: antiquewhite
-  
-  }
+  transform-origin: center center;
+  animation: pinnedBounce 2s infinite ease-in-out;
+  width: fit-content; 
 
+  position: relative; /* normal flow তে থাকবে */
+  z-index: 10;        /* content এর উপরে থাকবে */
+}
 
 
 
@@ -184,14 +185,9 @@ body, html {
     color: #9e9d9d;
   }
 }
-/* 🎯 Bounce animation */
-@keyframes pinnedBounce {
-  0%   { transform: rotate(0deg); }
-  25%  { transform: rotate(8deg); }   /* ডানে উঠবে, বাম নিচে নামবে */
-  50%  { transform: rotate(0deg); }   /* আবার মাঝখানে ফিরে আসবে */
-  75%  { transform: rotate(-8deg); }  /* বামে উঠবে, ডান নিচে নামবে */
-  100% { transform: rotate(0deg); }   /* আবার মাঝখানে */
-}
+
+
+
 /* Extra small devices */
 @media (max-width: 360px) {
   .update-card {
@@ -204,6 +200,10 @@ body, html {
 /* Dark mode */
 html.dark-mode {
   background: #1e293b;
+}
+html.dark-mode .update-heading {
+  background: #1e293b;
+  color: #fff !important;
 }
 
 html.dark-mode .update-card {

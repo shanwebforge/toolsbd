@@ -97,196 +97,116 @@ body::before {
 
 
 
-.toper-box {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 500px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
 
+
+
+
+.hero-box {
+  padding: 10px 30px 10px 20px;
+  text-align: center;
 }
 
-.toper-content {
-  display: flex;
-  justify-content: space-between;
-  background: #fff;
+.hero-text {
+  font-size: 2.5rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #4ca7aa, #cc13bd, #077A7D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+  line-height: normal;
+}
+
+.hero-description {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* Hero button full width */
+.hero-link-bg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
-  flex-wrap: wrap;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  border-radius: 10px;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-  text-decoration: none !important;
-    margin-left: 40px;
-  margin-right: 40px;
-}
-
-
-
-
-
-
-
-
-
-
-
-.ap-text
-{
-padding: 10px 30px 10px 20px;
-}
-.ap-l {
-padding: 30px;
-}
-
-.glow-text span {
-  font-size: 24px;
-  color: #4d6d03;
-  opacity: 0.2;
-  text-shadow: none;
-  animation: flickerCharLight 4s infinite;
-  display: inline-block;
-  white-space: pre;
-}
-
-@keyframes flickerCharLight {
-  0%, 100% {
-    opacity: 0.2;
-    text-shadow: none;
-  }
-  50% {
-    opacity: 1;
-    text-shadow: 0 0 5px #a7f020, 0 0 10px #afd40b, 0 0 20px #9dda0e;
-  }
-}
-
-
-.dark-mode .glow-text span {
-  font-size: 24px;
-  color: #077A7D;
-  opacity: 0.2;
-  text-shadow: none;
-  animation: flickerCharDark 3s infinite;
-  display: inline-block;
-  white-space: pre;
-}
-
-@keyframes flickerCharDark {
-  0%, 100% {
-    opacity: 0.2;
-    text-shadow: none;
-  }
-  50% {
-    opacity: 1;
-    text-shadow: 0 0 5px #abdfe0, 0 0 10px #ff00cc, 0 0 20px #ad1391;
-  }
-}
-
-/* প্রতি অক্ষরের delay (দুটো মোডেই কাজ করবে) */
-.glow-text span:nth-child(1)  { animation-delay: 0s; }
-.glow-text span:nth-child(2)  { animation-delay: 0.2s; }
-.glow-text span:nth-child(3)  { animation-delay: 0.4s; }
-.glow-text span:nth-child(4)  { animation-delay: 0.6s; }
-.glow-text span:nth-child(5)  { animation-delay: 0.8s; }
-.glow-text span:nth-child(6)  { animation-delay: 1.0s; }
-.glow-text span:nth-child(7)  { animation-delay: 1.2s; }
-.glow-text span:nth-child(8)  { animation-delay: 1.4s; }
-.glow-text span:nth-child(9)  { animation-delay: 1.6s; }
-.glow-text span:nth-child(10) { animation-delay: 1.8s; }
-.glow-text span:nth-child(11) { animation-delay: 2.0s; }
-
-
-
-
-.ap-l1 {
-  background: linear-gradient(90deg, #4ca7aa, #077A7D) !important;
-  color: rgb(243, 63, 63) !important;
-  border-radius: 8px !important;
-  padding: 8px 15px !important;
-  text-decoration: none !important;
-  font-size: 14px !important;
-  font-weight: 900 !important; 
-  /* Text stroke/outline */
-  -webkit-text-stroke: 0.2px rgb(247, 122, 122);
-  text-stroke: 0.2px rgb(250, 155, 155); 
-
-  /* Smooth hover */
-  transition: all 0.3s ease-in-out !important;
-  display: inline-block !important;
-}
-
-.ap-l1:hover {
-  background: linear-gradient(90deg, #4facfe, #00f2fe) !important;
-  box-shadow: 0 0 10px #00f2fe, 0 0 20px #4facfe !important;
-  transform: scale(1.05) !important;
-}
-
-
-
-@media (max-width: 600px) {
-  .toper-box {
-    padding: 12px;
-    border-radius: 10px;
-
-  }
-
-  .toper-content {
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 12px;
-    gap: 8px;
-    justify-content: space-between;
-    margin-left: 13px;
-    margin-right: 13px;
-  }
-
-
-
-
-
-.ap-text
-{
-padding: 5px;
-}
-.ap-l {
-padding: 5px 8px 5px 8px;
-text-align: center;
-}
-.ap-l1 {
-  border-radius: 8px;
-  padding: 8px 20px 8px 20px !important;
-  text-decoration: none;
-  font-size: 10px !important;
+  width: 100%; /* full width */
+  max-width: 500px;
+  margin: 0 auto; /* center */
+  background: linear-gradient(90deg, #4ca7aa, #8000ff, #077A7D); /* left-right to middle purple */
   color: #fff !important;
-
-  border-radius: 8px !important;
+  border-radius: 8px;
+  padding: 14px 20px;
   text-decoration: none !important;
-  font-size: 14px !important;
-  font-weight: 900 !important; 
-  /* Text stroke/outline */
-  -webkit-text-stroke: 0.2px rgb(247, 247, 247);
-  text-stroke: 0.2px rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 900;
+  transition: all 0.3s ease-in-out;
 }
 
-.glow-text span {
-  font-size: 18px;}
-html.dark-mode .glow-text span {
-  font-size: 18px;}
-
+.hero-link-bg i {
+  font-size: 18px;
 }
 
-html.dark-mode .toper-content{
-  background-color: #1e293b;
-border: 1px solid rgba(255, 255, 255, 0.15);}
-
-html.dark-mode .left-box h3, .left-box h2 {
-  color: #fff !important;}
-html.dark-mode  .glow-text span {
- 
-  color: #ffffff;
-
+/* Button hover */
+.hero-link-bg:hover {
+  background: linear-gradient(90deg, #4facfe, #aa00ff, #00f2fe);
+  box-shadow: 0 0 10px #00f2fe, 0 0 20px #4facfe;
+  transform: scale(1.05);
 }
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+  .hero-box {
+    padding: 12px;
+    text-align: center;
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-top: -25px;
+  }
+
+  .hero-text {
+    font-size: 1.8rem;
+    line-height: 40px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    color: #077A7D;
+  }
+
+  .hero-link-bg {
+    width: calc(100% - 20px); /* full width minus padding */
+    max-width: none;
+    margin: 10px auto 0 auto; /* centered */
+    display: flex !important;
+    justify-content: center !important; /* center content */
+    align-items: center !important;
+    gap: 10px;
+    font-size: 14px !important;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .hero-link-bg i {
+    margin-right: 5px;
+  }
+}
+
+
+/* Dark mode */
+html.dark-mode .hero-text {
+  background: linear-gradient(90deg, #4ca7aa, #bb24bb, #077A7D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.dark-mode .hero-description {
+  color: #fff;
+}
+
+html.dark-mode .hero-link-bg {
+  color: #fff !important;
+}
+
+
 
 
 

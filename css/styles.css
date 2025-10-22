@@ -1,48 +1,52 @@
-/* =============================
-   🌞 Light Mode (Default)
-============================= */
+/* ==============================
+   🌞 Desktop & Mobile Body Fix
+============================== */
 
+/* Default Light Mode */
 body {
   margin: 0;
-  background-color: #fde7ce !important;
+  padding: 100px; 
   min-height: 100vh;
-  padding: 100px 70px 50px;
+  background-color: #fde7ce;
   color: #000;
   font-weight: 700;
+  box-sizing: border-box; 
 }
 
-/* Default English font stack */
+/* Fonts */
 body {
   font-family: "Alkatra", "Archivo Black", "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
+
+  font-family: "Noto Sans Bengali", sans-serif;
 }
 
-/* Bangla font */
-:lang(bn), 
-[lang="bn"] {
+:lang(bn), [lang="bn"] {
   font-family: "Hind Siliguri", "Galada", sans-serif;
 }
 
-
-
-
+/* Mobile Override */
 @media (max-width: 768px) {
   body {
-    padding: 100px 10px 50px;
+    padding: 100px 10px 50px; 
   }
 }
-/* Desktop version */
+
+/* PC/Desktop Override */
 @media (min-width: 769px) {
   body {
-    margin: 0;
-    background-color: #edf6fc;
-    min-height: 100vh;
-    padding: 50px 100px 70px 100px !important;
-
-    color: #000;
-    font-weight: 700;
-    font-family: "Alkatra", "Archivo Black", "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
+    padding: 100px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
+
+/* Dark Mode */
+html.dark-mode body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
 /* ✅ notice borad */
   .updates-grid {
     display: grid;
@@ -318,13 +322,10 @@ html.dark-mode .app-modal-close { background: #df3704; color: #fff; box-shadow: 
 
 
 
-
-
-
-
 .container {
   max-width: 1200px;
   width: 100%;
+
 }
 
 .header {
@@ -452,6 +453,7 @@ html.dark-mode .prayer-title { color: white;}
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .date-box p {
@@ -506,61 +508,8 @@ html.dark-mode .date-box {
   }
 html.dark-mode .date-box strong {color: #fff; font-weight: bold !important;}
 
-/* Help Catagorys */
-.help-container {
-  background: #fff;
-  margin: auto;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-  text-decoration: none !important;
-  text-align: center;
-  margin-left: 18px;
-  margin-right: 18px;
-}
-.category-section {
-  padding: 20px;
-  position: relative;  /* অ্যারো absolute জন্য relative */
-  max-width: 1000px;
-  margin: auto;
 
-  
-}
 
-.category-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 15px;
-  text-align: center;
-  color: #333;
-}
-
-.category-slider {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  padding-bottom: 10px;
-}
-
-/* Scrollbar hide desktop/mobile */
-.category-slider::-webkit-scrollbar {
-  display: none;
-}
-.category-slider {
-  -ms-overflow-style: none; /* IE, Edge */
-  scrollbar-width: none; /* Firefox */
-}
-
-.category-item {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  scroll-snap-align: start;
-}
 
 .category-box {
   width: 90px;
@@ -732,9 +681,9 @@ html.dark-mode .category-box::after {
 
 /* Sortcut */
 .sort-section {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 15px; /* optional inner spacing */
 }
 
 
@@ -743,6 +692,7 @@ html.dark-mode .category-box::after {
   font-size: 24px;
   font-weight: bold;
   text-align: left;
+
 }
 
 .sort-title-name {
@@ -918,7 +868,7 @@ html.dark-mode .sort-box:hover {
   font-weight: bold;
   margin-bottom: 6px;
   text-align: left;
-  margin-left: 50px;
+ 
 }
 
 .cat-title-name {
@@ -945,10 +895,11 @@ html.dark-mode .sort-box:hover {
 
 
 .main-section {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 0 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px; /* optional inner spacing */
 }
+
 
 /* Tools Grid */
 .tools-grid {
@@ -964,6 +915,7 @@ html.dark-mode .sort-box:hover {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.1);
   height: 150px;
+  width: 200px;
   padding: 20px 15px;
   border-radius: 10px;
   font-size: 17px;
@@ -1043,6 +995,7 @@ html.dark-mode .box-icon {
 
   .clickable-box {
     height: 100px;
+    width: auto;
     padding: 12px 10px;
   }
   .box-text {
@@ -1139,8 +1092,43 @@ html.dark-mode body{
   gap: 20px;    
   padding: 0 10px;
   box-sizing: border-box;
-  user-select: none;   
+  user-select: none; 
 }
+
+.none-slide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: 10px;
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 10px; 
+  justify-content: center;}
+
+
+
+
+@media (min-width: 1025px) { /* Desktop only */
+.none-slide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+  gap: 30px;
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 10px; 
+  justify-content: center;}
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  .none-slide-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; /* mobile এ gap কমানো */
+  }
+}
+
 
 
 .box-link {

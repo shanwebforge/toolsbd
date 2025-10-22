@@ -15,6 +15,7 @@
   loadSection("/update-notice/notice-home.html", "latest-updates-section");
   loadSection("/highlight-page/intro.html", "intro-section");
   loadSection("/highlight-page/count.html", "count-section");
+  loadSection("/highlight-page/help-desk.html", "help-section");
   loadSection("/keyboard-sortcut/key-sort.html", "key-section");
   loadSection("/oparator/oparator.html", "sort-section");
   loadSection("/islamic/islamic.html", "islamic-section");

@@ -10,7 +10,9 @@ body {
   background-color: #fde7ce;
   color: #000;
   font-weight: 700;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+    padding-top: 25px;
+  margin-top: 10px;
 }
 
 /* Fonts */
@@ -24,22 +26,9 @@ body {
   font-family: "Hind Siliguri", "Galada", sans-serif;
 }
 
-/* Mobile Override */
-@media (max-width: 768px) {
-  body {
-    padding: 100px 10px 50px; 
-  }
-}
 
-/* PC/Desktop Override */
-@media (min-width: 769px) {
-  body {
-    padding: 100px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
+
+
 
 /* Dark Mode */
 html.dark-mode body {

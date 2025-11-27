@@ -1,110 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ToolsBD - Freelancing Tools</title>
 
+  <!-- Meta Description -->
+  <meta name="description" content="ফ্রিল্যান্সিংয়ের জন্য প্রয়োজনীয় সব টুল এক জায়গায় — ইনভয়েস জেনারেটর, টাইম ট্র্যাকিং, কস্ট এস্টিমেশন, কিওয়ার্ড টুল এবং আরো অনেক কিছু।" />
+
+  <!-- Dark Mode Early Setup -->
   <script>
   (function () {
     try {
       const theme = localStorage.getItem('theme');
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      if (theme === 'dark' || (!theme && prefersDark)) {
+      const isDark = theme === 'dark' || (!theme && prefersDark);
+      if (isDark) {
         document.documentElement.classList.add('dark-mode');
       }
     } catch (e) {
-      console.error('Theme preload error:', e);
+      console.error('Dark mode preload error:', e);
     }
   })();
   </script>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ToolsBD - Free Tools Collections</title>
-
-  <link rel="stylesheet" href="/css/freelanching-tools.css" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/sub-catagory.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
+
 <body>
 
 <main class="main-section">
-  <div class="tools-grid">
+  <div class="sub-section">
+    <div class="sub-category-grid">
 
-    <a href="/freelanching-tools/invoice-genarator/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-file-invoice"></i></div>
-        <span class="box-text">ইনভয়েস জেনারেটর</span>
-      </div>
-    </a>
+      <!-- Invoice Generator -->
+      <a href="/freelanching-tools/invoice-genarator/" class="sub-catagory-item">
+        <div class="sub-catagory-icon">
+          <i class="fas fa-file-invoice"></i>
+        </div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">ইনভয়েস জেনারেটর</div>
+          <div class="sub-catagory-desc">ক্লায়েন্টের জন্য প্রফেশনাল ইনভয়েস তৈরি করুন সহজেই।</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/freelanching-tools/time-tracking/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-stopwatch"></i></div>
-        <span class="box-text">টাইম ট্র্যাকিং</span>
-      </div>
-    </a>
+      <!-- Time Tracking -->
+      <a href="/freelanching-tools/time-tracking/" class="sub-catagory-item">
+        <div class="sub-catagory-icon">
+          <i class="fas fa-stopwatch"></i>
+        </div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">টাইম ট্র্যাকিং</div>
+          <div class="sub-catagory-desc">কোন কাজে কত সময় দিলেন তার হিসাব রাখুন।</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/freelanching-tools/client-payment-tracker/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-hand-holding-usd"></i></div>
-        <span class="box-text">ক্লায়েন্ট পেমেন্ট ট্র্যাকার</span>
-      </div>
-    </a>
+      <!-- Client Payment Tracker -->
+      <a href="/freelanching-tools/client-payment-tracker/" class="sub-catagory-item">
+        <div class="sub-catagory-icon">
+          <i class="fas fa-hand-holding-usd"></i>
+        </div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">ক্লায়েন্ট পেমেন্ট ট্র্যাকার</div>
+          <div class="sub-catagory-desc">কোন ক্লায়েন্ট কত টাকা দিয়েছে — সব ট্র্যাক করুন।</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/freelanching-tools/project-cost-estimator/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-calculator"></i></div>
-        <span class="box-text">Project Cost Estimator</span>
-      </div>
-    </a>
+      <!-- Project Cost Estimator -->
+      <a href="/freelanching-tools/project-cost-estimator/" class="sub-catagory-item">
+        <div class="sub-catagory-icon">
+          <i class="fas fa-calculator"></i>
+        </div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Project Cost Estimator</div>
+          <div class="sub-catagory-desc">প্রজেক্টের মোট খরচ অনুমান করুন দ্রুত।</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/freelanching-tools/contract-template-generator/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-file-contract"></i></div>
-        <span class="box-text">Contract Template</span>
-      </div>
-    </a>
+      <!-- Contract Template -->
+      <a href="/freelanching-tools/contract-template-generator/" class="sub-catagory-item">
+        <div class="sub-catagory-icon">
+          <i class="fas fa-file-contract"></i>
+        </div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Contract Template</div>
+          <div class="sub-catagory-desc">ক্লায়েন্ট চুক্তির জন্য রেডি-মেড টেম্পলেট।</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/freelanching-tools/fiverr-gig-keyword-tool/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-key"></i></div>
-        <span class="box-text">Fiverr/Gig Keyword</span>
-      </div>
-    </a>
+      <!-- Fiverr / Gig Keyword Tool -->
+      <a href="/freelanching-tools/fiverr-gig-keyword-tool/" class="sub-catagory-item">
+        <div class="sub-catagory-icon">
+          <i class="fas fa-key"></i>
+        </div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Fiverr/Gig Keyword</div>
+          <div class="sub-catagory-desc">ফাইভার গিগের জন্য বেস্ট কিওয়ার্ড সাজেশন পান।</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <!-- Loading Placeholders -->
-    <a href="daily-log/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-spinner fa-spin"></i></div>
-        <span class="box-text">Daily Logger</span>
-      </div>
-    </a>
+      <!-- More Tools Loading Placeholder -->
+      <a href="#" class="sub-catagory-item">
+        <div class="sub-catagory-icon">
+          <i class="fas fa-spinner fa-spin"></i>
+        </div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Coming Soon</div>
+          <div class="sub-catagory-desc">আরও নতুন ফ্রিল্যান্সিং টুল যুক্ত হচ্ছে…</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="employee-evaluation/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-spinner fa-spin"></i></div>
-        <span class="box-text">Employee Evaluation Form</span>
-      </div>
-    </a>
-
-    <a href="flyer-generator/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-spinner fa-spin"></i></div>
-        <span class="box-text">Digital Flyer Generator</span>
-      </div>
-    </a>
-
-    <a href="#" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-spinner fa-spin"></i></div>
-        <span class="box-text">Loading...</span>
-      </div>
-    </a>
-
-
+    </div>
   </div>
 </main>
 

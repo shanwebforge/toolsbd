@@ -1,103 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-  <script>
-  (function () {
-    try {
-      const theme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-      if (theme === 'dark' || (!theme && prefersDark)) {
-        document.documentElement.classList.add('dark-mode');
-      }
-    } catch (e) {
-      console.error('Theme preload error:', e);
-    }
-  })();
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ToolsBD - Free Tools Collections</title>
-  <link rel="stylesheet" href="/css/money-tools.css" />
+
+  <!-- Dark Mode Early Setup -->
+  <script>
+    (function () {
+      try {
+        const theme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (theme === 'dark' || (!theme && prefersDark)) {
+          document.documentElement.classList.add('dark-mode');
+        }
+      } catch (e) {
+        console.error('Theme preload error:', e);
+      }
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/css/sub-catagory.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 </head>
 <body>
-
 <main class="main-section">
-  <div class="tools-grid">
+  <div class="sub-section">
+    <div class="sub-category-grid">
 
-    <a href="/money-tools/unit-converter/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-ruler-combined"></i></div>
-        <span class="box-text">Unit Converter</span>
-      </div>
-    </a>
+      <!-- Unit Converter -->
+      <a href="/money-tools/unit-converter/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-ruler-combined"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Unit Converter</div>
+          <div class="sub-catagory-desc">Convert units of length, weight, volume, and more online.</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/money-tools/at-bey-hisab/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-balance-scale"></i></div>
-        <span class="box-text">ব্যয়/আয় হিসাব ট্র্যাকার</span>
-      </div>
-    </a>
+      <!-- ব্যয়/আয় হিসাব ট্র্যাকার -->
+      <a href="/money-tools/at-bey-hisab/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-balance-scale"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">ব্যয়/আয় হিসাব ট্র্যাকার</div>
+          <div class="sub-catagory-desc">Track your income and expenses easily online.</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/money-tools/soncoy-porikolpona/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-piggy-bank"></i></div>
-        <span class="box-text">সঞ্চয় পরিকল্পনা টুল</span>
-      </div>
-    </a>
+      <!-- সঞ্চয় পরিকল্পনা টুল -->
+      <a href="/money-tools/soncoy-porikolpona/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-piggy-bank"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">সঞ্চয় পরিকল্পনা টুল</div>
+          <div class="sub-catagory-desc">Plan and manage your savings efficiently online.</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/money-tools/emi-calculator/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-credit-card"></i></div>
-        <span class="box-text">EMI ক্যালকুলেটর</span>
-      </div>
-    </a>
+      <!-- EMI ক্যালকুলেটর -->
+      <a href="/money-tools/emi-calculator/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-credit-card"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">EMI ক্যালকুলেটর</div>
+          <div class="sub-catagory-desc">Calculate EMI for loans and credit easily online.</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/money-tools/tex-calculator/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-receipt"></i></div>
-        <span class="box-text">ট্যাক্স ক্যালকুলেটর (BD)</span>
-      </div>
-    </a>
+      <!-- ট্যাক্স ক্যালকুলেটর (BD) -->
+      <a href="/money-tools/tex-calculator/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-receipt"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">ট্যাক্স ক্যালকুলেটর (BD)</div>
+          <div class="sub-catagory-desc">Calculate income tax and deductions in Bangladesh easily.</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/money-tools/budget-planer/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-chart-line"></i></div>
-        <span class="box-text">Budget Planner (Monthly/Yearly)</span>
-      </div>
-    </a>
+      <!-- Budget Planner -->
+      <a href="/money-tools/budget-planer/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Budget Planner (Monthly/Yearly)</div>
+          <div class="sub-catagory-desc">Plan your monthly or yearly budget effectively online.</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="/money-tools/currency-converter/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-dollar-sign"></i></div>
-        <span class="box-text">Currency Converter</span>
-      </div>
-    </a>
+      <!-- Currency Converter -->
+      <a href="/money-tools/currency-converter/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-dollar-sign"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Currency Converter</div>
+          <div class="sub-catagory-desc">Convert currencies instantly online.</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <!-- Loading placeholders -->
-    <a href="/money-tools/cash-charge-calculator/" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-spinner fa-spin"></i></div>
-        <span class="box-text">Nagad/Rocket/bKash Charge Calculator</span>
-      </div>
-    </a>
+      <!-- Nagad/Rocket/bKash Charge Calculator -->
+      <a href="/money-tools/cash-charge-calculator/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-spinner fa-spin"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Nagad/Rocket/bKash Charge Calculator</div>
+          <div class="sub-catagory-desc">Calculate charges for mobile financial services instantly.</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-    <a href="#" class="box-link">
-      <div class="clickable-box">
-        <div class="box-icon"><i class="fas fa-spinner fa-spin"></i></div>
-        <span class="box-text">Loading...</span>
-      </div>
-    </a>
+      <!-- Loading Placeholder -->
+      <a href="#" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-spinner fa-spin"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Loading...</div>
+          <div class="sub-catagory-desc">More money tools are coming soon!</div>
+        </div>
+        <div class="info-panel">
+          <div class="info-box">
+            <div class="top-row"><i class="fas fa-eye"></i> <span class="eye-count">(0)</span></div>
+            <div class="bottom-row"><i class="fas fa-bookmark"></i><i class="fas fa-share-alt"></i></div>
+          </div>
+        </div>
+      </a>
 
-
-
-
+    </div>
   </div>
 </main>
 

@@ -7,6 +7,7 @@ body {
   padding: 100px 70px 50px;
   color: #000;
 }
+/* Grid */
 
 @media (max-width: 768px) {
   body {
@@ -14,7 +15,6 @@ body {
   }
 }
 
-/* Grid */
 .main-category-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -25,10 +25,10 @@ body {
   background: linear-gradient(
       135deg,
       rgba(255, 17, 0, 0.18) 0%,     /* Bottom-Left Glow */
-      rgba(255, 255, 255, 0.9) 50%,   /* Middle Soft Light */
+      rgba(194, 231, 200, 0.9) 50%,   /* Middle Soft Light */
       rgba(255, 38, 0, 0.15) 100%   /* Top-Right Glow */
   );
-  border: 1px solid rgba(160, 80, 255, 0.6);
+  border: 0.25px solid rgba(160, 80, 255, 0.6);
   padding: 28px 25px;
   border-radius: 12px;
 
@@ -38,7 +38,7 @@ body {
   position: relative;
   text-decoration: none;
   color: inherit;
-  min-height: 150px;
+  min-height: 100px;
 
   /* ✨ Glow Effect */
   box-shadow:
@@ -48,7 +48,7 @@ body {
 
   transition: 0.3s ease;
 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 /* Hover More Glow */
@@ -62,7 +62,14 @@ body {
 }
 
 
+.main-catagory-title {
+  font-size: 50px;
+  color: #494949;
 
+  justify-content: left;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
 /* Icon */
 .main-catagory-icon {
   font-size: 48px;
@@ -159,15 +166,58 @@ body {
 .bottom-actions i:hover {
   color: #301f78;
 }
+.eye-count {
+  font-weight: bold;
+  color: #6b5bcc;
+}
 
+.file-count {
+  margin-right: 5px;
+  font-weight: bold;
+  color: #6b5bcc;
+}
 /* MOBILE VERSION */
 @media (max-width: 600px) {
 
+.main-category-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
+}
   .main-catagory-item {
-    padding: 30px 20px;
-    min-height: 100px;
-  }
 
+  border: 1px solid rgba(160, 80, 255, 0.6);
+  padding: 20px 15px;
+  min-height: 90px;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  text-decoration: none;
+  box-shadow:
+    0 0 3px rgba(255, 80, 176, 0.35),
+    0 0 6px rgba(255, 80, 203, 0.3),
+    inset 0 0 5px rgba(160, 80, 255, 0.22);
+
+  margin-bottom: 10px;
+}
+
+/* Hover More Glow */
+.main-catagory-item:hover {
+  box-shadow:
+    0 0 9px rgba(209, 183, 241, 0.55),
+    0 0 16px rgba(255, 80, 226, 0.4),
+    inset 0 0 15px rgba(160, 80, 255, 0.28);
+   transform: scale(1.0050); /* subtle zoom in */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.main-catagory-title {
+  font-size: 18px;
+  color: #494949;
+  margin-bottom: 15px;
+}
   .main-catagory-icon {
     font-size: 40px;
     width: 50px;
@@ -176,7 +226,7 @@ body {
   }
 
   .main-catagory-content {
-    padding-right: 120px; /* Slight reduce for mobile */
+    padding-right: 70px; /* Slight reduce for mobile */
   }
 
   .main-catagory-title {
@@ -287,10 +337,3 @@ html.dark-mode .bottom-actions i:hover {
 }
 
 
-
-
-.eye-count {
-  margin-left: 5px;
-  font-weight: bold;
-  color: #6b5bcc;
-}

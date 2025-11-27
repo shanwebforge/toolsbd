@@ -17,10 +17,24 @@
   })();
   </script>
 
+  <script type="module">
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const module = await import('/scripts/cat-slide.js');
+      if (typeof module.initUpdatesSlider === 'function') {
+        module.initUpdatesSlider();
+      }
+    } catch (error) {
+      console.error('Error loading updates slider:', error);
+    }
+  });
+</script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ToolsBD - Free Tools Collections</title>
   <link rel="stylesheet" href="/css/islamic.css" />
+  <link rel="stylesheet" href="/css/styles-home.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -94,11 +108,13 @@
       </div>
     </a>
 
-
+<div id="intro-section">লোড হচ্ছে...</div>
 
   </div>
 </main>
 
+
+<script src="/scripts/script.js"></script>
 <script src="/components/header.js"></script>
 <script src="/components/footer.js"></script>
 </body>

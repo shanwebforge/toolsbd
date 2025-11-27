@@ -17,6 +17,7 @@
   loadSection("/highlight-page/count.html", "count-section");
   loadSection("/highlight-page/help-desk.html", "help-section");
   loadSection("/keyboard-sortcut/key-sort.html", "key-section");
+  loadSection("/tools/catagory.html", "catagory-section");
   loadSection("/oparator/oparator.html", "sort-section");
   loadSection("/islamic/islamic.html", "islamic-section");
   loadSection("/daily-use-tools/daily-use.html", "daily-section");
@@ -211,6 +212,33 @@ function getUserLocation() {
 getUserLocation();
 
 
+
+
+
+
+
+
+
+
+
+// সব main-catagory-item এর জন্য
+document.querySelectorAll('.main-catagory-item').forEach(item => {
+  // eye icon এর span ধরছি
+  const eyeCountSpan = item.querySelector('.eye-count');
+
+  // যদি span না থাকে, exit
+  if (!eyeCountSpan) return;
+
+  // শুরু value
+  let count = parseInt(eyeCountSpan.textContent) || 0;
+
+  // box click
+  item.addEventListener('click', (e) => {
+    e.preventDefault(); // link reload রোধ
+    count++;
+    eyeCountSpan.textContent = count;
+  });
+});
 
 
 

@@ -221,31 +221,6 @@ getUserLocation();
 
 
 
-// সব main-catagory-item এর জন্য
-document.querySelectorAll('.main-catagory-item').forEach(item => {
-  // eye icon এর span ধরছি
-  const eyeCountSpan = item.querySelector('.eye-count');
-
-  // যদি span না থাকে, exit
-  if (!eyeCountSpan) return;
-
-  // শুরু value
-  let count = parseInt(eyeCountSpan.textContent) || 0;
-
-  // box click
-  item.addEventListener('click', (e) => {
-    e.preventDefault(); // link reload রোধ
-    count++;
-    eyeCountSpan.textContent = count;
-  });
-});
-
-
-
-
-
-
-
 
 
 

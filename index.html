@@ -196,7 +196,22 @@
   });
 </script>
  
+<script>
+  // সব category item select
+  document.querySelectorAll('.main-catagory-item').forEach(item => {
+    const eyeCountSpan = item.querySelector('.eye-count');
+    if (!eyeCountSpan) return;
 
+    let count = parseInt(eyeCountSpan.textContent) || 0;
+
+    // click listener
+    item.addEventListener('click', (e) => {
+      e.preventDefault(); // link reload বন্ধ
+      count++;
+      eyeCountSpan.textContent = count;
+    });
+  });
+</script>
 
 
 

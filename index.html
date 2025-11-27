@@ -46,42 +46,42 @@
       }
     })();
   </script>
-
-<!-- Firebase CDN -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-  import { getFirestore, collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+import { getFirestore, collection, query, orderBy, onSnapshot, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyC4qAilm3cAJ8FTnv8R66YhG1rEITgKsoM",
-    authDomain: "toolsbd24.firebaseapp.com",
-    projectId: "toolsbd24",
-    storageBucket: "toolsbd24.firebasestorage.app",
-    messagingSenderId: "661782480607",
-    appId: "1:661782480607:web:9e517726a1e282e15f4b6a",
-    measurementId: "G-JLKLZDLSWJ"
-  };
+// Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyC4qAilm3cAJ8FTnv8R66YhG1rEITgKsoM",
+  authDomain: "toolsbd24.firebaseapp.com",
+  projectId: "toolsbd24",
+  storageBucket: "toolsbd24.firebasestorage.app",
+  messagingSenderId: "661782480607",
+  appId: "1:661782480607:web:9e517726a1e282e15f4b6a",
+  measurementId: "G-JLKLZDLSWJ"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-  const updatesGrid = document.getElementById("updatesGrid");
-  const seeAllBtn = document.getElementById("seeAllBtn");
+// -----------------------
+// Updates Section
+const updatesGrid = document.getElementById("updatesGrid");
+const seeAllBtn = document.getElementById("seeAllBtn");
+let allUpdates = [];
 
-  let allUpdates = [];
-
+if (updatesGrid && seeAllBtn) {
   const updatesRef = collection(db, "updates");
-  const q = query(updatesRef, orderBy("timestamp", "desc")); // sorting by recent
+  const q = query(updatesRef, orderBy("timestamp", "desc"));
 
   onSnapshot(q, (snapshot) => {
     allUpdates = [];
     snapshot.forEach(doc => allUpdates.push(doc.data()));
-    renderUpdates(allUpdates.slice(0, 3)); // show 3 by default
+    renderUpdates(allUpdates.slice(0, 3)); // show top 3 updates by default
   });
 
   seeAllBtn.addEventListener("click", () => {
     renderUpdates(allUpdates);
-    // seeAllBtn.style.display = "none"; // hide korchi na
   });
 
   function renderUpdates(updates) {
@@ -96,7 +96,59 @@
       updatesGrid.appendChild(card);
     });
   }
+}
+
+// -----------------------
+// Category Click Counter
+window.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.main-catagory-item');
+
+  items.forEach(item => {
+    const eyeCountSpan = item.querySelector('.eye-count');
+    if (!eyeCountSpan) return;
+
+    const href = item.getAttribute('href');
+    if (!href) return;
+
+    const slug = href.replace(/\//g, '').trim() || 'default';
+    const docRef = doc(db, "category_clicks", slug);
+
+    // Load initial count from Firestore
+    getDoc(docRef).then(docSnap => {
+      if (docSnap.exists()) {
+        eyeCountSpan.textContent = docSnap.data().count || 0;
+      } else {
+        setDoc(docRef, { count: 0, name: slug });
+        eyeCountSpan.textContent = 0;
+      }
+    });
+
+    // Click handler
+    item.addEventListener('click', async (e) => {
+      e.preventDefault();
+
+      try {
+        // Increment Firestore count
+        await updateDoc(docRef, { count: increment(1) });
+
+        // Update displayed count
+        const updatedSnap = await getDoc(docRef);
+        eyeCountSpan.textContent = updatedSnap.data().count || 0;
+
+        // Redirect after count update
+        window.location.href = href;
+      } catch (err) {
+        console.error(err);
+        window.location.href = href; // fallback redirect
+      }
+    });
+  });
+});
 </script>
+
+
+
+
 
 
 
@@ -197,21 +249,52 @@
 </script>
  
 <script>
-  // সব category item select
-  document.querySelectorAll('.main-catagory-item').forEach(item => {
-    const eyeCountSpan = item.querySelector('.eye-count');
-    if (!eyeCountSpan) return;
+  document.addEventListener('DOMContentLoaded', () => {
+    const items = document.querySelectorAll('.main-catagory-item');
 
-    let count = parseInt(eyeCountSpan.textContent) || 0;
+    items.forEach(item => {
+      const eyeCountSpan = item.querySelector('.eye-count');
+      const slug = item.dataset.slug;
 
-    // click listener
-    item.addEventListener('click', (e) => {
-      e.preventDefault(); // link reload বন্ধ
-      count++;
-      eyeCountSpan.textContent = count;
+      if (!slug) return;
+
+      const docRef = db.collection('category_clicks').doc(slug);
+
+      // Load initial count from Firestore
+      docRef.get().then(doc => {
+        if (doc.exists) {
+          eyeCountSpan.textContent = doc.data().count || 0;
+        } else {
+          docRef.set({ count: 0 });
+        }
+      });
+
+      // Real-time update (optional)
+      docRef.onSnapshot(doc => {
+        if (doc.exists) {
+          eyeCountSpan.textContent = doc.data().count;
+        }
+      });
+
+      // Click listener
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
+          .then(() => {
+            // Redirect to actual link after count update
+            window.location.href = item.getAttribute('href');
+          })
+          .catch(err => {
+            console.error(err);
+            window.location.href = item.getAttribute('href'); // fallback
+          });
+      });
     });
   });
 </script>
+
+
 
 
 

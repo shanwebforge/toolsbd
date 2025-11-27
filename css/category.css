@@ -199,16 +199,16 @@ body {
   }
 
   .bottom-actions i {
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .info-row {
-  font-size: 10px;
+  font-size: 12px;
 
 }
 
 .info-row i {
-  font-size: 12px;
+  font-size: 10px;
 }
 }
 
@@ -286,3 +286,11 @@ html.dark-mode .bottom-actions i:hover {
   color: #ff8fff;
 }
 
+
+
+
+.eye-count {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #6b5bcc;
+}

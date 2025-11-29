@@ -44,7 +44,7 @@ html.dark-mode .m-icon {
       border-radius: 6px;
       overflow: hidden;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      border: 1px solid #077A7D;
+      border: 1px solid #8e3cfa;
     }
 
     .search-container input {
@@ -53,11 +53,11 @@ html.dark-mode .m-icon {
       padding: 12px 15px;
       font-size: 16px;
       outline: none;
-      border-right: 1px solid #077A7D;
+      border-right: 1px solid #8e3cfa;
     }
 
     .search-container button {
-      background: #077A7D;
+      background: #8e3cfa;
       border: none;
       color: white;
       padding: 0 18px;
@@ -73,7 +73,7 @@ html.dark-mode .m-icon {
     }
 
 .search-container button:hover {
-  background: #055a5c;
+  background: #781eee;
 }
 
 
@@ -86,7 +86,7 @@ html.dark-mode .m-icon {
   width: 600px;
   max-height: 800px;
   background: white;
-  border: 1px solid #077A7D;
+  border: 1px solid #8e3cfa;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(7, 122, 125, 0.3);
   overflow-y: auto;
@@ -101,7 +101,7 @@ html.dark-mode .m-icon {
 .popup-header {
   display: flex;
   justify-content: space-between;
-  background: #077A7D;
+  background: #8e3cfa;
   color: white;
   padding: 10px 15px;
   font-weight: bold;
@@ -126,7 +126,7 @@ html.dark-mode .m-icon {
   cursor: pointer;
   border-bottom: 1px solid #eee;
   padding-bottom: 5px;
-  color: #077A7D;
+  color: #8e3cfa;
 }
 
 .search-results p:hover {
@@ -176,7 +176,7 @@ html.dark-mode .m-icon {
   font-size: 26px;
   cursor: pointer;
   display: none;
-  color: #077A7D;
+  color: #8e3cfa;
   background: none;
   border: none;
   padding: 0;
@@ -191,7 +191,7 @@ html.dark-mode .m-icon {
 
 #toggleTheme,
 #toggleThemeCanvas {
-  background-color: #077A7D;
+  background-color: #8e3cfa;
   border: none;
   border-radius: 6px;
   color: white;
@@ -212,7 +212,7 @@ html.dark-mode .m-icon {
   justify-content: center;
   padding: 4px;
   border-radius: 8px;
-  background-color: #077A7D;
+  background-color: #8e3cfa;
 }
 
 .nav-menu {
@@ -230,7 +230,7 @@ html.dark-mode .m-icon {
 .nav-menu ul li a {
   text-decoration: none;
   padding: 10px 18px;
-  background-color: #077A7D;
+  background-color: #8e3cfa;
   color: #fff;
   border-radius: 8px;
   font-weight: 500;
@@ -239,7 +239,7 @@ html.dark-mode .m-icon {
 }
 
 .nav-menu ul li a:hover {
-  background-color: #066264;
+  background-color: #7425db;
   transform: translateY(-2px);
 }
 
@@ -250,7 +250,7 @@ html.dark-mode .m-icon {
   right: 100%;
   width: 100vw;
   height: 100vh;
-  background-color: #077A7D;
+  background-color: #8e3cfa;
   color: #fff;
   transition: right 0.3s ease;
   z-index: 2000;
@@ -290,7 +290,7 @@ body.dark-mode .mobile-canvas {
   font-size: 28px;
   background: transparent;
   border: none;
-  color: #077A7D;
+  color: #8e3cfa;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -667,7 +667,7 @@ html.dark-mode .desktop-toggle {background-color: #1e293b;
 
  html.dark-mode .menu-toggle {
     
-    color: #077A7D;
+    color: #8e3cfa;
   }
 
 

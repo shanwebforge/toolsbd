@@ -1,25 +1,57 @@
-<footer>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <div class="footer-menu">
-    <a href="/index.html" class="active"><i class="fas fa-home"></i><span>Home</span><div class="hover-circle"></div></a>
-    <a href="/blog/"><i class="fas fa-blog"></i><span>Blog</span><div class="hover-circle"></div></a>
 
-<a href="/tools/"><i class="fas fa-toolbox"></i><span>Tools</span><div class="hover-circle"></div></a>
-    <a href="https://shop.toolbd.xyz"><i class="fas fa-gift"></i><span>Shop</span><div class="hover-circle"></div></a>
-    <a href="/blog/profile.html"><i class="fas fa-user"></i><span>Profile</span><div class="hover-circle"></div></a>
+  <div class="main-section"><div class="bg-margin"><section class="double-column-container">
+  <!-- LEFT COLUMN -->
+  <div class="column-box">
+    <h3 class="column-title">Quick Link</h3>
+    <ul class="column-links">
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms Rules</a></li>
+      <li><a href="#">User Security</a></li>
+      <li><a href="#">Report a Bug</a></li>
+      <li><a href="#">Advertise</a></li>
+    </ul>
   </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="column-box">
+    <h3 class="column-title">Socials Network</h3>
+    <ul class="column-links">
+      <li><a href="#">Faceook</a></li>
+      <li><a href="#">LinkedIn</a></li>
+      <li><a href="#">Instragram</a></li>
+      <li><a href="#">X (Platform)</a></li>
+      <li><a href="#">Youtube</a></li>
+    </ul>
+  </div>
+</section>
+</div>
+</div>
+
+<!-- FOOTER (Fixed) -->
+<footer>
+  <div class="footer-menu">
+    <a href="/index.html" class="active"><i class="fas fa-home"></i><span>Home</span></a>
+    <a href="/blog/"><i class="fas fa-blog"></i><span>Blog</span></a>
+    <a href="/tools/"><i class="fas fa-toolbox"></i><span>Tools</span></a>
+    <a href="https://shop.toolbd.xyz"><i class="fas fa-gift"></i><span>Shop</span></a>
+    <a href="/blog/profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+  </div>
+</footer>
+
+
   <script>
-document.addEventListener("DOMContentLoaded", function() {
-  const links = document.querySelectorAll(".footer-menu a");
-  const currentPath = window.location.pathname;
+    document.addEventListener("DOMContentLoaded", function() {
+      const links = document.querySelectorAll(".footer-menu a");
+      const currentPath = window.location.pathname;
 
-  links.forEach(link => {
-    if (link.getAttribute("href") === currentPath ||
-        (currentPath === "/" && link.getAttribute("href") === "/index.html")) {
-      link.classList.add("active");
-    }
-  });
-});
-</script>
-
+      links.forEach(link => {
+        if (link.getAttribute("href") === currentPath ||
+            (currentPath === "/" && link.getAttribute("href") === "/index.html")) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
 </footer>

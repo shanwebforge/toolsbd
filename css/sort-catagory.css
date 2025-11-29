@@ -119,7 +119,7 @@ body {
 }
 
 /* RIGHT INFO PANEL */
-.info-panel {
+.sort-info-panel {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -131,7 +131,7 @@ body {
 }
 
 /* TOP INFO */
-.top-info {
+.sort-top-info {
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -142,7 +142,7 @@ body {
   backdrop-filter: blur(3px);
 }
 
-.info-row {
+.sort-info-row {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -150,13 +150,13 @@ body {
   color: #444;
 }
 
-.info-row i {
+.sort-info-row i {
   font-size: 20px;
   color: #6b5bcc;
 }
 
 /* BOTTOM ACTIONS (Vertical Icons) */
-.bottom-actions {
+.sort-bottom-actions {
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -170,22 +170,22 @@ body {
 }
 
 
-.bottom-actions i {
+.sort-bottom-actions i {
   font-size: 22px;
   color: #6b5bcc;
   cursor: pointer;
   transition: .2s;
 }
 
-.bottom-actions i:hover {
+.sort-bottom-actions i:hover {
   color: #301f78;
 }
-.eye-count {
+.sort-eye-count {
   font-weight: bold;
   color: #6b5bcc;
 }
 
-.file-count {
+.sort-file-count {
   margin-right: 5px;
   font-weight: bold;
   color: #6b5bcc;
@@ -256,31 +256,31 @@ body {
     font-size: 8px;
   }
 
-  .info-panel {
+  .sort-info-panel {
     right: 8px;
     top: 10px;
     gap: 10px;
   }
-  .top-info {
+  .sort-top-info {
  padding: 3px 4px;
   }
 
-  .bottom-actions {
+  .sort-bottom-actions {
     padding: 3px 4px;
     gap: 5px;
  
   }
 
-  .bottom-actions i {
+  .sort-bottom-actions i {
     font-size: 8px;
   }
 
-  .info-row {
+  .sort-info-row {
   font-size: 8px;
 
 }
 
-.info-row i {
+.sort-info-row i {
   font-size: 8px;
 }
 }
@@ -329,30 +329,30 @@ html.dark-mode .sort-catagory-desc {
 
 /* Right Info Panel */
 
-html.dark-mode .top-info {
+html.dark-mode .sort-top-info {
   background: rgba(80, 50, 120, 0.2);
   border: 1px solid rgba(160, 80, 255, 0.4);
 }
 
-html.dark-mode .info-row {
+html.dark-mode .sort-info-row {
   color: #f1f1f1;
 }
 
-html.dark-mode .info-row i {
+html.dark-mode .sort-info-row i {
   color: #cbbfff;
 }
 
 /* Bottom Actions */
-html.dark-mode .bottom-actions {
+html.dark-mode .sort-bottom-actions {
   background: rgba(80, 50, 120, 0.15);
   border: 1px solid rgba(160, 80, 255, 0.4);
 }
 
-html.dark-mode .bottom-actions i {
+html.dark-mode .sort-bottom-actions i {
   color: #cbbfff;
 }
 
-html.dark-mode .bottom-actions i:hover {
+html.dark-mode .sort-bottom-actions i:hover {
   color: #ff8fff;
 }
 html.dark-mode .sort-catagory-title-h1 {color: #cbbfff;}

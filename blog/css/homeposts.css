@@ -79,7 +79,7 @@
 
 .post-stats i {
   margin-right: 5px;
-  color: #077A7D;
+  color: #8e3cfa;
 }
 
 .post-stats span {
@@ -154,7 +154,7 @@
 }
 
 .seemore {
-  background: linear-gradient(135deg, #077A7D, #0aa0a3);
+  background: linear-gradient(135deg, #8e3cfa, #0aa0a3);
   color: white;
   padding: 8px 30px;
   border-radius: 10px;
@@ -167,7 +167,7 @@
 }
 
 .seemore:hover {
-  background: linear-gradient(135deg, #0aa0a3, #077A7D);
+  background: linear-gradient(135deg, #0aa0a3, #8e3cfa);
 }
 
 
@@ -217,7 +217,7 @@ html.dark-mode .latest-updates-section { background: #1f1f1f; }
   text-align: center;
   margin-bottom: 1rem;
   font-size: 1.5rem;
-  color: #077A7D;
+  color: #8e3cfa;
 }
 html.dark-mode .update-heading { color: #0aa0a3; }
 

@@ -15,10 +15,11 @@
   loadSection("/update-notice/notice-home.html", "latest-updates-section");
   loadSection("/highlight-page/intro.html", "intro-section");
   loadSection("/highlight-page/count.html", "count-section");
-  loadSection("/highlight-page/help-desk.html", "help-section");
-  loadSection("/keyboard-sortcut/key-sort.html", "key-section");
-  loadSection("/tools/catagory.html", "catagory-section");
-  loadSection("/oparator/oparator.html", "sort-section");
+  loadSection("/home-cetegories/help-cetegories/help-desk.html", "help-section");
+  loadSection("home-cetegories/slide-cetegories/slide-cat.html", "slide-cat-section");
+  loadSection("home-cetegories/keyboard-sortcut/key-sort.html", "key-section");
+  loadSection("home-cetegories/tools-cetegories/catagory.html", "catagory-section");
+  loadSection("home-cetegories/oparator/oparator.html", "sort-section");
   loadSection("/islamic/islamic.html", "islamic-section");
   loadSection("/daily-use-tools/daily-use.html", "daily-section");
   loadSection("/dev-designer-tools/dev-design.html", "dev-section");
@@ -218,6 +219,33 @@ getUserLocation();
 
 
 
+
+
+
+
+
+
+
+
+
+
+// slide-categories tab switching
+
+document.addEventListener("DOMContentLoaded", function() {
+    const tabs = document.querySelectorAll(".sc-tab");
+    const contents = document.querySelectorAll(".sc-category-box");
+
+    tabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+
+            tabs.forEach(t => t.classList.remove("active"));
+            tab.classList.add("active");
+
+            contents.forEach(c => c.classList.remove("active"));
+            document.getElementById(tab.dataset.target).classList.add("active");
+        });
+    });
+});
 
 
 

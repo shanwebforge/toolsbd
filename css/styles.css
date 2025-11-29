@@ -5,14 +5,19 @@
 /* Default Light Mode */
 body {
   margin: 0;
-  padding: 100px; 
+  padding: 100px;
   min-height: 100vh;
-  background-color: #fde7ce;
+  /* Light-mode gradient: light tint → deep #7d7ae8 */
+  background: linear-gradient(135deg, #f687fa 0%, #7d7ae8 100%);
+  background-attachment: fixed; /* keep background still on scroll */
+  background-repeat: no-repeat;
+  background-size: cover; /* cover full viewport */
+  background-position: center center;
   color: #000;
   font-weight: 700;
   box-sizing: border-box;
-    padding-top: 25px;
-  margin-top: 10px;
+  padding-top: 30px;
+  margin-top: 20px;
 }
 
 /* Fonts */
@@ -668,180 +673,7 @@ html.dark-mode .category-box::after {
 
 
 
-/* Sortcut */
-.sort-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px; /* optional inner spacing */
-}
 
-
-.sort-title {
-  margin: 0;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: left;
-
-}
-
-.sort-title-name {
-  display: inline-block;
-  position: relative;
-  font-size: 28px;
-  font-weight: bold;
-  padding-bottom: 10px;
-  color: #555;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.sort-title-name::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  width: 100%;
-  background: #077A7D;
-  border-radius: 2px;
-}
-
-.sort-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-
-.sort-slide {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto); 
-  gap: 16px;
-  min-width: 80%; 
-  box-sizing: border-box;
-}
-.sort-slide a {
-  text-decoration: none; /* link underline বন্ধ করে দেয় */
-  color: inherit;        /* icon/text color ঠিক রাখে */
-  display: inline-block; /* optional, layout ঠিক রাখতে */
-}
-
-.sort-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #fff;
-  padding: 14px 16px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  transition: background 0.3s, transform 0.2s;
-}
-
-
-.sort-box:hover {
-  background: #f0f0f0;
-}
-
-.icon {
-  font-size: 20px;
-  color: #077A7D;
-
-}
-
-.sort-title {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-  white-space: nowrap;       
-  overflow: hidden;           
-  text-overflow: ellipsis;    
-  flex: 1;
-}
-
-/* Dark mode support */
-html.dark-mode body {
-  background: #121212;
-  color: #eee;
-}
-
-
-
-html.dark-mode .sort-title-name,
-html.dark-mode .sort-title {
-  color: #eee;
-}
-
-html.dark-mode .icon {
-  color: #077A7D;
-}
-
-html.dark-mode .sort-box {
-  background: #1e293b;
-  color: #f1f5f9;
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-html.dark-mode .sort-box:hover {
-  box-shadow: 0 4px 6px rgba(56, 189, 248, 0.5);
-}
-
-@media (max-width: 768px) {
-
-/* Slide view 2x2 */
-.sort-slide {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto); 
-  gap: 16px;
-  min-width: 80%; 
-  box-sizing: border-box;
-}
-
-
-
-.sort-title {
-  font-size: 12px !important;
-  font-weight: bold;
-  text-align: left;
-  margin: 0;
-}
-.sort-title-name {
-  display: inline-block;
-  position: relative;
-  font-size: 18px;
-  font-weight: bold;
-  padding-bottom: 4px;
-  color: #555;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.sort-title-name::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  border-radius: 2px;
-}
-
-.sort-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.cat-title-link i {
-  font-size: 20px;
-  color: #077A7D;
-  transition: color 0.3s ease;
-}
-.sort-title:hover .cat-title-link i {
-  color: #fff;
-}
-
-}
 
 
 
@@ -1403,6 +1235,77 @@ margin-bottom: 15px;}
       width: 32px !important;
       height: 32px !important;}
 
+
+/* ===== Category: improved mobile responsiveness ===== */
+@media (max-width: 768px) {
+  /* make category lists single-column and easier to tap */
+  .category-grid {
+    grid-template-columns: repeat(1, 1fr) !important;
+    gap: 12px !important;
+    padding: 0 12px !important;
+  }
+
+  .category-item {
+    margin: 8px 0 !important;
+  }
+
+  .category-box {
+    width: 72px !important;
+    height: 72px !important;
+    font-size: 22px !important;
+    border-radius: 12px !important;
+  }
+
+  .category-label {
+    font-size: 12px !important;
+    max-width: 160px !important;
+    word-break: break-word !important;
+  }
+
+  .catbar-section {
+    padding: 0 12px !important;
+  }
+
+  .catbar-box {
+    gap: 8px !important;
+    padding: 10px 12px !important;
+  }
+
+  .cat-title, .cat-title-name {
+    font-size: 18px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* tighten spacing for small phones */
+  .category-grid {
+    gap: 8px !important;
+    padding: 0 10px !important;
+  }
+
+  .category-box {
+    width: 64px !important;
+    height: 64px !important;
+    font-size: 20px !important;
+  }
+
+  .category-label {
+    font-size: 11px !important;
+  }
+
+  .category-item {
+    margin: 6px 0 !important;
+  }
+
+  .catbar-box {
+    padding: 8px 10px !important;
+    gap: 8px !important;
+  }
+
+  .cat-title-name {
+    font-size: 16px !important;
+  }
+}
 .store-btn {
   
     align-items: center;

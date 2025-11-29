@@ -97,12 +97,7 @@ body::before {
   }
 }
 
-
-
-
-
-
-
+/* Hero area */
 .hero-box {
   padding: 10px 30px 10px 20px;
   text-align: center;
@@ -111,7 +106,8 @@ body::before {
 .hero-text {
   font-size: 2.5rem;
   font-weight: 900;
-  background: linear-gradient(90deg, #4ca7aa, #cc13bd, #077A7D);
+  background: linear-gradient(90deg, #373838, #cc13bd, #373838);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 15px;
@@ -121,7 +117,7 @@ body::before {
 .hero-description {
   font-size: 16px;
   margin-bottom: 20px;
-  color: #fff;
+  color: hsla(300, 1%, 21%, 0.432) !important;
 }
 
 /* Hero button full width */
@@ -130,12 +126,11 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  width: 100%; /* full width */
-  max-width: 500px;
+  width: auto;
   margin: 0 auto; /* center */
-  background: linear-gradient(90deg, #4ca7aa, #8000ff, #077A7D); /* left-right to middle purple */
+  background: linear-gradient(90deg, #8e3cfa 0%, #cc13bd 100%); /* gradient using #cc13bd */
   color: #fff !important;
-  border-radius: 8px;
+  border-radius: 12px; /* added radius */
   padding: 14px 20px;
   text-decoration: none !important;
   font-size: 16px;
@@ -149,9 +144,9 @@ body::before {
 
 /* Button hover */
 .hero-link-bg:hover {
-  background: linear-gradient(90deg, #4facfe, #aa00ff, #00f2fe);
-  box-shadow: 0 0 10px #00f2fe, 0 0 20px #4facfe;
-  transform: scale(1.05);
+  /* remove transform and glow; keep a subtle color change */
+  /* subtle darker purple on hover */
+  background: linear-gradient(90deg, #cc13bd 0%, #8e3cfa 100%);
 }
 
 /* Mobile responsive */
@@ -196,6 +191,7 @@ body::before {
 /* Dark mode */
 html.dark-mode .hero-text {
   background: linear-gradient(90deg, #4ca7aa, #bb24bb, #077A7D);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

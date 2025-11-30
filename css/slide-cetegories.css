@@ -1,23 +1,24 @@
 /* MAIN WRAPPER */
 .sc-slide-cat-container {
   background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
-  width: 95%;
-  
+  width: 95vw !important;
   margin: 20px auto;
   box-sizing: border-box;
   position: relative;
   border: 1px solid #e0e0e0;
-    border-radius: 18px;
-    padding: 20px 15px;
+  border-radius: 20px;
+  padding: 20px 15px;
+  max-width: 1200px !important;
+  display: block;
 }
 
 /* GLASS TABS WRAPPER */
 .sc-glass-tabs {
   display: flex;
-  justify-content: center; /* center tabs horizontally */
+  justify-content: center;
   gap: 12px;
   padding: 12px 18px;
-  background: nine;
+  background: none;
   backdrop-filter: blur(25px);
   border-radius: 40px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
@@ -26,7 +27,6 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
   box-sizing: border-box;
-  
 }
 
 /* Hide scrollbar */
@@ -45,7 +45,8 @@
   cursor: pointer;
   transition: 0.3s;
   white-space: nowrap;
-  flex-shrink: 0; /* prevent tabs from shrinking */
+  flex-shrink: 0;
+  font-family: "Alkatra";
 }
 
 /* ACTIVE TAB */
@@ -58,9 +59,8 @@
 .sc-glass-tabs::before,
 .sc-glass-tabs::after {
   content: '';
-  flex: 1; /* push tabs to center */
+  flex: 1;
 }
-
 
 /* CATEGORY CONTENT */
 .sc-category-box {
@@ -86,7 +86,7 @@
     0 8px 25px rgba(0,0,0,0.12);
   position: relative;
   box-sizing: border-box;
-  overflow: hidden; /* prevent float icon overflow */
+  overflow: hidden;
 }
 
 /* TOP RIGHT DATE */
@@ -107,7 +107,7 @@
   font-size: 20px;
   margin: 12px 0 5px;
   font-weight: 700;
-  word-wrap: break-word; /* prevent overflow */
+  word-wrap: break-word;
 }
 
 /* SUBTITLE */
@@ -115,7 +115,7 @@
   opacity: 0.8;
   margin-bottom: 18px;
   font-size: 15px;
-  word-wrap: break-word; /* prevent overflow */
+  word-wrap: break-word;
 }
 
 /* FLOAT ICON (BOTTOM RIGHT) */
@@ -132,41 +132,26 @@
   white-space: nowrap;
 }
 
-/* PC / LARGE SCREEN */
-@media (min-width: 901px) {
-  .sc-glass-tabs {
-    gap: 16px;
-    padding: 15px 25px;
-  }
-
-  .sc-glass-tabs .sc-tab {
-    padding: 12px 28px;
-    font-size: 16px;
-  }
-
-  .sc-glass-card {
-    padding: 28px;
-  }
-
-  .sc-card-title {
-    font-size: 22px;
-  }
-
-  .sc-card-sub {
-    font-size: 16px;
-  }
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 900px) {
+/* MOBILE (768px পর্যন্ত) */
+@media (max-width: 768px) {
   .sc-slide-cat-container {
-    width: 100%;
-    padding: 10 10px;
+    width: 100% !important; 
+    margin: 15px auto; 
+    border-radius: 12px;
+    padding: 15px 12px;
+    box-sizing: border-box;
+    position: relative;
+    left: auto; 
+    right: auto;
+    transform: none; 
+    border: 1px solid #fff;
   }
 
   .sc-glass-tabs {
     padding: 10px 12px;
     gap: 8px;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .sc-glass-tabs .sc-tab {
@@ -176,6 +161,7 @@
 
   .sc-glass-card {
     padding: 18px;
+    width: 100%;
   }
 
   .sc-card-title {
@@ -197,38 +183,19 @@
   }
 }
 
-/* EXTRA SMALL MOBILE */
-@media (max-width: 480px) {
-  .sc-glass-tabs {
-    gap: 6px;
-  }
 
-  .sc-glass-tabs .sc-tab {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
 
-  .sc-card-title {
-    font-size: 16px;
-  }
 
-  .sc-card-sub {
-    font-size: 13px;
-  }
 
-  .sc-card-icon {
-    padding: 8px 10px;
-    font-size: 13px;
-  }
-}
 
 
 
 /* DARK MODE */
-html.dark-mode .sc-slide-cat-container {
-  background-color: #1e293b;
-  border: 1px solid #333;
-}
+  html.dark-mode .sc-slide-cat-container {
+    background: #1e293b;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
 
 html.dark-mode .sc-glass-tabs {
   background: #1e293b;

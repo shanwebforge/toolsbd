@@ -23,26 +23,31 @@ body {
 /* Category Item */
 .sub-catagory-item {
   background: linear-gradient(
-      135deg,
-      rgba(255, 17, 0, 0.18) 0%,
-      rgba(194, 231, 200, 0.9) 50%,
-      rgba(255, 38, 0, 0.15) 100%
+    to bottom right,
+    #eed1f7 0%, /* sort background */
+    #ebeaf8 75%,
+    #b9e3f5 100% /* bottom-right accent */
   );
-  border: 0.25px solid rgba(160, 80, 255, 0.6);
+  border: 1px solid #ffffff;
   padding: 28px 25px;
   border-radius: 12px;
+
   display: flex;
-  align-items: center;
+
   gap: 20px;
   position: relative;
   text-decoration: none;
   color: inherit;
   min-height: 100px;
+
+  /* ✨ Glow Effect (bottom-right using #ebf4f8) */
   box-shadow:
-    0 0 6px rgba(255, 80, 176, 0.35),
-    0 0 12px rgba(255, 80, 203, 0.3),
-    inset 0 0 10px rgba(160, 80, 255, 0.22);
+    18px 18px 40px rgba(235,244,248,0.85), /* bottom-right glow using #ebf4f8 */
+    0 0 8px rgba(235,244,248,0.6),
+    inset 0 0 8px rgba(235,244,248,0.18);
+
   transition: 0.3s ease;
+
   margin-bottom: 10px;
 }
 

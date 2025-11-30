@@ -3,28 +3,29 @@
 ============================== */
 
 /* Default Light Mode */
-body {
+html, body {
   margin: 0;
-  padding: 100px;
+  padding: 0;
+
+
+}
+
+body {
   min-height: 100vh;
-  /* Light-mode gradient: light tint → deep #7d7ae8 */
-  background: linear-gradient(135deg, #f687fa 0%, #7d7ae8 100%);
-  background-attachment: fixed; /* keep background still on scroll */
+  background: linear-gradient(135deg, #94f8ba 0%,#f35ef3 100%) fixed !important;
   background-repeat: no-repeat;
-  background-size: cover; /* cover full viewport */
-  background-position: center center;
+  background-size: cover;
+  background-position: center;
   color: #000;
   font-weight: 700;
   box-sizing: border-box;
-  padding-top: 30px;
+
+  font-family: "Noto Sans Bengali", "Alkatra", "Archivo Black",
+               "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
 }
 
-/* Fonts */
-body {
-  font-family: "Alkatra", "Archivo Black", "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
 
-  font-family: "Noto Sans Bengali", sans-serif;
-}
+
 
 :lang(bn), [lang="bn"] {
   font-family: "Hind Siliguri", "Galada", sans-serif;
@@ -1089,129 +1090,7 @@ html.dark-mode #result {
 
 
 
- /* ✅ Fixed CSS */
-  .download-section {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
-    border-radius: 15px;
-    margin: 40px auto;
-    max-width: 1160px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    border: #fff 1px solid;
-  }
 
-  .download-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 25px;
-    color: #333;
-    /* These make it completely non-interactive */
-    cursor: default;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .app-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .store-btn {
-  
-    align-items: center;
-    gap: 10px;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-size: 16px;
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .store-btn.playstore {
-    background: #3ddc84;
-  }
-
-  .store-btn.applestore {
-    background: #000;
-  }
-
-  .store-btn:hover {
-    opacity: 0.85;
-  }
-
-  .store-btn i {
-    font-size: 18px;
-  }
-
-   .social-container {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
-      flex-wrap: wrap;
-      margin-bottom: -10px;
-    }
-.share-title {
-  text-align: center;
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: -5px !important;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #333;
-}
-    .social-container a {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 20px;
-      color: #333;
-      transition: 0.3s ease;
-      background: none;
-    }
-
-    .social-container a:hover {
-      border-color: #8e3cfa;
-      color: #8e3cfa;
-    }
-
-
-
-  /* Dark mode */
-  html.dark-mode .download-section {
-    background: #1e293b;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
-  
-  html.dark-mode .download-title {
-    color: white;
-  }
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .download-section {
-  margin-left: 14px;
-  margin-right: 14px;
- }
- .download-title {
-  font-size: 18px;
-margin-top: -20px;
-margin-bottom: 15px;}
-
-.social-container a {
-      width: 32px !important;
-      height: 32px !important;}
 
 
 /* ===== Category: improved mobile responsiveness ===== */

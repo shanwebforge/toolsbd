@@ -100,7 +100,7 @@
 .help-category-box {
   font-size: 36px;
   margin-bottom: 8px;
-  color: #8e3cfa;
+  color: #6b5bcc;
 }
 
 
@@ -138,25 +138,22 @@
 }
 }
 
-
-
-/* DARK MODE */
-/* DARK MODE */
 html.dark-mode .help-help-section,
 html.dark-mode .help-main-section {
-  background-color: #1e293b;
-  border: 1px solid #333;
-}
+    background: #1e293b;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
 
-html.dark-mode .help-category-item {
-  background-color: #1e293b;
-  color: #f1f5f9;
-  border: 1px solid #fff;
-}
+  html.dark-mode .help-category-item {
+    background: #1e293b;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
 
 html.dark-mode .help-cat-title,
 html.dark-mode .help-cat-title-name {
-  color: #fff;
+  color: #fff !important;
 }
 
 html.dark-mode .help-cat-title-link {

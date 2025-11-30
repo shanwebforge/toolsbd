@@ -20,11 +20,6 @@ body::before {
   opacity: 0.15;
 }
 
-/* 🌞 Light Mode (color + faint image) */
-body {
-  background-color: #f0f4f8; /* Light base color */
-  margin-top: 45px !important;
-}
 body::before {
   background-image: url('/assets/home-bg.webp');
 }
@@ -53,7 +48,7 @@ body::before {
 }
 body {
 
-  margin-top: 20px !important;
+  margin-top: 10px !important;
 }
 }
 
@@ -62,6 +57,10 @@ body {
   .dark-mode body::before {
     background-image: url('/assets/home-bg.webp');
   }
+  body {
+
+  margin-top: 25px !important;
+}
 }
 
 
@@ -391,6 +390,8 @@ html.dark-mode .category-box {
   overflow: hidden;
   text-overflow: ellipsis;
   flex: 1;
+  font-family: "Alkata";
+  font-weight: 700;
 }
 
 /* DARK MODE */
@@ -573,9 +574,10 @@ html.dark-mode .catbar-box.active {
 
 .fs-title {
     text-align: center;
-    font-size: 14px;
+    font-size: 18px;
     color: #2c3e50;
     margin: 0%;
+    font-family: "Alkata";
    
 }
 
@@ -639,13 +641,15 @@ html.dark-mode .fs-circle-chart::before {
   background-color: #1e293b;
 }
 
-html.dark-mode .fs-container {
-  background-color: #1e293b;
-}
+  html.dark-mode .fs-container {
+    background: #1e293b;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
 
 html.dark-mode .fs-title {
     
-    color: #8e3cfa;
+    color: #fff;
    
 }
 
@@ -694,6 +698,16 @@ margin: 10px;
   font-size: 18px;
   color: #494949;
   font-family: "Alkatra";
-  margin-bottom: -6px;
+  margin-bottom: -40px !important;
+  margin-top: 0px !important;
+  margin-left: -4px !important;
 }
+
 }
+
+
+  html.dark-mode .img-cat-container {
+    background: #1e293b;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }

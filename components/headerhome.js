@@ -254,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if (themeToggleIcon) {
         // Set initial icon based on current theme
-        themeToggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        themeToggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-sun';
 
         // Icon click triggers same dark mode logic
         themeToggleIcon.addEventListener('click', () => {
@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
           // After theme toggled, update icon
           const nowDark = document.documentElement.classList.contains("dark-mode");
-          themeToggleIcon.className = nowDark ? 'fas fa-sun' : 'fas fa-moon';
+          themeToggleIcon.className = nowDark ? 'fas fa-sun' : 'fas fa-sun';
         });
       }
 
@@ -303,7 +303,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
     
     // FULL class names here!
-    icon.className = isDark ? 'fas fa-moon-over-sun' : 'fas fa-moon';
+    icon.className = isDark ? 'fas fa-sun-over-sun' : 'fas fa-sun';
 
     // On click, call the existing toggleDarkMode()
     icon.addEventListener('click', () => {
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Update icon after toggle
         const nowDark = document.documentElement.classList.contains("dark-mode");
-        icon.className = nowDark ? 'fas fa-moon-over-sun' : 'fas fa-moon';
+        icon.className = nowDark ? 'fas fa-sun-over-sun' : 'fas fa-sun';
       } else {
         console.warn('toggleDarkMode() function not found.');
       }

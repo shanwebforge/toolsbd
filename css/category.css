@@ -230,10 +230,12 @@ body {
    transform: scale(1.0050); /* subtle zoom in */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.main-catagory-title {
+.main-catagory-title-h1 {
   font-size: 18px;
   color: #494949;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
+  font-family: "Alkatra";
+  margin-bottom: 5px;
 }
   .main-catagory-icon {
     font-size: 40px;

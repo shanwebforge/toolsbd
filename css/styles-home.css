@@ -23,7 +23,7 @@ body::before {
 /* 🌞 Light Mode (color + faint image) */
 body {
   background-color: #f0f4f8; /* Light base color */
-  margin-top: 35px !important;
+  margin-top: 45px !important;
 }
 body::before {
   background-image: url('/assets/home-bg.webp');
@@ -33,7 +33,7 @@ body::before {
 .dark-mode body {
   background-color: #0a0f1c;
   padding-top: 25px;
-  margin-top: 10px !important;
+  margin-top: 20px !important;
 }
 
 
@@ -47,6 +47,14 @@ body::before {
   body::before {
     background-image: url('/assets/home-bg.webp');
   }
+  .dark-mode body {
+
+  margin-top: 0px !important;
+}
+body {
+
+  margin-top: 20px !important;
+}
 }
 
 /* 🌙 Dark Mode Mobile */
@@ -112,6 +120,7 @@ body::before {
   -webkit-text-fill-color: transparent;
   margin-bottom: 15px;
   line-height: normal;
+  margin-top: 5px;
 }
 
 .hero-description {
@@ -331,7 +340,6 @@ html.dark-mode .category-box {
 
 .catbar-section {
   max-width: 1200px;
-  margin: 0 auto;
   padding: 0 15px;
 }
 
@@ -433,26 +441,15 @@ html.dark-mode .catbar-box.active {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
  /* MAIN WRAPPER */
 .fs-container {
     width: 100%;
     margin: auto;
-    background-color: #fff;
+    background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
     border-radius: 15px;
     padding: 30px;
-    box-sizing: border-box; /* padding width কে affect করবে না */
+    box-sizing: border-box;
+    border: 1px solid #ffffff;
 }
 
 
@@ -534,7 +531,7 @@ html.dark-mode .catbar-box.active {
     width: 55%;
     height: 55%;
     border-radius: 50%;
-    background: #fff;
+    background-color: #b3dcf1;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -650,4 +647,53 @@ html.dark-mode .fs-title {
     
     color: #8e3cfa;
    
+}
+
+
+
+
+
+.img-cat-container {
+  width: 100%;
+  margin: 20px auto;
+  padding: 15px;               /* এখানে add করা হলো */
+  display: flex;
+  flex-direction: column;      /* FIX: title upore + image niche */
+  background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
+  border: 1px solid #fff;
+  border-radius: 15px;
+  box-sizing: border-box;
+  gap: 10px;                   /* title & slider এর মাঝে সুন্দর gap */
+}
+
+
+.img-cat-title-h1 {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 600;
+  padding-left: 5px;
+  color: #525151;
+margin: 10px;
+  font-family: "Alkatra";
+}
+
+/* Circle before text */
+.img-cat-title-h1::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #039723, #46e0e5);
+  margin-right: 10px;
+}
+
+@media (max-width: 768px) {
+
+  .img-cat-title-h1 {
+  font-size: 18px;
+  color: #494949;
+  font-family: "Alkatra";
+  margin-bottom: -6px;
+}
 }

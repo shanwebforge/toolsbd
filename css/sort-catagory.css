@@ -162,7 +162,7 @@ body {
   gap: 12px;
   padding: 10px 14px;
   border: 1px solid rgba(120, 90, 200, 0.4);
-  border-radius: 10px;
+  border-radius: 50%;
   background: rgba(160, 80, 255, 0.08);
   backdrop-filter: blur(3px);
 
@@ -232,15 +232,17 @@ body {
    transform: scale(1.0050); /* subtle zoom in */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.sort-catagory-title {
-  font-size: 12px;
+.sort-catagory-title-h1 {
+  font-size: 18px;
   color: #494949;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  font-family: "Alkatra";
+  margin-bottom: 5px;
 }
   .sort-catagory-icon {
-    font-size: 18px;
+    font-size: 16px;
     width: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
    
   }
 

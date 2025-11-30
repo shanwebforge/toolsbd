@@ -141,7 +141,8 @@ html.dark-mode .m-icon {
     margin-left: 15px;
     margin-right: 15px;
     overflow: auto;
-    margin-top: -20px;
+    margin-bottom: 15px !important;
+    margin: auto;
   }
 
 
@@ -166,6 +167,7 @@ html.dark-mode .m-icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
 }
 
 .logo img {
@@ -309,7 +311,8 @@ body.dark-mode .mobile-canvas {
   padding-bottom: 100px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;          /* Firefox */
-  -ms-overflow-style: none;       /* IE 10+ */
+  -ms-overflow-style: none; 
+  margin-left: 20px;      /* IE 10+ */
 }
 
 .canvas-content::-webkit-scrollbar {
@@ -401,32 +404,43 @@ body.dark-mode .mobile-canvas {
 
 /* Responsive */
 @media (max-width: 768px) {
-header {
-    height: 60px;
+  header {
+    height: 50px;
   }
+
   .header-container {
     padding: 0 20px;
+    
+   
   }
+
   .canvas-header {
     height: 20px;
-  }
-#closeCanvas {
-  font-size: 32px;
-  width: 40px;
-  height: 40px;
-  color: rgb(180, 4, 4);
 
-}
+  }
+
+  #closeCanvas {
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
+    color: rgb(180, 4, 4);
+  }
+
   .logo img {
-    height: 25px;
+    height: 20px;
+    
   }
-
+  .canvas-logo {
+margin-left: 20px;
+    
+  }
   .menu-toggle {
     display: block;
   }
 
   .menu-group {
     display: flex;
+    align-items: center;
   }
 
   .desktop-toggle {
@@ -437,37 +451,60 @@ header {
     display: none;
   }
 
-
-.search-icon {
-  cursor: pointer;
-  font-size: 18px;
-  margin-right: 5px !important;
-}
-.theme-toggle {
-  cursor: pointer;
-  font-size: 18px;
-  margin-right: 12px;
-}
-.lang-toggle {
-  cursor: pointer;
-  font-size: 18px;
-  margin-right: 12px;
-}
+  /* ------------------------------------
+     🔥 FIXED-WIDTH ICON WRAPPER
+     সব icon এর space + alignment সমান
+  ------------------------------------ */
+.search-icon,
+.bookmark-icon,
+.theme-toggle,
+.lang-toggle,
 .menu-toggle {
+  width: 22px;              /* ছোট জায়গা নিচ্ছে */
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;        /* ছোট equal gap */
   cursor: pointer;
-  font-size: 18px;
-  margin-right: 12px;
-  color: #1e293b;
 }
-.search-icon i,
-.theme-toggle i,
-.menu-toggle i, 
-.lang-toggle i {
-  font-size: 18px;
-  cursor: pointer;
-  color: inherit;
+
+  /* All <i> icon sizes uniform */
+  
+  .bookmark-icon i,
+  .theme-toggle i,
+  .lang-toggle i,
+  .menu-toggle i {
+    font-size: 14px !important;
+    color: inherit;
+  }
+
+
+.search-icon i {
+  font-size: 14px !important;
+  margin-right: -25px !important;
+  margin-top: 2px;
 }
+
+  /* menu image icon */
+  .m-icon {
+    width: 14px;
+    height: 12px;
+  }
+  /* menu image icon */
+  .bookmark-icon i {
+color: black;
+  }
+
+  html.dark-mode .bookmark-icon i {
+  color: #ffffff !important;
 }
+  /* last icon no extra gap */
+  .menu-group > div:last-child {
+    margin-right: 0 !important;
+  }
+}
+
 
 
 /* ভাষার মেনু */

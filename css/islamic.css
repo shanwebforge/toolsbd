@@ -1,113 +1,276 @@
-
-.main-section {
-  margin-top: 100px;
-  margin-bottom: 100px;
-  padding: 0 15px;
-}
-
-/* Tools Grid */
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 1080px;
-  margin: 0 auto;
-}
-
-/* Box styling */
-.clickable-box {
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  height: 150px;
-  padding: 20px 15px;
-  border-radius: 10px;
-  font-size: 17px;
-  font-weight: 500;
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #94f8ba 0%,#f35ef3 100%) fixed !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   color: #000;
-  transition: box-shadow 0.3s ease, transform 0.2s ease;
-  text-decoration: none !important;
+  font-weight: 700;
+  box-sizing: border-box;
+  font-family: "Noto Sans Bengali", "Alkatra", "Archivo Black",
+  "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
+  margin-bottom: 100px;
+}
+
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+
+.islamic-catagory-item {
+  background: linear-gradient(
+    to bottom right,
+    #eed1f7 0%, /* sort background */
+    #ebeaf8 75%,
+    #b9e3f5 100% /* bottom-right accent */
+  );
+  border: 1px solid #ffffff;
+  padding: 28px 25px;
+  border-radius: 12px;
+
+  display: flex;
+
+  gap: 20px;
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+  min-height: 100px;
+
+  /* ✨ Glow Effect (bottom-right using #ebf4f8) */
+  box-shadow:
+    18px 18px 40px rgba(235,244,248,0.85), /* bottom-right glow using #ebf4f8 */
+    0 0 8px rgba(235,244,248,0.6),
+    inset 0 0 8px rgba(235,244,248,0.18);
+
+  transition: 0.3s ease;
+
+  margin-bottom: 10px;
+}
+
+/* Hover Glow */
+.islamic-catagory-item:hover {
+  box-shadow:
+    0 0 18px rgba(209, 183, 241, 0.55),
+    0 0 35px rgba(255, 80, 226, 0.4),
+    inset 0 0 30px rgba(160, 80, 255, 0.28);
+  transform: scale(1.005);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Left Icon */
+.islamic-catagory-icon {
+  font-size: 36px;
+  color: #6b5bcc;
+  flex-shrink: 0;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+/* Content */
+.islamic-catagory-content {
+  flex-grow: 1;
+  text-align: left;
+  z-index: 1;
+  position: relative;
+  padding-right: 180px;
+  overflow-wrap: break-word;
+}
+
+.islamic-catagory-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #494949;
+}
+
+.islamic-catagory-desc {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.3;
+}
+
+/* RIGHT PANEL SINGLE BOX (Vertical Center) */
+.info-panel {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+}
+
+.info-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 14px;
+  border: 1px solid rgba(120, 90, 200, 0.4);
+  border-radius: 12px;
+  background: rgba(160, 80, 255, 0.1);
+  backdrop-filter: blur(4px);
+  align-items: center;
+}
+
+/* Top row: Eye + Count */
+.info-box .top-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.info-box .top-row i {
+  font-size: 18px;
+  color: #6b5bcc;
+}
+
+.info-box .top-row .eye-count {
+  font-weight: bold;
+  color: #6b5bcc;
+}
+
+/* Bottom row: Bookmark + Share */
+.info-box .bottom-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.info-box .bottom-row i {
+  font-size: 20px;
+  color: #6b5bcc;
   cursor: pointer;
-  overflow: hidden;
-  box-sizing: border-box;
+  transition: 0.2s;
 }
 
-/* Dark mode styles for clickable box */
-html.dark-mode .clickable-box {
-  background: #1e293b;
-  border-color: rgba(255, 255, 255, 0.1);
-  color: #ddd;
+.info-box .bottom-row i:hover {
+  color: #301f78;
 }
 
-/* Hover effect */
-.clickable-box:hover {
-  box-shadow: 0 4px 12px rgba(135, 206, 250, 0.6);
-  transform: translateY(-3px);
-}
-
-/* Icon inside box */
-.box-icon {
-  font-size: 40px;
-  color: #077A7D;
-  margin-bottom: 12px;
-  flex-shrink: 0;
-}
-
-/* Dark mode icon color */
-html.dark-mode .box-icon {
-  color: #077A7D;
-}
-
-/* Text with ellipsis */
-.clickable-box span.text {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  width: 100%;
-  display: block;
-}
-
-/* Link cleanup */
-.box-link {
-  text-decoration: none !important;
-}
-
-.box-link .clickable-box {
-  text-decoration: none !important;
-}
-
-.box-link:hover,
-.box-link:focus {
-  text-decoration: none !important;
-}
-
-/* Responsive */
+/* MOBILE VERSION */
 @media (max-width: 768px) {
-  .tools-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+
+  main {
+
+  margin-top: 50px;
+}
+
+.islamic-category-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
+}
+
+.islamic-catagory-content {
+
+  padding-right: 80px;
+}
+  .islamic-catagory-item {
+    padding: 20px 10px;
+    min-height: 50px;
+    box-shadow:
+      0 0 3px rgba(255, 80, 176, 0.35),
+      0 0 6px rgba(255, 80, 203, 0.3),
+      inset 0 0 5px rgba(160, 80, 255, 0.22);
   }
 
-  .clickable-box {
-    height: 120px;
-    padding: 12px 10px;
+  .islamic-catagory-item:hover {
+    box-shadow:
+      0 0 9px rgba(209, 183, 241, 0.55),
+      0 0 16px rgba(255, 80, 226, 0.4),
+      inset 0 0 15px rgba(160, 80, 255, 0.28);
   }
 
-  .box-icon {
-    font-size: 26px;
-    margin-bottom: 8px;
+  .islamic-catagory-icon {
+    font-size: 28px;
+    width: 40px;
   }
 
-  .clickable-box span.text {
+  .islamic-catagory-title {
+    font-size: 16px;
+  }
+
+  .islamic-catagory-desc {
+    font-size: 12px;
+  }
+
+  .info-panel {
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .info-box {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .info-box .top-row i {
     font-size: 14px;
   }
+
+  .info-box .bottom-row i {
+    font-size: 16px;
+  }
 }
 
-html.dark-mode body{
-  background: #121212;
-  color: #e0e0e0;
+/* DARK MODE */
+
+html.dark-mode body {
+    background: #301f78;
+}
+html.dark-mode .islamic-catagory-item {
+  background: linear-gradient(
+      135deg,
+      rgba(120, 50, 200, 0.25) 0%,
+      rgba(30, 30, 30, 0.9) 50%,
+      rgba(150, 60, 250, 0.2) 100%
+  );
+  border: 1px solid rgba(160, 80, 255, 0.4);
+  color: #f1f1f1;
+  box-shadow:
+    0 0 12px rgba(160, 80, 255, 0.35),
+    0 0 25px rgba(140, 100, 255, 0.3),
+    inset 0 0 22px rgba(200, 120, 255, 0.22);
+  transition: 0.3s ease;
+}
+
+html.dark-mode .islamic-catagory-item:hover {
+  box-shadow:
+    0 0 18px rgba(209, 183, 241, 0.55),
+    0 0 35px rgba(180, 80, 226, 0.4),
+    inset 0 0 30px rgba(160, 80, 255, 0.28);
+  transform: scale(1.02);
+}
+
+html.dark-mode .islamic-catagory-icon {
+  color: #cbbfff;
+}
+
+html.dark-mode .islamic-catagory-title {
+  color: #f1f1f1;
+}
+
+html.dark-mode .islamic-catagory-desc {
+  color: #dcdcdc;
+}
+
+html.dark-mode .info-box {
+  background: rgba(80, 50, 120, 0.15);
+  border: 1px solid rgba(160, 80, 255, 0.4);
+}
+
+html.dark-mode .info-box .top-row i,
+html.dark-mode .info-box .bottom-row i {
+  color: #cbbfff;
+}
+
+html.dark-mode .info-box .bottom-row i:hover {
+  color: #ff8fff;
 }

@@ -337,9 +337,11 @@ html.dark-mode .category-box {
 
 
 
+/* Default = Mobile style (যেমন আছে তেমন থাকবে) */
 .catbar-section {
-  max-width: 1200px;
-  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 
@@ -423,6 +425,9 @@ html.dark-mode .catbar-box.active {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+    .catbar-section {
+    justify-content: center;
+  }
 
 .catbar-box {
 
@@ -435,7 +440,7 @@ html.dark-mode .catbar-box.active {
     font-weight: bold;
   }
 
-  .icon {
+  .catbar-box i {
   font-size: 12px;
 }
 }

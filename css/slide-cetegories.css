@@ -10,23 +10,27 @@
   padding: 20px 15px;
   max-width: 1200px !important;
   display: block;
+  overflow: hidden;
 }
 
 /* GLASS TABS WRAPPER */
 .sc-glass-tabs {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
   gap: 12px;
-  padding: 12px 18px;
-  background: none;
+  padding: 0 18px;
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(25px);
   border-radius: 40px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   width: 100%;
+  height: 65px; /* ✅ Container height */
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Hide scrollbar */
@@ -34,41 +38,58 @@
   display: none;
 }
 
-/* TABS */
+/* TABS - Container এর height অনুযায়ী */
 .sc-glass-tabs .sc-tab {
   border: none;
-  background: transparent;
-  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 0 24px;
   border-radius: 30px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
   white-space: nowrap;
   flex-shrink: 0;
   font-family: "Alkatra";
+  color: #333;
+  min-width: max-content;
+  height: 85%; /* ✅ Container এর 85% height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  margin: auto 0; /* ✅ Vertical centering */
 }
 
-/* ACTIVE TAB */
+/* HOVER EFFECT */
+.sc-glass-tabs .sc-tab:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ACTIVE TAB - সামান্য বড় */
 .sc-glass-tabs .sc-tab.active {
   background: #ffffff;
   box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
-}
-
-/* Make sure there is equal space on both sides */
-.sc-glass-tabs::before,
-.sc-glass-tabs::after {
-  content: '';
-  flex: 1;
+  color: #8e3cfa;
+  font-weight: 700;
+  height: 90%; /* ✅ Active tab 90% height */
 }
 
 /* CATEGORY CONTENT */
 .sc-category-box {
   display: none;
   margin-top: 25px;
+  animation: fadeIn 0.5s ease;
 }
+
 .sc-category-box.active {
   display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* GLASS CARD STYLE */
@@ -108,6 +129,7 @@
   margin: 12px 0 5px;
   font-weight: 700;
   word-wrap: break-word;
+  line-height: 1.4;
 }
 
 /* SUBTITLE */
@@ -116,6 +138,7 @@
   margin-bottom: 18px;
   font-size: 15px;
   word-wrap: break-word;
+  line-height: 1.5;
 }
 
 /* FLOAT ICON (BOTTOM RIGHT) */
@@ -132,49 +155,72 @@
   white-space: nowrap;
 }
 
-/* MOBILE (768px পর্যন্ত) */
+/* ============================== */
+/* MOBILE RESPONSIVE (768px পর্যন্ত) */
+/* ============================== */
 @media (max-width: 768px) {
   .sc-slide-cat-container {
-    width: 100% !important; 
-    margin: 15px auto; 
-    border-radius: 12px;
+    width: calc(100% - 20px) !important; 
+    margin: 15px 10px; 
+    border-radius: 16px;
     padding: 15px 12px;
     box-sizing: border-box;
-    position: relative;
-    left: auto; 
-    right: auto;
-    transform: none; 
-    border: 1px solid #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: visible;
   }
 
+  /* Tabs Container - Mobile */
   .sc-glass-tabs {
-    padding: 10px 12px;
+    padding: 0 15px;
     gap: 8px;
     width: 100%;
-    margin: 0 auto;
+    height: 55px; /* ✅ Mobile container height */
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
   }
 
+  /* Individual Tabs - Mobile */
   .sc-glass-tabs .sc-tab {
-    padding: 7px 15px;
+    padding: 0 16px;
     font-size: 14px;
+    font-weight: 600;
+    border-radius: 25px;
+    min-width: auto;
+    flex: 0 0 auto;
+    height: 85%; /* ✅ Container এর 85% height */
   }
 
+  /* Active Tab Mobile */
+  .sc-glass-tabs .sc-tab.active {
+    background: #ffffff;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    padding: 0 18px;
+    height: 90%; /* ✅ Active tab 90% height */
+  }
+
+  /* Card Adjustments for Mobile */
   .sc-glass-card {
-    padding: 18px;
+    padding: 16px;
+    border-radius: 18px;
     width: 100%;
   }
 
   .sc-card-title {
-    font-size: 18px;
+    font-size: 17px;
+    margin: 10px 0 5px;
   }
 
   .sc-card-sub {
-    font-size: 14px;
+    font-size: 13px;
+    margin-bottom: 15px;
   }
 
   .sc-card-icon {
     padding: 10px 12px;
-    font-size: 14px;
+    font-size: 13px;
+    right: 12px;
+    bottom: 12px;
   }
 
   .sc-card-top .sc-date {
@@ -183,60 +229,141 @@
   }
 }
 
-
-
-
-
-
-
-
-/* DARK MODE */
-  html.dark-mode .sc-slide-cat-container {
-    background: #1e293b;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+/* Extra Small Mobile (480px পর্যন্ত) */
+@media (max-width: 480px) {
+  .sc-glass-tabs {
+    padding: 0 12px;
+    gap: 6px;
+    height: 50px; /* ✅ Smaller container height */
   }
 
+  .sc-glass-tabs .sc-tab {
+    padding: 0 14px;
+    font-size: 13px;
+    height: 85%; /* ✅ Container এর 85% height */
+  }
+
+  .sc-glass-tabs .sc-tab.active {
+    padding: 0 16px;
+    height: 90%; /* ✅ Active tab 90% height */
+  }
+
+  .sc-card-title {
+    font-size: 16px;
+  }
+
+  .sc-card-sub {
+    font-size: 12px;
+  }
+}
+
+/* ============================== */
+/* DARK MODE */
+/* ============================== */
+html.dark-mode .sc-slide-cat-container {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 html.dark-mode .sc-glass-tabs {
-  background: #1e293b;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  background: rgba(30, 41, 59, 0.8);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 html.dark-mode .sc-glass-tabs .sc-tab {
   color: #e0e0e0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+html.dark-mode .sc-glass-tabs .sc-tab:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 html.dark-mode .sc-glass-tabs .sc-tab.active {
-  background: #1e293b;
-  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
+  color: #a855f7;
 }
 
-html.dark-mode .sc-category-box {
-  color: #f1f5f9;
+/* Dark Mode Height Adjustments - Same percentages */
+html.dark-mode .sc-glass-tabs {
+  height: 65px;
 }
 
-html.dark-mode .sc-glass-card {
-  background-color: #1e293b;
-  backdrop-filter: blur(25px);
-  box-shadow:
-    inset 0 0 15px rgba(255,255,255,0.05),
-    0 8px 25px rgba(0,0,0,0.3);
-  color: #f1f5f9;
-  border: 1px solid #333;
+html.dark-mode .sc-glass-tabs .sc-tab {
+  height: 85%;
 }
 
-html.dark-mode .sc-card-top .sc-date {
-  background: rgba(60, 60, 60, 0.5);
-  color: #f1f5f9;
+html.dark-mode .sc-glass-tabs .sc-tab.active {
+  height: 90%;
 }
 
-html.dark-mode .sc-card-title,
-html.dark-mode .sc-card-sub {
-  color: #f1f5f9;
+@media (max-width: 768px) {
+  html.dark-mode .sc-glass-tabs {
+    background: rgba(30, 41, 59, 0.9);
+    height: 55px;
+  }
+  
+  html.dark-mode .sc-glass-tabs .sc-tab.active {
+    background: rgba(255, 255, 255, 0.15);
+    height: 90%;
+  }
+  
+  html.dark-mode .sc-glass-tabs .sc-tab {
+    height: 85%;
+  }
 }
 
-html.dark-mode .sc-card-icon {
-  background: #2c3e50;
-  color: #fff;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+@media (max-width: 480px) {
+  html.dark-mode .sc-glass-tabs {
+    height: 50px;
+  }
+  
+  html.dark-mode .sc-glass-tabs .sc-tab {
+    height: 85%;
+  }
+  
+  html.dark-mode .sc-glass-tabs .sc-tab.active {
+    height: 90%;
+  }
+}
+
+/* Perfect alignment with flexbox */
+.sc-tab-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Alternative: Using CSS variables for perfect control */
+:root {
+  --tab-container-height: 65px;
+  --tab-height: calc(var(--tab-container-height) * 0.85);
+  --tab-active-height: calc(var(--tab-container-height) * 0.9);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --tab-container-height: 55px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --tab-container-height: 50px;
+  }
+}
+
+/* CSS Variable ব্যবহার (Optional) */
+.sc-glass-tabs {
+  height: var(--tab-container-height);
+}
+
+.sc-glass-tabs .sc-tab {
+  height: var(--tab-height);
+}
+
+.sc-glass-tabs .sc-tab.active {
+  height: var(--tab-active-height);
 }

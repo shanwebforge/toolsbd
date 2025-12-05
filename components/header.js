@@ -217,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (toggleThemeDesktop) toggleThemeDesktop.checked = isDark;
       if (toggleThemeMobile) toggleThemeMobile.checked = isDark;
       if (themeToggleIcon) {
-        themeToggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        themeToggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-sun';
       }
 
       function toggleDarkMode() {
@@ -228,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (toggleThemeDesktop) toggleThemeDesktop.checked = enableDark;
         if (toggleThemeMobile) toggleThemeMobile.checked = enableDark;
         if (themeToggleIcon) {
-          themeToggleIcon.className = enableDark ? 'fas fa-sun' : 'fas fa-moon';
+          themeToggleIcon.className = enableDark ? 'fas fa-sun' : 'fas fa-sun';
         }
       }
 

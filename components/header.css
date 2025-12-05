@@ -1,9 +1,14 @@
-/* Header Styles */
+/* header Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 header {
-  
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   position: fixed;
   top: 0;
   left: 0;
@@ -14,12 +19,13 @@ header {
   height: 70px;
   display: flex;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: -400px !important;
 }
 
 
-/* বাকি CSS আপনার মতোই থাকবে */
 
+
+/* সব আইকনের জন্য */
 .m-icon {
 
   filter: invert(1);
@@ -28,6 +34,8 @@ header {
 html.dark-mode .m-icon {
   filter: invert(0);
 }
+
+
     .search-icon {
       cursor: pointer;
     }
@@ -41,7 +49,6 @@ html.dark-mode .m-icon {
       overflow: hidden;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
       border: 1px solid #8e3cfa;
-      margin-top: 20px;
     }
 
     .search-container input {
@@ -70,14 +77,14 @@ html.dark-mode .m-icon {
     }
 
 .search-container button:hover {
-  background: #055a5c;
+  background: #781eee;
 }
 
 
 /* Search Popup */
 .search-popup {
   position: fixed;
-  top: 120px;
+  top: 170px;
   left: 50%;
   transform: translateX(-50%);
   width: 600px;
@@ -88,7 +95,6 @@ html.dark-mode .m-icon {
   box-shadow: 0 4px 12px rgba(7, 122, 125, 0.3);
   overflow-y: auto;
   z-index: 9999;
-
 }
 
 
@@ -132,30 +138,23 @@ html.dark-mode .m-icon {
 }
 @media (max-width: 600px) {
   .search-popup {
-    width: 85%;
+    width: 90%;
   }
 
   .search-container {
     margin-left: 15px;
     margin-right: 15px;
     overflow: auto;
-    margin-top: 50px;
-    margin-bottom: -50px;
+    margin-bottom: 15px !important;
+    margin: auto;
   }
 
 
     .hidden {
       display: none;
     }
-
-    .logo-title {
-      font-size: 16px !important;
-    }
   
 }
-
-
-
 
 
 .header-container {
@@ -166,29 +165,11 @@ html.dark-mode .m-icon {
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
 }
 
 .logo img {
   height: 40px;
-}
-
-.logo-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 150px; /* Adjust as needed */
-}
-
-html.dark-mode .logo-title {
-  color: #e0f2f2;}
-
-/* Optional: Different styling for dynamic titles */
-.dynamic-title {
-  color: #333; /* Your preferred color */
-  font-family: 'Your Preferred Font', sans-serif;
-  padding: 5px 10px;
 }
 
 .menu-toggle {
@@ -258,7 +239,7 @@ html.dark-mode .logo-title {
 }
 
 .nav-menu ul li a:hover {
-  background-color: #066264;
+  background-color: #7425db;
   transform: translateY(-2px);
 }
 
@@ -267,10 +248,10 @@ html.dark-mode .logo-title {
   position: fixed;
   top: 0;
   right: 100%;
-  width: 100vw;
+  width: 70vw;
   height: 100vh;
-  background-color: #8e3cfa;
-  color: #fff;
+  background-color: #eceaea;
+  color: #7425db;
   transition: right 0.3s ease;
   z-index: 2000;
   display: flex;
@@ -280,7 +261,7 @@ html.dark-mode .logo-title {
 }
 
 .mobile-canvas.active {
-  right: 0;
+  left: 0;
 }
 
 body.dark-mode .mobile-canvas {
@@ -288,7 +269,7 @@ body.dark-mode .mobile-canvas {
   color: #fff;
 }
 
-/* Canvas Header */
+/* Canvas header */
 .canvas-header {
   flex-shrink: 0;
   display: flex;
@@ -328,7 +309,8 @@ body.dark-mode .mobile-canvas {
   padding-bottom: 100px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;          /* Firefox */
-  -ms-overflow-style: none;       /* IE 10+ */
+  -ms-overflow-style: none; 
+  margin-left: 10px;      /* IE 10+ */
 }
 
 .canvas-content::-webkit-scrollbar {
@@ -349,7 +331,7 @@ body.dark-mode .mobile-canvas {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid rgba(255,255,255,0.3);
+  border-bottom: 2px solid rgba(109, 20, 150, 0.3);
   padding-bottom: 8px;
   margin-bottom: 16px;
 }
@@ -359,7 +341,7 @@ body.dark-mode .mobile-canvas {
   margin: 0;
   font-size: 22px;
   font-weight: 700;
-  color: inherit;
+  color: #1f1f1f
 }
 
 /* Buttons next to section titles */
@@ -402,7 +384,7 @@ body.dark-mode .mobile-canvas {
 }
 
 .canvas-nav ul li a:hover {
-  color: #ddd;
+  color: #5b14b8;
 }
 
 /* Footer */
@@ -421,31 +403,42 @@ body.dark-mode .mobile-canvas {
 /* Responsive */
 @media (max-width: 768px) {
   header {
-    height: 60px;
+    height: 50px;
   }
- .canvas-header {
-    height: 20px;
-  }
-.header-container {
+
+  .header-container {
     padding: 0 20px;
+    
+   
   }
-#closeCanvas {
-  font-size: 32px;
-  width: 40px;
-  height: 40px;
-  color: rgb(180, 4, 4);
 
-}
+  .canvas-header {
+    height: 50px!important;
+
+  }
+
+  #closeCanvas {
+    font-size: 32px;
+    width: 40px;
+    height: 40px;
+    color: #5b14b8;
+  }
+
   .logo img {
-    height: 25px;
+    height: 20px;
+    
   }
-
+  .canvas-logo {
+margin-left: 10px;
+    
+  }
   .menu-toggle {
     display: block;
   }
 
   .menu-group {
     display: flex;
+    align-items: center;
   }
 
   .desktop-toggle {
@@ -456,43 +449,67 @@ body.dark-mode .mobile-canvas {
     display: none;
   }
 
-
-.search-icon {
-  cursor: pointer;
-  font-size: 18px;
-  margin-right: 5px !important;
-}
-.theme-toggle {
-  cursor: pointer;
-  font-size: 18px;
-  margin-right: 12px;
-}
-.lang-toggle {
-  cursor: pointer;
-  font-size: 18px;
-  margin-right: 12px;
-}
+  /* ------------------------------------
+     🔥 FIXED-WIDTH ICON WRAPPER
+     সব icon এর space + alignment সমান
+  ------------------------------------ */
+.search-icon,
+.bookmark-icon,
+.theme-toggle,
+.lang-toggle,
 .menu-toggle {
+  width: 22px;              /* ছোট জায়গা নিচ্ছে */
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0px;        /* ছোট equal gap */
   cursor: pointer;
-  font-size: 18px;
-  margin-right: 12px;
-  color: #1e293b;
 }
-.search-icon i,
-.theme-toggle i,
-.menu-toggle i, 
-.lang-toggle i {
-  font-size: 18px;
-  cursor: pointer;
-  color: inherit;
+
+  /* All <i> icon sizes uniform */
+  
+  .bookmark-icon i,
+  .theme-toggle i,
+  .lang-toggle i,
+  .menu-toggle i {
+    font-size: 14px !important;
+    color: inherit;
+  }
+
+
+.search-icon i {
+  font-size: 14px !important;
+  margin-right: -25px !important;
+  margin-top: 2px;
 }
+
+  /* menu image icon */
+  .m-icon {
+    width: 14px;
+    height: 12px;
+  }
+  /* menu image icon */
+  .bookmark-icon i {
+color: black;
+  }
+
+  html.dark-mode .bookmark-icon i {
+  color: #ffffff !important;
 }
+  /* last icon no extra gap */
+  .menu-group > div:last-child {
+    margin-right: 0 !important;
+  }
+}
+
+
 
 /* ভাষার মেনু */
 .lang-menu {
   position: absolute;
-  top: 95%;
-  right: 5%;
+  top: 90%;
+  right: 0;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
@@ -530,9 +547,13 @@ html.dark-mode .lang-menu {
 html.dark-mode .lang-menu li:hover {
   background: #333;
 }
+html.dark-mode .section-header h3 {
+  color: #7425db !important;
+}
+
+
+
 .hidden { display: none; }
-
-
 
 
 
@@ -632,7 +653,7 @@ html.dark-mode .mobile-canvas {
   color: #f5f5f5;
 }
 
-/* Canvas Header */
+/* Canvas header */
 html.dark-mode .canvas-header {
   background-color: #1e293b;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
@@ -690,15 +711,25 @@ html.dark-mode .desktop-toggle {background-color: #1e293b;
     color: #8e3cfa;
   }
 
-
-
+  
+html.dark-mode .bookmark-icon i {
+  color: white !important;
+  }
+  html.dark-mode .theme-toggle i {
+  color: white !important;
+  }
+  html.dark-mode .lang-toggle i {
+  color: white !important;
+  }
+  html.dark-mode .search-icon i {
+  color: white !important;
+  }
 .search-icon {
   font-size: 20px;
   padding: 10px;
   cursor: pointer;
   color: inherit;
 }
-
 .mobile-only {
   display: none;
 }
@@ -715,6 +746,37 @@ html.dark-mode .desktop-toggle {background-color: #1e293b;
     display: none;
   }
 }
+
+
+
+
+
+
+
+
+
+.logo img {
+  height: 40px;
+}
+
+
+
+html.dark-mode .logo-title {
+  color: #e0f2f2;}
+
+/* Optional: Different styling for dynamic titles */
+.dynamic-title {
+  color: #333; /* Your preferred color */
+  font-family: 'Your Preferred Font', sans-serif;
+  padding: 5px 10px;
+}
+
+
+
+
+
+
+
 
 
 /* Mobile Back Button - Original Icon Style with No Background */
@@ -748,12 +810,9 @@ html.dark-mode .desktop-toggle {background-color: #1e293b;
 
 /* Dark mode - keeps original icon style */
 html.dark-mode .mobile-back-btn svg {
-  color: #fff; /* White in dark mode */
-  /* Maintains all original stroke properties */
+  color: #fff; 
   stroke: currentColor;
 }
-
-@media (max-width: 768px) {
   .mobile-back-btn {
     display: flex;
     align-items: center;
@@ -761,7 +820,27 @@ html.dark-mode .mobile-back-btn svg {
     /* No background ever */
     background: transparent !important;
     background-color: transparent !important;
+    border: 1px solid #7425db;
+    border-radius: 10px;
+    color: #7425db;
+        width: 38px;   
+    height: 38px;
   }
+@media (max-width: 768px) {
+  .mobile-back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    border: none;
+    width: 32px;   
+    height: 32px; 
+    padding: 4px; 
+    border-radius: 4px; 
+    box-sizing: border-box;
+    
+}
+
   
   /* Protection against parent elements */
   .header-container {
@@ -779,4 +858,11 @@ html.dark-mode .mobile-back-btn svg {
     fill: none;
     stroke: currentColor;
   }
+
+  .logo-title {
+  max-width: 150px;
+  margin-left: -100px;
 }
+}
+
+  

@@ -48,15 +48,23 @@
   <div class="search-icon">
     <i id="searchIconBtn" aria-label="Search" class="fas fa-search"></i>
   </div>
-  <div class="theme-toggle">
-    <i id="themeToggleIcon" class="fas fa-moon-stars"></i>
+
+    <div class="bookmark-icon">
+    <a href="/nav-menu/bookmark/" class="bookmark-link" aria-label="Bookmarks">
+      <i class="fas fa-bookmark"></i>
+    </a>
   </div>
+
+
   <div class="lang-toggle">
     <i id="langToggleIcon" class="fas fa-globe"></i>
     <ul id="langMenu" class="lang-menu hidden">
       <li data-lang="en">English</li>
       <li data-lang="bn">বাংলা</li>
     </ul>
+  </div>
+    <div class="theme-toggle">
+    <i id="themeToggleIcon" class="fas fa-sun"></i>
   </div>
   <div class="menu-toggle" id="menuToggle">
            <i>
@@ -83,69 +91,131 @@
   <div id="searchResults" class="search-results"></div>
 </div>
 
-  <!-- Mobile Full Canvas -->
-  <div id="mobileCanvas" class="mobile-canvas">
-    <div class="canvas-header">
-      <h2><img src="/assets/logo.png" alt="ToolsBD" height="20px" /></h2>
-      <button id="closeCanvas" title="Close Menu">&times;</button>
-    </div>
-
-    <div class="canvas-content">
-      <!-- Section: Menu -->
-      <section class="canvas-section">
-        <div class="section-header">
-          <h3>Menu</h3>
-        </div>
-        <nav class="canvas-nav">
-          <ul>
-            <li><a href="/" class="canvas-link">Home</a></li>
-            <li><a href="/nav-menu/blog/" class="canvas-link">Blog</a></li>
-            <li><a href="/nav-menu/about/" class="canvas-link">About</a></li>
-            <li><a href="/nav-menu/service/" class="canvas-link">Services</a></li>
-            <li><a href="/nav-menu/contact/" class="canvas-link">Contact</a></li>
-          </ul>
-        </nav>
-      </section>
-
-      <!-- Section: Settings -->
-      <section class="canvas-section">
-        <div class="section-header">
-          <h3>Settings</h3>
-        </div>
-
-        <nav class="canvas-nav">
-          <ul>
-            <li class="setting-item">
-              <span class="setting-label">Dark Mode</span>
-              <label class="theme-switch" title="Toggle Dark Mode">
-                <input type="checkbox" class="toggle-theme" id="toggleThemeMobile" />
-                <span class="slider"></span>
-              </label>
-            </li>
-            <li><a href="/nav-menu/profile/" class="canvas-link">Profile</a></li>
-            <li><a href="/nav-menu/profile/" class="canvas-link">Deshboard</a></li>
-            <li><a href="/nav-menu/about/" class="canvas-link">Information</a></li>
-          </ul>
-        </nav>
-      </section>
-
-      <!-- Section: Others -->
-      <section class="canvas-section">
-        <div class="section-header">
-          <h3>Others</h3>
-          <button class="section-btn" title="More Options">⚙️</button>
-        </div>
-        <nav class="canvas-nav">
-          <ul>
-            <li><a href="/nav-menu/faq/" class="canvas-link">Faq</a></li>
-            <li><a href="/nav-menu/feedback/" class="canvas-link">Feedback</a></li>
-            <li><a href="/nav-menu/rules/" class="canvas-link">Rules</a></li>
-            <li><a href="/nav-menu/privacy/" class="canvas-link">Privacy & Policy</a></li>
-          </ul>
-        </nav>
-      </section>
-    </div>
+   <!-- Mobile Full Canvas -->
+<div id="mobileCanvas" class="mobile-canvas">
+  <div class="canvas-header">
+    <h2><img src="/assets/logo.png" alt="ToolsBD" height="20px" class="canvas-logo"/></h2>
+    <button id="closeCanvas" title="Close Menu">&times;</button>
   </div>
+
+  <div class="canvas-content">
+    <!-- Section: Menu -->
+    <section class="canvas-section">
+      <div class="section-header">
+        <h3>Menu</h3>
+      </div>
+      <nav class="canvas-nav">
+        <ul>
+          <li>
+            <a href="/" class="canvas-link">
+              <i class="fas fa-home" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/nav-menu/blog/" class="canvas-link">
+              <i class="fas fa-blog" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="/nav-menu/about/" class="canvas-link">
+              <i class="fas fa-info-circle" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              About
+            </a>
+          </li>
+          <li>
+            <a href="/nav-menu/service/" class="canvas-link">
+              <i class="fas fa-concierge-bell" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Services
+            </a>
+          </li>
+          <li>
+            <a href="/nav-menu/contact/" class="canvas-link">
+              <i class="fas fa-address-book" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- Section: Settings -->
+    <section class="canvas-section">
+      <div class="section-header">
+        <h3>Settings</h3>
+      </div>
+      <nav class="canvas-nav">
+        <ul>
+          <li class="setting-item">
+            <span class="setting-label">
+              <i class="fas fa-moon" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Dark Mode
+            </span>
+            <label class="theme-switch" title="Toggle Dark Mode">
+              <input type="checkbox" class="toggle-theme" id="toggleThemeMobile" />
+              <span class="slider"></span>
+            </label>
+          </li>
+          <li>
+            <a href="/nav-menu/profile/" class="canvas-link">
+              <i class="fas fa-user-circle" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Profile
+            </a>
+          </li>
+          <li>
+            <a href="/nav-menu/profile/" class="canvas-link">
+              <i class="fas fa-tachometer-alt" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="/nav-menu/about/" class="canvas-link">
+              <i class="fas fa-info" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Information
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- Section: Others -->
+    <section class="canvas-section">
+      <div class="section-header">
+        <h3>Others</h3>
+        <button class="section-btn" title="More Options">⚙️</button>
+      </div>
+      <nav class="canvas-nav">
+        <ul>
+          <li>
+            <a href="/nav-menu/faq/" class="canvas-link">
+              <i class="fas fa-question-circle" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              FAQ
+            </a>
+          </li>
+          <li>
+            <a href="/nav-menu/feedback/" class="canvas-link">
+              <i class="fas fa-comment-dots" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Feedback
+            </a>
+          </li>
+          <li>
+            <a href="/nav-menu/rules/" class="canvas-link">
+              <i class="fas fa-gavel" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Rules
+            </a>
+          </li>
+          <li>
+            <a href="/nav-menu/privacy/" class="canvas-link">
+              <i class="fas fa-shield-alt" style="margin-right: 12px; width: 20px; text-align: center;"></i>
+              Privacy & Policy
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </div>
+</div>
 </header>
 
 

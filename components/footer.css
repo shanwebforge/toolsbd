@@ -106,7 +106,7 @@
   }
     .two-column-container {
     flex-direction: column; /* vertical stack */
-    margin-bottom: -10px !important;
+    margin-bottom: -5px !important;
   }
 
   .left-box, .right-box {

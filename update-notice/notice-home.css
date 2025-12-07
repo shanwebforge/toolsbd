@@ -9,8 +9,8 @@ body, html {
 /* Latest Updates Section */
 .latest-updates-section  {
   background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
-  width: 95%;
-  margin: 20px auto;
+  width: 100%;
+  margin: auto;
   box-sizing: border-box;
   position: relative;
   border: 1px solid #ffffff;

@@ -473,7 +473,7 @@ margin-left: 20px;
 
 .search-icon i {
   font-size: 14px !important;
-  margin-right: px !important;
+  margin-right: -24px !important;
   margin-top: 2px;
 }
 
@@ -726,8 +726,6 @@ html.dark-mode .desktop-toggle {background-color: #1e293b;
     display: none;
   }
 }
-
-
 
 
 

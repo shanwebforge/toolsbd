@@ -1,47 +1,42 @@
 /* MAIN WRAPPER */
 .sc-slide-cat-container {
   background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
-  width: 95vw !important;
-  margin: 20px auto;
+  width: 100%; /* vw এর পরিবর্তে % ব্যবহার করুন */
+  margin: auto;
   box-sizing: border-box;
   position: relative;
   border: 1px solid #e0e0e0;
   border-radius: 20px;
   padding: 20px 15px;
-  max-width: 1200px !important;
+  max-width: 1200px;
   display: block;
   overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 /* GLASS TABS WRAPPER */
 .sc-glass-tabs {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between; /* FIX: No scroll */
   align-items: center;
-  gap: 12px;
-  padding: 0 18px;
+  gap: 0px;
+  padding: 0 0px;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(25px);
   border-radius: 40px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   width: 100%;
-  height: 65px; /* ✅ Container height */
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  height: 60px;
+  overflow: hidden; /* ❌ Disable scroll */
   box-sizing: border-box;
-  -webkit-overflow-scrolling: touch;
 }
 
-/* Hide scrollbar */
-.sc-glass-tabs::-webkit-scrollbar {
-  display: none;
-}
-
-/* TABS - Container এর height অনুযায়ী */
+/* TABS */
 .sc-glass-tabs .sc-tab {
+  flex: 1; /* Equal width */
   border: none;
-  background: rgba(255, 255, 255, 0.3);
+  background: none;
   padding: 0 24px;
   border-radius: 30px;
   font-size: 15px;
@@ -49,68 +44,57 @@
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
-  flex-shrink: 0;
   font-family: "Alkatra";
   color: #333;
-  min-width: max-content;
-  height: 85%; /* ✅ Container এর 85% height */
+  height: 85%;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
-  margin: auto 0; /* ✅ Vertical centering */
 }
 
-/* HOVER EFFECT */
+/* HOVER */
 .sc-glass-tabs .sc-tab:hover {
   background: rgba(255, 255, 255, 0.5);
-  transform: translateY(-2px);
 }
 
-/* ACTIVE TAB - সামান্য বড় */
+/* ACTIVE TAB */
 .sc-glass-tabs .sc-tab.active {
-  background: #ffffff;
+  background: #ffffff !important;
   box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
-  color: #8e3cfa;
+  color: #8e3cfa !important;
   font-weight: 700;
-  height: 90%; /* ✅ Active tab 90% height */
+  height: 90%;
 }
 
-/* CATEGORY CONTENT */
+/* CONTENT */
 .sc-category-box {
   display: none;
   margin-top: 25px;
-  animation: fadeIn 0.5s ease;
+  animation: fadeIn 0.4s ease;
 }
-
 .sc-category-box.active {
   display: block;
 }
-
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(0px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* GLASS CARD STYLE */
+/* CARD */
 .sc-glass-card {
   width: 100%;
   padding: 22px;
   border-radius: 22px;
-  background: linear-gradient(135deg,
-    rgba(255,255,255,0.7),
-    rgba(210,230,255,0.5)
-  );
+  background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(210,230,255,0.5));
   backdrop-filter: blur(25px);
-  box-shadow:
-    inset 0 0 15px rgba(255,255,255,0.4),
-    0 8px 25px rgba(0,0,0,0.12);
+  box-shadow: inset 0 0 15px rgba(255,255,255,0.4), 0 8px 25px rgba(0,0,0,0.12);
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
 }
 
-/* TOP RIGHT DATE */
+/* TOP DATE */
 .sc-card-top {
   display: flex;
   justify-content: flex-end;
@@ -128,20 +112,18 @@
   font-size: 20px;
   margin: 12px 0 5px;
   font-weight: 700;
-  word-wrap: break-word;
   line-height: 1.4;
 }
 
-/* SUBTITLE */
+/* SUBTEXT */
 .sc-card-sub {
   opacity: 0.8;
   margin-bottom: 18px;
   font-size: 15px;
-  word-wrap: break-word;
   line-height: 1.5;
 }
 
-/* FLOAT ICON (BOTTOM RIGHT) */
+/* ICON FLOAT */
 .sc-card-icon {
   position: absolute;
   right: 15px;
@@ -155,215 +137,64 @@
   white-space: nowrap;
 }
 
-/* ============================== */
-/* MOBILE RESPONSIVE (768px পর্যন্ত) */
-/* ============================== */
+/* ======================= */
+/* MOBILE 768px            */
+/* ======================= */
 @media (max-width: 768px) {
   .sc-slide-cat-container {
-    width: calc(100% - 20px) !important; 
-    margin: 15px 10px; 
-    border-radius: 16px;
-    padding: 15px 12px;
-    box-sizing: border-box;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    overflow: visible;
+    width: 100%; /* দুই পাশে সমান মার্জিন */
+    margin: 20px auto; /* নিশ্চিত কেন্দ্র সারিবদ্ধকরণ */
+    left: 0;
+    right: 0;
   }
 
-  /* Tabs Container - Mobile */
   .sc-glass-tabs {
-    padding: 0 15px;
-    gap: 8px;
-    width: 100%;
-    height: 55px; /* ✅ Mobile container height */
-    justify-content: flex-start;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 30px;
+    height: 40px;
+    gap: 0px;
+    padding: 0 0px;
   }
 
-  /* Individual Tabs - Mobile */
   .sc-glass-tabs .sc-tab {
-    padding: 0 16px;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 25px;
-    min-width: auto;
-    flex: 0 0 auto;
-    height: 85%; /* ✅ Container এর 85% height */
+    font-size: 12px;
+    padding: 0 10px;
+    height: 100%;
   }
 
-  /* Active Tab Mobile */
   .sc-glass-tabs .sc-tab.active {
-    background: #ffffff;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-    padding: 0 18px;
-    height: 90%; /* ✅ Active tab 90% height */
-  }
-
-  /* Card Adjustments for Mobile */
-  .sc-glass-card {
-    padding: 16px;
-    border-radius: 18px;
-    width: 100%;
+    height: 90%;
   }
 
   .sc-card-title {
     font-size: 17px;
-    margin: 10px 0 5px;
   }
-
   .sc-card-sub {
     font-size: 13px;
-    margin-bottom: 15px;
-  }
-
-  .sc-card-icon {
-    padding: 10px 12px;
-    font-size: 13px;
-    right: 12px;
-    bottom: 12px;
-  }
-
-  .sc-card-top .sc-date {
-    padding: 4px 10px;
-    font-size: 11px;
   }
 }
 
-/* Extra Small Mobile (480px পর্যন্ত) */
-@media (max-width: 480px) {
-  .sc-glass-tabs {
-    padding: 0 12px;
-    gap: 6px;
-    height: 50px; /* ✅ Smaller container height */
-  }
 
-  .sc-glass-tabs .sc-tab {
-    padding: 0 14px;
-    font-size: 13px;
-    height: 85%; /* ✅ Container এর 85% height */
-  }
 
-  .sc-glass-tabs .sc-tab.active {
-    padding: 0 16px;
-    height: 90%; /* ✅ Active tab 90% height */
-  }
-
-  .sc-card-title {
-    font-size: 16px;
-  }
-
-  .sc-card-sub {
-    font-size: 12px;
-  }
-}
-
-/* ============================== */
-/* DARK MODE */
-/* ============================== */
+/* ======================= */
+/* DARK MODE               */
+/* ======================= */
 html.dark-mode .sc-slide-cat-container {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+  background: linear-gradient(135deg, rgba(30,41,59,0.9), rgba(15,23,42,0.9));
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
 html.dark-mode .sc-glass-tabs {
-  background: rgba(30, 41, 59, 0.8);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  background: rgba(30,41,59,0.8);
 }
 
-html.dark-mode .sc-glass-tabs .sc-tab {
+html.dark-mode .sc-tab {
+  background: rgba(255,255,255,0.1);
   color: #e0e0e0;
-  background: rgba(255, 255, 255, 0.1);
 }
-
-html.dark-mode .sc-glass-tabs .sc-tab:hover {
-  background: rgba(255, 255, 255, 0.15);
+html.dark-mode .sc-tab:hover {
+  background: rgba(255,255,255,0.18);
 }
-
-html.dark-mode .sc-glass-tabs .sc-tab.active {
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.1);
-  color: #a855f7;
-}
-
-/* Dark Mode Height Adjustments - Same percentages */
-html.dark-mode .sc-glass-tabs {
-  height: 65px;
-}
-
-html.dark-mode .sc-glass-tabs .sc-tab {
-  height: 85%;
-}
-
-html.dark-mode .sc-glass-tabs .sc-tab.active {
-  height: 90%;
-}
-
-@media (max-width: 768px) {
-  html.dark-mode .sc-glass-tabs {
-    background: rgba(30, 41, 59, 0.9);
-    height: 55px;
-  }
-  
-  html.dark-mode .sc-glass-tabs .sc-tab.active {
-    background: rgba(255, 255, 255, 0.15);
-    height: 90%;
-  }
-  
-  html.dark-mode .sc-glass-tabs .sc-tab {
-    height: 85%;
-  }
-}
-
-@media (max-width: 480px) {
-  html.dark-mode .sc-glass-tabs {
-    height: 50px;
-  }
-  
-  html.dark-mode .sc-glass-tabs .sc-tab {
-    height: 85%;
-  }
-  
-  html.dark-mode .sc-glass-tabs .sc-tab.active {
-    height: 90%;
-  }
-}
-
-/* Perfect alignment with flexbox */
-.sc-tab-container {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-/* Alternative: Using CSS variables for perfect control */
-:root {
-  --tab-container-height: 65px;
-  --tab-height: calc(var(--tab-container-height) * 0.85);
-  --tab-active-height: calc(var(--tab-container-height) * 0.9);
-}
-
-@media (max-width: 768px) {
-  :root {
-    --tab-container-height: 55px;
-  }
-}
-
-@media (max-width: 480px) {
-  :root {
-    --tab-container-height: 50px;
-  }
-}
-
-/* CSS Variable ব্যবহার (Optional) */
-.sc-glass-tabs {
-  height: var(--tab-container-height);
-}
-
-.sc-glass-tabs .sc-tab {
-  height: var(--tab-height);
-}
-
-.sc-glass-tabs .sc-tab.active {
-  height: var(--tab-active-height);
+html.dark-mode .sc-tab.active {
+  background: rgba(255,255,255,0.25) !important;
+  color: #a855f7 !important;
 }

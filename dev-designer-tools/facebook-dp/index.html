@@ -6,32 +6,12 @@
   <title>Facebook DP Maker</title>
 
   <!-- Header/Footer CSS -->
-   <link rel="stylesheet" href="/css/styles.css" />
+   <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
 
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f2f5;
-      padding: 20px;
-      margin: 0;
-    }
-
-    .container {
-      max-width: 500px;
-      margin: 100px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-    }
+   
 
     input[type="file"] {
       margin-bottom: 20px;
@@ -45,7 +25,7 @@
     }
 
     button {
-      background: #077A7D;
+      background: var(--color-primary);
       color: white;
       border: none;
       padding: 12px 20px;
@@ -57,29 +37,16 @@
     }
 
     button:hover {
-      background: #066264;
+      background: var(--color-primary-dark);
     }
 
 
     @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
+
 
 }
     /* Dark mode */
-    html.dark-mode body {
-      background: #000;
-      color: #a7ffeb;
-    }
-
-    html.dark-mode .container {
-      background: #1e293b;
-    }
-
-    html.dark-mode h1 {
-      color: #fff;
-    }
+  
 
     html.dark-mode canvas {
       background: #475569;
@@ -98,14 +65,35 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>📸 Facebook DP Maker</h1>
+   <main class="file-section">
+  <div class="file-container">
+
+  <div class="file-header">
+    <div class="file-title">
+        <h2>📸 Facebook DP Maker</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>📸 Facebook DP Maker - A tool to create and customize Facebook profile pictures</p>
+        <p>Design attractive profile photos with frames, filters, and text overlays</p>
+        <p>Add festive frames, holiday themes, and special occasion decorations</p>
+        <p>Crop and resize images to fit Facebook's profile picture dimensions</p>
+        <p>Apply artistic filters, effects, and enhancements to your photos</p>
+        <p>Create personalized DPs for events, celebrations, or personal branding</p>
+    </div>
+</div>
+  <div class="file-footer">
+    <h3>Facebook DP Maker</h3>
     <input type="file" id="upload" accept="image/*" />
     <br />
     <canvas id="canvas" width="500" height="500"></canvas>
     <br />
     <button onclick="downloadImage()">📥 ডাউনলোড করুন</button>
   </div>
+
+  </div>
+   </main>
 
   <!-- JS Logic -->
   <script>

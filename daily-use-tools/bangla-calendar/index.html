@@ -16,38 +16,20 @@
     })();
   </script>
   <title>Bangla Calendar Converter</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
 <link rel="stylesheet" href="/components/header.css">
 <link rel="stylesheet" href="/components/footer.css">
 
 <style>
 
-/* Light Mode (default) */
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-.container {
+.calander-container {
   max-width: 700px;
   margin: 0 auto;
-  background: #fff;
   padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
   text-align: center;
-  margin-top: 100px;
-  margin-bottom: 100px;
 }
 
-h1 {
-  margin-bottom: 20px;
-  width: 100%;
-  color: #222;
-}
+
 
 input[type="date"],
 button {
@@ -64,30 +46,36 @@ button {
 }
 
 button {
-  background: #077A7D;
+  background: var(--color-primary);
   color: white;
   border: none;
   transition: background 0.3s ease;
 }
 
 button:hover {
-  background: #066264;
+  background: var(--color-primary-dark)
 }
 
 #result {
   margin-top: 20px;
   font-size: 20px;
   font-weight: bold;
-  color: #077A7D;
+  color: var(--color-primary);
   width: 100%;
   max-width: 300px;
   text-align: center;
+  margin: auto;
+  border: 1px solid var(--color-primary-light);
+  padding: 5px;
+  border-radius: 6px;
 }
 
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
+
+.calander-container {
+    padding: 0px;
+    
   }
 }
 
@@ -98,29 +86,26 @@ html.dark-mode body {
 }
 
 
-html.dark-mode .container {
+html.dark-mode .calander-container {
   background: #0f172a;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-html.dark-mode h1 {
-  color: #fff;
-}
 
 html.dark-mode input[type="date"] {
   background: #1e293b;
-  border: 1px solid #3b82f6;
+  border: 1px solid var(--color-primary-light);
   color: #cbd5e1;
 }
 
 html.dark-mode button {
-  background: #077A7D; /* same button color */
+  background: var(--color-primary-light); /* same button color */
   color: white;
   border: none;
 }
 
 html.dark-mode button:hover {
-  background: #066264; /* same hover */
+  background: var(--color-primary); /* same hover */
 }
 
 html.dark-mode #result {
@@ -130,16 +115,43 @@ html.dark-mode #result {
 </head>
 <body>
 
+
+<!-- ✅ Main Section -->
+   <main class="file-section">
+  <div class="file-container">
+    
+<div class="file-header">
+    <div class="file-title">
+        <h2>বাংলা ক্যালেন্ডার</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>বাংলা ক্যালেন্ডার বা বঙ্গাব্দ বাংলা ভাষাভাষী অঞ্চলে ব্যবহৃত একটি সৌর ক্যালেন্ডার</p>
+        <p>বাংলা সন চালু করেন মুঘল সম্রাট আকবর, যা শুরু হয় ১৫৮৪ খ্রিস্টাব্দ থেকে</p>
+        <p>বাংলা বছরের প্রথম মাস বৈশাখ এবং শেষ মাস চৈত্র</p>
+        <p>পহেলা বৈশাখ বাংলা নববর্ষ হিসেবে বাংলাদেশ ও পশ্চিমবঙ্গে পালিত হয়</p>
+        <p>বাংলা ক্যালেন্ডারে ১২ মাস, প্রতিটি মাস ২৯-৩২ দিনের হয়ে থাকে</p>
+        <p>বাংলা তারিখ অনুযায়ী বিভিন্ন ফসলি উৎসব ও ধর্মীয় অনুষ্ঠান পালিত হয়</p>
+    </div>
+</div>
+
   <!-- ✅ Placeholder for Header -->
   <div id="header-placeholder"></div>
 
   <!-- ✅ Page Main Content -->
-  <div class="container">
-    <h1>ইংরেজি থেকে বাংলা তারিখ রূপান্তর</h1>
+  <div class="calander-container">
+    <h3>ইংরেজি থেকে বাংলা তারিখ রূপান্তর</h3>
     <input type="date" id="gregorian-date" />
     <button id="convert-btn">রূপান্তর করো</button>
     <div id="result"></div>
   </div>
+
+
+</div>
+</main>
+
+  
 <script>
  // বাংলা মাসের নাম
 const banglaMonths = [

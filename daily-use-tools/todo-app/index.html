@@ -16,24 +16,13 @@
     })();
   </script>
   <title>To-Do List</title>
-<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/sub-file.css" />
 <link rel="stylesheet" href="/components/header.css">
 <link rel="stylesheet" href="/components/footer.css">
 <style>
-/* Global */
-* {
-  box-sizing: border-box;
-}
 
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-.container {
+.todo-container {
   max-width: 600px;
   margin: 0 auto;
   background: #1e293b;
@@ -43,10 +32,6 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-}
 
 .input-section {
   display: flex;
@@ -64,7 +49,7 @@ input[type="text"] {
 
 button {
   padding: 10px 15px;
-  background: #077A7D;
+  background-color: var(--color-primary);
   border: none;
   border-radius: 6px;
   color: white;
@@ -73,7 +58,7 @@ button {
 }
 
 button:hover {
-  background: #066264;
+  background: var(--color-primary-dark)
 }
 
 #task-list {
@@ -112,15 +97,12 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
+.todo-container{
+  padding: 0%;
+}
 
 }
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
+
 
 html.dark-mode .container {
   background: #222831;
@@ -177,15 +159,35 @@ html.dark-mode .task-actions button:hover {
 </head>
 <body>
 
-<div class="container">
-  <h1>📝 To-Do List</h1>
+
+   <main class="file-section">
+  <div class="file-container">
+<div class="file-header">
+    <div class="file-title">
+        <h2>📋 To-Do List</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>• Create and manage your daily tasks efficiently</p>
+        <p>• Set priorities and deadlines for important tasks</p>
+        <p>• Organize tasks into different categories or projects</p>
+        <p>• Mark completed tasks and track your productivity</p>
+        <p>• Add notes and details to each task item</p>
+        <p>• Set reminders for time-sensitive tasks</p>
+    </div>
+</div>
+
+<div class="todocontainer">
+  <h3>To-Do List</h3>
   <div class="input-section">
     <input type="text" id="task-input" placeholder="Enter a task..." />
     <button id="add-btn">Add Task</button>
   </div>
   <ul id="task-list"></ul>
 </div>
-
+</div>
+   </main>
 <script>const taskInput = document.getElementById('task-input');
 const addBtn = document.getElementById('add-btn');
 const taskList = document.getElementById('task-list');

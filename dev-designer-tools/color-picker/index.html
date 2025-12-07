@@ -16,33 +16,16 @@
     })();
   </script>
   <title>Color Picker & Palette Generator</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-.container {
-  max-width: 800px;
+.cp-container {
+  max-width: 700px;
   margin: 0 auto;
-  background: #ffffff;
   padding: 30px;
-  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  margin-top: 100px;
-  margin-bottom: 100px;
 }
-    h1 {
-      margin-bottom: 30px;
-      color: #333;
-    }
-
     input[type="color"] {
       width: 100px;
       height: 100px;
@@ -92,22 +75,19 @@
       border-radius: 50%;
     }
 @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
+  .cp-container {
+    padding: 0%;
   }
 
+      .color-box {
+      width: 80px;
+      height: 50px;
+
+    }
+
 }
 
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
-html.dark-mode .container {
-  background-color: #1e293b;
-}
-html.dark-mode h1 {
-  color: #fff;
-}
+
 
 html.dark-mode input[type="color"] {
   filter: brightness(1.1);
@@ -164,11 +144,31 @@ html.dark-mode .color-box.copied::after {
   </style>
 </head>
 <body>
-<div class="container">
-  <h1>🎨 Color Picker & Palette Generator</h1>
+   <main class="file-section">
+  <div class="file-container">
+
+  <div class="file-header">
+    <div class="file-title">
+        <h2>🎨 Color Picker & Palette Generator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>• Pick colors from any image or screen with eyedropper tool</p>
+        <p>• Generate harmonious color palettes automatically</p>
+        <p>• Get color codes in HEX, RGB, HSL, and CMYK formats</p>
+        <p>• Create monochromatic, complementary, and triadic schemes</p>
+        <p>• Save and export your favorite color combinations</p>
+        <p>• Test color contrast for accessibility and readability</p>
+    </div>
+</div>
+<div class="cp-container">
+  <h3>Color Picker & Palette Generator</h3>
 
   <input type="color" id="colorPicker" value="#3498db" onchange="generatePalette()" />
   <div class="palette" id="paletteContainer"></div></div>
+  </div>
+   </main>
 
   <script>
     function generatePalette() {

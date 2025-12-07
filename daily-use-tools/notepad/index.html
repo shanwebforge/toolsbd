@@ -16,36 +16,22 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
    <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-  body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-.container {
+
+.note-container {
   max-width: 700px;
-  margin: auto;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 70px;
-  margin-bottom: 70px;
+  margin: 0 auto;
+  padding: 30px;
+
+  text-align: center;
+
 }
 
-h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 15px;
-}
+
 
 textarea {
   width: 100%;
@@ -75,22 +61,23 @@ button {
   cursor: pointer;
   color: white;
   transition: background-color 0.3s ease;
+  margin: auto;
 }
 
 button#saveBtn {
-  background-color: #077A7D;
+  background-color: var(--color-primary);
 }
 
 button#saveBtn:hover {
-  background-color: #066264;
+  background-color: var(--color-primary-dark);
 }
 
 button#clearBtn {
-  background-color: #e74c3c;
+  background-color: #e03825;
 }
 
 button#clearBtn:hover {
-  background-color: #c0392b;
+  background-color: rgb(196, 55, 40);
 }
 
 .notes-list {
@@ -133,27 +120,15 @@ button#clearBtn:hover {
 }
 
 @media (max-width: 600px) {
-  .container {
-    padding: 15px;
+  .note-container {
+    padding: 0px;
   }
   textarea {
     height: 120px;
   }
-  h2 {font-size:  12px;}
-}
-html.dark-mode body {
-  background: #000;
-  color: #fff;
 }
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-}
 
-html.dark-mode h2 {
-  color: #93c5fd;
-}
 
 html.dark-mode textarea {
   background: #334155;
@@ -163,12 +138,12 @@ html.dark-mode textarea {
 }
 
 html.dark-mode .buttons button#saveBtn {
-  background-color: #077A7D;
+  background-color: var(--color-primary-light);
   color: white;
 }
 
 html.dark-mode .buttons button#saveBtn:hover {
-  background-color: #066264;
+  background-color: var(--color-primary);
 }
 
 html.dark-mode .buttons button#clearBtn {
@@ -206,8 +181,28 @@ html.dark-mode .note-item button.delete-btn:hover {
 </head>
 <body>
 
-<div class="container">
-  <h2>⚡ Quick Notes with List</h2>
+
+   <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>📝 দ্রুত নোট তৈরি করুন</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>• তাৎক্ষণিক নোট তৈরি করুন এবং তালিকাভুক্ত করুন</p>
+        <p>• চেকলিস্ট তৈরি করুন এবং কাজের অগ্রগতি ট্র্যাক করুন</p>
+        <p>• গুরুত্বপূর্ণ আইটেম চিহ্নিত করুন এবং সাজিয়ে রাখুন</p>
+        <p>• বিভিন্ন ক্যাটাগরিতে নোট সংরক্ষণ করুন</p>
+        <p>• সহজে সম্পাদনা, হালনাগাদ এবং মুছে ফেলুন</p>
+        <p>• বুলেট পয়েন্ট এবং নাম্বার লিস্ট তৈরি করুন</p>
+    </div>
+</div>
+
+<div class="note-container">
+  <h3>দ্রুত নোট তৈরি করুন</h3>
   <textarea id="noteArea" placeholder="এখানে আপনার নোট লিখুন..."></textarea>
   <div class="buttons">
     <button id="saveBtn">💾 সেভ করুন</button>
@@ -219,6 +214,8 @@ html.dark-mode .note-item button.delete-btn:hover {
   </div>
 </div>
 
+</div>
+</main>
 <script>
   const noteArea = document.getElementById('noteArea');
   const saveBtn = document.getElementById('saveBtn');

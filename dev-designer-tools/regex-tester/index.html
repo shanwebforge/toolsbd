@@ -16,36 +16,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-   body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .container {
-  max-width: 1000px;
-  margin: 0 auto;
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
-    h1 {
-      color: #333;
-      margin-bottom: 20px;
-    }
+   
 
     textarea, input {
       width: 100%;
@@ -59,7 +34,7 @@
 
     button {
       padding: 10px 20px;
-      background: #077A7D;
+      background: var(--color-primary);
       color: white;
       border: none;
       border-radius: 5px;
@@ -68,7 +43,7 @@
     }
 
     button:hover {
-      background: #066264;
+      background: var(--color-primary-dark);
     }
 
     .output {
@@ -91,7 +66,7 @@
     }
 
     .error {
-      color: red;
+      color: rgb(155, 2, 2);
       font-weight: bold;
       margin-top: 10px;
     }
@@ -127,12 +102,12 @@ html.dark-mode input {
 }
 
 html.dark-mode button {
-  background: #0a9396;
+  background: var(--color-primary-light);
   color: #eee;
 }
 
 html.dark-mode button:hover {
-  background: #07696b;
+  background: var(--color-primary);
 }
 
 html.dark-mode .output {
@@ -148,14 +123,32 @@ html.dark-mode .highlight {
 }
 
 html.dark-mode .error {
-  color: #ff6b6b;
+  color: #960202;
 }
 
   </style>
 </head>
 <body>
 
-  <div class="container"><h1>🧪 Regex Tester</h1>
+   <main class="file-section">
+  <div class="file-container">
+
+  <div class="file-header">
+    <div class="file-title">
+        <h2>🧪 Regex Tester</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Regex Tester - A tool for testing and debugging regular expressions</p>
+        <p>Validate and experiment with regex patterns in real-time</p>
+        <p>Test patterns against sample text to see matches and capture groups</p>
+        <p>Supports various regex flavors and provides detailed match information</p>
+        <p>Includes common regex patterns library for quick reference</p>
+        <p>Essential for developers working with text processing and validation</p>
+    </div>
+</div>
+  <div class="file-footer"><h3>Regex Tester</h3>
 
   <input type="text" id="regexInput" placeholder="Enter your Regular Expression (e.g. \\d+)" />
   <textarea id="testText" rows="6" placeholder="Enter your test text here...">My phone number is 01712345678 and email is test@example.com</textarea>
@@ -164,6 +157,9 @@ html.dark-mode .error {
 
   <div id="error" class="error"></div>
   <div id="result" class="output"></div></div>
+
+  </div>
+   </main>
 
   <script>
     function runRegex() {

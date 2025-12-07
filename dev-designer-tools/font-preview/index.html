@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>Bangla Font Preview Tool</title>
   <!-- লিপিলিখি ও গুগল থেকে বাংলাফন্ট লোড -->
-   <link rel="stylesheet" href="/css/styles.css" />
+   <link rel="stylesheet" href="/css/sub-file.css" />
+   <link rel="stylesheet" href="/components/header.css" />
+   <link rel="stylesheet" href="/components/footer.css" />
+
   <link href="https://lipilikhi.github.io/fonts/AdorshoLipi.min.css" rel="stylesheet">
   <link href="https://lipilikhi.github.io/fonts/AnekBangla.min.css" rel="stylesheet">
   <link href="https://lipilikhi.github.io/fonts/Atma.min.css" rel="stylesheet">
@@ -22,25 +25,45 @@
   <link href="https://lipilikhi.github.io/fonts/UNBangla.min.css" rel="stylesheet">
   <!-- আরও প্রায় শতাধিক ফন্ট github লিপিলিখি-তে উপলব্ধ :contentReference[oaicite:1]{index=1} -->
   <style>
-    html { background:#fafafa; color:#222; }
-    html.dark-mode { background:#1e293b; color:#e2e8f0; }
-    body { font-family:'Segoe UI',sans-serif; padding:30px; text-align:center; }
-    input, select { padding:8px; margin:8px; width:260px; border-radius:6px; border:1px solid #ccc; font-size:16px; }
+
+    input, select { width: 100%; padding:8px; margin:8px; width:260px; border-radius:6px; border:1px solid #ccc; font-size:16px; }
     html.dark-mode input, html.dark-mode select { background:#334155; color:#e2e8f0; border-color:#555; }
-    .preview { margin-top:30px; padding:20px; border:2px dashed #077A7D; border-radius:8px; min-height:150px; font-size:36px; }
-    html.dark-mode .preview { border-color:#38bdf8; background:#0f172a; }
+    .preview { width: 100%; margin-top:30px; padding:20px; border:2px dashed var(--color-primary); border-radius:8px; min-height:150px; font-size:36px; }
+    html.dark-mode .preview { border-color:var(--color-primary); background:#0f172a; }
     label { display:block; margin:20px 0 5px; font-weight:bold; }
-    @media(max-width:600px){ input, select{ width:100%; } .preview{ font-size:24px; } h1 {font-size: 16px !important;}}
+    @media(max-width:600px){ input, select{ width:100%; } .preview{ font-size:24px; }}
   </style>
 </head>
 <body>
 
-  <h1>🔤 বাংলা ফন্ট প্রিভিউ টুল</h1>
-  <input type="text" id="textInput" placeholder="এখানে বাংলা লেখা লিখুন..." value="বাংলা ফন্ট প্রিভিউ">
-  <label>ফন্ট নির্বাচন করুন:</label>
+   <main class="file-section">
+  <div class="file-container">
+<div class="file-header">
+    <div class="file-title">
+        <h2>🔤 বাংলা ফন্ট প্রিভিউ টুল</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>বাংলা ফন্ট প্রিভিউ টুল - একটি টুল যা বাংলা ফন্টের প্রিভিউ এবং পরীক্ষার সুবিধা দেয়</p>
+        <p>বিভিন্ন বাংলা ফন্ট দেখুন এবং তাদের দৃষ্টিনন্দনতা যাচাই করুন</p>
+        <p>ফন্টের সাইজ, রং, স্টাইল এবং অন্যান্য বৈশিষ্ট্য পরিবর্তন করুন</p>
+        <p>বাংলা টাইপোগ্রাফি এবং ওয়েব ডিজাইনের জন্য উপযোগী ফন্ট নির্বাচন করুন</p>
+        <p>ফন্টের রেন্ডারিং ক্যাপাবিলিটি বিভিন্ন ব্রাউজারে পরীক্ষা করুন</p>
+        <p>ওয়েব ফন্ট এবং লোকাল ফন্ট উভয়ই প্রিভিউ করার সুযোগ</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>বাংলা ফন্ট প্রিভিউ টুল</h3>
+    <label>ফন্ট নির্বাচন করুন:</label>
   <select id="fontSelect"></select>
-  <div class="preview" id="previewBox"></div>
+  <label>বাংলা ফন্ট প্রিভিউ:</label>
+  <input type="text" id="textInput" placeholder="এখানে বাংলা লেখা লিখুন..." value="এখানে বাংলা লেখা লিখুন...">
 
+  <div class="preview" id="previewBox"></div>
+  </div>
+  </div>
+   </main>
   <script>
     const fonts = [
       'Adorsho Lipi','Anek Bangla','Atma','Baloo Da 2','BenSen Handwriting',
@@ -75,5 +98,8 @@
     sel.addEventListener('change', update);
     update();
   </script>
+
+    <script src="/components/header.js"></script>
+  <script src="/components/footer.js"></script>
 </body>
 </html>

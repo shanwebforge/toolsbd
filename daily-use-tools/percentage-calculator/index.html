@@ -16,35 +16,23 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
     /* Light Mode (তোমার দেওয়া) */
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-.calculator {
-  background: #fff;
-  margin: auto;
-  padding: 30px 35px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
 
-h2 {
+.parcent-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+
   text-align: center;
-  color: #2c3e50;
-  margin-bottom: 25px;
+
 }
+
+
 
 label {
   display: block;
@@ -69,7 +57,7 @@ button {
   margin-top: 25px;
   width: 100%;
   padding: 12px;
-  background-color: #077A7D;
+  background-color: var(--color-primary);
   color: white;
   border: none;
   border-radius: 8px;
@@ -79,7 +67,7 @@ button {
 }
 
 button:hover {
-  background-color: #066264;
+  background-color: var(--color-primary-dark);
 }
 
 .result {
@@ -94,26 +82,13 @@ button:hover {
 }
 
 @media (max-width: 400px) {
-  .calculator {
-    padding: 20px;
+  .percent-container {
+    padding: 0px;
   }
-  h2 {font-size: 16px !important;}
 }
 
-/* Dark Mode */
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
 
-html.dark-mode .calculator {
-  background: #1e293b;
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
-}
 
-html.dark-mode h2 {
-  color: #e0e0e0;
-}
 
 html.dark-mode label {
   color: #bbb;
@@ -126,13 +101,12 @@ html.dark-mode input[type="number"] {
 }
 
 html.dark-mode button {
-  background-color: #0d9488;
+  background-color: var(--color-primary-light);
   color: white;
 }
 
 html.dark-mode button:hover {
-  background-color: #0a6f6f;
-}
+  background-color: var(--color-primary);}
 
 html.dark-mode .result {
   background: #333;
@@ -143,8 +117,27 @@ html.dark-mode .result {
 </head>
 <body>
 
-  <div class="calculator">
-    <h2>শতাংশ ক্যালকুলেটর</h2>
+   <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>📊 শতাংশ ক্যালকুলেটর</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>সংখ্যার শতাংশ গণনা করুন (যেমন: ২০০ এর ১৫% = ৩০)</p>
+        <p>শতাংশ বৃদ্ধি বা হ্রাস গণনা করুন (যেমন: ৫০ থেকে ৭৫ = ৫০% বৃদ্ধি)</p>
+        <p>মূল সংখ্যা খুঁজুন যখন শতাংশ ও ফলাফল জানা আছে</p>
+        <p>দুই সংখ্যার মধ্যে শতাংশ পার্থক্য নির্ণয় করুন</p>
+        <p>ছাড় বা ডিসকাউন্ট গণনা করুন</p>
+        <p>মার্কআপ এবং মার্জিন পার্সেন্টেজ গণনা করুন</p>
+    </div>
+</div>
+
+  <div class="percent-container">
+    <h3 style="text-align: center;">শতাংশ ক্যালকুলেটর</h3>
 
     <label for="originalValue">মূল সংখ্যা দিন:</label>
     <input type="number" id="originalValue" placeholder="যেমন: ২০০" min="0" />
@@ -156,6 +149,8 @@ html.dark-mode .result {
 
     <div class="result" id="resultBox">ফলাফল এখানে দেখানো হবে</div>
   </div>
+  </div>
+</main>
 
   <script>
     function calculatePercentage() {

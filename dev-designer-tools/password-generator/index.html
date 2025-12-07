@@ -16,39 +16,24 @@
     })();
   </script>
   <title>Password Generator</title>
-<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/sub-file.css" />
 <link rel="stylesheet" href="/components/header.css">
 <link rel="stylesheet" href="/components/footer.css">
 <style>
-* {
-  box-sizing: border-box;
-}
- body {
- font-family: 'Segoe UI', sans-serif;
- background: #f4f6f9;
- margin: 0;
- padding: 20px;
- color: #333;
+
+.pass-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+
+  text-align: center;
+
 }
 
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
-h1 {
-  margin-bottom: 25px;
-}
 
 button {
   padding: 12px 25px;
-  background: #077A7D;
+  background: var(--color-primary);
   border: none;
   border-radius: 6px;
   color: white;
@@ -58,7 +43,7 @@ button {
 }
 
 button:hover {
-  background: #066264;
+  background: var(--color-primary-dark)
 }
 
 input[type="text"] {
@@ -90,8 +75,8 @@ input[type="text"] {
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
+  .pass-container {
+    padding: 0%;
   }
 
 }
@@ -111,12 +96,12 @@ html.dark-mode h1 {
 }
 
 html.dark-mode button {
-  background: #077a7d;
+  background: var(--color-primary-light);
   color: white;
 }
 
 html.dark-mode button:hover {
-  background: #066264;
+  background: var(--color-primary)
 }
 
 html.dark-mode input[type="text"] {
@@ -131,12 +116,34 @@ html.dark-mode input[type="text"] {
 </head>
 <body>
 
-<div class="container">
-  <h1>Strong Password Generator</h1>
+   <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>🔐 Strong Password Generator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>• Generate secure, random passwords with custom length</p>
+        <p>• Include uppercase, lowercase, numbers, and symbols</p>
+        <p>• Create easy-to-remember passphrases</p>
+        <p>• Check password strength and security level</p>
+        <p>• Copy generated passwords with one click</p>
+        <p>• Avoid common password patterns and weak combinations</p>
+    </div>
+</div>
+
+<div class="pass-container">
+  <h3>Strong Password Generator</h3>
   <button id="generate-btn">Generate Password</button>
   <input type="text" id="password-output" readonly placeholder="Your password will appear here" />
 <small id="copy-msg" style="display: none;">Copied!</small>
 </div>
+
+  </div>
+   </main>
 
 <script>
 const generateBtn = document.getElementById('generate-btn');

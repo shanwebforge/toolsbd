@@ -13,6 +13,15 @@ body {
 }
 
 
+/* 🌙 Dark Mode */
+html.dark-mode body {
+  background: linear-gradient(135deg, #034d36 0%, #5a0067 100%) fixed !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
 /* ==================== COLOR VARIABLES ==================== */
 :root {
   /* Primary Colors */
@@ -32,6 +41,8 @@ body {
   --color-text-light: #333333;
   --color-text-light-secondary: #666666;
   --color-text-light-muted: #888888;
+  --text-white: #fff;
+  --text-black: #000;
   
   /* Border Colors - Light Mode */
   --color-border-light: #e0e0e0;
@@ -61,7 +72,7 @@ body {
 /* Dark Mode Variables */
 html.dark-mode {
   /* Background Colors - Dark Mode */
-  --color-bg-dark: #1a1a1a;
+  --color-bg-dark: #1e293b;
   --color-bg-dark-secondary: #2d2d2d;
   --color-bg-dark-tertiary: #3d3d3d;
   --color-bg-dark-card: #2d2d2d;
@@ -122,9 +133,10 @@ html.dark-mode {
   min-height: 100px;
   margin: 0 auto;
   justify-content: left;
-  align-items: left; /* ← vertical center align যোগ করুন */
+  align-items: left; 
   transition: 0.3s ease;
-  text-align: left; /* ← text content center align */
+  text-align: left; 
+  display: block;
 }
 
 
@@ -147,28 +159,17 @@ background-color: none;
 
 }
 
-
-/* MOBILE VERSION */
-@media (max-width: 768px) {
-.file-section {
-    margin-top: 70px!important;
-    margin-bottom: -30px !important;
+.file-footer {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  text-align: center;
 }
-
-.file-container {
-    padding: 15px;
-    margin: 0px auto;
-
-  }
-}
-
-
-
-
-
-
-
-
+ h3 {
+color: var(--color-text-light);
+font-size: 22px;
+font-weight: 700;
+margin-bottom: 15px;}
 
 
 
@@ -218,10 +219,22 @@ background-color: none;
 
 
 /* Dark Mode */
+html.dark-mode .file-container {
+  background: linear-gradient(
+    to bottom right,
+    #20343d 0%,
+    #2b2d3f 50%,
+    #20343d 100%
+  );
+  border: 1px solid #3a3a4a;
+  color: #fff;
+}
 html.dark-mode .file-title h2 {
     color: var(--color-text-dark);
 }
-
+html.dark-mode h3 {
+    color: var(--color-text-dark);
+}
 
 
 html.dark-mode .file-content-text p {
@@ -241,10 +254,18 @@ html.dark-mode .file-content-text p::before {
         margin-bottom: 20px;
         padding-bottom: 20px;
     }
-    
+        .file-footer {
+        padding: 0px;
+
+    }
     .file-title h2 {
         font-size: 24px;
         font-weight: 700;
+    }
+    h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 15px;
     }
     
 
@@ -255,7 +276,16 @@ html.dark-mode .file-content-text p::before {
         padding-left: 18px;
     }
 
+.file-section {
+    margin-top: 70px!important;
+    margin-bottom: -30px !important;
 }
 
+.file-container {
+    padding: 15px;
+    margin: 0px auto;
+    display: block;
 
+  }
+}
 

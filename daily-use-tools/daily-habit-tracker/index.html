@@ -4,31 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daily Habit Tracker</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-    }
 
-    .container {
-      max-width: 600px;
-      margin: 100px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
+.habit-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+
+  text-align: center;
+
+}
 
     form {
       display: flex;
@@ -45,12 +34,12 @@
     }
 
     input[type="text"]:focus {
-      border-color: #077A7D;
+      border-color: var(--color-primary);
       outline: none;
     }
 
     button {
-      background: #077A7D;
+      background: var(--color-primary);
       color: white;
       font-weight: bold;
       border: none;
@@ -61,7 +50,7 @@
     }
 
     button:hover {
-      background: #066264;
+      background: var(--color-primary-dark);
     }
 
     .habit-list {
@@ -104,7 +93,7 @@
     }
 
     .delete-btn:hover {
-      color: red;
+      color: rgb(126, 7, 7);
     }
 
     .stats {
@@ -113,19 +102,11 @@
       font-weight: bold;
     }
 @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
+.habit-container{
+  padding: 0%;
 }
-    /* Dark mode */
-    html.dark-mode body {
-      background: #000;
-      color: #a7ffeb;
-    }
+}
 
-    html.dark-mode .container {
-      background: #1e293b;
-    }
 
     html.dark-mode input, html.dark-mode .habit-item {
       background: #334155;
@@ -160,8 +141,27 @@
 </head>
 <body>
 
-  <div class="container">
-    <h1>🌿 Daily Habit Tracker</h1>
+
+ <main class="file-section">
+<div class="file-container">
+<div class="file-header">
+    <div class="file-title">
+        <h2>📈 Daily Habit Tracker</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>• Track your daily habits and build routines effectively</p>
+        <p>• Monitor progress with visual charts and statistics</p>
+        <p>• Set reminders for important habits and activities</p>
+        <p>• Analyze your consistency with streak counters</p>
+        <p>• Export data for personal review and analysis</p>
+        <p>• Set goals and track achievement percentages</p>
+    </div>
+</div>
+
+  <div class="habit-container">
+    <h3> Daily Habit Tracker</h3>
     <form id="habit-form">
       <input type="text" id="habit-input" placeholder="নতুন হ্যাবিট লিখুন..." />
       <button type="submit">Add</button>
@@ -171,6 +171,9 @@
     <div class="stats" id="stats">Total: ০, Complete: ০</div>
   </div>
 
+
+  </div>
+ </main>
   <script>
     const habitForm = document.getElementById('habit-form');
     const habitInput = document.getElementById('habit-input');

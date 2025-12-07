@@ -16,33 +16,19 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-   /* Light Mode (default) */
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      color: #333;
-    }
 
-.container {
-  background: #fff;
-  max-width: 500px;
-  margin: auto;
+.date-container {
+  max-width: 700px;
+  margin: 0 auto;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  margin-top: 100px;
-  margin-bottom: 100px;
+  text-align: center;
 }
 
-h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 25px;
-}
+
 
 label {
   font-weight: bold;
@@ -66,7 +52,7 @@ button {
   margin-top: 20px;
   padding: 12px;
   width: 100%;
-  background-color: #077A7D;
+  background-color: var(--color-primary);
   color: white;
   font-size: 17px;
   border: none;
@@ -76,7 +62,7 @@ button {
 }
 
 button:hover {
-  background-color: #066264;
+  background-color: var(--color-primary-dark);
 }
 
 .result {
@@ -91,24 +77,23 @@ button:hover {
 
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
+
+  .date-container {
+    padding: 0px;
   }
-  .container {
-    padding: 20px;
-  }
+  label {
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 6px;
+  text-align: left;
+  margin-left: 20px;
+  
+}
 }
 
-/* Dark Mode */
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
-}
+
 
 html.dark-mode h2 {
   color: #93c5fd;
@@ -125,13 +110,13 @@ html.dark-mode input[type="date"] {
 }
 
 html.dark-mode button {
-  background-color: #077A7D;
+  background-color: var(--color-primary-light);
   color: white;
   border: none;
 }
 
 html.dark-mode button:hover {
-  background-color: #066264;
+  background-color: var(--color-primary)
 }
 
 html.dark-mode .result {
@@ -143,8 +128,28 @@ html.dark-mode .result {
 </head>
 <body>
 
-  <div class="container">
-    <h2>📅 ডেট ক্যালকুলেটর</h2>
+   <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>📅 তারিখ ক্যালকুলেটর</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>দুটি তারিখের মধ্যে দিন, সপ্তাহ বা মাসের পার্থক্য গণনা করুন</p>
+        <p>যে কোনো তারিখ থেকে দিন যোগ বা বিয়োগ করে ভবিষ্যৎ বা অতীত তারিখ খুঁজুন</p>
+        <p>জন্ম তারিখ থেকে বর্তমান পর্যন্ত আপনার সঠিক বয়স গণনা করুন</p>
+        <p>একটি নির্দিষ্ট তারিখ কোন বার পড়ে তা খুঁজে বের করুন</p>
+        <p>সপ্তাহান্ত বাদ দিয়ে দুটি তারিখের মধ্যে কর্মদিবস গণনা করুন</p>
+        <p>বিভিন্ন ক্যালেন্ডার সিস্টেমের মধ্যে তারিখ রূপান্তর করুন</p>
+    </div>
+</div>
+
+
+  <div class="date-container">
+    <h3>তারিখ ক্যালকুলেটর</h3>
 
     <label for="startDate">শুরুর তারিখ:</label>
     <input type="date" id="startDate" />
@@ -156,6 +161,10 @@ html.dark-mode .result {
 
     <div class="result" id="resultBox">ফলাফল এখানে দেখানো হবে</div>
   </div>
+
+
+  </div>
+</main>
 
   <script>
     function calculateDuration() {

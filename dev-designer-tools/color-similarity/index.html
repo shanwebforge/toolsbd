@@ -15,34 +15,20 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>Color Similarity Suggestion - Single Row</title>
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-.container {
-  max-width: 600px;
+
+.cm-container {
+  max-width: 700px;
   margin: 0 auto;
-  background: #ffffff;
   padding: 30px;
-  border-radius: 15px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  margin-top: 100px;
-  margin-bottom: 100px;
+
 }
 
-h1 {
-  margin-bottom: 25px;
-  color: #333;
-}
 
 input[type="text"] {
   width: 180px;
@@ -58,7 +44,7 @@ input[type="text"] {
 button {
   padding: 10px 20px;
   font-size: 15px;
-  background-color: #077A7D;
+  background-color: var(--color-primary);
   border: none;
   border-radius: 6px;
   color: white;
@@ -67,7 +53,7 @@ button {
 }
 
 button:hover {
-  background-color: #066264;
+  background-color: var(--color-primary-dark);
 }
 
 /* Main color box container - One column layout */
@@ -125,24 +111,14 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
+  .cm-container{
+    padding: 0%;
   }
 
 }
 
 
 
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
-html.dark-mode .container {
-  background-color: #1e293b;
-}
-html.dark-mode h1 {
-  color: #ccc;
-}
 
 html.dark-mode input[type="text"] {
   border: 1px solid #475569;
@@ -151,13 +127,13 @@ html.dark-mode input[type="text"] {
 }
 
 html.dark-mode button {
-  background-color: #0f766e;
+  background-color: var(--color-primary-light);
   color: white;
 
 }
 
 html.dark-mode button:hover {
-  background-color: #115e59;
+  background-color: var(--color-primary);
 }
 
 
@@ -166,6 +142,10 @@ html.dark-mode button:hover {
   body.dark-mode .colors-container {
     justify-content: flex-start;
   }
+  .colors-container {
+  padding: 10px;
+
+}
 }
 
 html.dark-mode .color-box {
@@ -193,14 +173,34 @@ html.dark-mode .color-code {
 </head>
 <body>
 
-  <div class="container"><h1>Color Similarity Suggestion</h1>
+   <main class="file-section">
+  <div class="file-container">
+<div class="file-header">
+    <div class="file-title">
+        <h2>🎨 Color Similarity Suggestion</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Find similar colors based on different color models</p>
+        <p>Get complementary, analogous, and triadic color schemes</p>
+        <p>Compare colors using RGB, HEX, HSL, and CMYK values</p>
+        <p>Calculate color difference and similarity percentages</p>
+        <p>Generate color palettes for design projects</p>
+        <p>Convert colors between different formats and systems</p>
+    </div>
+</div>
+  <div class="cm-container"><h3>Color Similarity Suggestion</h3>
 
-  <input type="text" id="colorInput" placeholder="#3498DB or 3498DB" maxlength="7" />
+  <input type="text" id="colorInput" placeholder="#3498DB or #3498DB" maxlength="7" />
   <button onclick="suggestColors()">Suggest</button>
 
   <div class="colors-container" id="colorsContainer" style="margin-top: 20px;">
     <!-- Color boxes go here -->
   </div></div>
+
+  </div>
+   </main>
 
   <script>
     function hexToRgb(hex) {

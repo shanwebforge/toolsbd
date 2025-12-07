@@ -11,7 +11,14 @@ body {
   "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
   margin-bottom: 100px;
 }
-
+/* 🌙 Dark Mode */
+html.dark-mode body {
+  background: linear-gradient(135deg, #034d36 0%, #5a0067 100%) fixed !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
 main {
   padding: 20px;
   max-width: 1200px;
@@ -235,17 +242,17 @@ html.dark-mode .islamic-catagory-item {
   border: 1px solid rgba(160, 80, 255, 0.4);
   color: #f1f1f1;
   box-shadow:
-    0 0 12px rgba(160, 80, 255, 0.35),
-    0 0 25px rgba(140, 100, 255, 0.3),
-    inset 0 0 22px rgba(200, 120, 255, 0.22);
+    0 0 5px rgba(160, 80, 255, 0.35),
+    0 0 8px rgba(140, 100, 255, 0.3),
+    inset 0 0 6px rgba(200, 120, 255, 0.22);
   transition: 0.3s ease;
 }
 
 html.dark-mode .islamic-catagory-item:hover {
   box-shadow:
-    0 0 18px rgba(209, 183, 241, 0.55),
-    0 0 35px rgba(180, 80, 226, 0.4),
-    inset 0 0 30px rgba(160, 80, 255, 0.28);
+    0 0 6px rgba(209, 183, 241, 0.55),
+    0 0 8px rgba(180, 80, 226, 0.4),
+    inset 0 0 7px rgba(160, 80, 255, 0.28);
   transform: scale(1.02);
 }
 

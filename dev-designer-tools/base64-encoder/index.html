@@ -15,35 +15,12 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>Base64 Encoder / Decoder</title>
   <style>
-     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
-
-    h1 {
-      margin-bottom: 20px;
-      color: #333;
-    }
-
+ 
     .mode-select {
       margin-bottom: 15px;
     }
@@ -70,20 +47,20 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      background: #077A7D;
+      background: var(--color-primary);
       color: white;
     }
 
     button:hover {
-      background: #066264;
+      background: var(--color-primary-dark);
     }
 
     #copyBtn {
-      background: #27ae60;
+      background: #0a833c;
     }
 
     #copyBtn:hover {
-      background: #219150;
+      background: #04642c;
     }
 
     .output {
@@ -105,20 +82,10 @@
         width: 100%;
         font-size: 14px;
       }
-      h1 { font-size: 16px !important;}
     }
 
 
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
-html.dark-mode .container {
-  background-color: #1e293b;
-}
-html.dark-mode h1 {
-  color: #ccc;
-}
+
 
 html.dark-mode textarea {
   background: #1e293b;
@@ -127,20 +94,20 @@ html.dark-mode textarea {
 }
 
 html.dark-mode .buttons button {
-  background: #0f766e;
+  background: var(--color-primary-light);
   color: white;
 }
 
 html.dark-mode .buttons button:hover {
-  background: #115e59;
+  background: var(--color-primary);
 }
 
 html.dark-mode #copyBtn {
-  background: #22c55e;
+  background: #129743;
 }
 
 html.dark-mode #copyBtn:hover {
-  background: #16a34a;
+  background: #087932;
 }
 
 html.dark-mode .output {
@@ -166,8 +133,27 @@ html.dark-mode .output {
   </style>
 </head>
 <body>
-  <div class="container">
-  <h1>🔐 Base64 Encoder / Decoder</h1>
+
+   <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>🔐 Base64 Encoder / Decoder</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Base64 Encoder / Decoder - A tool for converting data to and from Base64 format</p>
+        <p>Encode text, images, or files into Base64 string representation</p>
+        <p>Decode Base64 strings back to their original format</p>
+        <p>Useful for embedding binary data in text-based protocols like JSON, XML, or URLs</p>
+        <p>Commonly used in web development for data URIs and API communications</p>
+        <p>Supports various input types including plain text, images, and file uploads</p>
+    </div>
+</div>
+  <div class="file-footer">
+  <h3>Base64 Encoder / Decoder</h3>
 
   <div class="mode-select">
     <label><input type="radio" name="mode" value="encode" checked /> Encode</label>
@@ -182,6 +168,8 @@ html.dark-mode .output {
   </div>
 
   <div id="result" class="output"></div></div>
+  </div>
+   </main>
 
   <script>
     function process() {

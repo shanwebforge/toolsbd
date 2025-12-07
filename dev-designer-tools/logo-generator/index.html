@@ -3,24 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Advanced Logo Generator</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  
+  <link rel="stylesheet" href="/css/sub-file.css" />
+  <link rel="stylesheet" href="/components/header.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Great+Vibes&family=Anton&family=Lobster&family=Oswald&family=Poppins&family=Inconsolata&family=Noto+Sans+Bengali&display=swap" rel="stylesheet">
   <style>
-    html {
-      background: #f8fafc;
-      color: #222;
-    }
-
-    html.dark-mode {
-      background: #1e293b;
-      color: #e2e8f0;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      padding: 30px;
-      text-align: center;
-    }
+    
 
     input, select {
       padding: 8px;
@@ -38,8 +27,9 @@
     }
 
     canvas {
+      width: 100%;
       margin: 20px 0;
-      border: 2px dashed #077A7D;
+      border: 2px dashed var(--color-primary);
       background: #ffffff;
     }
 
@@ -51,7 +41,7 @@
     button {
       padding: 10px 20px;
       font-size: 16px;
-      background: #077A7D;
+      background: var(--color-primary);
       color: white;
       border: none;
       border-radius: 6px;
@@ -60,31 +50,50 @@
     }
 
     button:hover {
-      background: #066264;
+      background: var(--color-primary-dark);
     }
 
     html.dark-mode button {
-      background: #0891b2;
+      background: var(--color-primary-light);
     }
 
     html.dark-mode button:hover {
-      background: #0e7490;
+      background: var(--color-primary);
     }
 
 
     @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
+
 
 }
   </style>
 </head>
 <body>
 
-  <h1>🎨 টেক্সট লোগো জেনারেটর</h1>
+     <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>🎨 Text to Logo Generator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Text to Logo Generator - A tool that creates logo designs from text input</p>
+        <p>Transform text into professional-looking logos with various styles and effects</p>
+        <p>Choose from multiple fonts, colors, sizes, and design templates</p>
+        <p>Add icons, shapes, and backgrounds to customize your logo design</p>
+        <p>Generate logos for websites, businesses, brands, and personal projects</p>
+        <p>Export logos in multiple formats including PNG, SVG, and JPG</p>
+    </div>
+</div>
+
+<div class="file-footer">
+  <h3>Text to Logo Generator</h3>
 
   <div>
+
     <input type="text" id="logoText" placeholder="লোগোর টেক্সট লিখুন"><br>
 
     <label>ফন্ট:</label>
@@ -118,6 +127,10 @@
 
   <canvas id="logoCanvas" width="500" height="200"></canvas><br>
   <button id="downloadBtn">💾 PNG হিসেবে ডাউনলোড</button>
+
+</div>
+  </div>
+     </main>
 
   <script>
     const textInput = document.getElementById("logoText");
@@ -168,6 +181,7 @@
       link.click();
     });
   </script>
-
+  <script src="/components/header.js"></script>
+  <script src="/components/footer.js"></script>
 </body>
 </html>

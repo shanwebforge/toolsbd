@@ -16,33 +16,21 @@
     })();
   </script>
 <title>Typing Speed Test with Real-time Validation</title>
-<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/sub-file.css" />
 <link rel="stylesheet" href="/components/header.css">
 <link rel="stylesheet" href="/components/footer.css">
 <style>
-   body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f4f6f9;
-
-  color: #333;}
 
 
-.container {
-  max-width: 850px;
-  margin: auto;
-  background: #fff;
+
+.typing-container {
+  max-width: 700px;
+  margin: 0 auto;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  margin-top: 100px;
-  margin-bottom: 100px;
-  align-items: center;
+
   text-align: center;
 }
 
-h1 {
-  margin-bottom: 20px;
-}
 
 /* Sample text styled with spans */
 #sample-text {
@@ -60,17 +48,17 @@ h1 {
 
 /* Span styling */
 .correct {
-  background-color: #05db29;
+  background-color: #038619;
   color: #fff;
 }
 
 .incorrect {
-  background-color: #c62828;
+  background-color: #ad0b0b;
   color: #fff;
 }
 
 textarea {
-  width: 97%;
+  width: 100%;
   padding: 12px;
   font-size: 16px;
   border-radius: 6px;
@@ -79,12 +67,12 @@ textarea {
   margin-bottom: 15px;
   color: #000000;
   background-color: transparent;
-  border: 1px solid #a7ffeb;
+  border: 1px solid var(--color-primary-light);
 }
 
 button {
   padding: 10px 20px;
-  background: #077A7D;
+  background: var(--color-primary);
   border: none;
   border-radius: 6px;
   color: white;
@@ -96,7 +84,7 @@ button {
 }
 
 button:hover {
-  background: #066264;
+  background: var(--color-primary-dark);
 }
 
 #timer, #wpm-result {
@@ -106,10 +94,15 @@ button:hover {
 
 
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   textarea {
-  width: 90%;}
-h1 {font-size: 16px !important;}}
+  width: 100%;}
+  .typing-container {
+    padding: 0px;
+    
+  }
+
+}
 
 /* ===== DARK MODE STYLES ===== */
 html.dark-mode body {
@@ -132,12 +125,12 @@ html.dark-mode #sample-text {
 }
 
 html.dark-mode .correct {
-  background-color: #2e7d32; /* dark green */
+  background-color: #0c7911; /* dark green */
   color: #ffffff;
 }
 
 html.dark-mode .incorrect {
-  background-color: #c62828; /* dark red */
+  background-color: #921212; /* dark red */
   color: #ffffff;
 }
 
@@ -148,12 +141,12 @@ html.dark-mode textarea {
 }
 
 html.dark-mode button {
-  background: #077A7D;
+  background: var(--color-primary);
   color: #fff;
 }
 
 html.dark-mode button:hover {
-  background: #066264;
+  background: var(--color-primary-dark)
 }
 
 html.dark-mode #timer,
@@ -165,19 +158,42 @@ html.dark-mode #wpm-result {
 </style>
 </head>
 <body>
+   
+ <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
-  <h1>⌨️ Typing Speed Test</h1>
+    <!-- Typing Test Header (উপরে) -->
+    <div class="file-header">
+      <div class="file-title">
+        <h2>⌨️ Typing Speed Test</h2>
+        <div class="title-underline"></div>
+      </div>
+      
+      <div class="file-content-text">
+        <p>• Test your typing speed in words per minute (WPM)</p>
+        <p>• Improve typing accuracy with real-time feedback</p>
+        <p>• Track progress over time with detailed results</p>
+        <p>• Practice with different text samples</p>
+        <p>• Perfect for students, professionals, and coders</p>
+      </div>
+    </div>
 
-  <p id="sample-text"></p>
+    <!-- Typing Test Content (নিচে - Internet Speed Test এর মতো) -->
+    <div class="typing-container">
+      <h3>Typing Speed Test</h3>
+      <div class="sample-text-box" id="sample-text"></div>
+      
+      <textarea id="input-text" placeholder="Start typing here..." rows="5"></textarea>
+      
+      <button id="start-btn">Start Test</button>
+      
+      <div id="timer" class="typing-stat">Time: <span>0s</span></div>
+      <div id="wpm-result" class="typing-stat">WPM: <span>0</span></div>
+      <div id="accuracy" class="typing-stat">Accuracy: <span>0%</span></div>
+    </div>
 
-  <textarea id="input-text" placeholder="Start typing here..." rows="5"></textarea>
-
-  <button id="start-btn">Start Test</button>
-
-  <div id="timer">Time: 0s</div>
-  <div id="wpm-result"></div>
-</div>
+  </div>
+</main>
 
 <script>
 const startBtn = document.getElementById('start-btn');

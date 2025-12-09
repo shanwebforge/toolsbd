@@ -16,34 +16,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-    .calculator {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 20px;
-    }
+ 
 
     input[type="number"] {
       width: 100%;
@@ -67,7 +44,7 @@
       padding: 12px;
       font-size: 18px;
       border: none;
-      background-color: #077A7D;
+      background-color: var(--color-primary);
       color: white;
       border-radius: 6px;
       cursor: pointer;
@@ -75,7 +52,7 @@
     }
 
     .buttons button:hover {
-      background-color: #066264;
+      background-color: var(--color-primary-dark);
     }
 
     .result {
@@ -87,22 +64,10 @@
       padding: 10px;
       border-radius: 8px;
     }
-@media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
 
-}
 
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
 
-html.dark-mode .calculator {
-  background: #1f2a38;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.7);
-}
+
 
 html.dark-mode h2 {
   text-align: center;
@@ -138,7 +103,7 @@ html.dark-mode .buttons button {
   padding: 12px;
   font-size: 18px;
   border: none;
-  background-color: #077A7D;
+  background-color: var(--color-primary-light);
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -146,7 +111,7 @@ html.dark-mode .buttons button {
 }
 
 html.dark-mode .buttons button:hover {
-  background-color: #066264;
+  background-color: var(--color-primary);
 }
 
 html.dark-mode .result {
@@ -163,8 +128,25 @@ html.dark-mode .result {
 </head>
 <body>
 
-<div class="calculator">
-  <h2>গণিত সমস্যা সমাধান</h2>
+  <main class="file-section">
+  <div class="file-container">
+  <div class="file-header">
+    <div class="file-title">
+        <h2>গণিত সমস্যা সমাধান</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>গণিত সমস্যা সমাধান - গাণিতিক সমস্যা সমাধানের জন্য একটি স্মার্ট টুল</p>
+        <p>বীজগণিত, জ্যামিতি, ক্যালকুলাস সহ বিভিন্ন ধরনের গণিতের সমস্যা সমাধান করে</p>
+        <p>সমস্যা লিখে দেওয়ার সাথে সাথে ধাপে ধাপে সমাধান প্রদর্শন করে</p>
+        <p>গ্রাফিকাল উপস্থাপনা এবং ভিজ্যুয়ালাইজেশন সুবিধা</p>
+        <p>গণিতের সূত্র, উপপাদ্য এবং নিয়মাবলীর রেফারেন্স লাইব্রেরি</p>
+        <p>শিক্ষার্থী ও শিক্ষকদের জন্য সহায়ক গাণিতিক সমস্যা সমাধানকারী</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>গণিত সমস্যা সমাধান</h3>
   <input type="number" id="num1" placeholder="প্রথম সংখ্যা দিন">
   <input type="number" id="num2" placeholder="দ্বিতীয় সংখ্যা দিন">
 
@@ -177,6 +159,8 @@ html.dark-mode .result {
 
   <div class="result" id="result">ফলাফল এখানে দেখানো হবে</div>
 </div>
+  </div>
+  </main>
 
 <script>
   function calculate(operator) {

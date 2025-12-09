@@ -16,34 +16,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 20px;
-    }
 
     textarea {
       width: 100%;
@@ -61,7 +38,7 @@
       padding: 10px 16px;
       width: 100%;
       font-size: 16px;
-      background: #077A7D;
+      background: var(--color-primary);
       border: none;
       border-radius: 6px;
       color: white;
@@ -83,30 +60,9 @@
       border-radius: 3px;
       font-weight: bold;
     }
-@media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
-
-}
-
-html.dark-mode body{
-  font-family: 'Segoe UI', sans-serif;
-  background: #000;
-  color: #a7ffeb;
-}
 
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
-}
 
-html.dark-mode h2 {
-  text-align: center;
-  color: #93a5c1;
-  margin-bottom: 20px;
-}
 
 html.dark-mode textarea {
   width: 100%;
@@ -126,7 +82,7 @@ html.dark-mode button {
   padding: 10px 16px;
   width: 100%;
   font-size: 16px;
-  background: #0c8186;
+  background: var(--color-primary-light);
   border: none;
   border-radius: 6px;
   color: white;
@@ -135,7 +91,7 @@ html.dark-mode button {
 }
 
 html.dark-mode button:hover {
-  background: #07575b;
+  background: var(--color-primary);
 }
 
 html.dark-mode .result {
@@ -159,15 +115,34 @@ html.dark-mode .highlight {
 </head>
 <body>
 
-<div class="container">
-  <h2>স্পেল চেকার (বাংলা-ইংরেজি)</h2>
+  <main class="file-section">
+  <div class="file-container">
+
+  <div class="file-header">
+    <div class="file-title">
+        <h2>স্পেল চেকার (বাংলা-ইংরেজি)</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>স্পেল চেকার (বাংলা-ইংরেজি) - বাংলা ও ইংরেজি বানান পরীক্ষার দ্বিভাষিক টুল</p>
+        <p>বাংলা এবং ইংরেজি উভয় ভাষায় বানান ও ব্যাকরণগত ত্রুটি চিহ্নিত করে</p>
+        <p>শুদ্ধ বানানের পরামর্শ দেয় এবং স্বয়ংক্রিয়ভাবে সংশোধন করার সুবিধা</p>
+        <p>ডকুমেন্ট, ইমেইল ও অনলাইন কন্টেন্টের জন্য বানান পরীক্ষা</p>
+        <p>বাংলা যুক্তাক্ষর ও ইংরেজি উচ্চারণ ভিত্তিক শব্দ চেক করার সুবিধা</p>
+        <p>লেখালেখির মান উন্নয়নে সহায়ক ডিজিটাল টুল</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>স্পেল চেকার (বাংলা-ইংরেজি)</h3>
 
   <textarea id="inputText" placeholder="এখানে লিখুন..."></textarea>
   <button onclick="checkSpelling()">স্পেল চেক করুন</button>
 
   <div class="result" id="resultArea">ফলাফল এখানে দেখানো হবে</div>
 </div>
-
+  </div>
+  </main>
 <script>
   // ✅ Preloaded common English words (তুমি চাইলে বড়তর word list load করতে পারো JSON file থেকে)
   const englishWordsSet = new Set([

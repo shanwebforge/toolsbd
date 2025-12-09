@@ -16,33 +16,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-    h2 {
-      color: #2c3e50;
-      margin-bottom: 20px;
-    }
-    .container {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-
+ 
     input[type="file"] {
       margin-bottom: 20px;
     }
@@ -58,28 +36,8 @@
       color: #2c3e50;
     }
 
-@media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
-
-}
-html.dark-mode body{
-  font-family: 'Segoe UI', sans-serif;
-  background: #000;
-  color: #a7ffeb;
-}
 
 
-html.dark-mode h2 {
-  color: #a0aec0;
-  margin-bottom: 20px;
-}
-
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.8);
-}
 
 html.dark-mode input[type="file"] {
   margin-bottom: 20px;
@@ -100,13 +58,30 @@ html.dark-mode .output {
   </style>
 </head>
 <body>
-
-  <div class="container">
-    <h2>📄 PDF to Text (নোট রূপান্তর)</h2>
+  <main class="file-section">
+  <div class="file-container">
+    <div class="file-header">
+    <div class="file-title">
+        <h2>📄 PDF to Text (নোট রূপান্তর)</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>📄 PDF to Text (নোট রূপান্তর) - PDF ফাইল থেকে টেক্সট নোটে রূপান্তরের টুল</p>
+        <p>PDF ডকুমেন্ট থেকে টেক্সট, ইমেজ এবং টেবিল এক্সট্রাক্ট করুন</p>
+        <p>রূপান্তরিত টেক্সট এডিট, সেভ এবং শেয়ার করার সুবিধা</p>
+        <p>বাংলা, ইংরেজি ও অন্যান্য ভাষার PDF সাপোর্ট করে</p>
+        <p>OCR (অপটিক্যাল ক্যারেক্টার রিকগনিশন) টেকনোলজি ব্যবহার</p>
+        <p>পাঠ্যপুস্তক, নোট এবং গবেষণাপত্র রূপান্তরের জন্য উপযোগী</p>
+    </div>
+</div>
+  <div class="file-footer">
+    <h3> PDF to Text (নোট রূপান্তর)</h3>
     <input type="file" id="fileInput" accept="application/pdf" />
     <div class="output" id="textOutput">এখানে টেক্সট দেখা যাবে...</div>
   </div>
-
+  </div>
+  </main>
   <!-- PDF.js library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
   <script>

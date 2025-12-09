@@ -1,18 +1,17 @@
 /* MAIN WRAPPER */
 .sc-slide-cat-container {
   background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
-  width: 100%; /* vw এর পরিবর্তে % ব্যবহার করুন */
+  width: 100%; 
   margin: auto;
   box-sizing: border-box;
   position: relative;
   border: 1px solid #e0e0e0;
-  border-radius: 20px;
-  padding: 20px 15px;
   max-width: 1200px;
   display: block;
   overflow: hidden;
   margin-top: 20px;
   margin-bottom: 10px;
+  border-radius: 18px;
 }
 
 /* GLASS TABS WRAPPER */
@@ -24,7 +23,7 @@
   padding: 0 0px;
   background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(25px);
-  border-radius: 40px;
+
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   width: 100%;
   height: 60px;
@@ -38,15 +37,14 @@
   border: none;
   background: none;
   padding: 0 24px;
-  border-radius: 30px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  
   white-space: nowrap;
   font-family: "Alkatra";
   color: #333;
-  height: 85%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,13 +62,13 @@
   box-shadow: 0px 4px 12px rgba(0,0,0,0.12);
   color: #8e3cfa !important;
   font-weight: 700;
-  height: 90%;
+  height: 100%;
 }
 
 /* CONTENT */
 .sc-category-box {
   display: none;
-  margin-top: 25px;
+  
   animation: fadeIn 0.4s ease;
 }
 .sc-category-box.active {
@@ -85,7 +83,6 @@
 .sc-glass-card {
   width: 100%;
   padding: 22px;
-  border-radius: 22px;
   background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(210,230,255,0.5));
   backdrop-filter: blur(25px);
   box-shadow: inset 0 0 15px rgba(255,255,255,0.4), 0 8px 25px rgba(0,0,0,0.12);
@@ -143,7 +140,6 @@
 @media (max-width: 768px) {
   .sc-slide-cat-container {
     width: 100%; /* দুই পাশে সমান মার্জিন */
-    margin: 20px auto; /* নিশ্চিত কেন্দ্র সারিবদ্ধকরণ */
     left: 0;
     right: 0;
   }
@@ -161,7 +157,7 @@
   }
 
   .sc-glass-tabs .sc-tab.active {
-    height: 90%;
+    height: 100%;
   }
 
   .sc-card-title {

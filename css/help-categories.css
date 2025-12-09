@@ -1,15 +1,13 @@
 /* ===== HELP SECTION SLIDER ===== */
 .help-help-section {
-  width: 95%;
+  width: 100%;
   max-width: 1100px;
   margin: 30px auto;
 }
 
 .help-main-section {
-    background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
-    border: 1px solid #fff;
-    border-radius: 18px;
-    padding: 10px;
+
+
 
   display: flex;
   flex-direction: column;
@@ -120,8 +118,9 @@
     gap: 5px;
   }
   .help-category-item {
-    width: 180px;
+    width: 120px;
     height: 100px;
+    border-radius: 8px;
   }
   .help-category-box {
     font-size: 32px;
@@ -138,12 +137,7 @@
 }
 }
 
-html.dark-mode .help-help-section,
-html.dark-mode .help-main-section {
-    background: #1e293b;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
+
 
   html.dark-mode .help-category-item {
     background: #1e293b;
@@ -152,7 +146,7 @@ html.dark-mode .help-main-section {
   }
 
 html.dark-mode .help-cat-title,
-html.dark-mode .help-cat-title-name {
+html.dark-mode .help-cat-title-name , .help-cat-title-h1{
   color: #fff !important;
 }
 

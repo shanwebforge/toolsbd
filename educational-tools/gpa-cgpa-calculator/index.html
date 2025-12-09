@@ -16,32 +16,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-    h2 {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 20px;
-    }
+
     .subject {
       display: flex;
       gap: 10px;
@@ -61,13 +40,13 @@
       font-size: 16px;
       border: none;
       border-radius: 6px;
-      background-color: #077A7D;
+      background-color: var(--color-primary);
       color: white;
       cursor: pointer;
       margin-top: 10px;
     }
     button:hover {
-      background-color: #066264;
+      background-color: var(--color-primary-dark);
     }
     .result {
       margin-top: 20px;
@@ -86,20 +65,7 @@
     }
 
 
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-}
-
-html.dark-mode h2 {
-  text-align: center;
-  color: #a3b1c2;
-  margin-bottom: 20px;
-}
 
 html.dark-mode .subject {
   display: flex;
@@ -129,7 +95,7 @@ html.dark-mode button {
   font-size: 16px;
   border: none;
   border-radius: 6px;
-  background-color: #077a7d;
+  background-color: var(--color-primary-light);
   color: white;
   cursor: pointer;
   margin-top: 10px;
@@ -137,7 +103,7 @@ html.dark-mode button {
 }
 
 html.dark-mode button:hover {
-  background-color: #066264;
+  background-color: var(--color-primary);
 }
 
 html.dark-mode .result {
@@ -160,8 +126,27 @@ html.dark-mode .result {
 </head>
 <body>
 
-<div class="container">
-  <h2>GPA / CGPA ক্যালকুলেটর</h2>
+  <main class="file-section">
+  <div class="file-container">
+
+  <div class="file-header">
+    <div class="file-title">
+        <h2>📊 GPA / CGPA ক্যালকুলেটর</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>GPA / CGPA ক্যালকুলেটর - শিক্ষার্থীদের জন্য গ্রেড পয়েন্ট ক্যালকুলেশনের টুল</p>
+        <p>বিভিন্ন সেমিস্টারের ফলাফল থেকে GPA এবং CGPA হিসাব করুন</p>
+        <p>বিভিন্ন গ্রেডিং সিস্টেম (৪.০, ৫.০ স্কেল) সমর্থন করে</p>
+        <p>ক্রেডিট আওয়ার বিবেচনা করে সঠিক গ্রেড পয়েন্ট নির্ণয় করে</p>
+        <p>ভবিষ্যতের ফলাফল পূর্বাভাস দেওয়ার সুযোগ প্রদান করে</p>
+        <p>শিক্ষার্থীদের একাডেমিক পরিকল্পনা করতে সাহায্য করে</p>
+    </div>
+</div>
+
+<div class="file-footer">
+  <h3>GPA / CGPA ক্যালকুলেটর</h3>
 
   <div id="subjectContainer">
     <div class="subject">
@@ -178,11 +163,13 @@ html.dark-mode .result {
     </div>
   </div>
 
-  <button onclick="addSubject()">➕ আরেকটি বিষয় যোগ করুন</button>
-  <button onclick="calculateGPA()">📊 হিসাব করুন</button>
+  <button onclick="addSubject()"> আরেকটি বিষয় যোগ করুন</button>
+  <button onclick="calculateGPA()">হিসাব করুন</button>
 
   <div class="result" id="result">ফলাফল এখানে দেখানো হবে</div>
 </div>
+  </div>
+  </main>
 
 <script>
   function addSubject() {

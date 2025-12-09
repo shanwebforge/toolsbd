@@ -17,33 +17,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #2c3e50;
-    }
+ 
 
     .question {
       margin-bottom: 20px;
@@ -63,7 +41,7 @@
       width: 100%;
       padding: 12px;
       margin-top: 15px;
-      background-color: #077A7D;
+      background-color: var(--color-primary);
       color: white;
       border: none;
       border-radius: 6px;
@@ -72,7 +50,7 @@
     }
 
     button:hover {
-      background-color: #066264;
+      background-color: var(--color-primary-dark);
     }
 
     .result {
@@ -97,26 +75,8 @@
       border-radius: 4px;
     }
 
-@media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
 
-}
-html.dark-mode body {
-  background: #000;
-}
 
-html.dark-mode .container {
-
-  background: #1e293b;
-}
-
-html.dark-mode h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #a0aec0;
-}
 
 html.dark-mode .question {
   margin-bottom: 20px;
@@ -138,7 +98,7 @@ html.dark-mode button {
   width: 100%;
   padding: 12px;
   margin-top: 15px;
-  background-color: #077A7D;
+  background-color: var(--color-primary);
   color: white;
   border: none;
   border-radius: 6px;
@@ -148,7 +108,7 @@ html.dark-mode button {
 }
 
 html.dark-mode button:hover {
-  background-color: #066264;
+  background-color: var(--color-primary-dark);
 }
 
 html.dark-mode .result {
@@ -180,8 +140,26 @@ html.dark-mode .incorrect {
 </head>
 <body>
 
-<div class="container">
-  <h2>MCQ প্র্যাকটিস টুল</h2>
+  <main class="file-section">
+  <div class="file-container">
+
+  <div class="file-header">
+    <div class="file-title">
+        <h2>MCQ প্র্যাকটিস টুল</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>MCQ প্র্যাকটিস টুল - বহু নির্বাচনী প্রশ্ন প্র্যাকটিসের একটি ইন্টারেক্টিভ টুল</p>
+        <p>বিভিন্ন বিষয়ের উপর MCQ সেট তৈরি করুন এবং প্র্যাকটিস করুন</p>
+        <p>টাইমার সহ প্র্যাকটিস টেস্ট দিয়ে নিজেকে যাচাই করুন</p>
+        <p>প্রশ্নের উত্তর দেওয়ার পর তাৎক্ষণিক ফলাফল ও ব্যাখ্যা দেখুন</p>
+        <p>প্রোগ্রেস ট্র্যাক করুন এবং দুর্বল বিষয়গুলো চিহ্নিত করুন</p>
+        <p>পরীক্ষার প্রস্তুতির জন্য আদর্শ টুল</p>
+    </div>
+</div>
+<div class="file-footer" style="justify-content: start; text-align: left;">
+  <h3>MCQ প্র্যাকটিস টুল</h3>
 
   <form id="mcqForm">
     <!-- প্রশ্ন ১ -->
@@ -219,6 +197,9 @@ html.dark-mode .incorrect {
 
   <div class="result" id="resultBox"></div>
 </div>
+
+  </div>
+  </main>
 
 <script>
   const answers = {

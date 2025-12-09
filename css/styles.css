@@ -692,27 +692,7 @@ html.dark-mode .category-box::after {
  
 }
 
-.cat-title-name {
-  display: inline-block;
-  position: relative;
-  font-size: 28px;
-  font-weight: bold;
-  padding-bottom: 10px;
-  color: #555;
-  margin-bottom: 10px;
-  text-align: left;
-}
 
-.cat-title-name::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 4px;
-  width: 100%;
-  background: #8e3cfa;
-  border-radius: 2px;
-}
 
 
 .main-section {
@@ -803,6 +783,68 @@ html.dark-mode .box-icon {
   text-decoration: none !important;
 }
 
+/* --- PARENT CONTAINER: Ensures Left Text and Right Link --- */
+.cat-title {
+    display: flex;
+    /* ভেতরের দুটি আইটেমকে দুটি বিপরীত দিকে ধাক্কা দেয় */
+    justify-content: space-between; 
+    /* আইটেমগুলোকে উল্লম্বভাবে মাঝখানে রাখে */
+    align-items: center; 
+    width: 100%;
+    padding: 10px 0; 
+    /* প্রয়োজন অনুযায়ী এই padding পরিবর্তন করা যেতে পারে */
+}
+
+/* --- LEFT TEXT: .cat-title-name --- */
+.cat-title-name {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    font-weight: 600;
+    padding-left: 5px;
+    color: #525151 !important;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    /* নিশ্চিত করে যে টেক্সট ছোট স্ক্রিনে ভেঙে না যায় */
+    flex-shrink: 0; 
+}
+
+/* Circle before text */
+.cat-title-name::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #039723, #46e0e5);
+    margin-right: 10px;
+}
+
+/* --- RIGHT LINK: .cat-title-link --- */
+.cat-title-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 8px 12px; 
+    background-color: #8e3cfa;
+    border-radius: 6px; 
+    color: #fff; 
+    text-decoration: none;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.cat-title-link:hover {
+    background-color: #7a28e0; /* Hover effect */
+}
+
+.cat-title-link i {
+    color: inherit;
+    margin-left: 5px;
+}
+
+
+
 /* Responsive */
 @media (max-width: 768px) {
   .main-section {
@@ -823,64 +865,24 @@ html.dark-mode .box-icon {
     font-size: 12px;
     
   }
-.cat-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* title left, arrow right */
-  font-size: 18px !important;
-  font-weight: bold;
-  margin-bottom: 6px;
-  margin-left: 0px;
-  text-align: left;
-  padding: 15px;
-}
-.cat-title-name {
-  display: inline-block;
-  position: relative;
-  font-size: 18px;
-  font-weight: bold;
-  padding-bottom: 4px;
-  color: #555;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.cat-title-name::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  border-radius: 2px;
-}
-
-
-.cat-title-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 12px;     
-  background-color: #8e3cfa;  
-  border-radius: 6px;  
-  color: #fff; 
-  text-decoration: none;
-  font-size: 16px;
-  transition: background 0.3s ease;
-}
-
-.cat-title-link:hover {
-  background-color: #8e3cfa;
-}
-
-.cat-title-link i {
-  color: #8e3cfa;
-  transition: color 0.3s ease;
-}
-
-.cat-title-link:hover i {
-  color: #fff;
-}
+    .cat-title {
+        padding: 5px 0;
+        margin-bottom: 10px;
+    }
+    .cat-title-name {
+        font-size: 18px;
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+    .cat-title-name::before {
+        width: 10px;
+        height: 10px;
+        margin-right: 8px;
+    }
+    .cat-title-link {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
 
   .box-icon {
     font-size: 26px;
@@ -1171,7 +1173,6 @@ html.dark-mode #result {
     padding: 8px 15px;
     border-radius: 12px;
     font-size: 16px;}
-}
 
 
 

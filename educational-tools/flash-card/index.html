@@ -16,32 +16,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2c3e50;
-    }
+
 
     .form-group {
       max-width: 500px;
@@ -62,7 +41,7 @@
     }
 
     button {
-      background: #077A7D;
+      background: var(--color-primary);
       color: white;
       border: none;
       cursor: pointer;
@@ -70,7 +49,7 @@
     }
 
     button:hover {
-      background: #066264;
+      background: var(--color-primary-dark);
     }
 
     .cards {
@@ -127,17 +106,7 @@
     }
 
 
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
-}
-html.dark-mode h2 {
-  color: #a3b1c2;
-}
+
 
 html.dark-mode .form-group {
   max-width: 500px;
@@ -168,7 +137,7 @@ html.dark-mode textarea::placeholder {
 }
 
 html.dark-mode button {
-  background: #077a7d;
+  background: var(--color-primary-light);
   color: white;
   border: none;
   cursor: pointer;
@@ -176,7 +145,7 @@ html.dark-mode button {
 }
 
 html.dark-mode button:hover {
-  background: #066264;
+  background: var(--color-primary);
 }
 
 html.dark-mode .cards {
@@ -237,15 +206,36 @@ html.dark-mode .card-back {
 </head>
 <body>
 
-<div class="container"><h2>📚 ফ্ল্যাশকার্ড তৈরি টুল</h2>
+  <main class="file-section">
+  <div class="file-container">
+
+    <div class="file-header">
+    <div class="file-title">
+        <h2>📚 ফ্ল্যাশকার্ড তৈরি টুল</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>ফ্ল্যাশকার্ড তৈরি টুল - শিক্ষার্থীদের জন্য ফ্ল্যাশকার্ড তৈরির একটি ডিজিটাল টুল</p>
+        <p>মনে রাখার জন্য কার্যকরী ফ্ল্যাশকার্ড তৈরি করুন প্রশ্ন-উত্তর আকারে</p>
+        <p>বিভিন্ন বিষয়ের জন্য ফ্ল্যাশকার্ড সেট তৈরি এবং সংগঠিত করুন</p>
+        <p>ইমেজ, রং এবং ফন্ট ব্যবহার করে দৃষ্টিনন্দন ফ্ল্যাশকার্ড ডিজাইন করুন</p>
+        <p>শেখার প্রক্রিয়াকে ইন্টারেক্টিভ এবং আকর্ষণীয় করুন</p>
+        <p>ফ্ল্যাশকার্ড প্রিন্ট করুন বা ডিজিটালভাবে ব্যবহার করুন যেকোনো ডিভাইসে</p>
+    </div>
+</div>
+<div class="container"><h3>ফ্ল্যাশকার্ড তৈরি টুল</h3>
 
 <div class="form-group">
   <input type="text" id="question" placeholder="প্রশ্ন লিখুন (উদাঃ: রাজধানী কী?)" />
   <textarea id="answer" rows="3" placeholder="উত্তর লিখুন (উদাঃ: ঢাকা)"></textarea>
-  <button onclick="addCard()">➕ ফ্ল্যাশকার্ড যুক্ত করুন</button>
+  <button onclick="addCard()">ফ্ল্যাশকার্ড যুক্ত করুন</button>
 </div>
 
 <div class="cards" id="cardsContainer"></div></div>
+
+  </div>
+  </main>
 
 <script>
   function addCard() {

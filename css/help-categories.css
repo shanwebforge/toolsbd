@@ -32,7 +32,7 @@
   font-size: 22px;
   font-weight: 600;
   padding-left: 5px;
-  color: #525151;
+  color: #525151 !important;
   margin-bottom: 5px;
   margin-top: 5px;
 }
@@ -131,7 +131,7 @@
 
   .help-cat-title-h1 {
   font-size: 18px;
-  color: #494949;
+  color: #494949 !important;
   font-family: "Alkatra";
   margin-bottom: -6px;
 }
@@ -146,13 +146,15 @@
   }
 
 html.dark-mode .help-cat-title,
-html.dark-mode .help-cat-title-name , .help-cat-title-h1{
+html.dark-mode .help-cat-title-name{
   color: #fff !important;
 }
-
 html.dark-mode .help-cat-title-link {
   background-color: #8e3cfa;
   color: #fff;
+}
+html.dark-mode .help-cat-title-h1{
+  color: #fff !important;
 }
 
 html.dark-mode .help-cat-title-link:hover {

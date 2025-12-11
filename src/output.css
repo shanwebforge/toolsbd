@@ -303,6 +303,12 @@
   .mr-2\.5 {
     margin-right: calc(var(--spacing) * 2.5);
   }
+  .\!mb-1 {
+    margin-bottom: calc(var(--spacing) * 1) !important;
+  }
+  .\!mb-5 {
+    margin-bottom: calc(var(--spacing) * 5) !important;
+  }
   .\!mb-10 {
     margin-bottom: calc(var(--spacing) * 10) !important;
   }

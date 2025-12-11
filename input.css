@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles and utilities */
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-800 transition-colors duration-300;
+  }
+  
+  html.dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-500;
+  }
+}
+
+@layer components {
+  /* Column links with dot */
+    main {
+    @apply margin-bottom 200px !important;
+  }
+  .column-links {
+    @apply relative pl-5;
+  }
+  
+  .column-links::before {
+    content: "";
+    @apply absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-accent rounded-full transition-colors duration-300;
+  }
+  
+  .column-links:hover::before {
+    @apply bg-customTeal;
+  }
+  
+  .dark .column-links::before {
+    @apply bg-accent;
+  }
+  
+  .dark .column-links:hover::before {
+    @apply bg-teal-400;
+  }
+  
+  /* Download section */
+  .download-section {
+    @apply text-center p-8 md:p-10 bg-gradient-footer dark:bg-gray-800 rounded-2xl shadow-medium border border-white/50 dark:border-gray-700 backdrop-blur-sm mb-8;
+  }
+  
+  /* Social icons */
+  .social-icon {
+    @apply w-12 h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 transition duration-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400;
+  }
+  
+  /* Store buttons */
+  .store-btn {
+    @apply flex items-center gap-3 text-white px-6 py-3 rounded-xl hover:opacity-90 transition duration-300 shadow-md;
+  }
+  
+  .store-btn.playstore {
+    @apply bg-green-500;
+  }
+  
+  .store-btn.applestore {
+    @apply bg-black;
+  }
+  
+  /* Double column container */
+  .double-column-container {
+    @apply flex flex-col md:flex-row justify-between gap-4 md:gap-0 p-4 md:p-6 bg-gradient-footer dark:bg-gray-800 rounded-2xl shadow-soft border border-white/50 dark:border-gray-700 backdrop-blur-sm mb-8;
+  }
+  
+  /* Column box */
+  .column-box {
+    @apply flex-1 p-4 md:p-6;
+  }
+  
+  /* Column title */
+  .column-title {
+    @apply text-xl font-bold text-gray-800 dark:text-white mb-4;
+  }
+  
+  /* Footer menu */
+  .footer-menu-item {
+    @apply flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 transition duration-300 hover:text-gray-900 dark:hover:text-white hover:-translate-y-2;
+  }
+  
+  .footer-menu-item.active {
+    @apply text-customPurple dark:text-purple-400;
+  }
+  
+  .footer-menu-item.active i {
+    @apply text-customPurple dark:text-purple-400;
+  }
+  
+  /* Home menu special */
+  .home-menu {
+    @apply text-customPurple dark:text-purple-400;
+  }
+  
+  .home-menu i {
+    @apply text-customPurple dark:text-purple-400;
+  }
+  
+  /* Link styles */
+  .custom-link {
+    @apply text-customPurple dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300;
+  }
+  
+  /* Card styles */
+  .glass-card {
+    @apply bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border border-white/50 dark:border-gray-700/50 rounded-2xl shadow-soft;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-md;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-700 transition duration-300 shadow-md;
+  }
+  
+  .btn-accent {
+    @apply bg-accent text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-800 transition duration-300 shadow-md;
+  }
+}
+
+@layer utilities {
+  /* Text stroke */
+  .text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+    text-stroke: 1px currentColor;
+  }
+  
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  /* Animation delays */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+}

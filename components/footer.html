@@ -13,7 +13,7 @@
  <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;600;700&display=swap" rel="stylesheet">
  
  <!-- Tailwind CSS -->
-<link href="./output.css" rel="stylesheet">
+<link href="/src/output.css" rel="stylesheet">
  
  <!-- Custom Styles (যদি অতিরিক্ত প্রয়োজন হয়) -->
  <style>
@@ -47,20 +47,22 @@ background-color: #9b03a8;
   .dark-mode .column-links li:hover::before {
 background-color: #55d6b3;
   }
+
+
+
+
+
  </style>
 </head>
 <body class="font-sans bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
  
  <!-- Your main content here -->
-   <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
 
- <div class="**pb-[100px]**">
+ 
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 **!mb-10**">
 
 
-  <div class="flex flex-col lg:flex-row gap-8">
+  <div class="flex flex-col lg:flex-row gap-8 mb-6">
 
     <!-- LEFT BOX -->
     <div class="lg:w-1/2">
@@ -129,109 +131,83 @@ background-color: #55d6b3;
     </div>
 
     <!-- RIGHT BOX -->
-    <div class="lg:w-1/2">
-      <div class="flex flex-row justify-between gap-3 md:gap-8 p-4 md:p-8 bg-gradient-to-br from-pink-100/80 to-blue-100/80 dark:bg-gray-800 rounded-2xl shadow-lg border border-white/50 dark:border-gray-700 backdrop-blur-sm h-full min-h-[350px]">
-        
-        <!-- LEFT COLUMN -->
-        <div class="flex-1 p-3 md:p-6">
-          <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-4 md:mb-6">Quick Link</h3>
-          <ul class="space-y-2 md:space-y-3">
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                Privacy Policy
-              </a>
-            </li>
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                Terms Rules
-              </a>
-            </li>
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                User Security
-              </a>
-            </li>
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                Report a Bug
-              </a>
-            </li>
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                Advertise
-              </a>
-            </li>
-          </ul>
-        </div>
-        
-        <!-- RIGHT COLUMN -->
-        <div class="flex-1 p-3 md:p-6">
-          <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-4 md:mb-6">Socials Network</h3>
-          <ul class="space-y-2 md:space-y-3">
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                Facebook
-              </a>
-            </li>
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                LinkedIn
-              </a>
-            </li>
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                Instagram
-              </a>
-            </li>
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                X (Platform)
-              </a>
-            </li>
-            <li class="column-links">
-              <a href="#" class="text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition duration-300 text-sm md:text-base inline-block w-full cursor-pointer">
-                Youtube
-              </a>
-            </li>
-          </ul>
-        </div>
-        
-      </div>
+<div class="lg:w-1/2">
+  <div class="flex flex-row justify-between gap-3 md:gap-8 
+              px-4 md:px-8 py-6 md:py-8
+              bg-gradient-to-br from-pink-100/80 to-blue-100/80 
+              dark:bg-gray-800 rounded-2xl shadow-lg 
+              border border-white/50 dark:border-gray-700 
+              backdrop-blur-sm h-full">
+
+    <!-- LEFT COLUMN -->
+    <div class="flex-1 px-3 md:px-6 py-4 md:py-6">
+      <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-4 md:mb-6">
+        Quick Link
+      </h3>
+      <ul class="space-y-2 md:space-y-3">
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Privacy Policy</a></li>
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Terms Rules</a></li>
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">User Security</a></li>
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Report a Bug</a></li>
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Advertise</a></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="flex-1 px-3 md:px-6 py-4 md:py-6">
+      <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-4 md:mb-6">
+        Socials Network
+      </h3>
+      <ul class="space-y-2 md:space-y-3">
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Facebook</a></li>
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">LinkedIn</a></li>
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Instagram</a></li>
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">X (Platform)</a></li>
+        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Youtube</a></li>
+      </ul>
     </div>
 
   </div>
-</main>
 </div>
- 
- <!-- FOOTER MENU (Fixed) -->
- <footer class="fixed bottom-0 left-0 w-full h-16 bg-white dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700 shadow-lg z-50">
-  <div class="grid grid-cols-5 h-full">
-<a href="/index.html" class="home-menu flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
- <i class="bi bi-house text-2xl mb-1"></i>
- <span class="text-xs font-semibold">Home</span>
-</a>
 
-<a href="/blog/" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
- <i class="bi bi-journal-text text-2xl mb-1"></i>
- <span class="text-xs font-semibold">Blog</span>
-</a>
 
-<a href="/tools/" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
- <i class="bi bi-tools text-2xl mb-1"></i>
- <span class="text-xs font-semibold">Tools</span>
-</a>
-
-<a href="https://shop.toolbd.xyz" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
- <i class="bi bi-shop text-2xl mb-1"></i>
- <span class="text-xs font-semibold">Shop</span>
-</a>
-
-<a href="/blog/profile.html" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
- <i class="bi bi-person text-2xl mb-1"></i>
- <span class="text-xs font-semibold">Profile</span>
-</a>
   </div>
- </footer>
+</main>
+
+ 
+<!-- FOOTER MENU (Fixed) -->
+<footer class="fixed bottom-0 left-0 w-full h-16 bg-white dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700 shadow-lg z-50">
+  <div class="grid grid-cols-5 h-full">
+
+    <a href="/index.html" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
+      <i class="bi bi-house text-xl md:text-3xl mb-1"></i>
+      <span class="text-[10px] md:text-sm font-semibold">Home</span>
+    </a>
+
+    <a href="/blog/" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
+      <i class="bi bi-journal-text text-xl md:text-3xl mb-1"></i>
+      <span class="text-[10px] md:text-sm font-semibold">Blog</span>
+    </a>
+
+    <a href="/tools/" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
+      <i class="bi bi-tools text-xl md:text-3xl mb-1"></i>
+      <span class="text-[10px] md:text-sm font-semibold">Tools</span>
+    </a>
+
+    <a href="https://shop.toolbd.xyz" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
+      <i class="bi bi-shop text-xl md:text-3xl mb-1"></i>
+      <span class="text-[10px] md:text-sm font-semibold">Shop</span>
+    </a>
+
+    <a href="/blog/profile.html" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
+      <i class="bi bi-person text-xl md:text-3xl mb-1"></i>
+      <span class="text-[10px] md:text-sm font-semibold">Profile</span>
+    </a>
+
+  </div>
+</footer>
+
+
  
  <script>
   document.addEventListener("DOMContentLoaded", function() {

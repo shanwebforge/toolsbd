@@ -15,161 +15,239 @@
  <!-- Tailwind CSS -->
 <link href="/src/output.css" rel="stylesheet">
  
- <!-- Custom Styles (যদি অতিরিক্ত প্রয়োজন হয়) -->
+
  <style>
-  /* Custom styles that can't be done with Tailwind */
-  .column-links li {
-position: relative;
-padding-left: 18px;
-list-style: none;
-  }
-
-  .column-links li::before {
-content: "";
-position: absolute;
-left: 0;
-top: 50%;
-transform: translateY(-50%);
-width: 6px;
-height: 6px;
-background-color: #9b03a8;
-border-radius: 50%;
-  }
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: rgba(0,0,0,0.1);
+    --gradient-from: rgba(255,182,193,0.8);
+    --gradient-to: rgba(173,216,230,0.8); 
   
-  .column-links li:hover::before {
-background-color: #05585e;
+}
+
+
+  .dark-mode {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --text-primary: #f9f1f8;
+    --text-secondary: #c81bdf;
+    --border-color: rgba(255,255,255,0.15);
+    --gradient-from: rgba(30,41,59,0.9);      /* gray-800 */
+    --gradient-to: rgba(51,65,85,0.9);        /* gray-700 */
   }
+
+
   
-  .dark-mode .column-links li::before {
-background-color: #9b03a8;
+
+
+
+
+  /* Apply CSS Variables */
+  .custom-gradient {
+    background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
   }
-  
-  .dark-mode .column-links li:hover::before {
-background-color: #55d6b3;
+
+  .custom-border {
+    border-color: var(--border-color);
   }
 
+  .text-primary-custom {
+    color: var(--text-primary);
+  }
 
-
-
+  .text-secondary-custom {
+    color: var(--text-secondary);
+  }
 
  </style>
 </head>
 <body class="font-sans bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
  
- <!-- Your main content here -->
-
- 
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 **!mb-10**">
 
 
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 !mb-10">
   <div class="flex flex-col lg:flex-row gap-8 mb-6">
-
-    <!-- LEFT BOX -->
+    
+    <!-- LEFT BOX - Download Section -->
     <div class="lg:w-1/2">
-      <section class="text-center p-8 md:p-10 bg-gradient-to-br from-pink-100/80 to-blue-100/80 dark:from-gray-800 dark:to-gray-800 rounded-2xl shadow-lg border border-white/50 dark:border-gray-700 backdrop-blur-sm h-full flex flex-col justify-between">
-        
+      <section class="text-center p-6 md:p-8 lg:p-10 custom-gradient rounded-2xl shadow-lg border custom-border backdrop-blur-sm h-full flex flex-col justify-between">
         <!-- Content wrapper for better alignment -->
         <div>
-          <h2 class="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-6 select-none pointer-events-none font-alkatra">
+          <!-- Title - smaller on mobile -->
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-primary-custom mb-6 select-none pointer-events-none font-alkatra">
             Download Now
           </h2>
           
-          <div class="flex justify-center gap-4 md:gap-6 mb-8 flex-wrap">
-            <a href="#" class="flex items-center gap-3 bg-green-500 text-white px-6 py-3 rounded-xl hover:opacity-90 transition duration-300 shadow-md cursor-pointer">
-              <i class="fab fa-google-play text-xl"></i>
+          <!-- Download buttons - smaller on mobile -->
+          <div class="flex justify-center gap-3 md:gap-6 mb-8 flex-wrap">
+            <a href="#" class="flex items-center gap-2 sm:gap-3 bg-green-500 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl hover:opacity-90 transition duration-300 shadow-md cursor-pointer text-sm sm:text-base">
+              <i class="fab fa-google-play text-lg sm:text-xl"></i>
               <span class="font-semibold">Play Store</span>
             </a>
             
-            <a href="#" class="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:opacity-90 transition duration-300 shadow-md cursor-pointer">
-              <i class="fab fa-apple text-xl"></i>
+            <a href="#" class="flex items-center gap-2 sm:gap-3 bg-black text-white px-4 py-2 sm:px-6 sm:py-3 rounded-xl hover:opacity-90 transition duration-300 shadow-md cursor-pointer text-sm sm:text-base">
+              <i class="fab fa-apple text-lg sm:text-xl"></i>
               <span class="font-semibold">App Store</span>
             </a>
           </div>
         </div>
         
-        <!-- Social icons section -->
+        <!-- Social icons section - smaller on mobile -->
         <div class="mt-auto">
-          <div class="flex justify-center gap-3 md:gap-4 flex-wrap">
+          <div class="flex justify-center gap-2 md:gap-4 flex-wrap">
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" 
                target="_blank" 
                aria-label="Share on Facebook"
-               class="w-12 h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
-              <i class="fab fa-facebook-f"></i>
+               class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
+              <i class="fab fa-facebook-f text-sm sm:text-base"></i>
             </a>
             
             <a href="https://twitter.com/intent/tweet?url=https://example.com&text=Check+this+out!" 
                target="_blank" 
                aria-label="Share on Twitter"
-               class="w-12 h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
-              <i class="fab fa-twitter"></i>
+               class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
+              <i class="fab fa-twitter text-sm sm:text-base"></i>
             </a>
             
             <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://example.com" 
                target="_blank" 
                aria-label="Share on LinkedIn"
-               class="w-12 h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
-              <i class="fab fa-linkedin-in"></i>
+               class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
+              <i class="fab fa-linkedin-in text-sm sm:text-base"></i>
             </a>
             
             <a href="https://api.whatsapp.com/send?text=https://example.com" 
                target="_blank" 
                aria-label="Share on WhatsApp"
-               class="w-12 h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
-              <i class="fab fa-whatsapp"></i>
+               class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
+              <i class="fab fa-whatsapp text-sm sm:text-base"></i>
             </a>
             
             <a href="https://www.reddit.com/submit?url=https://example.com&title=Check+this+out!" 
                target="_blank" 
                aria-label="Share on Reddit"
-               class="w-12 h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
-              <i class="fab fa-reddit-alien"></i>
+               class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center border border-gray-300 dark:border-gray-600 rounded-lg text-gray-700 dark:text-gray-300 hover:border-purple-600 hover:text-purple-600 dark:hover:text-purple-400 transition duration-300 cursor-pointer">
+              <i class="fab fa-reddit-alien text-sm sm:text-base"></i>
             </a>
           </div>
         </div>
-        
       </section>
     </div>
 
-    <!-- RIGHT BOX -->
-<div class="lg:w-1/2">
-  <div class="flex flex-row justify-between gap-3 md:gap-8 
-              px-4 md:px-8 py-6 md:py-8
-              bg-gradient-to-br from-pink-100/80 to-blue-100/80 
-              dark:bg-gray-800 rounded-2xl shadow-lg 
-              border border-white/50 dark:border-gray-700 
-              backdrop-blur-sm h-full">
+    <!-- RIGHT BOX - Quick Links & Social Network -->
+    <div class="lg:w-1/2">
+      <div class="flex flex-row justify-between gap-3 md:gap-8 
+                  px-4 md:px-8 py-6 md:py-8
+                  custom-gradient 
+                  rounded-2xl shadow-lg 
+                  border custom-border 
+                  backdrop-blur-sm h-full">
 
-    <!-- LEFT COLUMN -->
-    <div class="flex-1 px-3 md:px-6 py-4 md:py-6">
-      <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-4 md:mb-6">
-        Quick Link
-      </h3>
-      <ul class="space-y-2 md:space-y-3">
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Privacy Policy</a></li>
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Terms Rules</a></li>
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">User Security</a></li>
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Report a Bug</a></li>
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Advertise</a></li>
-      </ul>
+        <!-- LEFT COLUMN - Quick Links -->
+        <div class="flex-1 px-3 md:px-6 py-4 md:py-6">
+          <h3 class="text-base sm:text-lg md:text-xl font-bold text-primary-custom mb-3 sm:mb-4 md:mb-6">
+            Quick Link
+          </h3>
+          <ul class="space-y-1 sm:space-y-2 md:space-y-3">
+            <li class="flex items-center">
+              <!-- Arrow - non-clickable -->
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <!-- Link - clickable -->
+              <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-600 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                Privacy Policy
+              </a>
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-600 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                Terms Rules
+              </a>
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-600 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                User Security
+              </a>
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-600 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                Report a Bug
+              </a>
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <a href="#" class="text-purple-600 dark:text-purple-600 hover:text-purple-800 dark:hover:text-purple-600 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                Advertise
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- RIGHT COLUMN - Social Network -->
+        <div class="flex-1 px-3 md:px-6 py-4 md:py-6">
+          <h3 class="text-base sm:text-lg md:text-xl font-bold text-primary-custom mb-3 sm:mb-4 md:mb-6">
+            Socials Network
+          </h3>
+          <ul class="space-y-1 sm:space-y-2 md:space-y-3">
+            <li class="flex items-center">
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                Facebook
+              </a>
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                LinkedIn
+              </a>
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                Instagram
+              </a>
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                X (Platform)
+              </a>
+            </li>
+            <li class="flex items-center">
+              <span class="mr-2 text-xs sm:text-sm text-secondary-custom pointer-events-none select-none">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+              <a href="#" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition text-xs sm:text-sm md:text-base truncate block w-full">
+                Youtube
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     </div>
-
-    <!-- RIGHT COLUMN -->
-    <div class="flex-1 px-3 md:px-6 py-4 md:py-6">
-      <h3 class="text-lg md:text-xl font-bold text-gray-800 dark:text-white mb-4 md:mb-6">
-        Socials Network
-      </h3>
-      <ul class="space-y-2 md:space-y-3">
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Facebook</a></li>
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">LinkedIn</a></li>
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Instagram</a></li>
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">X (Platform)</a></li>
-        <li><a href="#" class="column-links text-purple-600 dark:text-gray-300 hover:text-purple-800 dark:hover:text-purple-400 transition text-sm md:text-base block">Youtube</a></li>
-      </ul>
-    </div>
-
-  </div>
-</div>
-
 
   </div>
 </main>
@@ -200,7 +278,7 @@ background-color: #55d6b3;
     </a>
 
     <a href="/blog/profile.html" class="flex flex-col items-center justify-center text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition duration-300">
-      <i class="bi bi-person text-xl md:text-3xl mb-1"></i>
+      <i class="bi bi-person text-xl md:text-xl mb-1"></i>
       <span class="text-[10px] md:text-sm font-semibold">Profile</span>
     </a>
 

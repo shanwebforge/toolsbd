@@ -1,109 +1,243 @@
+<link rel="stylesheet" href="/src/output.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<section class="slidebar-section">
-  <div class="catbar-section">
-  
-    <div class="tools-slider-wrapper">
-      <div class="tools-grid">
+<section class="lg:m-10">
+  <div class="catbar-section relative overflow-hidden">
+    <div class="tools-slider-wrapper overflow-hidden cursor-grab active:cursor-grabbing" id="slider">
+      <div id="toolsGrid" class="tools-grid flex gap-2 px-4 mt-0 md:mt-0 transition-transform duration-500 ease-in-out select-none">
+
+        <!-- Home -->
+        <a href="/index.html" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0 active:bg-[#8e3cfa] active:text-white">
+          <i class="fas fa-home text-lg text-[#8e3cfa] active:text-white"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold active:text-white">Home</span>
+        </a>
 
         <!-- Islamic -->
+        <a href="/islamic/" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0">
+          <i class="fas fa-mosque text-lg text-[#8e3cfa]"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold">Islamic</span>
+        </a>
+
+        <!-- Quiz -->
+        <a href="/keyboard-sortcut/mac/" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0">
+          <i class="fas fa-question-circle text-lg text-[#8e3cfa]"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold">Quiz</span>
+        </a>
+
+        <!-- Magazine -->
+        <a href="/keyboard-sortcut/linux/" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0">
+          <i class="fas fa-newspaper text-lg text-[#8e3cfa]"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold">Magazine</span>
+        </a>
+
+        <!-- Course -->
+        <a href="/keyboard-sortcut/photoshop/" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0">
+          <i class="fas fa-graduation-cap text-lg text-[#8e3cfa]"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold">Course</span>
+        </a>
+
+        <!-- E-Book -->
+        <a href="/keyboard-sortcut/windows/" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0">
+          <i class="fas fa-book text-lg text-[#8e3cfa]"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold">E-Book</span>
+        </a>
+
+        <!-- Nasheed -->
+        <a href="/keyboard-sortcut/mac/" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0">
+          <i class="fas fa-music text-lg text-[#8e3cfa]"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold">Nasheed</span>
+        </a>
+
+        <!-- Lecture -->
+        <a href="/keyboard-sortcut/linux/" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0">
+          <i class="fas fa-chalkboard-teacher text-lg text-[#8e3cfa]"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold">Lecture</span>
+        </a>
+
+        <!-- Additional item for testing scrolling -->
+        <a href="/keyboard-sortcut/mac/" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0">
+          <i class="fas fa-star text-lg text-[#8e3cfa]"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold">Extra</span>
+        </a>
+
+        <!-- Additional item for testing scrolling -->
+        <a href="/keyboard-sortcut/linux/" class="catbar-box flex items-center gap-2 bg-white px-3 py-2.5 rounded-lg shadow-sm transition-all duration-300 hover:bg-gray-50 text-inherit no-underline border border-[#8e3cfa] min-w-[100px] flex-shrink-0">
+          <i class="fas fa-plus text-lg text-[#8e3cfa]"></i>
+          <span class="text-sm font-semibold text-[#8e3cfa] whitespace-nowrap overflow-hidden text-ellipsis font-[Alkata] font-bold">More</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
 
-    <!-- Home -->
-    <a href="/index.html" class="catbar-box active">
-        <i class="fas fa-home"></i>
-        <span class="catbar-title">Home</span>
-    </a>
 
-    <!-- Islamic -->
-    <a href="/islamic/" class="catbar-box">
-        <i class="fas fa-mosque"></i>
-        <span class="catbar-title">Islamic</span>
-    </a>
+  
+    <div class="text-center px-4 py-2 md:px-5 lg:mt-5">
+      <div class="inline-flex items-center gap-1 md:gap-2 mt bg-[#dcb8fd] border border-[#af5dfc] text-purple-900 rounded-2xl px-2 py-1 md:px-6 md:py-3 text-xs md:text-base font-semibold shadow-sm">
+        <i class="fas fa-bolt text-purple-700 text-sm md:text-lg"></i>
+        <span class="text-xs md:text-base">Experience Ultra Fast Performance</span>
+      </div>
 
-    <!-- Quiz -->
-    <a href="/keyboard-sortcut/mac/" class="catbar-box">
-        <i class="fas fa-question-circle"></i>
-        <span class="catbar-title">Quiz</span>
-    </a>
+      <h3 class="text-3xl md:text-4xl font-black mb-3 md:mb-[15px] leading-tight md:leading-normal bg-gradient-to-r from-[#373838] via-[#cc13bd] to-[#373838] bg-clip-text text-transparent mt-2 md:mt-[5px]">
+        Discover the Best Free Tools & Powerful AI Solutions for Everyone
+      </h3>
+      
+      <p class="text-sm md:text-base mb-4 md:mb-5 text-[#302f2f]">
 
-    <!-- Magazine -->
-    <a href="/keyboard-sortcut/linux/" class="catbar-box">
-        <i class="fas fa-newspaper"></i>
-        <span class="catbar-title">Magazine</span>
-    </a>
+        Unlock your productivity with our curated collection of free tools, AI-powered utilities, and smart software.
+        Designed to simplify tasks, boost creativity, and save time — all at zero cost.
+      </p>
 
-    <!-- Course -->
-    <a href="/keyboard-sortcut/photoshop/" class="catbar-box">
-        <i class="fas fa-graduation-cap"></i>
-        <span class="catbar-title">Course</span>
-    </a>
-
-    <!-- E-Book -->
-    <a href="/keyboard-sortcut/windows/" class="catbar-box">
-        <i class="fas fa-book"></i>
-        <span class="catbar-title">E-Book</span>
-    </a>
-
-    <!-- Nasheed -->
-    <a href="/keyboard-sortcut/mac/" class="catbar-box">
-        <i class="fas fa-music"></i>
-        <span class="catbar-title">Nasheed</span>
-    </a>
-
-    <!-- Lecture -->
-    <a href="/keyboard-sortcut/linux/" class="catbar-box">
-        <i class="fas fa-chalkboard-teacher"></i>
-        <span class="catbar-title">Lecture</span>
-    </a>
-
-</div>
-
-
+      <div class="flex justify-center items-center gap-3 md:gap-4 mt-4 md:mt-5 flex-wrap">
+        <a href="#tools" class="flex items-center gap-1.5 bg-gradient-to-r from-[#cc13bd] to-[#8e3cfa] px-4 py-2.5 md:px-[22px] md:py-3 text-sm md:text-base text-white rounded-xl font-semibold no-underline shadow-md transition-all duration-300 hover:bg-gradient-to-r hover:from-[#8e3cfa] hover:to-[#cc13bd]">
+          <i class="fas fa-tools md:text-lg"></i>
+          <span class="text-xs md:text-base">Explore Tools</span>
+        </a>
+        
+        <a href="/assets/ToolsBD.apk" class="flex items-center gap-1.5 bg-gradient-to-r from-[#8e3cfa] to-[#cc13bd] px-4 py-2.5 md:px-[22px] md:py-3 text-sm md:text-base text-white rounded-xl font-semibold no-underline shadow-md transition-all duration-300 hover:bg-gradient-to-r hover:from-[#cc13bd] hover:to-[#8e3cfa]">
+          <i class="fas fa-download md:text-lg"></i>
+          <span class="text-xs md:text-base">Download App</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const slider = document.getElementById('slider');
+  const toolsGrid = document.getElementById('toolsGrid');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+  
+  // Prevent default drag behavior for images/links inside slider
+  const preventDrag = (e) => {
+    e.preventDefault();
+  };
+  
+  // Add event listeners to all links inside slider
+  document.querySelectorAll('.catbar-box').forEach(link => {
+    link.addEventListener('dragstart', preventDrag);
+  });
 
+  // Mouse events for desktop
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
 
-<section class="intro-section">
-  <div class="main-section">
-  <div class="hero-box">
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
 
-<div style="text-align:center;">
-    <div class="hero-title-bg">
-        <i class="fas fa-bolt"></i>
-        Experience Ultra Fast Performance
-    </div>
-</div>
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
 
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; // Multiply for faster scrolling
+    slider.scrollLeft = scrollLeft - walk;
+  });
 
+  // Touch events for mobile
+  slider.addEventListener('touchstart', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.touches[0].pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
 
-    <h3 class="hero-text">Discover the Best Free Tools & Powerful AI Solutions for Everyone</h3>
-    <p class="hero-description">
-      Unlock your productivity with our curated collection of free tools, AI-powered utilities, and smart software. Designed to simplify tasks, boost creativity, and save time — all at zero cost.
-    </p>
+  slider.addEventListener('touchend', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
 
-    <div class="hero-link-shape"><a class="hero-link-bg" href="#tools">
-      <i class="fas fa-tools"></i>
-    Explore Tools
-    </a><a class="hero-link-bg1" href="/assets/ToolsBD.apk">
-      <i class="fas fa-download"></i>
-     Download App
-    </a></div>
-  </div>
-  </div>
-</section>
+  slider.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.touches[0].pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
+  });
 
-<div class="main-section">
-<div class="container">
-  <div class="header">
-    <h2 class="prayer-title">নামাজের সময়</h2>
-    <div id="location"><i class="fas fa-map-marker-alt"></i></div>
-  </div>
-  <div class="prayer-list" id="prayer-list">
-  </div>
-</div></div>
+  // Wheel scrolling (horizontal scroll with mouse wheel)
+  slider.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    slider.scrollLeft += e.deltaY;
+  });
 
+  // Add smooth scrolling back to start when dragging ends
+  slider.addEventListener('mouseup', smoothScrollToNearest);
+  slider.addEventListener('touchend', smoothScrollToNearest);
 
+  function smoothScrollToNearest() {
+    const itemWidth = 110; // Approximate width of each item
+    const currentScroll = slider.scrollLeft;
+    const nearestPosition = Math.round(currentScroll / itemWidth) * itemWidth;
+    
+    slider.scrollTo({
+      left: nearestPosition,
+      behavior: 'smooth'
+    });
+  }
 
+  // Enable scrolling only when content overflows
+  function checkScrollable() {
+    const containerWidth = slider.offsetWidth;
+    const contentWidth = toolsGrid.scrollWidth;
+    
+    if (contentWidth <= containerWidth) {
+      slider.style.cursor = 'default';
+      slider.style.overflowX = 'hidden';
+    } else {
+      slider.style.cursor = 'grab';
+      slider.style.overflowX = 'auto';
+    }
+  }
 
+  // Initialize
+  checkScrollable();
+  window.addEventListener('resize', checkScrollable);
+});
+</script>
+
+<style>
+/* Custom scrollbar styling */
+.tools-slider-wrapper::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tools-slider-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+html.dark-mode p { color: #cccaca;}
+.tools-slider-wrapper::-webkit-scrollbar-thumb {
+  background: #8e3cfa;
+  border-radius: 10px;
+}
+
+.tools-slider-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #6c2bc9;
+}
+
+/* Firefox */
+.tools-slider-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #8e3cfa #f1f1f1;
+}
+
+/* Active state for slider */
+.tools-slider-wrapper.active {
+  cursor: grabbing !important;
+}
+
+</style>

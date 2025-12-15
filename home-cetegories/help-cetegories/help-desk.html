@@ -1,141 +1,40 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="/src/output.css"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    .scrollbar-hide::-webkit-scrollbar { 
-      display: none; 
-    }
-    .scrollbar-hide { 
-      -ms-overflow-style: none; 
-      scrollbar-width: none; 
-    }
-    
-    /* PERFECT Right Side Fix - No More Cutting */
-    @media (max-width: 768px) {
-      html { 
-        overflow-x: hidden; 
-        position: relative;
-      }
-      body { 
-        overflow-x: hidden; 
-        max-width: 100%;
-      }
-      
-      #slider-wrapper {
-        overflow: hidden;
-        position: relative;
-        width: 100%;
-      }
-      
-      #slider {
-        width: 100%;
-        margin: 0px;
-        padding: 16px;
-        scroll-padding: 16px 16px 16px 16px;
-        scroll-snap-type: x mandatory;
-        overscroll-behavior-x: contain;
-        box-sizing: border-box;
-      }
-    }
-
-    /* Dark mode perfect colors */
-    html.dark-mode {
-      --bg-primary: #0f172a;
-      --bg-secondary: #1e293b;
-      --text-primary: #f1f5f9;
-      --text-secondary: #e2e8f0;
-      --border-color: rgba(255,255,255,0.15);
-      --gradient-from: rgba(30,41,59,0.9);
-      --gradient-to: rgba(51,65,85,0.9);
-    }
-
-    html.dark-mode body {
-      background-color: var(--bg-primary) !important;
-    }
-
-    html.dark-mode .title-text {
-      color: var(--text-primary) !important;
-    }
-
-    html.dark-mode .card-item {
-      background: var(--gradient-from);
-      backdrop-filter: blur(15px);
-      border-color: var(--border-color) !important;
-    }
-
-    html.dark-mode .card-item .icon {
-      color: var(--text-primary) !important;
-    }
-
-    html.dark-mode .card-text {
-      color: var(--text-secondary) !important;
-    }
-  </style>
-</head>
-<body class="bg-white dark:bg-gray-900">
-
-<section class="w-full md:max-w-[1200px] mx-auto px-4 py-2 mb-4 md:py-4 md:mb-6">
-  <div class="flex flex-col gap-3 md:gap-5">
-    
-    <!-- Title LEFT ALIGNED -->
-    <div class="flex items-center">
-      <span class="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#039723] to-[#46e0e5] mr-2.5"></span>
-      <h1 class="text-[18px] md:text-[22px] font-semibold text-[#525151] dark:text-white title-text">
-        Help Desk
-      </h1>
+<section class="main-section">
+  <div class="help-main-section">
+    <div class="help-cat-title-h1">
+      Help Desk
     </div>
 
-    <!-- PERFECT Wrapper -->
-    <div id="slider-wrapper" class="w-full overflow-hidden md:overflow-visible rounded-lg">
-      <div id="slider" class="overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing snap-x snap-mandatory md:overflow-x-hidden md:w-full md:justify-start md:m-0 md:p-0" style="scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
-        <div class="flex gap-[5px] md:gap-5 justify-center min-w-max py-3 md:py-4 md:w-auto">
-          
-          <!-- Items - Same Code -->
-          <div class="flex-shrink-0 w-[120px] h-[100px] md:w-[300px] md:h-[140px] bg-gradient-to-br from-[rgba(238,240,241,0.8)] to-[rgba(194,241,239,0.8)] dark:bg-[#1e293b] backdrop-blur-[15px] rounded-lg md:rounded-[20px] flex flex-col items-center justify-center cursor-pointer transition-transform border border-[#e0e0e0] dark:border-white/15 card-item snap-center md:snap-start">
-            <div class="text-[32px] md:text-4xl mb-2 text-[#6b5bcc] dark:text-[#f1f5f9] icon">
-              <i class="fas fa-ambulance"></i>
-            </div>
-            <span class="text-[14px] md:text-base font-semibold text-[#333] dark:text-[#e0e0e0] card-text">হেল্পলাইন</span>
-          </div>
+    <div class="tools-slider-wrapper">
+      <div class="tools-grid">
+      <div class="help-category-item">
+        <div class="help-category-box"><i class="fas fa-ambulance"></i></div>
+        <span class="help-category-label">হেল্পলাইন</span>
+      </div>
 
-          <div class="flex-shrink-0 w-[120px] h-[100px] md:w-[300px] md:h-[140px] bg-gradient-to-br from-[rgba(238,240,241,0.8)] to-[rgba(194,241,239,0.8)] dark:bg-[#1e293b] backdrop-blur-[15px] rounded-lg md:rounded-[20px] flex flex-col items-center justify-center cursor-pointer transition-transform border border-[#e0e0e0] dark:border-white/15 card-item snap-center md:snap-start">
-            <div class="text-[32px] md:text-4xl mb-2 text-[#6b5bcc] dark:text-[#f1f5f9] icon">
-              <i class="fas fa-tint"></i>
-            </div>
-            <span class="text-[14px] md:text-base font-semibold text-[#333] dark:text-[#e0e0e0] card-text">জরুরি সেবা</span>
-          </div>
+      <div class="help-category-item">
+        <div class="help-category-box"><i class="fas fa-tint"></i></div>
+        <span class="help-category-label">জরুরি সেবা</span>
+      </div>
 
-          <div class="flex-shrink-0 w-[120px] h-[100px] md:w-[300px] md:h-[140px] bg-gradient-to-br from-[rgba(238,240,241,0.8)] to-[rgba(194,241,239,0.8)] dark:bg-[#1e293b] backdrop-blur-[15px] rounded-lg md:rounded-[20px] flex flex-col items-center justify-center cursor-pointer transition-transform border border-[#e0e0e0] dark:border-white/15 card-item snap-center md:snap-start">
-            <div class="text-[32px] md:text-4xl mb-2 text-[#6b5bcc] dark:text-[#f1f5f9] icon">
-              <i class="fas fa-search"></i>
-            </div>
-            <span class="text-[14px] md:text-base font-semibold text-[#333] dark:text-[#e0e0e0] card-text">নিখোঁজ</span>
-          </div>
+      <div class="help-category-item">
+        <div class="help-category-box"><i class="fas fa-search"></i></div>
+        <span class="help-category-label">নিখোঁজ</span>
+      </div>
 
-          <div class="flex-shrink-0 w-[120px] h-[100px] md:w-[300px] md:h-[140px] bg-gradient-to-br from-[rgba(238,240,241,0.8)] to-[rgba(194,241,239,0.8)] dark:bg-[#1e293b] backdrop-blur-[15px] rounded-lg md:rounded-[20px] flex flex-col items-center justify-center cursor-pointer transition-transform border border-[#e0e0e0] dark:border-white/15 card-item snap-center md:snap-start">
-            <div class="text-[32px] md:text-4xl mb-2 text-[#6b5bcc] dark:text-[#f1f5f9] icon">
-              <i class="fas fa-phone-volume"></i>
-            </div>
-            <span class="text-[14px] md:text-base font-semibold text-[#333] dark:text-[#e0e0e0] card-text">রক্তদান</span>
-          </div>
+      <div class="help-category-item">
+        <div class="help-category-box"><i class="fas fa-phone-volume"></i></div>
+        <span class="help-category-label">রক্তদান</span>
+      </div>
 
-          <div class="flex-shrink-0 w-[120px] h-[100px] md:w-[300px] md:h-[140px] bg-gradient-to-br from-[rgba(238,240,241,0.8)] to-[rgba(194,241,239,0.8)] dark:bg-[#1e293b] backdrop-blur-[15px] rounded-lg md:rounded-[20px] flex flex-col items-center justify-center cursor-pointer transition-transform border border-[#e0e0e0] dark:border-white/15 card-item snap-center md:snap-start">
-            <div class="text-[32px] md:text-4xl mb-2 text-[#6b5bcc] dark:text-[#f1f5f9] icon">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <span class="text-[14px] md:text-base font-semibold text-[#333] dark:text-[#e0e0e0] card-text">সতর্কতা</span>
-          </div>
-
-        </div>
+      <div class="help-category-item">
+        <div class="help-category-box"><i class="fas fa-exclamation-triangle"></i></div>
+        <span class="help-category-label">সতর্কতা</span>
       </div>
     </div>
-
   </div>
 </section>
 
-</body>
-</html>
+
+  </div>
+  </div>
+</section>

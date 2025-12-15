@@ -183,11 +183,10 @@ body {
 
 .hero-title-bg {
     display: inline-block !important; 
+    background-color: rgba(218, 186, 247, 0.7);
 
-    background: rgba(211, 131, 211, 0.6); 
-    
-    border: 1px solid #e792e7; 
-    color: #ee62ee;
+    border: 1px solid #af5dfc; 
+    color: #af5dfc;
     padding: 12px 24px;
     font-size: 20px;
     font-weight: 700;
@@ -196,7 +195,7 @@ body {
     height: auto;
     text-align: center; 
     margin-top: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
     transition: all 0.3s ease;
 }
 
@@ -204,7 +203,7 @@ body {
 
 .hero-title-bg i {
   font-size: 22px;
-  color: #ee62ee;
+  color: #af5dfc;
 }
 
 /* Center block for all screens */

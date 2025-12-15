@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+  <title>টাইম ট্র্যাকিং টুল</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script>
@@ -15,37 +16,13 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
  
-<title>টাইম ট্র্যাকিং টুল</title>
+
 <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-    .tracker {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-
-
-
-  h1 {
-    margin-bottom: 25px;
-    color: #2a4d69;
-  }
+ 
 
   #timeDisplay {
     font-size: 48px;
@@ -55,14 +32,10 @@
     letter-spacing: 3px;
   }
 
-  .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-  }
 
-  button {
-    background: #077A7D;
+
+  .file-footer button {
+    background: var(--color-primary);
     color: white;
     border: none;
     padding: 12px 20px;
@@ -74,7 +47,7 @@
   }
 
   button:hover {
-    background: #066264;
+    background: var(--color-primary-dark);
   }
 
   button:disabled {
@@ -83,9 +56,7 @@
   }
 
   @media (max-width: 400px) {
-    .tracker {
-      padding: 20px;
-    }
+
 
     #timeDisplay {
       font-size: 36px;
@@ -97,27 +68,12 @@
     }
     
   }
-@media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
 
-}
-  /* Dark mode styles */
-  html.dark-mode body {
-    background: #000;
-  color: #fff;
-  }
 
-  html.dark-mode .tracker {
-    background: #1e293b;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.7);
-  }
 
-  html.dark-mode h1 {
-    color: #fff;
-    text-align: center;
-  }
+
+
+
 
   html.dark-mode #timeDisplay {
     color: #fff;
@@ -125,11 +81,11 @@
   }
 
   html.dark-mode button {
-    background: #0f766e;
+    background: var(--color-primary-light);
   }
 
   html.dark-mode button:hover {
-    background: #115e59;
+    background: var(--color-primary);
   }
 
   html.dark-mode button:disabled {
@@ -139,9 +95,26 @@
 </head>
 <body>
 
-  <div class="container">
+ <main class="file-section">
+  <div class="file-container">
+  <div class="file-header">
+    <div class="file-title">
+        <h2>টাইম ট্র্যাকিং টুল</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>টাইম ট্র্যাকিং টুল - সময় ব্যবস্থাপনা এবং প্রোডাক্টিভিটি ট্র্যাকিং টুল</p>
+        <p>প্রজেক্ট ও টাস্ক ভিত্তিক সময় ট্র্যাক করুন</p>
+        <p>ডেইলি, উইকলি এবং মান্থলি রিপোর্ট জেনারেট করুন</p>
+        <p>প্রোডাক্টিভিটি এনালাইসিস এবং সময়ের সঠিক ব্যবহার নিশ্চিত করুন</p>
+        <p>ফ্রিল্যান্সার, টিম ও ব্যক্তিগত ব্যবহারের জন্য উপযোগী</p>
+        <p>সময়ের অপচয় কমিয়ে দক্ষতা বৃদ্ধিতে সাহায্য করে</p>
+    </div>
+</div>
+  <div class="file-footer">
     <div class="tracker">
-      <h1>টাইম ট্র্যাকিং টুল</h1>
+      <h3>টাইম ট্র্যাকিং টুল</h3>
       <div id="timeDisplay">00:00:00</div>
       <div class="buttons">
         <button id="startBtn">শুরু করুন</button>
@@ -150,7 +123,8 @@
       </div>
     </div>
   </div>
- 
+  </div>
+ </main>
 
 <script>
   let startTime = 0;

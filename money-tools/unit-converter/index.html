@@ -16,37 +16,11 @@
     })();
   </script>
   <title>Unit Converter</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
 <link rel="stylesheet" href="/components/header.css">
 <link rel="stylesheet" href="/components/footer.css">
 <style>
-/* Global */
-* {
-  box-sizing: border-box;
-}
 
-body {
- background: #f4f6f9;
-margin: 0;
-padding: 20px;
-color: #333;
-}
-
-.container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-
-h1 {
-  margin-bottom: 25px;
-  color: #a6dfe0;
-}
 
 .converter {
   margin-bottom: 20px;
@@ -57,7 +31,7 @@ label {
   display: block;
   margin-bottom: 6px;
   font-weight: 600;
-  color: #a6dfe0;
+  color: #1f1f1f;
 }
 
 input[type="number"],
@@ -68,17 +42,17 @@ select {
   border: none;
   font-size: 16px;
   box-sizing: border-box;
-  background: #334155;
-  color: #e0f2f1;
+  background: #df87fa;
+  color: #1f1f1f;
 }
 
 input[type="number"]::placeholder {
-  color: #94a3b8;
+  color: #1f1f1f;
 }
 
 button {
   padding: 12px 25px;
-  background: #077A7D;
+  background: var(--color-primary);
   border: none;
   border-radius: 6px;
   color: white;
@@ -89,31 +63,18 @@ button {
 }
 
 button:hover {
-  background: #066264;
+  background: var(--color-primary-dark);
 }
 
 #result {
   margin-top: 25px;
   font-size: 22px;
   font-weight: bold;
-  color: #a6dfe0;
+  color: #1f1f1f;
 }
-@media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
 
-}
 /* ===== Dark Mode ===== */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.7);
-}
 
 html.dark-mode h1,
 html.dark-mode label,
@@ -129,18 +90,34 @@ html.dark-mode select {
 }
 
 html.dark-mode button {
-  background: #0e8388;
+  background: var(--color-primary-light);
 }
 
 html.dark-mode button:hover {
-  background: #07666a;
+  background: var(--color-primary);
 }
 </style>
 </head>
 <body>
-
-<div class="container">
-  <h1>Unit Converter</h1>
+ <main class="file-section">
+  <div class="file-container">
+    <div class="file-header">
+    <div class="file-title">
+        <h2>Unit Converter</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Unit Converter - Convert between different measurement units instantly</p>
+        <p>Convert length, weight, volume, temperature, and area measurements</p>
+        <p>Support for metric, imperial, and scientific unit systems</p>
+        <p>Real-time conversion with accurate calculation results</p>
+        <p>Save frequently used conversions for quick access</p>
+        <p>Essential tool for students, engineers, and professionals</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>Unit Converter</h3>
 
   <div class="converter">
     <label for="converter-type">Select Conversion Type:</label>
@@ -171,7 +148,8 @@ html.dark-mode button:hover {
 
   <div id="result"></div>
 </div>
-
+  </div>
+ </main>
 <script>const converterType = document.getElementById('converter-type');
 const inputValue = document.getElementById('input-value');
 const inputUnit = document.getElementById('input-unit');

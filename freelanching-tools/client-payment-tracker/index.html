@@ -15,39 +15,18 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>ক্লায়েন্ট পেমেন্ট ট্র্যাকার</title>
   <style>
 
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-    .container {
-      max-width: 850px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-    h1 {
-      text-align: center;
-      color: #2a4d69;
-      margin-bottom: 25px;
-    }
     label {
       font-weight: 600;
       display: block;
       margin-top: 12px;
+      text-align: left;
     }
     input {
       width: 100%;
@@ -60,7 +39,7 @@
     button {
       margin-top: 20px;
       padding: 12px 20px;
-      background-color: #077A7D;
+      background-color: var(--color-primary);
       color: white;
       font-size: 16px;
       border: none;
@@ -68,7 +47,7 @@
       cursor: pointer;
     }
     button:hover {
-      background-color: #066264;
+      background-color: var(--color-primary-dark);
     }
     table {
       width: 100%;
@@ -98,39 +77,17 @@
       table {
         font-size: 14px;
       }
-      h1 {font-size: 16px;}
+  
     }
 
 
-
-html.dark-mode body{
-  font-family: 'Segoe UI', sans-serif;
-  background: #000;
-  color: #fff;
-}
-
-html.dark-mode .container {
-  max-width: 900px;
-  margin: auto;
-  background: #1e293b;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-html.dark-mode h1 {
-  text-align: center;
-  color: #7f9cf5;
-  margin-bottom: 25px;
-}
 
 html.dark-mode label {
   font-weight: 600;
   display: block;
   margin-top: 12px;
   color: #cbd5e0;
+
 }
 
 html.dark-mode input {
@@ -151,7 +108,7 @@ html.dark-mode input::placeholder {
 html.dark-mode button {
   margin-top: 20px;
   padding: 12px 20px;
-  background-color: #0f766e;
+  background-color: var(--color-primary-light);
   color: white;
   font-size: 16px;
   border: none;
@@ -161,7 +118,7 @@ html.dark-mode button {
 }
 
 html.dark-mode button:hover {
-  background-color: #115e59;
+  background-color: var(--color-primary);
 }
 
 html.dark-mode table {
@@ -205,9 +162,27 @@ html.dark-mode .summary {
   </style>
 </head>
 <body>
+   <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
-  <h1>💳 ক্লায়েন্ট পেমেন্ট ট্র্যাকার</h1>
+    <div class="file-header">
+    <div class="file-title">
+        <h2>💳 ক্লায়েন্ট পেমেন্ট ট্র্যাকার</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>ক্লায়েন্ট পেমেন্ট ট্র্যাকার - ক্লায়েন্ট পেমেন্ট ব্যবস্থাপনা ও ট্র্যাকিং টুল</p>
+        <p>ক্লায়েন্টভিত্তিক পেমেন্ট ইনভয়েস তৈরি ও ট্র্যাক করুন</p>
+        <p>পেমেন্ট স্ট্যাটাস (পেন্ডিং, পেইড, ওভারডিউ) মনিটর করুন</p>
+        <p>অটোমেটিক রিমাইন্ডার এবং নোটিফিকেশন সিস্টেম</p>
+        <p>পেমেন্ট হিস্ট্রি ও আর্থিক রিপোর্ট জেনারেট করুন</p>
+        <p>ছোট ব্যবসা ও ফ্রিল্যান্সারদের জন্য পেমেন্ট ব্যবস্থাপনা সহজ করে</p>
+    </div>
+</div>
+
+<div class="file-footer">
+  <h3>ক্লায়েন্ট পেমেন্ট ট্র্যাকার</h3>
 
   <label for="name">ক্লায়েন্টের নাম:</label>
   <input type="text" id="name" placeholder="যেমন: মোঃ সুমন"/>
@@ -239,6 +214,8 @@ html.dark-mode .summary {
   </table>
 </div>
 
+</div>
+   </main>
 <script>
   const tableBody = document.querySelector("#paymentTable tbody");
   const summary = document.getElementById("summary");

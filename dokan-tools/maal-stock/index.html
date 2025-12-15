@@ -16,38 +16,17 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
    <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f4f6f9;
-  margin: 0;
-  padding: 20px;
-  color: #333;
-}
-
-.container {
-  max-width: 1000px;
-  margin: auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-h2 {
-  text-align: center;
-  color: #2a4d69;
-}
+ 
 
 label {
   font-weight: bold;
   margin-top: 10px;
   display: block;
+  text-align: left;
 }
 
 input {
@@ -64,7 +43,7 @@ input {
 button {
   padding: 10px 18px;
   font-size: 15px;
-  background: #077A7D;
+  background: var(--color-primary);
   color: white;
   border: none;
   border-radius: 6px;
@@ -73,7 +52,7 @@ button {
 }
 
 button:hover {
-  background: #066264;
+  background: var(--color-primary-dark);
 }
 
 table {
@@ -132,31 +111,53 @@ th {
     padding: 6px;
     font-size: 13px;
   }
+}
 
-  h2 {
-    font-size: 20px;
+
+/* =========================
+   MOBILE RESPONSIVE (≤ 768px)
+   Desktop & Print untouched
+========================= */
+@media screen and (max-width: 768px) {
+
+  label {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+
+  input {
+    padding: 8px;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  button {
+   
+    margin-right: 0;
+    margin-bottom: 8px;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  table {
+    margin-top: 12px;
+    font-size: 13px;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  th {
+    font-weight: 600;
   }
 }
 
-@media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
 
-}
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
-
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-}
-
-html.dark-mode h2 {
-  color: #f1f5f9;
-}
 
 html.dark-mode label {
   color: #e2e8f0;
@@ -169,12 +170,12 @@ html.dark-mode input {
 }
 
 html.dark-mode button {
-  background: #077A7D;
+  background: var(--color-primary-light);
   color: white;
 }
 
 html.dark-mode button:hover {
-  background: #066264;
+  background: var(--color-primary);
 }
 
 html.dark-mode table {
@@ -195,9 +196,25 @@ html.dark-mode td {
   </style>
 </head>
 <body>
-
-<div class="container">
-  <h2>📦 মাল স্টক ম্যানেজমেন্ট টুল</h2>
+ <main class="file-section">
+  <div class="file-container">
+    <div class="file-header">
+    <div class="file-title">
+        <h2>📦 মাল স্টক ম্যানেজমেন্ট টুল</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>মাল স্টক ম্যানেজমেন্ট টুল - পণ্য স্টক ব্যবস্থাপনার ডিজিটাল টুল</p>
+        <p>পণ্য প্রবেশ, বহির্গমন এবং স্টক লেভেল ট্র্যাক করুন</p>
+        <p>নিম্ন স্টক অ্যালার্ট এবং স্বয়ংক্রিয় পুনঃঅর্ডার সুবিধা</p>
+        <p>পণ্য বিভাগ, সাপ্লায়ার এবং স্থান অনুযায়ী স্টক ম্যানেজ করুন</p>
+        <p>স্টক রিপোর্ট ও বিক্রয় ট্রেন্ড বিশ্লেষণ</p>
+        <p>খুচরা ও পাইকারি ব্যবসার জন্য আদর্শ স্টক ব্যবস্থাপনা সমাধান</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>মাল স্টক ম্যানেজমেন্ট টুল</h3>
 
   <div class="form">
     <label>পণ্যের নাম</label>
@@ -232,7 +249,8 @@ html.dark-mode td {
 
   <h3 style="text-align:right; margin-top: 20px;">মোট মূল্য: ৳<span id="totalValue">0.00</span></h3>
 </div>
-
+  </div>
+ </main>
 <script>
   let stockList = [];
 

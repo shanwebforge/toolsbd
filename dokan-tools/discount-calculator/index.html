@@ -16,42 +16,18 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .wrapper {
-      margin-top: 70px;
-      margin-bottom: 70px;
-      display: flex;
-      justify-content: center;
-    }
-    .calculator {
-      background: #fff;
-      padding: 30px 35px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      max-width: 400px;
-      width: 100%;
-    }
-    h2 {
-      text-align: center;
-      color: #2c3e50;
-      margin-bottom: 25px;
-    }
+
     label {
       display: block;
       font-weight: 600;
       margin-top: 15px;
       margin-bottom: 8px;
       color: #34495e;
+      text-align: left;
     }
     input[type="number"] {
       width: 100%;
@@ -65,7 +41,7 @@
       margin-top: 25px;
       width: 100%;
       padding: 12px;
-      background-color: #077A7D;
+      background-color: var(--color-primary);
       color: white;
       border: none;
       border-radius: 8px;
@@ -74,7 +50,7 @@
       transition: background-color 0.3s ease;
     }
     button:hover {
-      background-color: #066264;
+      background-color: var(--color-primary-dark);
     }
     .result {
       margin-top: 25px;
@@ -86,26 +62,8 @@
       text-align: center;
       min-height: 48px;
     }
-    @media (max-width: 400px) {
-      .calculator {
-        padding: 20px;
-      }
-      h2 {font-size: 16px;}
-    }
 
-html.dark-mode body {
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .calculator {
-  background: #1e293b;
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
-}
-
-html.dark-mode h2 {
-  color: #e0e0e0;
-}
 
 html.dark-mode label {
   color: #ccc;
@@ -118,12 +76,12 @@ html.dark-mode input[type="number"] {
 }
 
 html.dark-mode button {
-  background-color: #0a9396;
+  background-color: var(--color-primary-light);
   color: #eee;
 }
 
 html.dark-mode button:hover {
-  background-color: #07696b;
+  background-color: var(--color-primary);
 }
 
 html.dark-mode .result {
@@ -136,9 +94,25 @@ html.dark-mode .result {
 </head>
 <body>
 
-  <div class="wrapper">
-    <div class="calculator">
-      <h2>Discount Calculator</h2>
+ <main class="file-section">
+  <div class="file-container">
+    <div class="file-header">
+    <div class="file-title">
+        <h2>Discount Calculator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Discount Calculator - Calculate discounts, sale prices, and savings quickly</p>
+        <p>Compute percentage discounts, fixed amount discounts, and multi-tier discounts</p>
+        <p>Calculate final sale price after applying discounts and taxes</p>
+        <p>Compare original price vs. discounted price and see actual savings</p>
+        <p>Useful for shoppers, retailers, and sales professionals</p>
+        <p>Make informed purchasing decisions with accurate discount calculations</p>
+    </div>
+</div>
+    <div class="file-footer">
+      <h3>Discount Calculator</h3>
 
       <label for="originalPrice">মূল দাম (৳)</label>
       <input type="number" id="originalPrice" placeholder="মূল দাম লিখুন" min="0" step="0.01" />
@@ -154,6 +128,7 @@ html.dark-mode .result {
       <div class="result" id="result"></div>
     </div>
   </div>
+ </main>
 
   <script>
     function calculateDiscount() {

@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="bn">
+
+
+    <!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ব্যয়/আয় হিসাব ট্র্যাকার</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script>
+   <script>
     (function () {
       try {
         const theme = localStorage.getItem('theme');
@@ -16,32 +17,12 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/components/header.css" />
-  <link rel="stylesheet" href="/components/footer.css" />
-  <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-.container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 25px;
-}
+  <title>আয় / ব্যয় হিসাব</title>
+ <link rel="stylesheet" href="/css/sub-file.css" />
+<link rel="stylesheet" href="/components/header.css">
+<link rel="stylesheet" href="/components/footer.css">
+<style>
+ 
 form {
   display: flex;
   flex-wrap: wrap;
@@ -62,8 +43,8 @@ select {
 input[type="number"] {
   flex: 1 1 45%;
 }
-button {
-  background-color: #077A7D;
+.file-footer button {
+  background-color: var(--color-primary);
   color: white;
   border: none;
   border-radius: 8px;
@@ -73,8 +54,8 @@ button {
   flex: 1 1 100%;
   transition: background-color 0.3s ease;
 }
-button:hover {
-  background-color: #066264;
+.file-footer button:hover {
+  background-color: var(--color-primary-dark);
 }
 .summary {
   display: flex;
@@ -162,23 +143,11 @@ ul#transactionList li:last-child {
   .summary {
     flex-direction: column;
   }
-  h2 {font-size: 16px !important;}
+
 }
 
 /* ======= Dark Mode Styles ======= */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
-
-html.dark-mode h2 {
-  color: #80cbc4;
-}
 
 html.dark-mode input[type="text"],
 html.dark-mode input[type="number"],
@@ -196,11 +165,11 @@ html.dark-mode select::placeholder {
 }
 
 html.dark-mode button {
-  background-color: #009688;
+  background-color: var(--color-primary-light);
 }
 
 html.dark-mode button:hover {
-  background-color: #00695c;
+  background-color: var(--color-primary);
 }
 
 html.dark-mode .summary {
@@ -246,8 +215,26 @@ html.dark-mode .delete-btn:hover {
 </head>
 <body>
 
-  <div class="container">
-    <h2>ব্যয়/আয় হিসাব ট্র্যাকার</h2>
+ <main class="file-section">
+  <div class="file-container">
+
+    <div class="file-header">
+    <div class="file-title">
+        <h2>ব্যয়/আয় হিসাব ট্র্যাকার</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>ব্যয়/আয় হিসাব ট্র্যাকার - ব্যক্তিগত আয়-ব্যয়ের হিসাব রাখার ডিজিটাল টুল</p>
+        <p>আয়ের উৎস এবং ব্যয়ের ক্যাটাগরি অনুযায়ী ট্র্যাক করুন</p>
+        <p>মাসিক বাজেট তৈরি করুন এবং বাস্তব ব্যয়ের সাথে তুলনা করুন</p>
+        <p>আর্থিক রিপোর্ট এবং বিশ্লেষণী চার্ট দেখুন</p>
+        <p>সঞ্চয় লক্ষ্যমাত্রা নির্ধারণ করুন এবং অগ্রগতি মনিটর করুন</p>
+        <p>দীর্ঘমেয়াদী আর্থিক পরিকল্পনা ও নিরাপত্তার জন্য সহায়ক</p>
+    </div>
+</div>
+  <div class="file-footer">
+    <h3>ব্যয়/আয় হিসাব ট্র্যাকার</h3>
 
     <form id="transactionForm">
       <input type="text" id="name" placeholder="ব্যয়/আয়ের নাম" required />
@@ -268,7 +255,8 @@ html.dark-mode .delete-btn:hover {
 
     <ul id="transactionList"></ul>
   </div>
-
+  </div>
+ </main>
   <script>
     const form = document.getElementById('transactionForm');
     const nameInput = document.getElementById('name');

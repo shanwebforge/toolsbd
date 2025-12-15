@@ -16,31 +16,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-    h2 {
-      text-align: center;
-      color: #2a4d69;
-    }
+ 
     input {
       padding: 10px;
       font-size: 15px;
@@ -50,6 +30,7 @@
       border-radius: 6px;
       box-sizing: border-box;
     }
+
     table {
       width: 100%;
       margin-top: 20px;
@@ -71,7 +52,7 @@
     }
     button {
       padding: 10px 16px;
-      background: #077A7D;
+      background: var(--color-primary);
       color: white;
       border: none;
       border-radius: 6px;
@@ -79,7 +60,7 @@
       cursor: pointer;
     }
     button:hover {
-      background: #066264;
+      background: var(--color-primary-dark);
     }
     .totals {
       margin-top: 20px;
@@ -97,20 +78,11 @@
   }
 
   /* Show only .container */
-  .container, .container * {
+  .file-footer, .container * {
     visibility: visible;
   }
 
-  /* Ensure container fits page */
-  .container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    font-size: 12px;
-  }
+  
 
   /* Adjust table for print */
   table {
@@ -147,26 +119,66 @@
 }
 
 
-@media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
+/* =========================
+   MOBILE RESPONSIVE (≤ 768px)
+   Desktop stays unchanged
+========================= */
+@media screen and (max-width: 768px) {
+
+  input {
+    padding: 8px;
+    font-size: 14px;
   }
 
+  table {
+    margin-top: 12px;
+    font-size: 13px;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+
+  }
+
+  th, td {
+    margin: auto;
+    padding: 8px 6px;
+    font-size: 12px;
+
+    
+  }
+
+  th {
+    font-weight: 600;
+    
+  }
+
+  /* Actions buttons stack nicely */
+  .actions {
+    gap: 8px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Totals align better on small screen */
+  .totals {
+    text-align: left;
+    font-size: 14px;
+        justify-content: center;
+    text-align: center;
+  }
+
+  .totals span {
+    min-width: auto;
+    display: block;
+    margin-bottom: 4px;
+  }
 }
 
-html.dark-mode body {
-  background: #000;
-  color: #fff;
-}
-
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.05);
-}
-
-html.dark-mode h2 {
-  color: #f1f5f9;
-}
 
 html.dark-mode input {
   background-color: #334155;
@@ -190,17 +202,17 @@ html.dark-mode td {
 }
 
 html.dark-mode .actions button {
-  background: #077A7D;
+  background: var(--color-primary-light);
   color: white;
 }
 
 html.dark-mode button {
-  background: #077A7D;
+  background:var(--color-primary-light) ;
   color: white;
 }
 
 html.dark-mode button:hover {
-  background: #066264;
+  background: var(--color-primary);
 }
 
 html.dark-mode .totals {
@@ -210,11 +222,29 @@ html.dark-mode .totals {
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>🧾 ইনভয়েস সিস্টেম (VAT সহ)</h2>
+
+   <main class="file-section">
+  <div class="file-container">
+<div class="file-header">
+    <div class="file-title">
+        <h2>🧾 ইনভয়েস সিস্টেম (VAT সহ)</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>ইনভয়েস সিস্টেম (VAT সহ) - সম্পূর্ণ VAT সমর্থিত ইনভয়েস ব্যবস্থাপনা সিস্টেম</p>
+        <p>স্বয়ংক্রিয়ভাবে VAT, TAX এবং অন্যান্য চার্জ গণনা করে</p>
+        <p>বিভিন্ন VAT রেট (5%, 7.5%, 10% ইত্যাদি) সাপোর্ট করে</p>
+        <p>VAT রিটার্ন এবং আর্থিক রিপোর্টের জন্য ডেটা জেনারেট করে</p>
+        <p>বিএসআরকি নীতিমালা অনুযায়ী ইনভয়েস তৈরি করে</p>
+        <p>ছোট ও মাঝারি ব্যবসার জন্য আইন সম্মত ইনভয়েস সমাধান</p>
+    </div>
+</div>
+  <div class="file-footer">
+    <h3>ইনভয়েস সিস্টেম (VAT সহ)</h3>
 
     <label>কাস্টমারের নাম:</label>
-    <input type="text" id="customerName" placeholder="যেমন: রায়হান ইসলাম"/>
+    <input type="text" id="customerName" placeholder="যেমন: মোঃ সোহান"/>
 
     <label>VAT (%)</label>
     <input type="number" id="vatPercent" value="5"/>
@@ -244,7 +274,8 @@ html.dark-mode .totals {
       <p><strong><span>Grand Total:</span> ৳<span id="grandTotal">0.00</span></strong></p>
     </div>
   </div>
-
+  </div>
+   </main>
   <script>
     function addItem() {
       const row = document.createElement("tr");

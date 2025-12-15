@@ -16,36 +16,16 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2a4d69;
-    }
+
     label {
       display: block;
       margin-top: 15px;
       font-weight: 600;
+      text-align: left;
     }
     input {
       width: 100%;
@@ -58,7 +38,7 @@
     button {
       margin-top: 20px;
       padding: 12px 20px;
-      background-color: #077A7D;
+      background-color: var(--color-primary);
       color: white;
       border: none;
       border-radius: 6px;
@@ -66,7 +46,7 @@
       cursor: pointer;
     }
     button:hover {
-      background-color: #066264;
+      background-color: var(--color-primary-dark);
     }
     table {
       width: 100%;
@@ -101,23 +81,9 @@
         left: 0;
         width: 100%;
       }
-      h2 {font-size: 16px;}
+
     }
 
-
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
-
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-}
-
-html.dark-mode h2 {
-  color: #e0e0e0;
-}
 
 html.dark-mode label {
   color: #ccc;
@@ -130,12 +96,12 @@ html.dark-mode input {
 }
 
 html.dark-mode button {
-  background-color: #0a9396;
+  background-color: var(--color-primary-light);
   color: #eee;
 }
 
 html.dark-mode button:hover {
-  background-color: #07696b;
+  background-color: var(--color-primary);
 }
 
 html.dark-mode table {
@@ -163,11 +129,29 @@ html.dark-mode .receipt-box {
 </head>
 <body>
 
-<div class="container">
-  <h2>🧾 কাস্টমার রিসিপ্ট প্রিন্ট টুল</h2>
+ <main class="file-section">
+  <div class="file-container">
+
+    <div class="file-header">
+    <div class="file-title">
+        <h2>🧾 কাস্টমার রিসিপ্ট প্রিন্ট টুল</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>কাস্টমার রিসিপ্ট প্রিন্ট টুল - পেশাদার কাস্টমার রিসিপ্ট তৈরির টুল</p>
+        <p>স্বয়ংক্রিয়ভাবে গণনা ও ট্যাক্স সহ রিসিপ্ট তৈরি করুন</p>
+        <p>কাস্টমার তথ্য, ক্রয় বিবরণী এবং পেমেন্ট মেথড যোগ করুন</p>
+        <p>রিসিপ্ট টেমপ্লেট কাস্টোমাইজ করুন এবং ব্র্যান্ডিং যোগ করুন</p>
+        <p>প্রিন্টার ফ্রেন্ডলি ফরম্যাটে রিসিপ্ট প্রিন্ট করুন</p>
+        <p>ডিজিটাল বা ইমেল রিসিপ্ট পাঠানোর সুবিধা</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>কাস্টমার রিসিপ্ট প্রিন্ট টুল</h3>
 
   <label>কাস্টমারের নাম:</label>
-  <input type="text" id="customerName" placeholder="যেমন: মোঃ রায়হান"/>
+  <input type="text" id="customerName" placeholder="যেমন: মোঃ সোহান"/>
 
   <label>পণ্যের নাম:</label>
   <input type="text" id="productName" placeholder="যেমন: ডিজাইন সার্ভিস"/>
@@ -207,7 +191,8 @@ html.dark-mode .receipt-box {
 
   <button onclick="window.print()" id="printBtn" style="display:none;">🖨️ প্রিন্ট করুন</button>
 </div>
-
+  </div>
+ </main>
 <script>
   function generateReceipt() {
     const name = document.getElementById("customerName").value.trim();

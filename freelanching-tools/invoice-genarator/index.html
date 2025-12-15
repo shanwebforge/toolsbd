@@ -15,47 +15,20 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>ইনভয়েস জেনারেটর</title>
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-.wrapper {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  flex-direction: column;
-}
 
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #2a4d69;
-    }
+
+
     label {
       display: block;
       margin: 15px 0 8px;
       font-weight: 600;
+      text-align: left;
     }
     input[type="text"], input[type="number"] {
       width: 100%;
@@ -66,7 +39,7 @@
       box-sizing: border-box;
     }
     button {
-      background: #077A7D;
+      background: var(--color-primary);
       color: white;
       padding: 12px 20px;
       font-size: 16px;
@@ -78,7 +51,7 @@
       transition: background 0.3s ease;
     }
     button:hover {
-      background: #066264;
+      background: var(--color-primary-dark);
     }
     .invoice {
       margin-top: 30px;
@@ -89,12 +62,7 @@
       background: #fff;
       color: #000;
     }
-    .invoice h2 {
-      margin-top: 0;
-      text-align: center;
-      margin-bottom: 20px;
-      color: #2a4d69;
-    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -112,9 +80,7 @@
       font-weight: 700;
     }
     @media print {
-      body * {
-        visibility: hidden;
-      }
+
       .invoice, .invoice * {
         visibility: visible;
       }
@@ -131,33 +97,14 @@
 
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
 
-}
-html.dark-mode body{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #000;
-  color: #fff;
-}
-
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
-
-html.dark-mode h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #fff;
-}
 
 html.dark-mode label {
   display: block;
   margin: 15px 0 8px;
   font-weight: 600;
   color: #cbd5e0;
+}
 }
 
 html.dark-mode input[type="text"],
@@ -177,7 +124,7 @@ html.dark-mode input::placeholder {
 }
 
 html.dark-mode button {
-  background: #0f766e;
+  background: var(--color-primary-light);
   color: white;
   padding: 12px 20px;
   font-size: 16px;
@@ -190,7 +137,7 @@ html.dark-mode button {
 }
 
 html.dark-mode button:hover {
-  background: #115e59;
+  background: var(--color-primary);
 }
 
 html.dark-mode .invoice {
@@ -203,12 +150,7 @@ html.dark-mode .invoice {
   color: #cbd5e0;
 }
 
-html.dark-mode .invoice h2 {
-  margin-top: 0;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #93c5fd;
-}
+
 
 html.dark-mode table {
   width: 100%;
@@ -256,8 +198,27 @@ html.dark-mode .total-row td {
 </head>
 <body>
 
-<div class="container">
-  <h1>ইনভয়েস জেনারেটর</h1>
+
+ <main class="file-section">
+  <div class="file-container">
+
+  <div class="file-header">
+    <div class="file-title">
+        <h2>ইনভয়েস জেনারেটর</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>ইনভয়েস জেনারেটর - পেশাদার মানের ইনভয়েস তৈরির টুল</p>
+        <p>কাস্টমাইজেবল টেমপ্লেট ব্যবহার করে ইনভয়েস তৈরি করুন</p>
+        <p>স্বয়ংক্রিয়ভাবে গণনা, ট্যাক্স এবং ডিসকাউন্ট যোগ করে</p>
+        <p>কোম্পানি লোগো, ঠিকানা এবং ব্যাংক তথ্য সংযোজন</p>
+        <p>PDF, এক্সেল বা ইমেজ ফরম্যাটে ইনভয়েস ডাউনলোড করুন</p>
+        <p>ছোট ব্যবসা ও ফ্রিল্যান্সারদের জন্য আদর্শ সমাধান</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>ইনভয়েস জেনারেটর</h3>
 
   <label for="customerName">গ্রাহকের নাম:</label>
   <input type="text" id="customerName" placeholder="গ্রাহকের নাম লিখুন" />
@@ -307,6 +268,9 @@ html.dark-mode .total-row td {
     <button onclick="window.print()">প্রিন্ট করুন</button>
   </div>
 </div>
+
+  </div>
+ </main>
 
 <script>
   function generateInvoice() {

@@ -16,37 +16,11 @@
     })();
   </script>
   <title>Expense Tracker</title>
-<link rel="stylesheet" href="/css/styles.css" />
+<link rel="stylesheet" href="/css/sub-file.css" />
 <link rel="stylesheet" href="/components/header.css">
 <link rel="stylesheet" href="/components/footer.css">
 <style>
-/* Global */
-* {
-  box-sizing: border-box;
-}
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-.container {
-  max-width: 600px;
-  margin: auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-h1 {
-  margin-bottom: 20px;
-  font-size: 24px;
-}
 
 input[type="number"],
 input[type="text"],
@@ -64,14 +38,14 @@ button {
 }
 
 button {
-  background: #077A7D;
+  background: var(--color-primary);
   color: white;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 button:hover {
-  background: #066264;
+  background: var(--color-primary-dark);
 }
 
 #expense-list {
@@ -118,28 +92,10 @@ button:hover {
   margin-top: 20px;
   font-size: 20px;
   font-weight: bold;
-  color: #077A7D;
-}
-@media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
-
+  color: var(--color-primary);
 }
 
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
-
-html.dark-mode h1 {
-  color: #ffffff;
-}
 
 html.dark-mode input[type="number"],
 html.dark-mode input[type="text"] {
@@ -149,12 +105,12 @@ html.dark-mode input[type="text"] {
 }
 
 html.dark-mode button {
-  background: #077A7D;
+  background: var(--color-primary-light);
   color: white;
 }
 
 html.dark-mode button:hover {
-  background: #066264;
+  background: var(--color-primary);
 }
 
 html.dark-mode .expense-item {
@@ -179,8 +135,27 @@ html.dark-mode #total {
 </head>
 <body>
 
-<div class="container">
-  <h1>💸 Expense Tracker</h1>
+
+   <main class="file-section">
+  <div class="file-container">
+
+    <div class="file-header">
+    <div class="file-title">
+        <h2>💸 Expense Tracker</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Expense Tracker - Personal and business expense management tool</p>
+        <p>Track daily expenses across different categories and payment methods</p>
+        <p>Set monthly budgets and receive alerts when limits are exceeded</p>
+        <p>Generate expense reports with visual charts and analytics</p>
+        <p>Sync data across devices for seamless expense management</p>
+        <p>Improve financial awareness and control over spending habits</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>Expense Tracker</h3>
 
   <input type="number" id="amount" placeholder="Amount (৳)" />
   <input type="text" id="desc" placeholder="Description" />
@@ -191,7 +166,9 @@ html.dark-mode #total {
 
   <div id="total">Total Expense: ৳0</div>
 </div>
-
+  </div>
+   </main>
+   
 <script>const amountInput = document.getElementById('amount');
 const descInput = document.getElementById('desc');
 const addBtn = document.getElementById('add-btn');

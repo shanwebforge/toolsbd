@@ -4,32 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Grocery Shopping List</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
 
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f2f5;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 100px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 20px;
-    }
+   
 
     form {
       display: flex;
@@ -46,12 +26,12 @@
     }
 
     input[type="text"]:focus {
-      border-color: #077A7D;
+      border-color: var(--color-primary);
       outline: none;
     }
 
     button {
-      background: #077A7D;
+      background: var(--color-primary);
       color: white;
       border: none;
       padding: 10px 15px;
@@ -62,7 +42,7 @@
     }
 
     button:hover {
-      background: #066264;
+      background: var(--color-primary-dark);
     }
 
     .item {
@@ -94,7 +74,7 @@
     }
 
     .item button:hover {
-      color: #066264;
+      color: var(--color-primary-dark);
     }
 
     .empty-msg {
@@ -103,26 +83,8 @@
       font-style: italic;
       margin-top: 30px;
     }
-@media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
 
-}
     /* ===== Dark Mode ===== */
-    html.dark-mode body {
-      background: #000;
-      color: #a7ffeb;
-    }
-
-    html.dark-mode .container {
-      background: #1e293b;
-    }
-
-    html.dark-mode h1 {
-      color: #fff;
-    }
-
     html.dark-mode input[type="text"] {
       background: #334155;
       border-color: #475569;
@@ -161,9 +123,25 @@
   </script>
 </head>
 <body>
-
-  <div class="container">
-    <h1>🛒 Grocery Shopping List</h1>
+ <main class="file-section">
+  <div class="file-container">
+    <div class="file-header">
+    <div class="file-title">
+        <h2>🛒 Grocery Shopping List</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Grocery Shopping List - Smart shopping list and meal planning tool</p>
+        <p>Create organized shopping lists categorized by store sections</p>
+        <p>Add items with quantities, brands, and estimated prices</p>
+        <p>Check off items as you shop and keep track of your budget</p>
+        <p>Save frequently purchased items for quick addition to lists</p>
+        <p>Share shopping lists with family members for coordinated shopping</p>
+    </div>
+</div>
+  <div class="file-footer">
+    <h3>Grocery Shopping List</h3>
     <form id="grocery-form">
       <input type="text" id="grocery-input" placeholder="পণ্যের নাম লিখুন..." autocomplete="off" />
       <button type="submit">➕ যোগ করুন</button>
@@ -171,6 +149,8 @@
     <div id="grocery-list"></div>
     <p id="empty-msg" class="empty-msg">তালিকাটি খালি। নতুন কিছু যোগ করুন।</p>
   </div>
+  </div>
+ </main>
 
   <script>
     const form = document.getElementById("grocery-form");

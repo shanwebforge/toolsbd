@@ -15,33 +15,12 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>Project Cost Estimator</title>
   <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-    h1 {
-      text-align: center;
-      color: #2a4d69;
-      margin-bottom: 25px;
-    }
+
     .row {
       display: flex;
       gap: 10px;
@@ -58,7 +37,7 @@
     }
     button {
       padding: 10px 18px;
-      background-color: #077A7D;
+      background-color: var(--color-primary);
       color: white;
       border: none;
       border-radius: 6px;
@@ -66,7 +45,7 @@
       font-size: 15px;
     }
     button:hover {
-      background-color: #066264;
+      background-color: var(--color-primary-dark);
     }
     table {
       width: 100%;
@@ -94,32 +73,11 @@
       .row {
         flex-direction: column;
       }
-      h1 {font-size: 16px;}
+   
     }
 
 
-html.dark-mode body{
-  font-family: 'Segoe UI', sans-serif;
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  max-width: 900px;
-  margin: auto;
-  background: #1e293b;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-html.dark-mode h1 {
-  text-align: center;
-  color: #93c5fd;
-  margin-bottom: 25px;
-}
 
 html.dark-mode .row {
   display: flex;
@@ -145,7 +103,7 @@ html.dark-mode input::placeholder {
 
 html.dark-mode button {
   padding: 10px 18px;
-  background-color: #0f766e;
+  background-color: var(--color-primary-light);
   color: white;
   border: none;
   border-radius: 6px;
@@ -155,7 +113,7 @@ html.dark-mode button {
 }
 
 html.dark-mode button:hover {
-  background-color: #115e59;
+  background-color: var(--color-primary);
 }
 
 html.dark-mode table {
@@ -190,8 +148,25 @@ html.dark-mode .total {
 </head>
 <body>
 
-<div class="container">
-  <h1>📊 Project Cost Estimator</h1>
+ <main class="file-section">
+  <div class="file-container">
+  <div class="file-header">
+    <div class="file-title">
+        <h2>📊 Project Cost Estimator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Project Cost Estimator - Professional project cost estimation and budgeting tool</p>
+        <p>Accurately estimate costs for web development, design, and software projects</p>
+        <p>Break down projects into tasks with time and resource allocations</p>
+        <p>Calculate labor costs, material expenses, and overhead charges</p>
+        <p>Generate detailed cost breakdowns and professional proposals</p>
+        <p>Freelancers and agencies can create accurate client quotations</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>Project Cost Estimator</h3>
 
   <div class="row">
     <input type="text" id="itemName" placeholder="আইটেমের নাম (যেমন: ডিজাইন)">
@@ -214,7 +189,8 @@ html.dark-mode .total {
 
   <div class="total" id="totalCost">মোট খরচ: ৳0.00</div>
 </div>
-
+</div>
+</main>
 <script>
   const tableBody = document.querySelector("#costTable tbody");
   const totalCostElem = document.getElementById("totalCost");

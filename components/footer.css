@@ -324,6 +324,36 @@ footer {
 }
 
 
+/* =========================
+   ONLY MOBILE (≤ 768px)
+   Desktop will NOT be affected
+========================= */
+@media screen and (max-width: 768px) {
+
+  footer {
+    height: 50px;
+  }
+
+  .footer-menu a {
+    font-size: 10px;
+  }
+
+  .footer-menu a i {
+    font-size: 16px;
+  }
+
+  /* Mobile hover disable */
+  .footer-menu a:hover {
+    transform: none;
+    color: #3b3b3b;
+  }
+
+  .footer-menu a:hover i {
+    color: #3b3b3b;
+  }
+}
+
+
 
 /* DARK MODE */
 html.dark-mode .double-column-container {

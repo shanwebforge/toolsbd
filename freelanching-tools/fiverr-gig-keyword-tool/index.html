@@ -16,34 +16,11 @@
       } catch (e) {}
     })();
   </script>
-  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-    .container {
-      max-width: 850px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #2a4d69;
-    }
 
     input {
       width: 100%;
@@ -58,7 +35,7 @@ body {
     button {
       padding: 12px 20px;
       font-size: 16px;
-      background-color: #077A7D;
+      background-color: var(--color-primary);
       color: white;
       border: none;
       border-radius: 6px;
@@ -67,7 +44,7 @@ body {
     }
 
     button:hover {
-      background-color: #066264;
+      background-color: var(--color-primary-dark);
     }
 
     .keywords {
@@ -99,38 +76,15 @@ body {
     }
 
     @media (max-width: 600px) {
-      .container {
-        padding: 20px;
-      }
+
       button {
         font-size: 15px;
       }
-      h1 {font-size: 16px;}
+
     }
 
 
-html.dark-mode body{
-  font-family: 'Segoe UI', sans-serif;
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  max-width: 850px;
-  margin: auto;
-  background: #1e293b;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.7);
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-html.dark-mode h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #93c5fd;
-}
 
 html.dark-mode input {
   width: 100%;
@@ -151,7 +105,7 @@ html.dark-mode input::placeholder {
 html.dark-mode button {
   padding: 12px 20px;
   font-size: 16px;
-  background-color: #0f766e;
+  background-color: var(--color-primary-light);
   color: white;
   border: none;
   border-radius: 6px;
@@ -161,7 +115,7 @@ html.dark-mode button {
 }
 
 html.dark-mode button:hover {
-  background-color: #115e59;
+  background-color: var(--color-primary);
 }
 
 html.dark-mode .keywords {
@@ -194,9 +148,7 @@ html.dark-mode .info {
 }
 
 @media (max-width: 600px) {
-  html.dark-mode .container {
-    padding: 20px;
-  }
+
   html.dark-mode button {
     font-size: 15px;
   }
@@ -205,9 +157,26 @@ html.dark-mode .info {
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
-  <h1>Fiverr / Gig Keyword Tool</h1>
+    <div class="file-header">
+    <div class="file-title">
+        <h2>Fiverr / Gig Keyword Tool</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Fiverr / Gig Keyword Tool - Optimize your Fiverr gigs with the right keywords</p>
+        <p>Find high-ranking keywords for your Fiverr services and gig titles</p>
+        <p>Analyze competitor gigs and discover trending keywords in your niche</p>
+        <p>Get keyword suggestions for tags, descriptions, and gig metadata</p>
+        <p>Improve gig visibility and ranking in Fiverr search results</p>
+        <p>Boost your Fiverr business with data-driven keyword strategies</p>
+    </div>
+</div>
+<div class="file-footer">
+  <h3>Fiverr / Gig Keyword Tool</h3>
   <input type="text" id="keywordInput" placeholder="যেমন: logo design" />
   <button onclick="generateKeywords()">🎯 কিওয়ার্ড সাজেশন দেখাও</button>
   <button onclick="copyAllKeywords()">📋 সব কিওয়ার্ড কপি করুন</button>
@@ -215,7 +184,8 @@ html.dark-mode .info {
   <div class="keywords" id="keywordBox"></div>
   <div class="info">একটি কিওয়ার্ডে ক্লিক করলে তা কপি হয়ে যাবে ✅</div>
 </div>
-
+  </div>
+ </main>
 <script>
   let generatedKeywords = [];
 

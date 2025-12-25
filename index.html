@@ -31,21 +31,29 @@
 </script>
 
 
-  <!-- 🌙 Early apply dark mode (no flash) -->
-  <script>
-    (function () {
-      try {
-        const theme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const isDark = theme === 'dark' || (!theme && prefersDark);
-        if (isDark) {
-          document.documentElement.classList.add('dark-mode');
-        }
-      } catch (e) {
-        console.error('Dark mode preload error:', e);
+<!-- 🌙 Always apply dark mode first, toggle will switch to light -->
+<script>
+  (function () {
+    try {
+
+      document.documentElement.classList.add('dark-mode');
+      
+
+      const theme = localStorage.getItem('theme');
+      
+
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark-mode');
       }
-    })();
-  </script>
+
+      if (!theme) {
+        localStorage.setItem('theme', 'dark');
+      }
+    } catch (e) {
+      console.error('Theme initialization error:', e);
+    }
+  })();
+</script>
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 import { getFirestore, collection, query, orderBy, onSnapshot, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";

@@ -527,43 +527,7 @@ html.dark-mode .date-box strong {color: #fff; font-weight: bold !important;}
   word-break: break-word;
 }
 
-/* Gradient backgrounds */
-.box1 {
-  background: linear-gradient(to bottom right, #ff6a6a, #ff9999);
-}
-.box2 {
-  background: linear-gradient(to bottom right, #6a5aff, #a6a1ff);
-}
-.box3 {
-  background: linear-gradient(to bottom right, #4caf50, #81c784);
-}
-.box4 {
-  background: linear-gradient(to bottom right, #ffa726, #ffd180);
-}
-.box5 {
-  background: linear-gradient(to bottom right, #26c6da, #80deea);
-}
-.box6 {
-  background: linear-gradient(to bottom right, #ab47bc, #ce93d8);
-}
-.box7 {
-  background: linear-gradient(to bottom right, #ec407a, #f48fb1);
-}
-.box8 {
-  background: linear-gradient(to bottom right, #78909c, #b0bec5);
-}
-.box9 {
-  background: linear-gradient(to bottom right, #fdd835, #fff176);
-}
-.box10 {
-  background: linear-gradient(to bottom right, #8bc34a, #aed581);
-}
-.box11 {
-  background: linear-gradient(to bottom right, #ff7043, #ffab91);
-}
-.box12 {
-  background: linear-gradient(to bottom right, #00e676, #69f0ae);
-}
+
 
 @media (max-width: 600px) {
   .category-section {
@@ -692,9 +656,6 @@ html.dark-mode .category-box::after {
  
 }
 
-
-
-
 .main-section {
   max-width: 1200px;
   margin: 0 auto;
@@ -702,7 +663,6 @@ html.dark-mode .category-box::after {
 }
 
 
-/* Tools Grid */
 .tools-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -820,29 +780,38 @@ html.dark-mode .box-icon {
 }
 
 /* --- RIGHT LINK: .cat-title-link --- */
+
+
 .cat-title-link {
-    display: inline-flex;
+    display: flex; /* Changed from inline-flex to flex */
     align-items: center;
     justify-content: center;
-    
-    padding: 8px 12px; 
-    background-color: #8e3cfa;
+    padding: 8px 20px; 
+    border: 1px solid #8e3cfa;
     border-radius: 6px; 
     color: #fff; 
     text-decoration: none;
     font-size: 16px;
     transition: background 0.3s ease;
+    margin: 0 auto; 
+    width: fit-content; 
+    min-width: 120px;
+    margin-bottom: 30px;
 }
 
 .cat-title-link:hover {
-    background-color: #7a28e0; /* Hover effect */
+    background-color: #7a28e0;
 }
 
-.cat-title-link i {
-    color: inherit;
-    margin-left: 5px;
-}
 
+
+/* For responsive centering */
+@media (max-width: 768px) {
+    .cat-title-link {
+        padding: 8px 16px;
+        font-size: 15px;
+    }
+}
 
 
 /* Responsive */

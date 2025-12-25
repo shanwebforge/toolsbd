@@ -3,22 +3,22 @@
    ==================================== */
 
 :root {
-    /* --- General Colors (Light Mode) --- */
+   
     --cat-body-bg: #edf6fc;
     --cat-text-primary: #000;
     --cat-text-secondary: #555;
     --cat-heading-main: #525151;
 
-    /* --- Card Colors (.main-catagory-item) --- */
-    --cat-card-bg-start: #eed1f7; /* Light Purple/Pink */
-    --cat-card-bg-mid: #ebeaf8;   /* Light Blueish */
-    --cat-card-bg-end: #b9e3f5;   /* Light Cyan/Blue */
+
+    --cat-card-bg-start: #eed1f7; 
+    --cat-card-bg-mid: #ebeaf8;  
+    --cat-card-bg-end: #b9e3f5;  
     --cat-card-border: #9d94d6;
-    --cat-glow-color: 235, 244, 248; /* RGB for box-shadow glow (White/Light Blue) */
+    --cat-glow-color: 235, 244, 248; 
 
     /* --- Accent & Icon Colors --- */
-    --cat-accent-main: #6b5bcc;      /* Icon & Primary Accent */
-    --cat-accent-hover: #301f78;     /* Icon Hover */
+    --cat-accent-main: #6b5bcc; 
+    --cat-accent-hover: #301f78;
     --cat-h1-bullet-start: #d40677;
     --cat-h1-bullet-end: #4f46e5;
 
@@ -36,7 +36,7 @@ html.dark-mode {
 
     /* Card Colors */
     --cat-card-bg-start: rgba(120, 50, 200, 0.25);
-    --cat-card-bg-mid: rgba(30, 30, 30, 0.9);
+    --cat-card-bg-mid: rgba(71, 12, 71, 0.9);
     --cat-card-bg-end: rgba(150, 60, 250, 0.2);
     --cat-card-border: rgba(160, 80, 255, 0.4);
     --cat-glow-color-dm-primary: 160, 80, 255; /* RGB for Dark Mode Glow */
@@ -112,25 +112,84 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+
 .main-catagory-title-h1 {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     font-size: 22px;
     font-weight: 600;
     margin: 20px 0 15px 0;
-    padding-left: 5px;
-    color: var(--cat-heading-main);
-    margin-bottom: 10px;
+    padding: 0;
+    width: 100%;
 }
 
-/* Circle before text */
-.main-catagory-title-h1::before {
-    content: "";
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--cat-h1-bullet-start), var(--cat-h1-bullet-end));
-    margin-right: 10px;
+.main-catagory-title-h1 .title-text {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+    
+    /* Static Gradient Text */
+    background: linear-gradient(90deg, #8e3cfa 0%, #a855f7 50%, #d946ef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* No animation */
+}
+
+.main-catagory-title-h1 .catagory-description {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    margin-bottom: 10px;
+    max-width: 600px;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.gradient-purple-pink .title-text {
+    background: linear-gradient(90deg, #8e3cfa, #d946ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-deep-purple .title-text {
+    background: linear-gradient(90deg, #7c3aed, #8e3cfa, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-violet .title-text {
+    background: linear-gradient(90deg, #8b5cf6, #a855f7, #d946ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-three-color .title-text {
+    background: linear-gradient(90deg, #7c3aed, #8e3cfa, #d946ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-catagory-title-h1 .title-text {
+        font-size: 20px;
+    }
+    
+    .main-catagory-title-h1 .catagory-description {
+        font-size: 13px;
+        max-width: 90%;
+    }
 }
 /* Icon */
 .main-catagory-icon {
@@ -165,6 +224,15 @@ body {
     font-size: 18px;
     color: var(--cat-text-secondary);
     line-height: 1.3;
+}
+
+.main-cat-link {
+ 
+    padding: 8px 12px;
+    border: 1px solid var(--cat-panel-border);
+    border-radius: 10px;
+    background: var(--cat-panel-bg);
+    backdrop-filter: blur(3px);
 }
 
 /* RIGHT INFO PANEL */
@@ -275,24 +343,26 @@ body {
         /* Note: Alkatra font family must be imported to work */
         font-family: "Alkatra"; 
         margin-bottom: 5px;
+        text-align: center;
+        margin: auto;
     }
     .main-catagory-icon {
-        font-size: 40px;
-        width: 50px;
-        margin-bottom: 20px;
+        font-size: 24px;
+        width: 24px;
+        margin-bottom: 10px;
         
     }
 
     .main-catagory-content {
-        padding-right: 70px;
+        padding-right: 60px;
     }
 
     .main-catagory-title {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .main-catagory-desc {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .info-panel {
@@ -302,16 +372,16 @@ body {
     }
 
     .bottom-actions {
-        padding: 6px 10px;
+        padding: 4px 8px;
         gap: 10px;
     }
 
     .bottom-actions i {
-        font-size: 16px;
+        font-size: 12px;
     }
 
     .info-row {
-    font-size: 12px;
+    font-size: 10px;
 
     }
 

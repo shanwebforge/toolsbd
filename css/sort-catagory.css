@@ -3,93 +3,52 @@
    ==================================== */
 
 :root {
-    /* --- General Colors (Light Mode) --- */
-    --scat-body-bg: #edf6fc;
-    --scat-text-primary: #000;
-    --scat-text-secondary: #555;
-    --scat-heading-main: #525151;
-
-    /* --- Card Colors (.sort-catagory-item) --- */
-    --scat-card-bg-start: #eed1f7; /* Light Purple/Pink */
-    --scat-card-bg-mid: #ebeaf8;   /* Light Blueish */
-    --scat-card-bg-end: #b9e3f5;   /* Light Cyan/Blue */
-    --scat-card-border: #9d94d6;
-    --scat-glow-color: 235, 244, 248; /* RGB for box-shadow glow (White/Light Blue) */
-
-    /* --- Accent & Icon Colors --- */
-    --scat-accent-main: #6b5bcc;      /* Icon & Primary Accent (Purple) */
-    --scat-accent-hover: #301f78;     /* Icon Hover */
-    --scat-h1-bullet-start: #039723;  /* Green */
-    --scat-h1-bullet-end: #46e0e5;    /* Cyan */
-
-    /* --- Info Panel Colors --- */
-    --scat-panel-border: rgba(120, 90, 200, 0.4);
-    --scat-panel-bg: rgba(160, 80, 255, 0.1);
-    --scat-panel-text: #444;
+    --scat-bg: #edf6fc;
+    --scat-txt-p: #000;
+    --scat-txt-s: #555;
+    --scat-hd: #525151;
+    --scat-card-s: #eed1f7;
+    --scat-card-m: #ebeaf8;
+    --scat-card-e: #b9e3f5;
+    --scat-card-bdr: #9d94d6;
+    --scat-glow: 235,244,248;
+    --scat-accent: #6b5bcc;
+    --scat-accent-h: #301f78;
+    --scat-panel-bdr: rgba(120,90,200,.4);
+    --scat-panel-bg: rgba(160,80,255,.1);
+    --scat-panel-txt: #444;
 }
 
-/* --- Dark Mode Overrides --- */
 html.dark-mode {
-    --scat-text-primary: #f1f1f1;
-    --scat-text-secondary: #dcdcdc;
-    --scat-heading-main: #fff;
-
-    /* Card Colors */
-    --scat-card-bg-start: rgba(120, 50, 200, 0.25);
-    --scat-card-bg-mid: rgba(71, 12, 71, 0.9);
-    --scat-card-bg-end: rgba(150, 60, 250, 0.2);
-    --scat-card-border: rgba(160, 80, 255, 0.4);
-    --scat-card-border: rgba(160, 80, 255, 0.4);
-    --scat-glow-color-dm-primary: 160, 80, 255; /* RGB for Dark Mode Glow */
-    --scat-glow-color-dm-secondary: 209, 183, 241;
-
-    /* Accent & Icon Colors */
-    --scat-accent-main: #cbbfff;
-    --scat-accent-hover: #ff8fff;
-
-    /* Info Panel Colors */
-    --scat-panel-border: rgba(160, 80, 255, 0.4);
-    --scat-panel-bg: rgba(80, 50, 120, 0.2);
-    --scat-panel-text: #f1f1f1;
-    --scat-bottom-actions-bg: rgba(80, 50, 120, 0.15);
+    --scat-txt-p: #f1f1f1;
+    --scat-txt-s: #dcdcdc;
+    --scat-hd: #fff;
+    --scat-card-s: rgba(120,50,200,.25);
+    --scat-card-m: rgba(71,12,71,.9);
+    --scat-card-e: rgba(150,60,250,.2);
+    --scat-card-bdr: rgba(160,80,255,.4);
+    --scat-accent: #cbbfff;
+    --scat-accent-h: #ff8fff;
+    --scat-panel-bdr: rgba(160,80,255,.4);
+    --scat-panel-bg: rgba(80,50,120,.2);
+    --scat-panel-txt: #f1f1f1;
+    --scat-bottom-bg: rgba(80,50,120,.15);
 }
 
 /* ====================================
-   CSS Rules using Variables
+   Base & Layout Styles (Critical)
    ==================================== */
 
-/* Reset & Global */
-body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: var(--scat-body-bg);
-    min-height: 100vh;
-    padding: 100px 70px 50px;
-    color: var(--scat-text-primary);
-}
-
-/* --- Grid & Media Queries --- */
-@media (max-width: 768px) {
-    body {
-        padding: 100px 20px 50px;
-    }
-}
 
 .sort-category-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 30px;
 }
 
-/* --- Card Item (.sort-catagory-item) --- */
 .sort-catagory-item {
-    background: linear-gradient(
-        to bottom right,
-        var(--scat-card-bg-start) 0%,
-        var(--scat-card-bg-mid) 75%,
-        var(--scat-card-bg-end) 100%
-    );
-    border: 1px solid var(--scat-card-border);
+    background: linear-gradient(to bottom right,var(--scat-card-s) 0,var(--scat-card-m) 75%,var(--scat-card-e) 100%);
+    border: 1px solid var(--scat-card-bdr);
     padding: 28px 25px;
     border-radius: 12px;
     display: flex;
@@ -99,14 +58,33 @@ body {
     text-decoration: none;
     color: inherit;
     min-height: 100px;
-    transition: 0.3s ease;
     margin-bottom: 10px;
 }
 
+.sort-catagory-icon {
+    font-size: 24px;
+    color: var(--scat-accent);
+    flex-shrink: 0;
+    width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
 
+.sort-catagory-content {
+    flex-grow: 1;
+    text-align: left;
+    z-index: 1;
+    position: relative;
+    padding-right: 40px;
+    overflow-wrap: break-word;
+}
 
+/* ====================================
+   Content Styles
+   ==================================== */
 
-/* --- H1 Title --- */
 .sort-catagory-title-h1 {
     display: flex;
     flex-direction: column;
@@ -115,7 +93,7 @@ body {
     text-align: center;
     font-size: 22px;
     font-weight: 600;
-    margin: 20px 0 15px 0;
+    margin: 20px 0 15px;
     padding: 0;
     width: 100%;
 }
@@ -125,109 +103,81 @@ body {
     font-weight: 700;
     margin: 0;
     padding: 0;
-    
-    /* Static Gradient Text */
-    background: linear-gradient(90deg, #8e3cfa 0%, #a855f7 50%, #d946ef 100%);
+    background: linear-gradient(90deg,#8e3cfa 0,#a855f7 50%,#d946ef 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    
-    /* No animation */
 }
 
 .sort-catagory-title-h1 .catagory-description {
     font-size: 14px;
     font-weight: 400;
-    color: var(--text-secondary);
+    color: var(--scat-txt-s);
     margin-top: 8px;
     margin-bottom: 10px;
     max-width: 600px;
     line-height: 1.4;
-    opacity: 0.9;
+    opacity: .9;
 }
 
 .gradient-purple-pink .title-text {
-    background: linear-gradient(90deg, #8e3cfa, #d946ef);
+    background: linear-gradient(90deg,#8e3cfa,#d946ef);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .gradient-deep-purple .title-text {
-    background: linear-gradient(90deg, #7c3aed, #8e3cfa, #a855f7);
+    background: linear-gradient(90deg,#7c3aed,#8e3cfa,#a855f7);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .gradient-violet .title-text {
-    background: linear-gradient(90deg, #8b5cf6, #a855f7, #d946ef);
+    background: linear-gradient(90deg,#8b5cf6,#a855f7,#d946ef);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .gradient-three-color .title-text {
-    background: linear-gradient(90deg, #7c3aed, #8e3cfa, #d946ef);
+    background: linear-gradient(90deg,#7c3aed,#8e3cfa,#d946ef);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
-}
-
-/* --- Icon --- */
-.sort-catagory-icon {
-    font-size: 24px;
-    color: var(--scat-accent-main);
-    flex-shrink: 0;
-    width: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-
-/* --- Content --- */
-.sort-catagory-content {
-    flex-grow: 1;
-    text-align: left;
-    z-index: 1;
-    position: relative;
-    padding-right: 40px; 
-    overflow-wrap: break-word;
 }
 
 .sort-catagory-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: var(--scat-text-primary);
+    color: var(--scat-txt-p);
 }
 
 .sort-catagory-desc {
     font-size: 16px;
-    color: var(--scat-text-secondary);
+    color: var(--scat-txt-s);
     line-height: 1.3;
 }
 
-/* --- RIGHT INFO PANEL --- */
+/* ====================================
+   Info Panel & Actions (Non-critical)
+   ==================================== */
+
 .sort-info-panel {
     position: absolute;
     right: 15px;
     top: 15px;
-    bottom: 15px; /* Full height panel */
+    bottom: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Top info & Bottom actions perfect split */
-    align-items: flex-end; /* Full Right Align */
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
-/* TOP INFO */
 .sort-top-info {
     display: flex;
     flex-direction: column;
     gap: 6px;
     padding: 8px 12px;
-    border: 1px solid var(--scat-panel-border);
+    border: 1px solid var(--scat-panel-bdr);
     border-radius: 10px;
     background: var(--scat-panel-bg);
     backdrop-filter: blur(3px);
@@ -238,191 +188,166 @@ body {
     align-items: center;
     gap: 4px;
     font-size: 10px;
-    color: var(--scat-panel-text);
+    color: var(--scat-panel-txt);
 }
 
 .sort-info-row i {
     font-size: 10px;
-    color: var(--scat-accent-main);
+    color: var(--scat-accent);
 }
 
-/* BOTTOM ACTIONS (Vertical Icons) */
 .sort-bottom-actions {
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 10px 14px;
-    border: 1px solid var(--scat-panel-border);
-    border-radius: 50%; /* Changed from 10px to 50% as per input */
-    background: var(--scat-panel-bg); 
+    border: 1px solid var(--scat-panel-bdr);
+    border-radius: 50%;
+    background: var(--scat-panel-bg);
     backdrop-filter: blur(3px);
-
-    align-items: flex-end; /* Right aligned icons */
+    align-items: flex-end;
 }
 
 .sort-bottom-actions i {
     font-size: 12px;
-    color: var(--scat-accent-main);
+    color: var(--scat-accent);
     cursor: pointer;
-
-}
-
-.sort-bottom-actions i:hover {
-    color: var(--scat-accent-hover);
 }
 
 .sort-eye-count,
 .sort-file-count {
     font-weight: bold;
-    color: var(--scat-accent-main);
+    color: var(--scat-accent);
 }
 
 /* ====================================
-   MOBILE VERSION (max-width: 600px)
+   Hover & Interactive Effects
    ==================================== */
 
-@media (max-width: 600px) {
+.sort-bottom-actions i:hover {
+    color: var(--scat-accent-h);
+}
 
+/* ====================================
+   Dark Mode Specific Styles
+   ==================================== */
+
+html.dark-mode .sort-catagory-item {
+    background: linear-gradient(135deg,var(--scat-card-s) 0,var(--scat-card-m) 50%,var(--scat-card-e) 100%);
+    border: 1px solid var(--scat-card-bdr);
+    color: var(--scat-txt-p);
+}
+
+html.dark-mode .sort-catagory-icon {
+    color: var(--scat-accent);
+}
+
+html.dark-mode .sort-catagory-title {
+    color: var(--scat-txt-p);
+}
+
+html.dark-mode .sort-catagory-desc {
+    color: var(--scat-txt-s);
+}
+
+html.dark-mode .sort-top-info {
+    background: var(--scat-panel-bg);
+    border: 1px solid var(--scat-panel-bdr);
+}
+
+html.dark-mode .sort-info-row {
+    color: var(--scat-panel-txt);
+}
+
+html.dark-mode .sort-info-row i {
+    color: var(--scat-accent);
+}
+
+html.dark-mode .sort-bottom-actions {
+    background: var(--scat-bottom-bg);
+    border: 1px solid var(--scat-panel-bdr);
+}
+
+html.dark-mode .sort-bottom-actions i {
+    color: var(--scat-accent);
+}
+
+html.dark-mode .sort-catagory-title-h1 {
+    color: var(--scat-hd);
+}
+
+/* ====================================
+   Responsive Styles
+   ==================================== */
+
+@media (max-width:768px) {
+    body {
+        padding: 100px 20px 50px;
+    }
+}
+
+@media (max-width:600px) {
     .sort-category-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 2fr); /* Note: this will likely result in unequal columns or a single column layout depending on content */
+        grid-template-columns: repeat(2,1fr);
         gap: 10px;
     }
+    
     .sort-catagory-item {
-        /* Mobile Gradient Update */
-        background: linear-gradient(
-            to bottom right,
-            var(--scat-card-bg-mid) 0%, 
-            var(--scat-card-bg-mid) 75%,
-            rgba(var(--scat-glow-color), 0.7) 100% 
-        );
-        border: 1px solid var(--scat-card-border);
+        background: linear-gradient(to bottom right,var(--scat-card-m) 0,var(--scat-card-m) 75%,rgba(var(--scat-glow),.7) 100%);
         padding: 10px 8px;
         min-height: 40px;
         border-radius: 12px;
-
-        display: flex;
-        align-items: flex-start;
         gap: 20px;
-        position: relative;
-        text-decoration: none;
         margin-bottom: 8px;
     }
-
-
+    
     .sort-catagory-title-h1 {
         font-size: 18px;
-        color: var(--scat-heading-main);
-        margin-bottom: 5px;
-        font-family: "Alkatra"; 
-        margin-bottom: 5px;
+        font-family: "Alkatra";
     }
+    
     .sort-catagory-icon {
         font-size: 16px;
         width: 30px;
         margin-bottom: 5px;
-        
     }
-
+    
     .sort-catagory-content {
-        padding-right: 40px; 
+        padding-right: 40px;
     }
-
+    
     .sort-catagory-title {
         font-size: 12px;
     }
-
+    
     .sort-catagory-desc {
         font-size: 8px;
     }
-
+    
     .sort-info-panel {
         right: 8px;
         top: 10px;
         gap: 10px;
     }
+    
     .sort-top-info {
         padding: 3px 4px;
     }
-
+    
     .sort-bottom-actions {
         padding: 3px 4px;
         gap: 5px;
     }
-
+    
     .sort-bottom-actions i {
         font-size: 8px;
     }
-
+    
     .sort-info-row {
         font-size: 8px;
     }
-
+    
     .sort-info-row i {
         font-size: 8px;
     }
-}
-
-/* ====================================
-   DARK MODE OVERRIDES
-   ==================================== */
-
-html.dark-mode .sort-catagory-item {
-    background: linear-gradient(
-        135deg,
-        var(--scat-card-bg-start) 0%,
-        var(--scat-card-bg-mid) 50%,
-        var(--scat-card-bg-end) 100%
-    );
-    border: 1px solid var(--scat-card-border);
-    color: var(--scat-text-primary);
-
-    transition: 0.3s ease;
-}
-
-
-
-/* Icon */
-html.dark-mode .sort-catagory-icon {
-    color: var(--scat-accent-main);
-}
-
-/* Content */
-html.dark-mode .sort-catagory-title {
-    color: var(--scat-text-primary);
-}
-
-html.dark-mode .sort-catagory-desc {
-    color: var(--scat-text-secondary);
-}
-
-/* Right Info Panel */
-
-html.dark-mode .sort-top-info {
-    background: var(--scat-panel-bg);
-    border: 1px solid var(--scat-panel-border);
-}
-
-html.dark-mode .sort-info-row {
-    color: var(--scat-panel-text);
-}
-
-html.dark-mode .sort-info-row i {
-    color: var(--scat-accent-main);
-}
-
-/* Bottom Actions */
-html.dark-mode .sort-bottom-actions {
-    background: var(--scat-bottom-actions-bg);
-    border: 1px solid var(--scat-panel-border);
-}
-
-html.dark-mode .sort-bottom-actions i {
-    color: var(--scat-accent-main);
-}
-
-
-
-html.dark-mode .sort-catagory-title-h1 {
-    color: var(--scat-heading-main);
 }

@@ -19,7 +19,7 @@ header {
   height: 70px;
   display: flex;
   align-items: center;
-  margin-bottom: -400px !important;
+ 
 }
 
 
@@ -148,15 +148,10 @@ html.dark-mode .m-icon {
     margin-bottom: 15px !important;
     margin: auto;
   }
-
-
     .hidden {
       display: none;
     }
-  
 }
-
-
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -308,9 +303,9 @@ body.dark-mode .mobile-canvas {
   padding: 20px;
   padding-bottom: 100px;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;          /* Firefox */
+  scrollbar-width: none; 
   -ms-overflow-style: none; 
-  margin-left: 10px;      /* IE 10+ */
+  margin-left: 10px; 
 }
 
 .canvas-content::-webkit-scrollbar {
@@ -407,14 +402,11 @@ body.dark-mode .mobile-canvas {
   }
 
   .header-container {
-    padding: 0 20px;
-    
-   
+    padding: 0 20px;  
   }
 
   .canvas-header {
     height: 50px!important;
-
   }
 
   #closeCanvas {
@@ -449,26 +441,20 @@ margin-left: 10px;
     display: none;
   }
 
-  /* ------------------------------------
-     🔥 FIXED-WIDTH ICON WRAPPER
-     সব icon এর space + alignment সমান
-  ------------------------------------ */
+
 .search-icon,
 .bookmark-icon,
 .theme-toggle,
 .lang-toggle,
 .menu-toggle {
-  width: 22px;              /* ছোট জায়গা নিচ্ছে */
+  width: 22px; 
   height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 0px;        /* ছোট equal gap */
+  margin-right: 0px;
   cursor: pointer;
 }
-
-  /* All <i> icon sizes uniform */
-  
   .bookmark-icon i,
   .theme-toggle i,
   .lang-toggle i,
@@ -477,19 +463,18 @@ margin-left: 10px;
     color: inherit;
   }
 
-
 .search-icon i {
   font-size: 14px !important;
   margin-right: -10px !important;
   margin-top: 2px;
 }
 
-  /* menu image icon */
+
   .m-icon {
     width: 14px;
     height: 12px;
   }
-  /* menu image icon */
+
   .bookmark-icon i {
 color: black;
   }
@@ -497,15 +482,12 @@ color: black;
   html.dark-mode .bookmark-icon i {
   color: #ffffff !important;
 }
-  /* last icon no extra gap */
+
   .menu-group > div:last-child {
     margin-right: 0 !important;
   }
 }
 
-
-
-/* ভাষার মেনু */
 .lang-menu {
   position: absolute;
   top: 90%;
@@ -556,8 +538,6 @@ html.dark-mode .section-header h3 {
 .hidden { display: none; }
 
 
-
-/* 🌙 Dark Mode Toggle Switch (common for both desktop & mobile) */
 .theme-switch {
   position: relative;
   display: inline-block;
@@ -620,13 +600,9 @@ html.dark-mode .section-header h3 {
   flex: 1;
 }
 
-/* Optional spacing tweaks */
 .theme-switch {
   margin-left: 12px;
 }
-
-
-/* DARK MODE STYLES */
 
 
 html.dark-mode header {
@@ -647,13 +623,11 @@ html.dark-mode .nav-menu ul li a:hover {
   background-color: #1e293b;
 }
 
-/* Mobile Canvas */
 html.dark-mode .mobile-canvas {
   background-color: #1e1e1e;
   color: #f5f5f5;
 }
 
-/* Canvas header */
 html.dark-mode .canvas-header {
   background-color: #1e293b;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
@@ -663,7 +637,6 @@ html.dark-mode #closeCanvas {
   color: #fff;
 }
 
-/* Canvas Sections & Links */
 html.dark-mode .canvas-section {
   border-color: rgba(255, 255, 255, 0.1);
 }
@@ -679,7 +652,6 @@ html.dark-mode .canvas-nav ul li a:hover {
   color: #ddd;
 }
 
-/* Theme Switcher */
 html.dark-mode .theme-switch .slider {
   background-color: #555;
 }
@@ -692,7 +664,6 @@ html.dark-mode .theme-switch .slider::before {
   background-color: #000;
 }
 
-/* Button Styles */
 html.dark-mode #toggleTheme,
 html.dark-mode #toggleThemeCanvas {
   background-color: #444;
@@ -706,8 +677,7 @@ html.dark-mode #toggleThemeCanvas:hover {
 html.dark-mode .desktop-toggle {background-color: #1e293b;
   }
 
- html.dark-mode .menu-toggle {
-    
+ html.dark-mode .menu-toggle {   
     color: #8e3cfa;
   }
 
@@ -748,25 +718,16 @@ html.dark-mode .bookmark-icon i {
 }
 
 
-
-
-
-
-
-
-
 .logo img {
   height: 40px;
 }
 
 
-
 html.dark-mode .logo-title {
   color: #e0f2f2;}
 
-/* Optional: Different styling for dynamic titles */
 .dynamic-title {
-  color: #333; /* Your preferred color */
+  color: #333; 
   font-family: 'Your Preferred Font', sans-serif;
   padding: 5px 10px;
 }
@@ -776,12 +737,8 @@ html.dark-mode .logo-title {
 
 
 
-
-
-
-/* Mobile Back Button - Original Icon Style with No Background */
 .mobile-back-btn {
-  display: none; /* Hidden by default */
+  display: none; 
   cursor: pointer;
   padding: 10px;
   margin: 0;
@@ -793,22 +750,21 @@ html.dark-mode .logo-title {
   box-sizing: border-box;
 }
 
-/* Original SVG icon style - unchanged from your design */
+
 .mobile-back-btn svg {
   width: 24px;
   height: 24px;
-  color: #8e3cfa; /* Original teal color */
+  color: #8e3cfa;
   pointer-events: none;
   display: block;
-  /* Original stroke properties */
   stroke-width: 3;
   stroke-linecap: round;
   stroke-linejoin: round;
-  fill: none; /* Important for your arrow style */
-  stroke: currentColor; /* Maintains your original stroke-based icon */
+  fill: none; 
+  stroke: currentColor; 
 }
 
-/* Dark mode - keeps original icon style */
+
 html.dark-mode .mobile-back-btn svg {
   color: #fff; 
   stroke: currentColor;
@@ -823,7 +779,7 @@ html.dark-mode .mobile-back-btn svg {
     border: 1px solid #7425db;
     border-radius: 10px;
     color: #7425db;
-        width: 38px;   
+    width: 38px;   
     height: 38px;
   }
 @media (max-width: 768px) {
@@ -845,7 +801,6 @@ html.dark-mode .mobile-back-btn svg {
   
   /* Ensures original icon style in mobile */
   .mobile-back-btn svg {
-    /* Your original exact icon style */
     width: 24px;
     height: 24px;
     stroke-width: 3;

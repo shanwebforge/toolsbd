@@ -3,94 +3,54 @@
    ==================================== */
 
 :root {
-   
     --cat-body-bg: #edf6fc;
-    --cat-text-primary: #000;
-    --cat-text-secondary: #555;
-    --cat-heading-main: #525151;
-
-
-    --cat-card-bg-start: #eed1f7; 
-    --cat-card-bg-mid: #ebeaf8;  
-    --cat-card-bg-end: #b9e3f5;  
-    --cat-card-border: #9d94d6;
-    --cat-glow-color: 235, 244, 248; 
-
-    /* --- Accent & Icon Colors --- */
-    --cat-accent-main: #6b5bcc; 
-    --cat-accent-hover: #301f78;
-    --cat-h1-bullet-start: #d40677;
-    --cat-h1-bullet-end: #4f46e5;
-
-    /* --- Info Panel Colors --- */
-    --cat-panel-border: rgba(120, 90, 200, 0.4);
-    --cat-panel-bg: rgba(160, 80, 255, 0.1);
-    --cat-panel-text: #444;
+    --cat-text-p: #000;
+    --cat-text-s: #555;
+    --cat-hd: #525151;
+    --cat-card-s: #eed1f7;
+    --cat-card-m: #ebeaf8;
+    --cat-card-e: #b9e3f5;
+    --cat-card-bdr: #9d94d6;
+    --cat-accent: #6b5bcc;
+    --cat-accent-h: #301f78;
+    --cat-panel-bdr: rgba(120,90,200,.4);
+    --cat-panel-bg: rgba(160,80,255,.1);
+    --cat-panel-txt: #444;
 }
 
-/* --- Dark Mode Overrides --- */
 html.dark-mode {
-    --cat-text-primary: #f1f1f1;
-    --cat-text-secondary: #dcdcdc;
-    --cat-heading-main: #fff;
-
-    /* Card Colors */
-    --cat-card-bg-start: rgba(120, 50, 200, 0.25);
-    --cat-card-bg-mid: rgba(71, 12, 71, 0.9);
-    --cat-card-bg-end: rgba(150, 60, 250, 0.2);
-    --cat-card-border: rgba(160, 80, 255, 0.4);
-    --cat-glow-color-dm-primary: 160, 80, 255; /* RGB for Dark Mode Glow */
-    --cat-glow-color-dm-secondary: 209, 183, 241;
-
-    /* Accent & Icon Colors */
-    --cat-accent-main: #cbbfff;
-    --cat-accent-hover: #ff8fff;
-
-    /* Info Panel Colors */
-    --cat-panel-border: rgba(160, 80, 255, 0.4);
-    --cat-panel-bg: rgba(80, 50, 120, 0.2);
-    --cat-panel-text: #f1f1f1;
-    --cat-bottom-actions-bg: rgba(80, 50, 120, 0.15);
+    --cat-text-p: #f1f1f1;
+    --cat-text-s: #dcdcdc;
+    --cat-hd: #fff;
+    --cat-card-s: rgba(120,50,200,.25);
+    --cat-card-m: rgba(71,12,71,.9);
+    --cat-card-e: rgba(150,60,250,.2);
+    --cat-card-bdr: rgba(160,80,255,.4);
+    --cat-accent: #cbbfff;
+    --cat-accent-h: #ff8fff;
+    --cat-panel-bdr: rgba(160,80,255,.4);
+    --cat-panel-bg: rgba(80,50,120,.2);
+    --cat-panel-txt: #f1f1f1;
+    --cat-bottom-bg: rgba(80,50,120,.15);
 }
 
 /* ====================================
-   CSS Rules using Variables
+   Base & Layout Styles (Critical)
    ==================================== */
 
-/* Reset & Global */
-body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: var(--cat-body-bg);
-    min-height: 100vh;
-    padding: 100px 70px 50px;
-    color: var(--cat-text-primary);
-}
-/* Grid */
 
-@media (max-width: 768px) {
-    body {
-        padding: 100px 20px 50px;
-    }
-}
 
 .main-category-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 30px;
 }
 
 .main-catagory-item {
-    background: linear-gradient(
-        to bottom right,
-        var(--cat-card-bg-start) 0%,
-        var(--cat-card-bg-mid) 75%,
-        var(--cat-card-bg-end) 100%
-    );
-    border: 1px solid var(--cat-card-border);
+    background: linear-gradient(to bottom right,var(--cat-card-s) 0,var(--cat-card-m) 75%,var(--cat-card-e) 100%);
+    border: 1px solid var(--cat-card-bdr);
     padding: 28px 25px;
     border-radius: 12px;
-
     display: flex;
     align-items: flex-start;
     gap: 20px;
@@ -98,20 +58,32 @@ body {
     text-decoration: none;
     color: inherit;
     min-height: 100px;
-
-
-
-    transition: 0.3s ease;
     margin-bottom: 10px;
 }
 
-/* Hover More Glow */
-.main-catagory-item:hover {
-
-    transform: scale(1.0050); /* subtle zoom in */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.main-catagory-icon {
+    font-size: 48px;
+    color: var(--cat-accent);
+    flex-shrink: 0;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
 }
 
+.main-catagory-content {
+    flex-grow: 1;
+    text-align: left;
+    z-index: 1;
+    position: relative;
+    padding-right: 140px;
+    overflow-wrap: break-word;
+}
+
+/* ====================================
+   Content Styles
+   ==================================== */
 
 .main-catagory-title-h1 {
     display: flex;
@@ -121,7 +93,7 @@ body {
     text-align: center;
     font-size: 22px;
     font-weight: 600;
-    margin: 20px 0 15px 0;
+    margin: 20px 0 15px;
     padding: 0;
     width: 100%;
 }
@@ -131,111 +103,64 @@ body {
     font-weight: 700;
     margin: 0;
     padding: 0;
-    
-    /* Static Gradient Text */
-    background: linear-gradient(90deg, #8e3cfa 0%, #a855f7 50%, #d946ef 100%);
+    background: linear-gradient(90deg,#8e3cfa 0,#a855f7 50%,#d946ef 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    
-    /* No animation */
 }
 
 .main-catagory-title-h1 .catagory-description {
     font-size: 14px;
     font-weight: 400;
-    color: var(--text-secondary);
+    color: var(--cat-text-s);
     margin-top: 8px;
     margin-bottom: 10px;
     max-width: 600px;
     line-height: 1.4;
-    opacity: 0.9;
+    opacity: .9;
 }
 
 .gradient-purple-pink .title-text {
-    background: linear-gradient(90deg, #8e3cfa, #d946ef);
+    background: linear-gradient(90deg,#8e3cfa,#d946ef);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .gradient-deep-purple .title-text {
-    background: linear-gradient(90deg, #7c3aed, #8e3cfa, #a855f7);
+    background: linear-gradient(90deg,#7c3aed,#8e3cfa,#a855f7);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .gradient-violet .title-text {
-    background: linear-gradient(90deg, #8b5cf6, #a855f7, #d946ef);
+    background: linear-gradient(90deg,#8b5cf6,#a855f7,#d946ef);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .gradient-three-color .title-text {
-    background: linear-gradient(90deg, #7c3aed, #8e3cfa, #d946ef);
+    background: linear-gradient(90deg,#7c3aed,#8e3cfa,#d946ef);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .main-catagory-title-h1 .title-text {
-        font-size: 20px;
-    }
-    
-    .main-catagory-title-h1 .catagory-description {
-        font-size: 13px;
-        max-width: 90%;
-    }
-}
-/* Icon */
-.main-catagory-icon {
-    font-size: 48px;
-    color: var(--cat-accent-main);
-    flex-shrink: 0;
-    width: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-
-/* Content */
-.main-catagory-content {
-    flex-grow: 1;
-    text-align: left;
-    z-index: 1;
-    position: relative;
-    padding-right: 140px; /* Prevent text going under right panel */
-    overflow-wrap: break-word;
 }
 
 .main-catagory-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 10px;
-    color: var(--cat-text-primary);
+    color: var(--cat-text-p);
 }
 
 .main-catagory-desc {
     font-size: 18px;
-    color: var(--cat-text-secondary);
+    color: var(--cat-text-s);
     line-height: 1.3;
 }
 
-.main-cat-link {
- 
-    padding: 8px 12px;
-    border: 1px solid var(--cat-panel-border);
-    border-radius: 10px;
-    background: var(--cat-panel-bg);
-    backdrop-filter: blur(3px);
-}
+/* ====================================
+   Info Panel & Actions (Non-critical)
+   ==================================== */
 
-/* RIGHT INFO PANEL */
 .info-panel {
     position: absolute;
     right: 15px;
@@ -247,13 +172,12 @@ body {
     align-items: flex-end;
 }
 
-/* TOP INFO */
 .top-info {
     display: flex;
     flex-direction: column;
     gap: 6px;
     padding: 8px 12px;
-    border: 1px solid var(--cat-panel-border);
+    border: 1px solid var(--cat-panel-bdr);
     border-radius: 10px;
     background: var(--cat-panel-bg);
     backdrop-filter: blur(3px);
@@ -264,190 +188,170 @@ body {
     align-items: center;
     gap: 6px;
     font-size: 16px;
-    color: var(--cat-panel-text);
+    color: var(--cat-panel-txt);
 }
 
 .info-row i {
     font-size: 20px;
-    color: var(--cat-accent-main);
+    color: var(--cat-accent);
 }
 
-/* BOTTOM ACTIONS (Vertical Icons) */
 .bottom-actions {
     display: flex;
     flex-direction: column;
     gap: 12px;
     padding: 10px 14px;
-    border: 1px solid var(--cat-panel-border);
+    border: 1px solid var(--cat-panel-bdr);
     border-radius: 10px;
-    background: var(--cat-panel-bg); /* Dark mode overrides this to a different shade */
+    background: var(--cat-panel-bg);
     backdrop-filter: blur(3px);
-
     align-items: flex-end;
 }
 
-
 .bottom-actions i {
     font-size: 22px;
-    color: var(--cat-accent-main);
+    color: var(--cat-accent);
     cursor: pointer;
     transition: .2s;
 }
 
 .bottom-actions i:hover {
-    color: var(--cat-accent-hover);
+    color: var(--cat-accent-h);
 }
+
 .eye-count,
 .file-count {
     font-weight: bold;
-    color: var(--cat-accent-main);
+    color: var(--cat-accent);
 }
 
-/* MOBILE VERSION */
-@media (max-width: 600px) {
 
-.main-category-grid {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 5px;
+/* ====================================
+   Dark Mode Specific Styles
+   ==================================== */
+
+html.dark-mode .main-catagory-item {
+    background: linear-gradient(135deg,var(--cat-card-s) 0,var(--cat-card-m) 50%,var(--cat-card-e) 100%);
+    border: 1px solid var(--cat-card-bdr);
+    color: var(--cat-text-p);
 }
+
+html.dark-mode .main-catagory-icon {
+    color: var(--cat-accent);
+}
+
+html.dark-mode .main-catagory-title {
+    color: var(--cat-text-p);
+}
+
+html.dark-mode .main-catagory-desc {
+    color: var(--cat-text-s);
+}
+
+html.dark-mode .top-info {
+    background: var(--cat-panel-bg);
+    border: 1px solid var(--cat-panel-bdr);
+}
+
+html.dark-mode .info-row {
+    color: var(--cat-panel-txt);
+}
+
+html.dark-mode .info-row i {
+    color: var(--cat-accent);
+}
+
+html.dark-mode .bottom-actions {
+    background: var(--cat-bottom-bg);
+    border: 1px solid var(--cat-panel-bdr);
+}
+
+html.dark-mode .bottom-actions i {
+    color: var(--cat-accent);
+}
+
+html.dark-mode .main-catagory-title-h1 {
+    color: var(--cat-hd);
+}
+
+/* ====================================
+   Responsive Styles
+   ==================================== */
+
+@media (max-width:768px) {
+    body {
+        padding: 100px 20px 50px;
+    }
+    
+    .main-catagory-title-h1 .title-text {
+        font-size: 20px;
+    }
+    
+    .main-catagory-title-h1 .catagory-description {
+        font-size: 13px;
+        max-width: 90%;
+    }
+}
+
+@media (max-width:600px) {
+    .main-category-grid {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+    
     .main-catagory-item {
-        /* Mobile Gradient Update */
-        background: linear-gradient(
-            to bottom right,
-            var(--cat-card-bg-mid) 0%, 
-            var(--cat-card-bg-mid) 75%,
-            rgba(var(--cat-glow-color), 0.7) 100% /* Using light glow color */
-        );
-        border: 1px solid var(--cat-card-border);
+        background: linear-gradient(to bottom right,var(--cat-card-m) 0,var(--cat-card-m) 75%,rgba(235,244,248,.7) 100%);
         padding: 20px 15px;
         min-height: 90px;
         border-radius: 12px;
-        display: flex;
-        align-items: flex-start;
         gap: 20px;
-        position: relative;
-        text-decoration: none;
-        margin-bottom: 10px;
     }
+    
 
-    /* Hover More Glow */
-    .main-catagory-item:hover {
-        transform: scale(1.0050); 
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    
     .main-catagory-title-h1 {
         font-size: 18px;
-        color: var(--cat-heading-main);
-        margin-bottom: 5px;
-        /* Note: Alkatra font family must be imported to work */
-        font-family: "Alkatra"; 
-        margin-bottom: 5px;
-        text-align: center;
-        margin: auto;
+        font-family: "Alkatra";
     }
+    
     .main-catagory-icon {
         font-size: 24px;
         width: 24px;
         margin-bottom: 10px;
-        
     }
-
+    
     .main-catagory-content {
         padding-right: 60px;
     }
-
+    
     .main-catagory-title {
         font-size: 14px;
     }
-
+    
     .main-catagory-desc {
         font-size: 10px;
     }
-
+    
     .info-panel {
         right: 8px;
         top: 10px;
         gap: 10px;
     }
-
+    
     .bottom-actions {
         padding: 4px 8px;
         gap: 10px;
     }
-
+    
     .bottom-actions i {
         font-size: 12px;
     }
-
+    
     .info-row {
-    font-size: 10px;
-
+        font-size: 10px;
     }
-
+    
     .info-row i {
         font-size: 10px;
     }
-}
-
-/* Dark Mode Overrides for Specific Components */
-
-html.dark-mode .main-catagory-item {
-    background: linear-gradient(
-        135deg,
-        var(--cat-card-bg-start) 0%,
-        var(--cat-card-bg-mid) 50%,
-        var(--cat-card-bg-end) 100%
-    );
-    border: 1px solid var(--cat-card-border);
-    color: var(--cat-text-primary);}
-
-
-
-
-/* Icon */
-html.dark-mode .main-catagory-icon {
-    color: var(--cat-accent-main);
-}
-
-/* Content */
-html.dark-mode .main-catagory-title {
-    color: var(--cat-text-primary);
-}
-
-html.dark-mode .main-catagory-desc {
-    color: var(--cat-text-secondary);
-}
-
-/* Right Info Panel */
-
-html.dark-mode .top-info {
-    background: var(--cat-panel-bg);
-    border: 1px solid var(--cat-panel-border);
-}
-
-html.dark-mode .info-row {
-    color: var(--cat-panel-text);
-}
-
-html.dark-mode .info-row i {
-    color: var(--cat-accent-main);
-}
-
-/* Bottom Actions */
-html.dark-mode .bottom-actions {
-    background: var(--cat-bottom-actions-bg);
-    border: 1px solid var(--cat-panel-border);
-}
-
-html.dark-mode .bottom-actions i {
-    color: var(--cat-accent-main);
-}
-
-html.dark-mode .bottom-actions i:hover {
-    color: var(--cat-accent-hover);
-}
-
-html.dark-mode .main-catagory-title-h1 {
-    color: var(--cat-heading-main);
 }

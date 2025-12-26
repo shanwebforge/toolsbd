@@ -33,42 +33,7 @@
 
  
  
- // io
-  document.addEventListener("contextmenu", (e) => e.preventDefault());
-
-  // io
-  document.addEventListener("keydown", function (e) {
-    if (
-      e.key === "F12" ||
-      (e.ctrlKey && e.shiftKey && e.key === "I") ||
-      (e.ctrlKey && e.key === "U")
-    ) {
-      e.preventDefault();
-    }
-  });
-
-
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-});
-
-// Disable text selection
-document.addEventListener('selectstart', function(e) {
-  e.preventDefault();
-});
-
-// Disable drag (for images & content)
-document.addEventListener('dragstart', function(e) {
-  e.preventDefault();
-});
-
-// Optional: Prevent saving images via right-click or dragging
-document.querySelectorAll('img').forEach(function(img) {
-  img.setAttribute('draggable', 'false');
-  img.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-  });
-});
+ 
 
 
 

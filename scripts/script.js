@@ -1,324 +1,468 @@
- 
-   function loadSection(path, elementId) {
-    fetch(path)
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById(elementId).innerHTML = html;
-      })
-      .catch(err => {
-        document.getElementById(elementId).innerHTML = "কনটেন্ট লোড করতে সমস্যা হয়েছে!";
-        console.error(err);
-      });
+/**
+ * ToolsBD - Optimized Main Script
+ * Version: 3.0.0
+ * Last Updated: 2024
+ */
+
+// ============================================
+// 1. UTILITY FUNCTIONS
+// ============================================
+
+// Bangla digit converter
+const banglaDigit = (num) => {
+  const en = '0123456789';
+  const bn = '০১২৩৪৫৬৭৮৯';
+  return num.toString().split('').map(d => {
+    const index = en.indexOf(d);
+    return index !== -1 ? bn[index] : d;
+  }).join('');
+};
+
+// Time formatter with AM/PM in Bangla
+const formatTimeToBangla = (timeStr) => {
+  if (!timeStr) return '';
+  const [h, m] = timeStr.split(':').map(Number);
+  const ampm = h >= 12 ? 'পি.এম' : 'এ.এম';
+  const hour = h % 12 || 12;
+  return `${banglaDigit(hour)}:${banglaDigit(m.toString().padStart(2, '0'))} ${ampm}`;
+};
+
+// Calculate remaining time
+const getTimeRemaining = (time) => {
+  if (!time) return '';
+  const now = new Date();
+  const [h, m] = time.split(':').map(Number);
+  const target = new Date();
+  
+  // Bangladesh Timezone (UTC+6)
+  target.setUTCHours(h - 6, m, 0, 0);
+  if (target < now) target.setDate(target.getDate() + 1);
+  
+  const diff = target - now;
+  const hours = Math.floor(diff / 3600000);
+  const minutes = Math.floor((diff % 3600000) / 60000);
+  
+  return `${banglaDigit(hours)} ঘণ্টা ${banglaDigit(minutes)} মিনিট বাকি`;
+};
+
+// Reverse geocoding
+const reverseGeocode = async (lat, lon) => {
+  try {
+    const response = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`,
+      { headers: { 'Accept-Language': 'bn' } }
+    );
+    const data = await response.json();
+    return {
+      full: data.address?.city || data.address?.town || data.address?.state || "অজানা",
+      details: data.address || {}
+    };
+  } catch {
+    return { full: "অজানা", details: {} };
+  }
+};
+
+// Load prayer times
+const getPrayerTimes = async (lat, lon, displayName) => {
+  const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2&school=1&timezonestring=Asia/Dhaka`;
+  
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    
+    if (data.code !== 200) throw new Error('API Error');
+    
+    const timings = data.data.timings;
+    const locationEl = document.getElementById("location");
+    
+    if (locationEl) {
+      locationEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${displayName}`;
+    }
+    
+    const prayers = [
+      { name: "🕋 ফজর", time: timings.Fajr },
+      { name: "🕌 যোহর", time: timings.Dhuhr },
+      { name: "🕒 আসর", time: timings.Asr },
+      { name: "🌇 মাগরিব", time: timings.Maghrib },
+      { name: "🌙 এশা", time: timings.Isha }
+    ];
+    
+    const prayerListEl = document.getElementById("prayer-list");
+    if (prayerListEl) {
+      prayerListEl.innerHTML = prayers.map(prayer => `
+        <div class="prayer-box">
+          <div class="prayer-name">${prayer.name}</div>
+          <div class="prayer-time">${formatTimeToBangla(prayer.time)}</div>
+          <div class="time-remaining">${getTimeRemaining(prayer.time)}</div>
+        </div>
+      `).join('');
+    }
+    
+  } catch (error) {
+    console.error('Prayer times error:', error);
+    const prayerListEl = document.getElementById("prayer-list");
+    if (prayerListEl) {
+      prayerListEl.innerHTML = '<p class="error">❌ নামাজের সময় লোড ব্যর্থ</p>';
+    }
+  }
+};
+
+// Get user location for prayer times
+const getUserLocation = () => {
+  const locationEl = document.getElementById("location");
+  
+  if (!locationEl) return;
+  
+  if (!navigator.geolocation) {
+    locationEl.textContent = "⚠️ লোকেশন সাপোর্ট নেই";
+    getPrayerTimes(23.8103, 90.4125, "ঢাকা");
+    return;
   }
   
-  loadSection("/highlight-page/img-slide.html", "img-slide-section");
-  loadSection("/update-notice/notice-home.html", "latest-updates-section");
-  loadSection("/highlight-page/intro.html", "intro-section");
-  loadSection("/highlight-page/count.html", "count-section");
-  loadSection("/home-cetegories/help-cetegories/help-desk.html", "help-section");
-  loadSection("home-cetegories/slide-cetegories/slide-cat.html", "slide-cat-section");
-  loadSection("home-cetegories/keyboard-sortcut/key-sort.html", "key-section");
-  loadSection("home-cetegories/tools-cetegories/catagory.html", "catagory-section");
-  loadSection("home-cetegories/oparator/oparator.html", "sort-section");
-  loadSection("/islamic/islamic.html", "islamic-section");
-  loadSection("/daily-use-tools/daily-use.html", "daily-section");
-  loadSection("/dev-designer-tools/dev-design.html", "dev-section");
-  loadSection("/educational-tools/edu.html", "edu-section");
-  loadSection("/freelanching-tools/free.html", "free-section");
-  loadSection("/dokan-tools/dokan.html", "dokan-section");
-  loadSection("/money-tools/money.html", "money-section");
-  loadSection("/media-tools/media.html", "media-section");
-  loadSection("/bd-Localized-Special-tools/localized.html", "localized-section");
-  loadSection("/tools-for-general-people/general.html", "general-section");
+  const onSuccess = async (position) => {
+    const lat = position.coords.latitude;
+    const lon = position.coords.longitude;
+    const location = await reverseGeocode(lat, lon);
+    await getPrayerTimes(lat, lon, location.full);
+  };
+  
+  const onError = () => {
+    getPrayerTimes(23.8103, 90.4125, "ঢাকা");
+  };
+  
+  navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 60000
+  });
+};
 
- 
- 
- 
+// ============================================
+// 2. DOM CONTENT LOADING
+// ============================================
 
+// Configuration for section loading
+const SECTION_CONFIG = {
+  sections: [
+    { path: "/highlight-page/img-slide.html", id: "img-slide-section" },
+    { path: "/update-notice/notice-home.html", id: "latest-updates-section" },
+    { path: "/highlight-page/intro.html", id: "intro-section" },
+    { path: "/highlight-page/count.html", id: "count-section" },
+    { path: "/home-cetegories/help-cetegories/help-desk.html", id: "help-section" },
+    { path: "home-cetegories/slide-cetegories/slide-cat.html", id: "slide-cat-section" },
+    { path: "home-cetegories/keyboard-sortcut/key-sort.html", id: "key-section" },
+    { path: "home-cetegories/tools-cetegories/catagory.html", id: "catagory-section" },
+    { path: "home-cetegories/oparator/oparator.html", id: "sort-section" },
+    { path: "/islamic/islamic.html", id: "islamic-section" },
+    { path: "/daily-use-tools/daily-use.html", id: "daily-section" },
+    { path: "/dev-designer-tools/dev-design.html", id: "dev-section" },
+    { path: "/educational-tools/edu.html", id: "edu-section" },
+    { path: "/freelanching-tools/free.html", id: "free-section" },
+    { path: "/dokan-tools/dokan.html", id: "dokan-section" },
+    { path: "/money-tools/money.html", id: "money-section" },
+    { path: "/media-tools/media.html", id: "media-section" },
+    { path: "/bd-Localized-Special-tools/localized.html", id: "localized-section" },
+    { path: "/tools-for-general-people/general.html", id: "general-section" }
+  ],
+  
+  // Batch loading configuration
+  batchSize: 3,
+  delayBetweenBatches: 100
+};
 
+// Load a single section
+const loadSection = async (path, elementId) => {
+  const element = document.getElementById(elementId);
+  if (!element) return;
+  
+  try {
+    const response = await fetch(path);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const html = await response.text();
+    element.innerHTML = html;
+    
+    // Initialize components if needed
+    if (elementId === "slide-cat-section") {
+      initTabSwitching();
+      initArrowNavigation();
+    }
+    
+  } catch (error) {
+    console.error(`Failed to load ${path}:`, error);
+    element.innerHTML = '<div class="error-message">কনটেন্ট লোড করতে সমস্যা হয়েছে!</div>';
+  }
+};
 
-// io
+// Load all sections with batching
+const loadAllSections = () => {
+  const { sections, batchSize, delayBetweenBatches } = SECTION_CONFIG;
+  
+  const loadBatch = (startIndex) => {
+    const endIndex = Math.min(startIndex + batchSize, sections.length);
+    const batch = sections.slice(startIndex, endIndex);
+    
+    // Load current batch in parallel
+    const promises = batch.map(({ path, id }) => loadSection(path, id));
+    
+    Promise.all(promises).then(() => {
+      // Load next batch if exists
+      if (endIndex < sections.length) {
+        setTimeout(() => loadBatch(endIndex), delayBetweenBatches);
+      }
+    });
+  };
+  
+  loadBatch(0);
+};
+
+// ============================================
+// 3. SECURITY & PROTECTION
+// ============================================
+
+const initSecurityProtection = () => {
+  // Prevent context menu
   document.addEventListener("contextmenu", (e) => e.preventDefault());
-
-  // io
-  document.addEventListener("keydown", function (e) {
+  
+  // Prevent developer tools
+  document.addEventListener("keydown", (e) => {
     if (
       e.key === "F12" ||
       (e.ctrlKey && e.shiftKey && e.key === "I") ||
-      (e.ctrlKey && e.key === "U")
+      (e.ctrlKey && e.key === "U") ||
+      (e.ctrlKey && e.shiftKey && e.key === "J")
     ) {
       e.preventDefault();
     }
   });
-
-
-document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-});
-
-// Disable text selection
-document.addEventListener('selectstart', function(e) {
-  e.preventDefault();
-});
-
-// Disable drag (for images & content)
-document.addEventListener('dragstart', function(e) {
-  e.preventDefault();
-});
-
-// Optional: Prevent saving images via right-click or dragging
-document.querySelectorAll('img').forEach(function(img) {
-  img.setAttribute('draggable', 'false');
-  img.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
+  
+  // Prevent text selection
+  document.addEventListener("selectstart", (e) => e.preventDefault());
+  
+  // Prevent dragging
+  document.addEventListener("dragstart", (e) => e.preventDefault());
+  
+  // Protect images
+  document.querySelectorAll('img').forEach(img => {
+    img.setAttribute('draggable', 'false');
+    img.addEventListener('contextmenu', (e) => e.preventDefault());
   });
-});
+};
 
+// ============================================
+// 4. APP DOWNLOAD FUNCTIONALITY
+// ============================================
 
-// App Download
+const initAppDownload = () => {
   const downloadLink = document.getElementById('downloadLink');
   const downloadBtn = document.getElementById('downloadBtn');
   const progressBar = document.getElementById('progressBar');
   const progressPercent = document.getElementById('progressPercent');
   const installBtn = document.getElementById('installBtn');
+  
+  if (!downloadLink || !downloadBtn) return;
+  
   let downloadComplete = false;
-  let apkBlobUrl = '';
-
-  // Simulate download progress
-  downloadLink.addEventListener('click', function(e) {
-    if (!downloadComplete) {
-      e.preventDefault();
-      progressPercent.style.display = 'block';
-      let progress = 0;
-      const progressInterval = setInterval(() => {
-        progress += Math.floor(Math.random() * 10) + 5;
-        if (progress >= 100) {
-          progress = 100;
-          clearInterval(progressInterval);
-          downloadComplete = true;
-          installBtn.style.display = 'block';
-          downloadLink.href = "/assets/ToolsBD.apk";
-          downloadBtn.classList.add('download-complete');
-        }
-        progressPercent.textContent = progress + '%';
-        progressBar.style.width = progress + '%';
-      }, 300);
+  let progressInterval = null;
+  
+  const resetDownload = () => {
+    if (progressInterval) clearInterval(progressInterval);
+    downloadComplete = false;
+    if (progressBar) progressBar.style.width = '0%';
+    if (progressPercent) {
+      progressPercent.textContent = '0%';
+      progressPercent.style.display = 'none';
+    }
+    if (installBtn) installBtn.style.display = 'none';
+    if (downloadBtn) downloadBtn.classList.remove('download-complete');
+  };
+  
+  downloadLink.addEventListener('click', (e) => {
+    if (downloadComplete) return;
+    
+    e.preventDefault();
+    resetDownload();
+    
+    if (progressPercent) progressPercent.style.display = 'block';
+    
+    let progress = 0;
+    progressInterval = setInterval(() => {
+      progress += Math.floor(Math.random() * 10) + 5;
+      
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(progressInterval);
+        downloadComplete = true;
+        
+        if (installBtn) installBtn.style.display = 'block';
+        if (downloadBtn) downloadBtn.classList.add('download-complete');
+      }
+      
+      if (progressPercent) progressPercent.textContent = progress + '%';
+      if (progressBar) progressBar.style.width = progress + '%';
+    }, 300);
+  });
+  
+  if (installBtn) {
+    installBtn.addEventListener('click', () => {
+      window.location.href = "/assets/ToolsBD.apk";
+    });
+  }
+  
+  // Reset on page visibility change
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') {
+      resetDownload();
     }
   });
-
-  // Try opening the APK file directly for install
-  installBtn.addEventListener('click', function(e) {
-    // Direct link to APK will prompt download or open install screen in some browsers
-    window.location.href = "/assets/ToolsBD.apk";
-  });
-
-
-
-
-
-
-// 📦 ইংরেজি → বাংলা সংখ্যা কনভার্টার
-function banglaDigit(num) {
-  const en = '0123456789'.split('');
-  const bn = '০১২৩৪৫৬৭৮৯'.split('');
-  return num.toString().split('').map(d => en.includes(d) ? bn[en.indexOf(d)] : d).join('');
-}
-
-// 🕐 টাইম ফরম্যাটার (বাংলা এএম/পিএম সহ)
-function formatTimeToBangla(timeStr) {
-  let [h, m] = timeStr.split(':').map(Number);
-  const ampm = h >= 12 ? 'পি.এম' : 'এ.এম';
-  h = h % 12 || 12;
-  return `${banglaDigit(h)}:${banglaDigit(m.toString().padStart(2, '0'))} ${ampm}`;
-}
-
-// 🕓 কত সময় বাকি তা বের করা
-function getTimeRemaining(time) {
-  const now = new Date();
-  const [h, m] = time.split(':').map(Number);
-  const target = new Date();
-
-  // Bangladesh Timezone (UTC+6)
-  target.setUTCHours(h - 6, m, 0, 0);
-
-  if (target < now) target.setDate(target.getDate() + 1);
-
-  let diff = target - now;
-  const hours = Math.floor(diff / 1000 / 60 / 60);
-  const minutes = Math.floor((diff / 1000 / 60) % 60);
-
-  return `${banglaDigit(hours)} ঘণ্টা ${banglaDigit(minutes)} মিনিট বাকি`;
-}
-
-// 📍 লোকেশন বের করা
-async function reverseGeocode(lat, lon) {
-  try {
-    const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
-    const data = await res.json();
-    return { full: data.address.city || data.address.town || data.address.state || "অজানা" };
-  } catch {
-    return { full: "অজানা" };
-  }
-}
-
-// 🌙 নামাজের সময় লোড করা (বাংলাদেশ টাইম অনুযায়ী)
-async function getPrayerTimes(lat, lon, displayName) {
-  const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2&school=1&timezonestring=Asia/Dhaka`;
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    const t = data.data.timings;
-
-    document.getElementById("location").innerHTML = `<i class="fas fa-map-marker-alt"></i> ${displayName}`;
-
-    const prayers = [
-      { name: "🕋 ফজর", time: t.Fajr },
-      { name: "🕌 যোহর", time: t.Dhuhr },
-      { name: "🕒 আসর", time: t.Asr },
-      { name: "🌇 মাগরিব", time: t.Maghrib },
-      { name: "🌙 এশা", time: t.Isha }
-    ];
-
-    document.getElementById("prayer-list").innerHTML = prayers.map(p => `
-      <div class="prayer-box">
-        <div class="prayer-name">${p.name}</div>
-        <div class="prayer-time">${formatTimeToBangla(p.time)}</div>
-        <div class="time-remaining">${getTimeRemaining(p.time)}</div>
-      </div>
-    `).join('');
-
-  } catch (err) {
-    document.getElementById("prayer-list").innerHTML = `<p>❌ নামাজের সময় লোড ব্যর্থ</p>`;
-  }
-}
-
-// 📍 ইউজারের লোকেশন নেওয়া
-function getUserLocation() {
-  if (!navigator.geolocation) {
-    document.getElementById("location").textContent = "⚠️ লোকেশন পাওয়া যায়নি";
-    getPrayerTimes(23.8103, 90.4125, "ঢাকা");
-    return;
-  }
-
-  navigator.geolocation.getCurrentPosition(async pos => {
-    const lat = pos.coords.latitude;
-    const lon = pos.coords.longitude;
-    const location = await reverseGeocode(lat, lon);
-    await getPrayerTimes(lat, lon, location.full);
-  }, () => {
-    getPrayerTimes(23.8103, 90.4125, "ঢাকা");
-  });
-}
-
-getUserLocation();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// slide-categories tab switching
-
-document.addEventListener("DOMContentLoaded", function() {
-    const tabs = document.querySelectorAll(".sc-tab");
-    const contents = document.querySelectorAll(".sc-category-box");
-
-    tabs.forEach(tab => {
-        tab.addEventListener("click", () => {
-
-            tabs.forEach(t => t.classList.remove("active"));
-            tab.classList.add("active");
-
-            contents.forEach(c => c.classList.remove("active"));
-            document.getElementById(tab.dataset.target).classList.add("active");
-        });
-    });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Arrow
- const slider = document.getElementById('categorySlider');
-    const leftArrow = document.getElementById('arrowLeft');
-    const rightArrow = document.getElementById('arrowRight');
-
-    const scrollAmount = 120; // scroll pixels per click
-
-    leftArrow.addEventListener('click', () => {
-      slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-
-    rightArrow.addEventListener('click', () => {
-      slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-
-
+};
+
+// ============================================
+// 5. TAB SWITCHING (Slide Categories)
+// ============================================
+
+const initTabSwitching = () => {
+  const tabs = document.querySelectorAll(".sc-tab");
+  const contents = document.querySelectorAll(".sc-category-box");
+  
+  if (!tabs.length || !contents.length) return;
+  
+  const activateTab = (tab) => {
+    // Deactivate all
+    tabs.forEach(t => t.classList.remove("active"));
+    contents.forEach(c => c.classList.remove("active"));
     
+    // Activate selected
+    tab.classList.add("active");
+    const targetContent = document.getElementById(tab.dataset.target);
+    if (targetContent) targetContent.classList.add("active");
+  };
+  
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => activateTab(tab));
+  });
+  
+  // Activate first tab by default
+  if (tabs[0]) activateTab(tabs[0]);
+};
 
+// ============================================
+// 6. ARROW NAVIGATION
+// ============================================
 
+const initArrowNavigation = () => {
+  const slider = document.getElementById('categorySlider');
+  const leftArrow = document.getElementById('arrowLeft');
+  const rightArrow = document.getElementById('arrowRight');
+  
+  if (!slider || !leftArrow || !rightArrow) return;
+  
+  const scrollAmount = 120; // pixels per click
+  
+  leftArrow.addEventListener('click', () => {
+    slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+  
+  rightArrow.addEventListener('click', () => {
+    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!document.activeElement.closest('#categorySlider')) return;
+    
+    if (e.key === 'ArrowLeft') {
+      slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else if (e.key === 'ArrowRight') {
+      slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  });
+};
 
+// ============================================
+// 7. FAST SCROLL BEHAVIOR
+// ============================================
 
-
-
-
-    // Scroll fast and smooth
-document.documentElement.style.scrollBehavior = "auto"; // default fast scroll
-
-// Optional: For smooth scroll on anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-
-        target.scrollIntoView({
-            behavior: 'auto',  // fast scroll instead of smooth
-            block: 'start'
-        });
+const initFastScroll = () => {
+  // Set fast scroll by default
+  document.documentElement.style.scrollBehavior = "auto";
+  
+  // Handle anchor links with fast scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#") return;
+      
+      const target = document.querySelector(href);
+      if (!target) return;
+      
+      e.preventDefault();
+      target.scrollIntoView({
+        behavior: 'auto', // Fast scroll
+        block: 'start'
+      });
     });
-});
+  });
+};
+
+// ============================================
+// 8. MAIN INITIALIZATION
+// ============================================
+
+const init = () => {
+  console.log('🚀 ToolsBD - Initializing...');
+  
+  // Initialize security first
+  initSecurityProtection();
+  
+  // Initialize fast scroll
+  initFastScroll();
+  
+  // Load all sections
+  loadAllSections();
+  
+  // Initialize app download
+  initAppDownload();
+  
+  // Initialize prayer times if elements exist
+  if (document.getElementById("prayer-list") && document.getElementById("location")) {
+    getUserLocation();
+  }
+  
+  console.log('✅ ToolsBD - Initialization complete');
+};
+
+// ============================================
+// 9. EVENT LISTENERS & EXPORTS
+// ============================================
+
+// DOM Ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+// Make utility functions available globally if needed
+if (typeof window !== 'undefined') {
+  window.ToolsBD = {
+    banglaDigit,
+    formatTimeToBangla,
+    getTimeRemaining,
+    reverseGeocode,
+    getPrayerTimes,
+    loadSection
+  };
+}
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = {
+    banglaDigit,
+    formatTimeToBangla,
+    getTimeRemaining,
+    reverseGeocode,
+    getPrayerTimes,
+    loadSection,
+    init
+  };
+}

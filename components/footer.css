@@ -1,26 +1,91 @@
+/* ===== FOOTER VARIABLES ===== */
+:root {
+  /* Light mode colors */
+  --footer-bg-gradient-1: rgba(239, 179, 241, 0.8);
+  --footer-bg-gradient-2: rgba(179, 219, 241, 0.8);
+  --footer-border-color: #ffffff;
+  --footer-shadow: rgba(0, 0, 0, 0.08);
+  --footer-column-bg: #fff;
+  --footer-title-color: #2c3e50;
+  --footer-dot-color: #9b03a8;
+  --footer-dot-hover: #05585e;
+  --footer-link-color: #6b5bcc;
+  --footer-link-hover: #9b03a8;
+  --footer-download-bg-1: rgba(239, 179, 241, 0.8);
+  --footer-download-bg-2: rgba(179, 219, 241, 0.8);
+  --footer-download-border: #fff;
+  --footer-download-shadow: rgba(0, 0, 0, 0.1);
+  --footer-download-title: #333;
+  --footer-menu-bg: #fff;
+  --footer-menu-border: #ccc;
+  --footer-menu-shadow: rgba(0, 0, 0, 0.1);
+  --footer-menu-text: #8d8c8c;
+  --footer-menu-active: #6b5bcc;
+  --footer-menu-hover: #000;
+  --social-border: #ccc;
+  --social-color: #333;
+  --social-hover-border: #8e3cfa;
+  --social-hover-color: #8e3cfa;
+  --playstore-bg: #3ddc84;
+  --applestore-bg: #000;
+  --body-bg: #fff;
+}
+
+html.dark-mode {
+  --footer-bg-gradient-1: rgba(71,12,71,.9);
+  --footer-bg-gradient-2: rgba(0, 0, 0, 0.9);
+  --footer-border-color: #6f197a;
+  --footer-shadow: rgba(0, 0, 0, 0.2);
+  --footer-column-bg: #1e293b;
+  --footer-title-color: #f1f5f9;
+  --footer-dot-color: #9b03a8;
+  --footer-dot-hover: #55d6b3;
+  --footer-link-color: #ccc;
+  --footer-link-hover: #9b03a8;
+  --footer-download-bg-1: rgba(71,12,71,.9);
+  --footer-download-bg-2: rgba(0, 0, 0, 0.9);
+  --footer-download-border: rgba(255, 255, 255, 0.15);
+  --footer-download-shadow: rgba(0, 0, 0, 0.2);
+  --footer-download-title: #ffffff;
+  --footer-menu-bg: #1e293b;
+  --footer-menu-border: #333;
+  --footer-menu-shadow: rgba(0, 0, 0, 0.3);
+  --footer-menu-text: #ccc;
+  --footer-menu-active: #6b5bcc;
+  --footer-menu-hover: #fff;
+  --social-border: rgba(255, 255, 255, 0.2);
+  --social-color: #ccc;
+  --social-hover-border: #8e3cfa;
+  --social-hover-color: #8e3cfa;
+  --playstore-bg: #3ddc84;
+  --applestore-bg: #000;
+  --body-bg: #1e293b;
+}
+
 /* BASE STYLES */
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
   position: relative;
-  padding-bottom: 50px; /* কম space */
+  padding-bottom: 50px;
   box-sizing: border-box;
+  background-color: var(--body-bg);
 }
 
 /* FOOTER SECTION */
 .footer-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 15px 20px; /* bottom padding কম */
+  padding: 10px 15px 20px;
   box-sizing: border-box;
 }
 
 /* TWO COLUMN CONTAINER */
 .two-column-container {
   display: flex;
-  gap: 20px; /* কম gap */
-  margin-bottom: 00px;
+  gap: 20px;
+  margin-bottom: 0px;
   flex-wrap: wrap;
 }
 
@@ -34,31 +99,31 @@ body {
 .double-column-container {
   display: flex;
   justify-content: space-between;
-  gap: 20px; /* কম gap */
-  margin-bottom: 30px; /* কম margin */
-  padding: 0px; /* কম padding */
-  background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 0px;
+  background: linear-gradient(135deg, var(--footer-bg-gradient-1), var(--footer-bg-gradient-2));
   border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px var(--footer-shadow);
   backdrop-filter: blur(10px);
   box-sizing: border-box;
   flex-wrap: wrap;
-  border: 1px solid #ffffff;
+  border: 1px solid var(--footer-border-color);
 }
 
 /* INDIVIDUAL COLUMN BOX */
 .column-box {
   flex: 1;
   min-width: 45%;
-  padding: 15px; /* কম padding */
+  padding: 15px;
   box-sizing: border-box;
 }
 
 .column-title {
-  font-size: 18px; /* কম font-size */
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 10px; /* কম margin */
-  color: #2c3e50;
+  margin-bottom: 10px;
+  color: var(--footer-title-color);
 }
 
 .column-links {
@@ -67,13 +132,13 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px; /* কম gap */
+  gap: 8px;
 }
 
 /* DOUBLE COLUMN LINKS WITH DOT */
 .column-links li {
   position: relative;
-  padding-left: 15px; /* কম padding */
+  padding-left: 15px;
   list-style: none;
 }
 
@@ -83,44 +148,44 @@ body {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 5px; /* কম width */
-  height: 5px; /* কম height */
-  background-color: #9b03a8;
+  width: 5px;
+  height: 5px;
+  background-color: var(--footer-dot-color);
   border-radius: 50%;
 }
 
 .column-links li:hover::before {
-  background-color: #05585e;
+  background-color: var(--footer-dot-hover);
 }
 
 .column-links li a {
   text-decoration: none;
-  font-size: 14px; /* কম font-size */
-  color: #6b5bcc;
+  font-size: 14px;
+  color: var(--footer-link-color);
   transition: color 0.3s;
 }
 
 .column-links li a:hover {
-  color: #9b03a8;
+  color: var(--footer-link-hover);
 }
 
 /* DOWNLOAD SECTION */
 .download-section {
   text-align: center;
-  padding: 20px 10px; /* কম padding */
-  background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
+  padding: 20px 10px;
+  background: linear-gradient(135deg, var(--footer-download-bg-1), var(--footer-download-bg-2));
   border-radius: 15px;
-  margin: 30px auto; /* কম margin */
+  margin: 30px auto;
   max-width: 1200px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-  border: #fff 1px solid;
+  box-shadow: 0 5px 20px var(--footer-download-shadow);
+  border: 1px solid var(--footer-download-border);
 }
 
 .download-title {
-  font-size: 1.5rem; /* কম font-size */
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 15px; /* কম margin */
-  color: #333;
+  margin-bottom: 15px;
+  color: var(--footer-download-title);
   cursor: default;
   pointer-events: none;
   user-select: none;
@@ -130,7 +195,7 @@ body {
 .app-buttons {
   display: flex;
   justify-content: center;
-  gap: 15px; /* কম gap */
+  gap: 15px;
   flex-wrap: wrap;
 }
 
@@ -138,22 +203,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px; /* কম gap */
+  gap: 8px;
   color: white;
-  padding: 10px 15px; /* কম padding */
+  padding: 10px 15px;
   border-radius: 10px;
-  font-size: 14px; /* কম font-size */
+  font-size: 14px;
   text-decoration: none;
   transition: opacity 0.3s ease;
-  min-width: 140px; /* কম width */
+  min-width: 140px;
 }
 
 .store-btn.playstore {
-  background: #3ddc84;
+  background: var(--playstore-bg);
 }
 
 .store-btn.applestore {
-  background: #000;
+  background: var(--applestore-bg);
 }
 
 .store-btn:hover {
@@ -161,37 +226,36 @@ body {
 }
 
 .store-btn i {
-  font-size: 16px; /* কম font-size */
+  font-size: 16px;
 }
 
 /* SOCIAL CONTAINER */
 .social-container {
   display: flex;
   justify-content: center;
-  gap: 10px; /* কম gap */
-  padding: 15px; /* কম padding */
-  flex-wrap: wrap;
-  margin-top: 15px; /* কম margin */
+  gap: 10px;
+  padding: 15px;
+  margin-top: 15px;
 }
 
 .social-container a {
-  width: 40px; /* কম width */
-  height: 40px; /* কম height */
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ccc;
+  border: 1px solid var(--social-border);
   border-radius: 8px;
   text-decoration: none;
-  font-size: 18px; /* কম font-size */
-  color: #333;
+  font-size: 18px;
+  color: var(--social-color);
   transition: 0.3s ease;
   background: none;
 }
 
 .social-container a:hover {
-  border-color: #8e3cfa;
-  color: #8e3cfa;
+  border-color: var(--social-hover-border);
+  color: var(--social-hover-color);
 }
 
 /* FOOTER MENU */
@@ -200,10 +264,10 @@ footer {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 55px; /* কম height */
-  background: #fff;
-  border-top: 1px solid #ccc;
-  box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
+  height: 55px;
+  background: var(--footer-menu-bg);
+  border-top: 1px solid var(--footer-menu-border);
+  box-shadow: 0 -1px 5px var(--footer-menu-shadow);
   z-index: 1000;
 }
 
@@ -219,54 +283,52 @@ footer {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 12px; /* কম font-size */
+  font-size: 12px;
   font-weight: 600;
   transition: color 0.3s ease, transform 0.3s ease;
-  color: #8d8c8c;
+  color: var(--footer-menu-text);
 }
 
 .footer-menu a.home {
-  color: #6b5bcc;
+  color: var(--footer-menu-active);
 }
 
 .footer-menu a.home i {
-  color: #6b5bcc;
+  color: var(--footer-menu-active);
 }
 
 .footer-menu a i {
-  font-size: 18px; /* কম font-size */
-  margin-bottom: 2px; /* কম margin */
+  font-size: 18px;
+  margin-bottom: 2px;
 }
 
 .footer-menu a.active {
-  color: #6b5bcc;
+  color: var(--footer-menu-active);
 }
 
 .footer-menu a.active i {
-  color: #6b5bcc;
+  color: var(--footer-menu-active);
 }
 
 .footer-menu a:hover {
-  transform: translateY(-5px); /* কম transform */
-  color: #000;
+  transform: translateY(-5px);
+  color: var(--footer-menu-hover);
 }
 
 .footer-menu a:hover i {
-  color: #000;
+  color: var(--footer-menu-hover);
 }
 
 /* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
   body {
-    padding-bottom: 0px; /* কম space */
+    padding-bottom: 0px;
   }
 
   .footer-section {
-    padding: 10px 10px 50px; /* কম padding */
+    padding: 10px 10px 50px;
   }
-  
 
-  
   .two-column-container {
     flex-direction: column;
     gap: 15px;
@@ -275,8 +337,8 @@ footer {
   
   .double-column-container {
     display: flex;
-    flex-direction: row !important;   /* column না */
-    flex-wrap: nowrap !important;     /* এক লাইনে */
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
     gap: 8px;
   }
 
@@ -343,64 +405,4 @@ footer {
   .footer-menu a:hover {
     transform: none;
   }
-}
-
-/* DARK MODE */
-html.dark-mode .double-column-container {
-  background: #1e293b;
-  border: 1px solid #444;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-html.dark-mode .column-title {
-  color: #f1f5f9;
-}
-
-html.dark-mode .column-links li::before {
-  background-color: #9b03a8;
-}
-
-html.dark-mode .column-links li:hover::before {
-  background-color: #55d6b3;
-}
-
-html.dark-mode .column-links li a {
-  color: #ccc;
-}
-
-html.dark-mode .column-links li a:hover {
-  color: #9b03a8;
-}
-
-html.dark-mode .download-section {
-  background: #1e293b;
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-html.dark-mode .download-title {
-  color: white;
-}
-
-html.dark-mode footer {
-  background: #1e293b;
-  border-top: 1px solid #333;
-}
-
-html.dark-mode .footer-menu a {
-  color: #ccc;
-}
-
-html.dark-mode .footer-menu a.home {
-  color: #6b5bcc;
-}
-
-html.dark-mode .footer-menu a.active,
-html.dark-mode .footer-menu a.active i {
-  color: #6b5bcc;
-}
-
-html.dark-mode .footer-menu a:hover,
-html.dark-mode .footer-menu a:hover i {
-  color: #fff;
 }

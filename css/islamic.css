@@ -27,6 +27,109 @@ main {
 }
 
 
+
+/* ===== Prayer Time ===== */
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+#location {
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+#location i {
+    margin-right: 5px;
+}
+
+.prayer-title {
+    font-size: 1.3rem;
+    color: #333;
+    text-align: left;
+}
+
+.prayer-list {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.prayer-box {
+    flex: 1 1 0;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 10px 5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+    height: 100px;
+}
+
+.prayer-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.prayer-time {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+
+.time-remaining {
+    font-size: .9rem;
+    color: #555;
+    font-weight: bold;
+}
+
+/* ===== Date Box ===== */
+.date-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: var(--card-bg);
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.05);
+    margin: 20px 0;
+}
+
+.date-box p {
+    margin: 5px 0;
+    flex: 1 1 30%;
+    font-size: 1rem;
+}
+
+.date-box strong {
+    color: #fff;
+    margin-right: 5px;
+    background: var(--accent);
+    border-radius: 6px;
+    padding: 2px 6px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+
+
+
+
+
+
+
 .islamic-catagory-item {
   background: linear-gradient(
     to bottom right,
@@ -167,7 +270,10 @@ main {
 
   margin-top: 50px;
 }
-
+    .main-section {
+        margin: 10px auto;
+        padding: 0 10px;
+    }
 .islamic-category-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -225,7 +331,57 @@ main {
   .info-box .bottom-row i {
     font-size: 16px;
   }
+
+
+#location i {
+  font-size: 14px;
 }
+  .prayer-box {
+        height: 100px;
+    }
+    
+    .prayer-name {
+        font-size: .95rem;
+    }
+        .prayer-title {
+        font-size: .75rem;
+    }
+    .prayer-time {
+        font-size: .9rem;
+    }
+    
+    .time-remaining {
+        font-size: .8rem;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    
+    .prayer-box {
+        height: 100px;
+    }
+    
+    .prayer-name {
+        font-size: .85rem;
+    }
+    
+    .prayer-time {
+        font-size: .8rem;
+    }
+    
+    .time-remaining {
+        font-size: .75rem;
+    }
+    
+    .date-box p {
+        font-size: .85rem;
+    }
+    
+
+    }
+    
 
 /* DARK MODE */
 
@@ -280,4 +436,43 @@ html.dark-mode .info-box .bottom-row i {
 
 html.dark-mode .info-box .bottom-row i:hover {
   color: #ff8fff;
+}
+
+
+
+
+html.dark-mode .prayer-box {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+}
+
+html.dark-mode .prayer-name {
+    color: white;
+    font-size: 10px;
+}
+
+html.dark-mode .prayer-time {
+    color: white;
+    font-size: 14px;
+    font-weight: 900;
+}
+
+html.dark-mode .time-remaining {
+    color: #ddd;
+    font-size: 10px;
+}
+
+html.dark-mode .prayer-title {
+    color: white;
+}
+
+html.dark-mode .date-box {
+    background: var(--dark-card) !important;
+    color: white;
+    border: 1px solid var(--dark-border);
+}
+
+html.dark-mode .date-box strong {
+    color: #fff;
+    font-weight: bold !important;
 }

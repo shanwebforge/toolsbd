@@ -35,6 +35,7 @@
 
 
   <link rel="stylesheet" href="/css/islamic.css" />
+
  
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
@@ -44,6 +45,17 @@
 <main>
 
   <div class="islamic-section">
+
+<div class="main-section">
+<div class="container">
+  <div class="header">
+    <h2 class="prayer-title">নামাজের সময়</h2>
+    <div id="location"><i class="fas fa-map-marker-alt"></i></div>
+  </div>
+  <div class="prayer-list" id="prayer-list">
+  </div>
+</div></div>
+
     <div class="islamic-category-grid">
 
       <!-- সূরা অনুবাদ -->
@@ -169,8 +181,20 @@
     </div>
   </div>
 </main>
-
+<script type="module">
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      const module = await import('/scripts/date.js');
+      if (typeof module.initUpdatesSlider === 'function') {
+        module.initUpdatesSlider();
+      }
+    } catch (error) {
+      console.error('Error loading updates slider:', error);
+    }
+  });
+</script>
 <script src="/scripts/script.js"></script>
+<script src="/scripts/islamic.js"></script>
 <script src="/components/header.js"></script>
 <script src="/components/footer.js"></script>
 </body>

@@ -6,431 +6,259 @@
   <meta name="description" content="বাংলায় সহজ কিছু প্রয়োজনীয় অনলাইন টুলস। টেক্সট, কনভার্টার, ক্যালকুলেটর, টাইমার এবং আরও অনেক কিছু।">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="ToolsBD - Free Tools , Tech , free ai, blog, code, sort code, command, secret code, prompt" />
-<meta property="og:description" content="বাংলায় সহজ কিছু প্রয়োজনীয় অনলাইন টুলস।" />
-<meta property="og:image" content="https://toolsbd.vercel.app/preview-image.png" />
-<meta property="og:url" content="https://toolsbd.vercel.app" />
-<meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:description" content="বাংলায় সহজ কিছু প্রয়োজনীয় অনলাইন টুলস।" />
+  <meta property="og:image" content="https://toolsbd.vercel.app/preview-image.png" />
+  <meta property="og:url" content="https://toolsbd.vercel.app" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/fav-16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/fav-32.png">
-<link rel="apple-touch-icon" sizes="160x160" href="/assets/fav-180.png">
-<link rel="icon" type="image/png" sizes="180x180" href="/assets/fav-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="/assets/fav-512.png">
-<title>ToolsBD - Free Tools , Tech , free ai, blog, code, sort code, command, secret code, prompt </title>
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/fav-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/fav-32.png">
+  <link rel="apple-touch-icon" sizes="160x160" href="/assets/fav-180.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/assets/fav-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/fav-512.png">
+  <title>ToolsBD - Free Tools , Tech , free ai, blog, code, sort code, command, secret code, prompt</title>
 
-
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F0QNJ6Z4K1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-F0QNJ6Z4K1');
-</script>
-
-
-<!-- 🌙 Always apply dark mode first, toggle will switch to light -->
-<script>
-  (function () {
-    try {
-
-      document.documentElement.classList.add('dark-mode');
-      
-
-      const theme = localStorage.getItem('theme');
-      
-
-      if (theme === 'light') {
-        document.documentElement.classList.remove('dark-mode');
-      }
-
-      if (!theme) {
-        localStorage.setItem('theme', 'dark');
-      }
-    } catch (e) {
-      console.error('Theme initialization error:', e);
-    }
-  })();
-</script>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-import { getFirestore, collection, query, orderBy, onSnapshot, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
-
-// Firebase Config
-const firebaseConfig = {
-  apiKey: "AIzaSyC4qAilm3cAJ8FTnv8R66YhG1rEITgKsoM",
-  authDomain: "toolsbd24.firebaseapp.com",
-  projectId: "toolsbd24",
-  storageBucket: "toolsbd24.firebasestorage.app",
-  messagingSenderId: "661782480607",
-  appId: "1:661782480607:web:9e517726a1e282e15f4b6a",
-  measurementId: "G-JLKLZDLSWJ"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-// -----------------------
-// Updates Section
-const updatesGrid = document.getElementById("updatesGrid");
-const seeAllBtn = document.getElementById("seeAllBtn");
-let allUpdates = [];
-
-if (updatesGrid && seeAllBtn) {
-  const updatesRef = collection(db, "updates");
-  const q = query(updatesRef, orderBy("timestamp", "desc"));
-
-  onSnapshot(q, (snapshot) => {
-    allUpdates = [];
-    snapshot.forEach(doc => allUpdates.push(doc.data()));
-    renderUpdates(allUpdates.slice(0, 3)); // show top 3 updates by default
-  });
-
-  seeAllBtn.addEventListener("click", () => {
-    renderUpdates(allUpdates);
-  });
-
-  function renderUpdates(updates) {
-    updatesGrid.innerHTML = "";
-    updates.forEach(item => {
-      const card = document.createElement("div");
-      card.className = "update-card";
-      card.innerHTML = `
-        <h3>${item.title}</h3>
-        <p>${item.content}</p>
-      `;
-      updatesGrid.appendChild(card);
-    });
-  }
-}
-
-// -----------------------
-// Category Click Counter
-window.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.main-catagory-item');
-
-  items.forEach(item => {
-    const eyeCountSpan = item.querySelector('.eye-count');
-    if (!eyeCountSpan) return;
-
-    const href = item.getAttribute('href');
-    if (!href) return;
-
-    const slug = href.replace(/\//g, '').trim() || 'default';
-    const docRef = doc(db, "category_clicks", slug);
-
-    // Load initial count from Firestore
-    getDoc(docRef).then(docSnap => {
-      if (docSnap.exists()) {
-        eyeCountSpan.textContent = docSnap.data().count || 0;
-      } else {
-        setDoc(docRef, { count: 0, name: slug });
-        eyeCountSpan.textContent = 0;
-      }
-    });
-
-    // Click handler
-    item.addEventListener('click', async (e) => {
-      e.preventDefault();
-
-      try {
-        // Increment Firestore count
-        await updateDoc(docRef, { count: increment(1) });
-
-        // Update displayed count
-        const updatedSnap = await getDoc(docRef);
-        eyeCountSpan.textContent = updatedSnap.data().count || 0;
-
-        // Redirect after count update
-        window.location.href = href;
-      } catch (err) {
-        console.error(err);
-        window.location.href = href; // fallback redirect
-      }
-    });
-  });
-});
-</script>
-
-
-
-
-
-
-
-
-  <!-- ✅ Stylesheets -->
+  <!-- Critical CSS -->
   <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/styles-home.css" />
-  <link rel="stylesheet" href="/css/category.css" />
-  <link rel="stylesheet" href="/css/sort-catagory.css" />
-  <link rel="stylesheet" href="/css/slide-cetegories.css" />
-  <link rel="stylesheet" href="/css/help-categories.css" />
-  <link rel="stylesheet" href="/blog/css/homeposts.css" />
   <link rel="stylesheet" href="/components/headerhome.css" />
-  <link rel="stylesheet" href="/components/footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" 
-href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  
+  <!-- Preconnect for external resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&family=Archivo+Black&family=Bungee&family=Galada&family=Prosto+One&family=Rubik+Mono+One&family=Hind+Siliguri&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&family=Archivo+Black&family=Bungee&family=Galada&family=Prosto+One&family=Rubik+Mono+One&family=Hind+Siliguri&display=swap" rel="stylesheet">
 
-
-
-</head>
-
-<body>
-
-
-  <div class="stars-overlay"></div>
-
-<div id="intro-section">লোড হচ্ছে...</div>
-
-<script type="module">
-  document.addEventListener('DOMContentLoaded', async () => {
-    try {
-      const module = await import('/scripts/date.js');
-      if (typeof module.initUpdatesSlider === 'function') {
-        module.initUpdatesSlider();
-      }
-    } catch (error) {
-      console.error('Error loading updates slider:', error);
-    }
-  });
-</script>
-
-
-
-  <script src="/scripts/img-slide.js"></script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0QNJ6Z4K1"></script>
   <script>
-    function loadSection(url, elementId, callback){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F0QNJ6Z4K1');
+  </script>
+
+  <!-- Firebase and Main Script -->
+  <script type="module">
+    // Theme Management
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark-mode');
+        } else {
+          document.documentElement.classList.remove('dark-mode');
+        }
+        
+        if (!savedTheme) {
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+      } catch (e) {
+        console.error('Theme initialization error:', e);
+      }
+    })();
+
+    // Firebase and Main Application
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC4qAilm3cAJ8FTnv8R66YhG1rEITgKsoM",
+      authDomain: "toolsbd24.firebaseapp.com",
+      projectId: "toolsbd24",
+      storageBucket: "toolsbd24.firebasestorage.app",
+      messagingSenderId: "661782480607",
+      appId: "1:661782480607:web:9e517726a1e282e15f4b6a",
+      measurementId: "G-JLKLZDLSWJ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    
+    // Make db available globally
+    window.firebaseDB = db;
+    window.firebaseUtils = { doc, getDoc, setDoc, updateDoc, increment };
+
+    // Load non-critical CSS
+    function loadNonCriticalCSS() {
+      const stylesheets = [
+        '/css/styles-home.css',
+        '/css/category.css',
+        '/css/sort-catagory.css',
+        '/css/slide-cetegories.css',
+        '/css/help-categories.css',
+        '/blog/css/homeposts.css',
+        '/components/footer.css'
+      ];
+      
+      stylesheets.forEach(href => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      });
+    }
+
+    // Initialize components
+    document.addEventListener('DOMContentLoaded', async function() {
+      // Theme toggle
+      const toggleTheme = document.getElementById('toggleTheme');
+      if (toggleTheme) {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        
+        toggleTheme.checked = isDark;
+        
+        toggleTheme.addEventListener('change', function() {
+          const isDark = toggleTheme.checked;
+          document.documentElement.classList.toggle('dark-mode', isDark);
+          localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+      }
+
+      // Load non-critical CSS
+      loadNonCriticalCSS();
+
+      // Load sections
+      loadSection('/highlight-page/img-slide.html', 'img-slide-section');
+      
+      // Category click tracking
+      setupCategoryClickTracking();
+      
+      // Load blog posts
+      if (typeof window.loadRecentPosts === 'function') {
+        window.loadRecentPosts();
+      }
+      
+      // Load updates slider
+      try {
+        const module = await import('/scripts/cat-slide.js');
+        if (typeof module.initUpdatesSlider === 'function') {
+          module.initUpdatesSlider();
+        }
+      } catch (error) {
+        console.error('Error loading updates slider:', error);
+      }
+    });
+
+    // Section loading function
+    function loadSection(url, elementId) {
+      if (!elementId || !document.getElementById(elementId)) return;
+      
       fetch(url)
         .then(res => res.text())
         .then(html => {
           document.getElementById(elementId).innerHTML = html;
-          if(callback) callback(); // slider init
         })
         .catch(err => console.log("Error loading section:", err));
     }
 
-    loadSection("/highlight-page/img-slide.html", "img-slide-section", initImageSlider);
-  </script>
-
-
-<div id="slide-cat-section">লোড হচ্ছে...</div>
-
-
-
-<div id="img-slide-section00"></div>
-<link rel="stylesheet" href="/update-notice/notice-home.css" />
-
-<script type="module">
-  document.addEventListener('DOMContentLoaded', async () => {
-    try {
-      const module = await import('/update-notice/notice-home.js');
-      if (typeof module.initUpdatesSlider === 'function') {
-        module.initUpdatesSlider();
+    // Category click tracking
+    function setupCategoryClickTracking() {
+      const items = document.querySelectorAll('.main-catagory-item');
+      
+      if (!items.length || !window.firebaseDB || !window.firebaseUtils) {
+        return;
       }
-    } catch (error) {
-      console.error('Error loading updates slider:', error);
-    }
-  });
-</script>
-
-<script type="module">
-  document.addEventListener('DOMContentLoaded', async () => {
-    try {
-      const module = await import('/scripts/cat-slide.js');
-      if (typeof module.initUpdatesSlider === 'function') {
-        module.initUpdatesSlider();
-      }
-    } catch (error) {
-      console.error('Error loading updates slider:', error);
-    }
-  });
-</script>
- 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const items = document.querySelectorAll('.main-catagory-item');
-
-    items.forEach(item => {
-      const eyeCountSpan = item.querySelector('.eye-count');
-      const slug = item.dataset.slug;
-
-      if (!slug) return;
-
-      const docRef = db.collection('category_clicks').doc(slug);
-
-      // Load initial count from Firestore
-      docRef.get().then(doc => {
-        if (doc.exists) {
-          eyeCountSpan.textContent = doc.data().count || 0;
-        } else {
-          docRef.set({ count: 0 });
-        }
-      });
-
-      // Real-time update (optional)
-      docRef.onSnapshot(doc => {
-        if (doc.exists) {
-          eyeCountSpan.textContent = doc.data().count;
-        }
-      });
-
-      // Click listener
-      item.addEventListener('click', (e) => {
-        e.preventDefault();
-
-        docRef.update({ count: firebase.firestore.FieldValue.increment(1) })
-          .then(() => {
-            // Redirect to actual link after count update
-            window.location.href = item.getAttribute('href');
-          })
-          .catch(err => {
+      
+      items.forEach(item => {
+        const eyeCountSpan = item.querySelector('.eye-count');
+        if (!eyeCountSpan) return;
+        
+        const href = item.getAttribute('href');
+        if (!href) return;
+        
+        const slug = href.replace(/\//g, '').trim() || 'default';
+        const docRef = doc(window.firebaseDB, "category_clicks", slug);
+        
+        // Load initial count
+        getDoc(docRef).then(docSnap => {
+          if (docSnap.exists()) {
+            eyeCountSpan.textContent = docSnap.data().count || 0;
+          } else {
+            setDoc(docRef, { count: 0, name: slug });
+            eyeCountSpan.textContent = 0;
+          }
+        });
+        
+        // Click handler
+        item.addEventListener('click', async (e) => {
+          e.preventDefault();
+          
+          try {
+            await updateDoc(docRef, { count: increment(1) });
+            const updatedSnap = await getDoc(docRef);
+            eyeCountSpan.textContent = updatedSnap.data().count || 0;
+            window.location.href = href;
+          } catch (err) {
             console.error(err);
-            window.location.href = item.getAttribute('href'); // fallback
-          });
+            window.location.href = href;
+          }
+        });
       });
-    });
-  });
-</script>
+    }
+  </script>
+</head>
 
+<body>
+  <div class="stars-overlay"></div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 🔔 App Download Popup -->
-<div id="appDownloadModal" class="app-modal" aria-hidden="true" role="dialog" aria-labelledby="appModalTitle">
-  <div class="app-modal-backdrop"></div>
-
-  <div class="app-modal-dialog" role="document">
-    <button class="app-modal-close" id="appModalClose" aria-label="Close">&times;</button>
-
-    
-    <!-- ✅ Donload -->
-    <div class="app-container">
-      <div class="download-note">এই অ্যাপটি Android-এর জন্য তৈরি</div>
-      
-      <div class="download-wrapper">
-
+  <!-- Content sections -->
+  <div id="intro-section">লোড হচ্ছে...</div>
+  <div id="slide-cat-section">লোড হচ্ছে...</div>
+  <div id="help-section">লোড হচ্ছে...</div>
+  <div id="catagory-section">লোড হচ্ছে...</div>
+  <div id="key-section">লোড হচ্ছে...</div>
+  <div id="sort-section">লোড হচ্ছে...</div>
+  
+  <div class="main-section" style="margin-top: 100px !important;">
+    <div class="main-bg">
+    <section class="recent-posts-section">
+      <div class="cat-title">
+        <h1 class="main-catagory-title-h1">
+          <span class="title-text">Blog</span>
+          <span class="catagory-description">
+            Articles, tutorials, and insights on technology, programming, and development trends
+          </span>
+        </h1>
       </div>
-      
-      <button class="install-btn" id="installBtn" style="display: none;">⚡ Install Now</button>
-      <small class="install-note">⚠️ Install Now বাটনে ক্লিক করলে যদি ইনস্টল না হয়, তাহলে notification bar থেকে ফাইলটি খুলে Install করুন।</small>
-                 <a href="/assets/ToolsBD.apk" download class="download-link" id="downloadLink">
+      <div id="postsContainer" class="posts-grid"></div>
+    </section>
+    <a href="#" class="cat-title-link">View All</a>
+  </div>
+  </div>
+  <div id="count-section">লোড হচ্ছে...</div>
+
+  <!-- 🔔 App Download Popup -->
+  <div id="appDownloadModal" class="app-modal" aria-hidden="true" role="dialog" aria-labelledby="appModalTitle">
+    <div class="app-modal-backdrop"></div>
+    <div class="app-modal-dialog" role="document">
+      <button class="app-modal-close" id="appModalClose" aria-label="Close">&times;</button>
+      <div class="app-container">
+        <div class="download-note">এই অ্যাপটি Android-এর জন্য তৈরি</div>
+        <div class="download-wrapper"></div>
+        <button class="install-btn" id="installBtn" style="display: none;">⚡ Install Now</button>
+        <small class="install-note">⚠️ Install Now বাটনে ক্লিক করলে যদি ইনস্টল না হয়, তাহলে notification bar থেকে ফাইলটি খুলে Install করুন।</small>
+        <a href="/assets/ToolsBD.apk" download class="download-link" id="downloadLink">
           <button class="appbtn" id="downloadBtn">
             <span class="btn-text">📲 অ্যাপ ডাউনলোড করুন</span>
             <span class="progress-bar" id="progressBar"></span>
             <span class="progress-percent" id="progressPercent" style="display: none;">0%</span>
           </button>
         </a>
+      </div>
     </div>
-
   </div>
-</div>
 
-
-
-
-
-
-<div id="help-section">লোড হচ্ছে...</div>
-<div id="catagory-section">লোড হচ্ছে...</div>
-<div id="key-section">লোড হচ্ছে...</div>
-<div id="sort-section">লোড হচ্ছে...</div>
-
-
-
-
-
-
-
-  <!-- Recent Posts Section -->
-<div class="main-section">
-  <section class="recent-posts-section">
-  <div class="cat-title"><h1 class="main-catagory-title-h1">
-<span class="title-text">Blog</span>
-<span class="catagory-description">
-    Articles, tutorials, and insights on technology, programming, and development trends
-</span>
-</h1>
-  </div>
-  <div id="postsContainer" class="posts-grid"></div>
-</section>
-<a href="#" class="cat-title-link">
-    View All
-</a>
-</div>
-
-<!-- Font Awesome for icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<!-- Our JS -->
-<script type="module" src="/blog/js/posts.js"></script>
-
-
-
-<div id="count-section">লোড হচ্ছে...</div>
-
-<!-- ✅ Fixed Download Section -->
-
-
-
-
-
-  
-
-
-
-
-  <!-- ✅ Scripts -->
-
-  <script src="/components/headerhome.js"></script>
-  <script src="/components/footer.js"></script>
-  <script src="/scripts/script.js"></script>
-  <script src="/scripts/namaj.js"></script>
-  
- <script type="module" src="/blog/js/loadRecentPostsHome.js"></script>
-  <script src="/scripts/fetch.js"></script>
-  <script src="/scripts/dpop.js"></script>
-  <script src="/scripts/sadow.js"></script>
-
-  
-
-  <!-- ✅ Global Dark Mode Toggle Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggleTheme = document.getElementById("toggleTheme");
-      const savedTheme = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const isDark = savedTheme === "dark" || (!savedTheme && prefersDark);
-
-      // Initial checked state
-      toggleTheme.checked = isDark;
-
-      // Toggle logic
-      toggleTheme.addEventListener("change", function () {
-        const isDark = toggleTheme.checked;
-        document.documentElement.classList.toggle("dark-mode", isDark);
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-      });
-    });
-  </script>
-
-
+  <!-- Deferred scripts -->
+  <script defer src="/scripts/dpop.js"></script>
+  <script defer src="/scripts/sadow.js"></script>
+  <script defer src="/components/headerhome.js"></script>
+  <script defer src="/components/footer.js"></script>
+  <script defer src="/scripts/script.js"></script>
+  <script type="module" defer src="/blog/js/loadRecentPostsHome.js"></script>
 </body>
 </html>

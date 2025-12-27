@@ -1,171 +1,417 @@
-/* ===== HELP SECTION SLIDER ===== */
-.help-help-section {
-  width: 100%;
-  max-width: 1100px;
-  margin: 30px auto;
+/* ====================================
+   CSS Variables (Custom Properties)
+   ==================================== */
+:root {
+    /* --- General Colors (Light Mode) --- */
+    --slidecat-bg-start: rgba(239, 179, 241, 0.8);
+    --slidecat-bg-end: rgba(179, 219, 241, 0.8);  
+    --slidecat-border-light: #e0e0e0;
+    --slidecat-text-primary: #333;
+    --slidecat-text-secondary: #000;
+    --slidecat-text-sub: #000;
+
+    /* --- Glass Tab Colors --- */
+    --slidecat-glass-bg: rgba(255, 255, 255, 0.25);
+    --slidecat-tab-text: #333;
+    --slidecat-tab-hover-bg: rgba(255, 255, 255, 0.5);
+    --slidecat-tab-active-bg: #ffffff;
+    --slidecat-tab-active-text: #8e3cfa;
+    --slidecat-tab-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+
+    /* --- Card Colors --- */
+    --slidecat-card-bg: #e0e0e0;
+    --slidecat-date-bg: rgba(255, 255, 255, 0.5);
+    
+    /* --- Item Colors --- */
+    --item-bg: rgba(255, 255, 255, 0.7);
+    --item-border: rgba(0, 0, 0, 0.1);
+    --item-hover-bg: rgba(142, 60, 250, 0.1);
+    --item-title-color: #333;
+    --item-desc-color: #666;
+    --item-icon-bg: rgba(142, 60, 250, 0.1);
+    --item-icon-color: #8e3cfa;
+    --badge-bg: rgba(142, 60, 250, 0.15);
+    --badge-text: #8e3cfa;
+    
+    /* --- Help Section Colors --- */
+    --help-bg-gradient-1: rgba(238, 240, 241, 0.8);
+    --help-bg-gradient-2: rgba(194, 241, 239, 0.8);
+    --help-border-color: #e0e0e0;
+    --help-hover-bg: rgba(194, 241, 239, 0.9);
+    --help-shadow: rgba(0, 0, 0, 0.1);
+    --help-icon-bg-1: rgba(3, 151, 35, 0.1);
+    --help-icon-bg-2: rgba(70, 224, 229, 0.1);
+    --help-icon-color: #6b5bcc;
+    --help-label-color: #333;
+    --help-title-color: #222;
+    --help-desc-color: #666;
+    --help-hover-icon-bg-1: #790397;
+    --help-hover-icon-bg-2: #46e0e5;
+    --help-gradient-1: #cd4ade;
+    --help-gradient-2: #46e0e5;
+    --help-hover-icon-color: white;
+    --help-item-bg: rgba(255, 255, 255, 0.7);
+    --help-item-border: rgba(0, 0, 0, 0.1);
+    --help-item-hover-bg: rgba(205, 74, 222, 0.1);
+    --help-item-title-color: #333;
+    --help-item-desc-color: #666;
+    --help-item-icon-bg: rgba(205, 74, 222, 0.1);
+    --help-item-icon-color: #cd4ade;
+    --help-badge-bg: rgba(205, 74, 222, 0.15);
+    --help-badge-text: #cd4ade;
+    --help-transition: all 0.3s ease;
+    
+    /* --- Scrollbar Colors --- */
+    --scrollbar-track: rgba(142, 60, 250, 0.1);
+    --scrollbar-thumb: rgba(142, 60, 250, 0.3);
+    --scrollbar-thumb-hover: rgba(142, 60, 250, 0.5);
 }
+
+/* 🌙 DARK MODE OVERRIDES */
+html.dark-mode {
+    /* --- General Colors (Dark Mode) --- */
+    --slidecat-bg-start: #531a79;
+    --slidecat-bg-end: #13094e;
+    --slidecat-border-light: rgba(172, 85, 223, 0.795);
+    --slidecat-text-primary: #e0e0e0;
+    --slidecat-text-secondary: white;
+    --slidecat-text-sub: #e0e0e0;
+
+    /* --- Glass Tab Colors --- */
+    --slidecat-glass-bg: rgba(23, 7, 61, 0.911);
+    --slidecat-tab-text: #e0e0e0;
+    --slidecat-tab-hover-bg: rgba(35, 4, 77, 0.18);
+    --slidecat-tab-active-bg: rgba(19, 0, 31, 0.25);
+    --slidecat-tab-active-text: #e0e0e0;
+    --slidecat-tab-shadow: none;
+
+    /* --- Card Colors --- */
+    --slidecat-card-bg: rgba(81, 22, 99, 0.8);
+    --slidecat-date-bg: rgba(64, 8, 82, 0.15);
+    
+    /* --- Item Colors --- */
+    --item-bg: rgba(255, 255, 255, 0.08);
+    --item-border: rgba(255, 255, 255, 0.1);
+    --item-hover-bg: rgba(142, 60, 250, 0.2);
+    --item-title-color: #e0e0e0;
+    --item-desc-color: #b0b0b0;
+    --item-icon-bg: rgba(142, 60, 250, 0.2);
+    --item-icon-color: #bb86fc;
+    --badge-bg: rgba(187, 134, 252, 0.2);
+    --badge-text: #bb86fc;
+    
+    /* --- Help Section Colors --- */
+    --help-bg-gradient-1: rgba(71,12,71,.9);
+    --help-bg-gradient-2: rgba(150,60,250,.2);
+    --help-border-color: rgba(255, 255, 255, 0.1);
+    --help-hover-bg: rgba(71,12,71,.9);
+    --help-shadow: rgba(0, 0, 0, 0.3);
+    --help-icon-bg-: rgba(142, 60, 250, 0.1);
+    --help-icon-color: #cbd5e1;
+    --help-label-color: #e2e8f0;
+    --help-title-color: #f1f5f9;
+    --help-desc-color: #cbd5e1;
+    --help-hover-icon-bg: #790397;
+    --help-gradient: #cd4ade;
+    --help-hover-icon-color: white;
+    --help-item-bg: rgba(255, 255, 255, 0.08);
+    --help-item-border: rgba(255, 255, 255, 0.1);
+    --help-item-hover-bg: rgba(205, 74, 222, 0.2);
+    --help-item-title-color: #e0e0e0;
+    --help-item-desc-color: #b0b0b0;
+    --help-item-icon-bg: rgba(205, 74, 222, 0.2);
+    --help-item-icon-color: #d946ef;
+    --help-badge-bg: rgba(217, 70, 239, 0.2);
+    --help-badge-text: #d946ef;
+    
+    /* --- Scrollbar Colors --- */
+    --scrollbar-track: rgba(187, 134, 252, 0.1);
+    --scrollbar-thumb: rgba(187, 134, 252, 0.3);
+    --scrollbar-thumb-hover: rgba(187, 134, 252, 0.5);
+}
+
+/* ====================================
+   Base & Layout Styles
+   ==================================== */
+
+
+
+
+.help-items-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.help-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.help-item {
+    background: var(--help-item-bg);
+    border: 1px solid var(--help-item-border);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: var(--help-transition);
+    position: relative;
+    overflow: hidden;
+    min-height: 100px;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.help-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: var(--help-item-hover-bg);
+}
+
+
+
+.help-item:hover::before {
+    opacity: 1;
+}
+
+/* ====================================
+   Icon & Content Layout
+   ==================================== */
+
+.help-item-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--help-item-icon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--help-item-icon-color);
+    transition: var(--help-transition);
+}
+
+.help-item:hover .help-item-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--help-hover-icon-bg-1), var(--help-hover-icon-bg-2));
+}
+
+.help-item:hover .help-item-icon i {
+    color: var(--help-hover-icon-color);
+}
+
+.help-item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0; /* Prevents content from overflowing */
+}
+
+.help-item-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--help-item-title-color);
+    margin: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.help-item-desc {
+    font-size: 14px;
+    color: var(--help-item-desc-color);
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.9;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ====================================
+   Badge Style
+   ==================================== */
+
+.help-item-badge {
+    flex-shrink: 0;
+    background: var(--help-badge-bg);
+    color: var(--help-badge-text);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 50px;
+    transition: var(--help-transition);
+    border: 1px solid rgba(205, 74, 222, 0.2);
+}
+
+.help-item:hover .help-item-badge {
+    background: rgba(217, 70, 239, 0.3);
+    color: #d946ef;
+    transform: scale(1.05);
+    border-color: rgba(217, 70, 239, 0.4);
+}
+
+/* ====================================
+   Header Styles
+   ==================================== */
+
+.main-catagory-title-h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 20px 0;
+}
+
+.main-catagory-title-h1 .title-text {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(90deg, var(--help-gradient-1) 0, #46e0e5 50%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+.main-catagory-title-h1 .catagory-description {
+    font-size: 16px;
+    color: var(--help-desc-color);
+    margin-top: 12px;
+    max-width: 700px;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+/* ====================================
+   Glass Effect for Section
+   ==================================== */
 
 .help-main-section {
-
-
-
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    position: relative;
 }
 
-/* CATEGORY TITLE */
-.help-cat-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-    font-size: 24px;
-  font-weight: 700;
-  text-align: center;
-  justify-content: center;
+.help-main-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 0;
 }
 
-.help-cat-title-h1 {
-  display: flex;
-  align-items: center;
-  font-size: 22px;
-  font-weight: 600;
-  padding-left: 5px;
-  color: #525151 !important;
-  margin-bottom: 5px;
-  margin-top: 5px;
+.help-main-section .main-section {
+    position: relative;
+    z-index: 1;
 }
 
-/* Circle before text */
-.help-cat-title-h1::before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #039723, #46e0e5);
-  margin-right: 10px;
+/* ====================================
+   Responsive Styles
+   ==================================== */
+
+@media (max-width: 1024px) {
+    .help-items-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
 }
 
-.help-cat-title-link {
-  font-size: 18px;
-  color: #555;
-  text-decoration: none;
-  padding: 6px 10px;
-  background-color: #077A7D;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-}
-
-.help-cat-title-link:hover {
-  background-color: #05585e;
-  color: #fff;
-}
-
-.help-cat-title-link i { margin-left: 4px; color: #fff; }
-
-.tools-slider-wrapper { overflow-x: hidden; cursor: grab; width: 100%; }
-.tools-grid { display: flex; gap: 20px; padding: 0 10px; box-sizing: border-box; user-select: none; }
-
-/* SLIDER ITEM */
-.help-category-item {
-  flex: 0 0 auto;
-  width: 300px;
-  height: 140px;
-  background: linear-gradient(135deg, rgba(238, 240, 241, 0.8), rgba(194, 241, 239, 0.8));
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  margin-right: 1px; /* 1px gap between boxes */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.3s;
-  border: 1px solid #e0e0e0;
-}
-
-
-.help-category-item:hover {
-  transform: translateY(0x);
-}
-
-/* ICON */
-.help-category-box {
-  font-size: 36px;
-  margin-bottom: 8px;
-  color: #6b5bcc;
-}
-
-
-
-/* LABEL */
-.help-category-label {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-  word-wrap: break-word;
-}
-
-/* MOBILE ADJUSTMENTS */
 @media (max-width: 768px) {
-    .tools-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-  }
-  .help-category-item {
-    width: 120px;
-    height: 100px;
-    border-radius: 8px;
-  }
-  .help-category-box {
-    font-size: 32px;
-  }
-  .help-category-label {
-    font-size: 14px;
-  }
-
-  .help-cat-title-h1 {
-  font-size: 18px;
-  color: #494949 !important;
-  font-family: "Alkatra";
-  margin-bottom: -6px;
-}
-}
-
-
-
-  html.dark-mode .help-category-item {
-    background: #1e293b;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-html.dark-mode .help-cat-title,
-html.dark-mode .help-cat-title-name{
-  color: #fff !important;
-}
-html.dark-mode .help-cat-title-link {
-  background-color: #8e3cfa;
-  color: #fff;
-}
-html.dark-mode .help-cat-title-h1{
-  color: #fff !important;
+    .help-items-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .help-item {
+        padding: 16px;
+        gap: 12px;
+        min-height: 90px;
+    }
+    
+    .help-item-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    
+    .help-item-title {
+        font-size: 16px;
+    }
+    
+    .help-item-desc {
+        font-size: 13px;
+        -webkit-line-clamp: 2;
+    }
+    
+    .help-item-badge {
+        padding: 5px 10px;
+        font-size: 11px;
+        min-width: 45px;
+    }
+    
+    .main-catagory-title-h1 .title-text {
+        font-size: 28px;
+    }
+    
+    .main-catagory-title-h1 .catagory-description {
+        font-size: 15px;
+        padding: 0 10px;
+    }
 }
 
-html.dark-mode .help-cat-title-link:hover {
-  background-color: #05585e;
-  color: #fff;
-}
-
-html.dark-mode .help-category-box {
-  color: #f1f5f9;
-}
-
-html.dark-mode .help-category-label {
-  color: #e0e0e0;
+@media (max-width: 600px) {
+    .help-items-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .help-item {
+        padding: 14px;
+        gap: 14px;
+        min-height: 85px;
+    }
+    
+    .help-item-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .help-item-title {
+        font-size: 15px;
+    }
+    
+    .help-item-desc {
+        font-size: 12px;
+        -webkit-line-clamp: 2;
+    }
+    
+    .help-item-badge {
+        padding: 4px 8px;
+        font-size: 10px;
+        min-width: 40px;
+    }
+    
+    .main-catagory-title-h1 .title-text {
+        font-size: 24px;
+    }
+    
+    .main-catagory-title-h1 .catagory-description {
+        font-size: 14px;
+    }
 }

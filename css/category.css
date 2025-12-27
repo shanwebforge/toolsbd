@@ -1,15 +1,73 @@
 /* ====================================
-   CSS Variables (Custom Properties)
+   CSS Variables (Custom Properties) - Combined
    ==================================== */
 
 :root {
+    /* --- General Colors (Light Mode) --- */
+    --cat-bg-start: rgba(239, 179, 241, 0.8);
+    --cat-bg-end: rgba(179, 219, 241, 0.8);  
+    --cat-border-light: #e0e0e0;
+    --cat-text-primary: #333;
+    --cat-text-secondary: #000;
+    --cat-text-sub: #000;
+    
+    /* --- Glass Tab Colors --- */
+    --cat-glass-bg: rgba(255, 255, 255, 0.25);
+    --cat-tab-text: #333;
+    --cat-tab-hover-bg: rgba(255, 255, 255, 0.5);
+    --cat-tab-active-bg: #ffffff;
+    --cat-tab-active-text: #8e3cfa;
+    --cat-tab-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+    
+    /* --- Card Colors --- */
+    --cat-card-bg: #e0e0e0;
+    --cat-date-bg: rgba(255, 255, 255, 0.5);
+    
+    /* --- Item Colors --- */
+    --item-bg: rgba(255, 255, 255, 0.7);
+    --item-border: rgba(0, 0, 0, 0.1);
+    --item-hover-bg: rgba(142, 60, 250, 0.1);
+    --item-title-color: #333;
+    --item-desc-color: #666;
+    --item-icon-bg: rgba(142, 60, 250, 0.1);
+    --item-icon-color: #8e3cfa;
+    --badge-bg: rgba(142, 60, 250, 0.15);
+    --badge-text: #8e3cfa;
+    
+    /* --- Help Section Colors --- */
+    --cat-bg-gradient-1: rgba(238, 240, 241, 0.8);
+    --cat-bg-gradient-2: rgba(194, 241, 239, 0.8);
+    --cat-border-color: #e0e0e0;
+    --cat-hover-bg: rgba(194, 241, 239, 0.9);
+    --cat-shadow: rgba(0, 0, 0, 0.1);
+    --cat-icon-bg-1: rgba(3, 151, 35, 0.1);
+    --cat-icon-bg-2: rgba(70, 224, 229, 0.1);
+    --cat-icon-color: #6b5bcc;
+    --cat-label-color: #333;
+    --cat-title-color: #222;
+    --cat-desc-color: #666;
+    --cat-hover-icon-bg-1: #790397;
+    --cat-hover-icon-bg-2: #46e0e5;
+    --cat-gradient-1: #cd4ade;
+    --cat-gradient-2: #46e0e5;
+    --cat-hover-icon-color: white;
+    --cat-item-bg: rgba(255, 255, 255, 0.7);
+    --cat-item-border: rgba(0, 0, 0, 0.1);
+    --cat-item-hover-bg: rgba(205, 74, 222, 0.1);
+    --cat-item-title-color: #333;
+    --cat-item-desc-color: #666;
+    --cat-item-icon-bg: rgba(205, 74, 222, 0.1);
+    --cat-item-icon-color: #cd4ade;
+    --cat-badge-bg: rgba(205, 74, 222, 0.15);
+    --cat-badge-text: #cd4ade;
+    --cat-transition: all 0.3s ease;
+
+    /* --- CSS2 Variables --- */
     --cat-body-bg: #edf6fc;
     --cat-text-p: #000;
     --cat-text-s: #555;
     --cat-hd: #525151;
-    --cat-card-s: #eed1f7;
-    --cat-card-m: #ebeaf8;
-    --cat-card-e: #b9e3f5;
+    --cat-card: #b9e3f5;
     --cat-card-bdr: #9d94d6;
     --cat-accent: #6b5bcc;
     --cat-accent-h: #301f78;
@@ -18,13 +76,73 @@
     --cat-panel-txt: #444;
 }
 
+/* 🌙 DARK MODE OVERRIDES */
 html.dark-mode {
+    /* --- General Colors (Dark Mode) --- */
+    --cat-bg-start: #531a79;
+    --cat-bg-end: #13094e;
+    --cat-border-light: rgba(172, 85, 223, 0.795);
+    --cat-text-primary: #e0e0e0;
+    --cat-text-secondary: white;
+    --cat-text-sub: #e0e0e0;
+    
+    /* --- Glass Tab Colors --- */
+    --cat-glass-bg: rgba(23, 7, 61, 0.911);
+    --cat-tab-text: #e0e0e0;
+    --cat-tab-hover-bg: rgba(35, 4, 77, 0.18);
+    --cat-tab-active-bg: rgba(19, 0, 31, 0.25);
+    --cat-tab-active-text: #e0e0e0;
+    --cat-tab-shadow: none;
+    
+    /* --- Card Colors --- */
+    --cat-card-bg: rgba(81, 22, 99, 0.8);
+    --cat-date-bg: rgba(64, 8, 82, 0.15);
+    
+    /* --- Item Colors --- */
+    --item-bg: rgba(255, 255, 255, 0.08);
+    --item-border: rgba(255, 255, 255, 0.1);
+    --item-hover-bg: rgba(142, 60, 250, 0.2);
+    --item-title-color: #e0e0e0;
+    --item-desc-color: #b0b0b0;
+    --item-icon-bg: rgba(142, 60, 250, 0.2);
+    --item-icon-color: #bb86fc;
+    --badge-bg: rgba(187, 134, 252, 0.2);
+    --badge-text: #bb86fc;
+    
+    /* --- Help Section Colors --- */
+    --cat-bg-gradient-1: rgba(71,12,71,.9);
+    --cat-bg-gradient-2: rgba(150,60,250,.2);
+    --cat-border-color: rgba(255, 255, 255, 0.1);
+    --cat-hover-bg: rgba(71,12,71,.9);
+    --cat-shadow: rgba(0, 0, 0, 0.3);
+    --cat-icon-bg-: rgba(142, 60, 250, 0.1);
+    --cat-icon-color: #cbd5e1;
+    --cat-label-color: #e2e8f0;
+    --cat-title-color: #f1f5f9;
+    --cat-desc-color: #cbd5e1;
+    --cat-hover-icon-bg: #790397;
+    --cat-gradient: #cd4ade;
+    --cat-hover-icon-color: white;
+    --cat-item-bg: rgba(255, 255, 255, 0.08);
+    --cat-item-border: rgba(255, 255, 255, 0.1);
+    --cat-item-hover-bg: rgba(205, 74, 222, 0.2);
+    --cat-item-title-color: #e0e0e0;
+    --cat-item-desc-color: #b0b0b0;
+    --cat-item-icon-bg: rgba(205, 74, 222, 0.2);
+    --cat-item-icon-color: #d946ef;
+    --cat-badge-bg: rgba(217, 70, 239, 0.2);
+    --cat-badge-text: #d946ef;
+    
+    /* --- Scrollbar Colors --- */
+    --scrollbar-track: rgba(187, 134, 252, 0.1);
+    --scrollbar-thumb: rgba(187, 134, 252, 0.3);
+    --scrollbar-thumb-hover: rgba(187, 134, 252, 0.5);
+    
+    /* --- CSS2 Dark Mode Variables --- */
     --cat-text-p: #f1f1f1;
     --cat-text-s: #dcdcdc;
     --cat-hd: #fff;
-    --cat-card-s: rgba(120,50,200,.25);
-    --cat-card-m: rgba(71,12,71,.9);
-    --cat-card-e: rgba(150,60,250,.2);
+    --cat-card: rgba(255, 255, 255, 0.08);
     --cat-card-bdr: rgba(160,80,255,.4);
     --cat-accent: #cbbfff;
     --cat-accent-h: #ff8fff;
@@ -35,10 +153,189 @@ html.dark-mode {
 }
 
 /* ====================================
-   Base & Layout Styles (Critical)
+   Base & Layout Styles
    ==================================== */
 
+.cat-items-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
 
+.cat-item-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.cat-item {
+    background: var(--cat-item-bg);
+    border: 1px solid var(--cat-item-border);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: var(--cat-transition);
+    position: relative;
+    overflow: hidden;
+    min-height: 100px;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.cat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: var(--cat-item-hover-bg);
+}
+
+/* ====================================
+   Icon & Content Layout
+   ==================================== */
+
+.cat-item-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--cat-item-icon-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--cat-item-icon-color);
+    transition: var(--cat-transition);
+}
+
+.cat-item:hover .cat-item-icon {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, var(--cat-hover-icon-bg-1), var(--cat-hover-icon-bg-2));
+}
+
+.cat-item:hover .cat-item-icon i {
+    color: var(--cat-hover-icon-color);
+}
+
+.cat-item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.cat-item-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--cat-item-title-color);
+    margin: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cat-item-desc {
+    font-size: 14px;
+    color: var(--cat-item-desc-color);
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.9;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ====================================
+   Badge Style
+   ==================================== */
+
+.cat-item-badge {
+    flex-shrink: 0;
+    background: var(--cat-badge-bg);
+    color: var(--cat-badge-text);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    min-width: 50px;
+    transition: var(--cat-transition);
+    border: 1px solid rgba(205, 74, 222, 0.2);
+}
+
+.cat-item:hover .cat-item-badge {
+    background: rgba(217, 70, 239, 0.3);
+    color: #d946ef;
+    transform: scale(1.05);
+    border-color: rgba(217, 70, 239, 0.4);
+}
+
+/* ====================================
+   Header Styles
+   ==================================== */
+
+.main-catagory-title-h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 20px 0;
+}
+
+.main-catagory-title-h1 .title-text {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+    background: linear-gradient(90deg, var(--cat-gradient-1) 0, #46e0e5 50%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+.main-catagory-title-h1 .catagory-description {
+    font-size: 16px;
+    color: var(--cat-desc-color);
+    margin-top: 12px;
+    max-width: 700px;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+/* ====================================
+   Glass Effect for Section
+   ==================================== */
+
+.cat-main-section {
+    position: relative;
+}
+
+.cat-main-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 0;
+}
+
+.cat-main-section .main-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* ====================================
+   CSS2 Specific Styles
+   ==================================== */
 
 .main-category-grid {
     display: grid;
@@ -47,7 +344,7 @@ html.dark-mode {
 }
 
 .main-catagory-item {
-    background: linear-gradient(to bottom right,var(--cat-card-s) 0,var(--cat-card-m) 75%,var(--cat-card-e) 100%);
+    background-color: var(--cat-card);
     border: 1px solid var(--cat-card-bdr);
     padding: 28px 25px;
     border-radius: 12px;
@@ -57,8 +354,17 @@ html.dark-mode {
     position: relative;
     text-decoration: none;
     color: inherit;
+    transition: var(--cat-transition);
     min-height: 100px;
     margin-bottom: 10px;
+    /* Adding hover effect from css1 */
+    transition: all 0.3s ease;
+}
+
+.main-catagory-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: var(--item-hover-bg);
 }
 
 .main-catagory-icon {
@@ -158,7 +464,7 @@ html.dark-mode {
 }
 
 /* ====================================
-   Info Panel & Actions (Non-critical)
+   Info Panel & Actions
    ==================================== */
 
 .info-panel {
@@ -225,89 +531,121 @@ html.dark-mode {
     color: var(--cat-accent);
 }
 
-
-/* ====================================
-   Dark Mode Specific Styles
-   ==================================== */
-
-html.dark-mode .main-catagory-item {
-    background: linear-gradient(135deg,var(--cat-card-s) 0,var(--cat-card-m) 50%,var(--cat-card-e) 100%);
-    border: 1px solid var(--cat-card-bdr);
-    color: var(--cat-text-p);
-}
-
-html.dark-mode .main-catagory-icon {
-    color: var(--cat-accent);
-}
-
-html.dark-mode .main-catagory-title {
-    color: var(--cat-text-p);
-}
-
-html.dark-mode .main-catagory-desc {
-    color: var(--cat-text-s);
-}
-
-html.dark-mode .top-info {
-    background: var(--cat-panel-bg);
-    border: 1px solid var(--cat-panel-bdr);
-}
-
-html.dark-mode .info-row {
-    color: var(--cat-panel-txt);
-}
-
-html.dark-mode .info-row i {
-    color: var(--cat-accent);
-}
-
-html.dark-mode .bottom-actions {
-    background: var(--cat-bottom-bg);
-    border: 1px solid var(--cat-panel-bdr);
-}
-
-html.dark-mode .bottom-actions i {
-    color: var(--cat-accent);
-}
-
-html.dark-mode .main-catagory-title-h1 {
-    color: var(--cat-hd);
-}
-
 /* ====================================
    Responsive Styles
    ==================================== */
 
-@media (max-width:768px) {
-    body {
-        padding: 100px 20px 50px;
-    }
-    
-    .main-catagory-title-h1 .title-text {
-        font-size: 20px;
-    }
-    
-    .main-catagory-title-h1 .catagory-description {
-        font-size: 13px;
-        max-width: 90%;
+@media (max-width: 1024px) {
+    .cat-items-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
     }
 }
 
-@media (max-width:600px) {
+@media (max-width: 768px) {
+    .cat-items-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .cat-item {
+        padding: 16px;
+        gap: 12px;
+        min-height: 90px;
+    }
+    
+    .cat-item-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+    
+    .cat-item-title {
+        font-size: 16px;
+    }
+    
+    .cat-item-desc {
+        font-size: 13px;
+        -webkit-line-clamp: 2;
+    }
+    
+    .cat-item-badge {
+        padding: 5px 10px;
+        font-size: 11px;
+        min-width: 45px;
+    }
+    
+    .main-catagory-title-h1 .title-text {
+        font-size: 28px;
+    }
+    
+    .main-catagory-title-h1 .catagory-description {
+        font-size: 15px;
+        padding: 0 10px;
+    }
+    
+    .main-category-grid {
+        gap: 20px;
+    }
+    
+    .main-catagory-item {
+        padding: 20px;
+        min-height: 90px;
+    }
+}
+
+@media (max-width: 600px) {
+    .cat-items-container {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .cat-item {
+        padding: 14px;
+        gap: 14px;
+        min-height: 85px;
+    }
+    
+    .cat-item-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .cat-item-title {
+        font-size: 15px;
+    }
+    
+    .cat-item-desc {
+        font-size: 12px;
+        -webkit-line-clamp: 2;
+    }
+    
+    .cat-item-badge {
+        padding: 4px 8px;
+        font-size: 10px;
+        min-width: 40px;
+    }
+    
+    .main-catagory-title-h1 .title-text {
+        font-size: 24px;
+    }
+    
+    .main-catagory-title-h1 .catagory-description {
+        font-size: 14px;
+    }
+    
     .main-category-grid {
         grid-template-columns: 1fr;
         gap: 5px;
     }
     
     .main-catagory-item {
-        background: linear-gradient(to bottom right,var(--cat-card-m) 0,var(--cat-card-m) 75%,rgba(235,244,248,.7) 100%);
         padding: 20px 15px;
         min-height: 90px;
         border-radius: 12px;
         gap: 20px;
     }
-    
-
     
     .main-catagory-title-h1 {
         font-size: 18px;

@@ -37,6 +37,81 @@
 
 
 
+// io
+  document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+  // io
+  document.addEventListener("keydown", function (e) {
+    if (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && e.key === "I") ||
+      (e.ctrlKey && e.key === "U")
+    ) {
+      e.preventDefault();
+    }
+  });
+
+
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+// Disable text selection
+document.addEventListener('selectstart', function(e) {
+  e.preventDefault();
+});
+
+// Disable drag (for images & content)
+document.addEventListener('dragstart', function(e) {
+  e.preventDefault();
+});
+
+// Optional: Prevent saving images via right-click or dragging
+document.querySelectorAll('img').forEach(function(img) {
+  img.setAttribute('draggable', 'false');
+  img.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+});
+
+
+// App Download
+  const downloadLink = document.getElementById('downloadLink');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const progressBar = document.getElementById('progressBar');
+  const progressPercent = document.getElementById('progressPercent');
+  const installBtn = document.getElementById('installBtn');
+  let downloadComplete = false;
+  let apkBlobUrl = '';
+
+  // Simulate download progress
+  downloadLink.addEventListener('click', function(e) {
+    if (!downloadComplete) {
+      e.preventDefault();
+      progressPercent.style.display = 'block';
+      let progress = 0;
+      const progressInterval = setInterval(() => {
+        progress += Math.floor(Math.random() * 10) + 5;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(progressInterval);
+          downloadComplete = true;
+          installBtn.style.display = 'block';
+          downloadLink.href = "/assets/ToolsBD.apk";
+          downloadBtn.classList.add('download-complete');
+        }
+        progressPercent.textContent = progress + '%';
+        progressBar.style.width = progress + '%';
+      }, 300);
+    }
+  });
+
+  // Try opening the APK file directly for install
+  installBtn.addEventListener('click', function(e) {
+    // Direct link to APK will prompt download or open install screen in some browsers
+    window.location.href = "/assets/ToolsBD.apk";
+  });
+
 
 
 
@@ -227,3 +302,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
+
+
+
+    // Scroll fast and smooth
+document.documentElement.style.scrollBehavior = "auto"; // default fast scroll
+
+// Optional: For smooth scroll on anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
+
+        target.scrollIntoView({
+            behavior: 'auto',  // fast scroll instead of smooth
+            block: 'start'
+        });
+    });
+});

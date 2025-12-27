@@ -1,7 +1,6 @@
-/* ===== CSS Variables (All in one place) ===== */
 :root {
     --bg-color: #0a0f1c;
-    --bg-overlay: url('/assets/home-bg.webp');
+    --bg-image: url('/assets/home-bg.webp');
     --bg-gradient: linear-gradient(135deg, #94f8ba 0%, #f35ef3 100%);
     --text-dark: #000;
     --text-light: #f1f5f9;
@@ -30,79 +29,126 @@ html.dark-mode {
     --hero-gradient: linear-gradient(90deg, #4ca7aa, #bb24bb, #8e3cfa);
 }
 
-/* ===== Base & Smooth Scroll ===== */
-/* Key fix for dark mode background issue */
-
-/* ===== Reset ===== */
+/* ===== COMPLETE RESET - NO EXTRA SPACE ===== */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    border: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
-    margin: 0;
-    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    line-height: 1;
 }
 
-/* ===== Desktop Body (1024px+) ===== */
+body > *:not(header) {
+  margin-top: 100px;
+}
+
 body {
-    margin: 100px 0px;
-    padding: 0;
+    margin: 0; 
     width: 100%;
     min-height: 100vh;
-    background: var(--bg-gradient) fixed !important;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    display: block;
+    position: relative;
     color: var(--text-dark);
     font-weight: 700;
     font-family: "Noto Sans Bengali", "Alkatra", "Archivo Black",
                  "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
+    overflow-x: hidden;
+    background: transparent;
 }
 
-html.dark-mode body {
-    background-color: #000;
-    background-image:
-        linear-gradient(rgba(1, 0, 3, 0.7), rgba(30, 10, 104, 0.7)),
-        url('/assets/home-bg.webp');
-    background-attachment: fixed;
+body::before {
+    content: '';
+    position: fixed;           /* fixed background */
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    /* Gradient dominate color */
+    background:
+        linear-gradient(
+            135deg,
+            rgba(154, 234, 245, 0.85),   /* প্রথম রঙ */
+            rgba(248, 138, 138, 0.85)    /* দ্বিতীয় রঙ */
+        ),
+        var(--bg-image);
+
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    color: var(--text-light);
+    background-attachment: fixed;
+
+    /* multiply বাদ দিয়ে default / normal রাখো */
+    background-blend-mode: normal;
 }
 
+
+
+
+/* Dark mode */
+html.dark-mode body::before {
+    background: 
+        linear-gradient(rgba(1, 0, 3, 0.85), rgba(30, 10, 104, 0.85)),
+        var(--bg-image);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-blend-mode: multiply;
+}
+
+/* Bengali font */
 :lang(bn), [lang="bn"] {
     font-family: "Hind Siliguri", "Galada", sans-serif;
 }
 
-/* ===== Tablet (768px to 1023px) ===== */
+/* ===== TABLET (768px to 1023px) ===== */
 @media (max-width: 1023px) {
+    html {
+        scroll-padding-top: 70px;
+    }
+  body > *:not(header) {
+    margin-top: 60px;
+  }
     body {
-        margin: 50px 0;
+        padding-top: 50px; /* Tablet header height */
+        padding-bottom: 50px;
+    }
+
+    body::before {
+        background-attachment: scroll;
     }
 }
 
-/* ===== Mobile (max 767px) ===== */
+/* ===== MOBILE (max 767px) ===== */
 @media (max-width: 767px) {
+    html {
+        scroll-padding-top: 50px;
+    }
+
     body {
-        margin: 0px;
-        margin-top: -20px;
-        padding: 0;
+        padding-top: 50px; /* Mobile header height */
+        padding-bottom: 50px; /* Mobile footer height */
+        overflow-x: hidden;
+    }
+
+    body::before {
+        background-attachment: scroll;
+    }
+
+    * {
+        max-width: 100%;
     }
 }
 
-/* ===== Extra Small Mobile (max 480px) ===== */
-@media (max-width: 480px) {
-    body {
-        margin: 0px;
-        padding: 0%;
-    }
-}
 
 /* ===== Stars Overlay ===== */
 .stars-overlay {
@@ -114,8 +160,8 @@ html.dark-mode .stars-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 9999;
     overflow: hidden;
@@ -146,6 +192,7 @@ html.dark-mode .star {
         opacity: 0;
     }
 }
+
 /* ===== Layout & Containers ===== */
 .container {
     max-width: 1200px;
@@ -155,7 +202,7 @@ html.dark-mode .star {
 .main-section {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 0px;
 }
 
 /* ===== Updates/Notice Board ===== */
@@ -781,11 +828,7 @@ html.dark-mode .star {
 
 
 /* ===== Category Bar ===== */
-.catbar-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+
 
 .catbar-box {
     display: flex;
@@ -1127,9 +1170,7 @@ html.dark-mode .img-cat-container {
 
 /* Tablet */
 @media (max-width: 1024px) {
-    .header {
-        margin-bottom: 0;
-    }
+
     
     .prayer-box {
         height: 100px;
@@ -1166,10 +1207,8 @@ html.dark-mode .img-cat-container {
   
     
     .main-section {
-        margin: 20px 0px !important;
-        width: 100%;
-        
-
+        margin: 10px auto;
+        padding: 0 10px;
     }
     
     .hero-box {
@@ -1465,7 +1504,7 @@ html.dark-mode .img-cat-container {
     }
     
     .app-modal-dialog {
-        max-width: 92vw;
+        max-width: 92%;
     }
 }
 

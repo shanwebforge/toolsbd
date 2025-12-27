@@ -1,39 +1,63 @@
+/* BASE STYLES */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 50px; /* কম space */
+  box-sizing: border-box;
+}
 
+/* FOOTER SECTION */
 .footer-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; /* optional inner spacing */
+  padding: 10px 15px 20px; /* bottom padding কম */
+  box-sizing: border-box;
 }
+
+/* TWO COLUMN CONTAINER */
+.two-column-container {
+  display: flex;
+  gap: 20px; /* কম gap */
+  margin-bottom: 00px;
+  flex-wrap: wrap;
+}
+
+/* LEFT & RIGHT BOX */
+.f-left-box, .f-right-box {
+  flex: 1;
+  min-width: 300px;
+}
+
 /* DOUBLE COLUMN CONTAINER */
 .double-column-container {
   display: flex;
-  justify-content: space-between; /* left/right spacing */
-  gap: 30px; 
-  
-  margin-bottom: 40px;
-  padding: 10px 10px;
+  justify-content: space-between;
+  gap: 20px; /* কম gap */
+  margin-bottom: 30px; /* কম margin */
+  padding: 0px; /* কম padding */
   background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
   border-radius: 15px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   backdrop-filter: blur(10px);
   box-sizing: border-box;
-  flex-wrap: wrap; /* allow wrapping if needed */
+  flex-wrap: wrap;
   border: 1px solid #ffffff;
 }
 
 /* INDIVIDUAL COLUMN BOX */
 .column-box {
-  flex: 1; /* auto width to fill space */
-  min-width: 45%; /* ensures 2 columns on mobile */
-  padding: 20px;
-
+  flex: 1;
+  min-width: 45%;
+  padding: 15px; /* কম padding */
   box-sizing: border-box;
 }
 
 .column-title {
-  font-size: 20px;
+  font-size: 18px; /* কম font-size */
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 10px; /* কম margin */
   color: #2c3e50;
 }
 
@@ -43,14 +67,14 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px; /* কম gap */
 }
 
 /* DOUBLE COLUMN LINKS WITH DOT */
 .column-links li {
   position: relative;
-  padding-left: 18px; /* space for the dot */
-  list-style: none;   /* remove default bullets */
+  padding-left: 15px; /* কম padding */
+  list-style: none;
 }
 
 .column-links li::before {
@@ -59,10 +83,10 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 6px;             
-  height: 6px;
-  background-color: #9b03a8; /* dot color */
-  border-radius: 50%;    
+  width: 5px; /* কম width */
+  height: 5px; /* কম height */
+  background-color: #9b03a8;
+  border-radius: 50%;
 }
 
 .column-links li:hover::before {
@@ -71,8 +95,8 @@
 
 .column-links li a {
   text-decoration: none;
-  font-size: 16px;
-  color: #6b5bcc; /* default link color */
+  font-size: 14px; /* কম font-size */
+  color: #6b5bcc;
   transition: color 0.3s;
 }
 
@@ -80,194 +104,103 @@
   color: #9b03a8;
 }
 
-
-
-
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-
-
-  .double-column-container {
-    gap: 0px !important;
-    padding: 5px;
-    margin-bottom: 20px;
-
-  }
-  .column-box {
-    flex: 1 1 45%; /* two columns side-by-side */
-
-  }
-  .column-title {
-    font-size: 18px;
-    font-family: "Alkatra";
-  }
-  .column-links li a {
-    font-size: 11px;
-  }
-    .two-column-container {
-    flex-direction: column; /* vertical stack */
-    margin-bottom: -5px !important;
-  }
-
-  .left-box, .right-box {
-    width: 100%;
-
-  } 
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
- /* ✅ Fixed CSS */
-  .download-section {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
-    border-radius: 15px;
-    margin: 40px auto;
-    max-width: 1160px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    border: #fff 1px solid;
-  }
-
-  .download-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 25px;
-    color: #333;
-    /* These make it completely non-interactive */
-    cursor: default;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .app-buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .store-btn {
-  
-    align-items: center;
-    gap: 10px;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 12px;
-    font-size: 16px;
-    text-decoration: none;
-    transition: opacity 0.3s ease;
-  }
-
-  .store-btn.playstore {
-    background: #3ddc84;
-  }
-
-  .store-btn.applestore {
-    background: #000;
-  }
-
-  .store-btn:hover {
-    opacity: 0.85;
-  }
-
-  .store-btn i {
-    font-size: 18px;
-  }
-
-   .social-container {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
-      flex-wrap: wrap;
-      margin-bottom: -10px;
-    }
-.share-title {
+/* DOWNLOAD SECTION */
+.download-section {
   text-align: center;
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: -5px !important;
-  margin-bottom: 10px;
-  font-weight: bold;
-  color: #333;
+  padding: 20px 10px; /* কম padding */
+  background: linear-gradient(135deg, rgba(239,179,241,0.8), rgba(179,219,241,0.8));
+  border-radius: 15px;
+  margin: 30px auto; /* কম margin */
+  max-width: 1200px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  border: #fff 1px solid;
 }
-    .social-container a {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 20px;
-      color: #333;
-      transition: 0.3s ease;
-      background: none;
-    }
 
-    .social-container a:hover {
-      border-color: #8e3cfa;
-      color: #8e3cfa;
-    }
+.download-title {
+  font-size: 1.5rem; /* কম font-size */
+  font-weight: bold;
+  margin-bottom: 15px; /* কম margin */
+  color: #333;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+  width: 100%;
+}
 
+.app-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* কম gap */
+  flex-wrap: wrap;
+}
 
+.store-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* কম gap */
+  color: white;
+  padding: 10px 15px; /* কম padding */
+  border-radius: 10px;
+  font-size: 14px; /* কম font-size */
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+  min-width: 140px; /* কম width */
+}
 
-  /* Dark mode */
-  html.dark-mode .download-section {
-    background: #1e293b;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
-  
-  html.dark-mode .download-title {
-    color: white;
-  }
+.store-btn.playstore {
+  background: #3ddc84;
+}
 
+.store-btn.applestore {
+  background: #000;
+}
 
-/* Responsive */
-@media (max-width: 768px) {
-  .download-section {
-  margin-left: 0px;
-  margin-right: 0px;
- }
- .download-title {
-  font-size: 18px;
-margin-top: -20px;
-margin-bottom: 15px;
-font-family: "Alkata";}
+.store-btn:hover {
+  opacity: 0.85;
+}
+
+.store-btn i {
+  font-size: 16px; /* কম font-size */
+}
+
+/* SOCIAL CONTAINER */
+.social-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* কম gap */
+  padding: 15px; /* কম padding */
+  flex-wrap: wrap;
+  margin-top: 15px; /* কম margin */
+}
 
 .social-container a {
-      width: 32px !important;
-      height: 32px !important;}
+  width: 40px; /* কম width */
+  height: 40px; /* কম height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 18px; /* কম font-size */
+  color: #333;
+  transition: 0.3s ease;
+  background: none;
 }
 
+.social-container a:hover {
+  border-color: #8e3cfa;
+  color: #8e3cfa;
+}
 
-
-
-
-
-
-
-/* FOOTER */
+/* FOOTER MENU */
 footer {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 55px; /* কম height */
   background: #fff;
   border-top: 1px solid #ccc;
   box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
@@ -286,74 +219,131 @@ footer {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 12px; /* কম font-size */
   font-weight: 600;
   transition: color 0.3s ease, transform 0.3s ease;
-  color: #8d8c8c; /* default gray */
+  color: #8d8c8c;
 }
 
-/* Home icon/text always green */
 .footer-menu a.home {
   color: #6b5bcc;
 }
+
 .footer-menu a.home i {
   color: #6b5bcc;
 }
 
-/* Other icons gray */
 .footer-menu a i {
-  font-size: 20px;
-  margin-bottom: 3px;
+  font-size: 18px; /* কম font-size */
+  margin-bottom: 2px; /* কম margin */
 }
 
-/* Active state highlights clicked link (other than home) */
 .footer-menu a.active {
   color: #6b5bcc;
 }
+
 .footer-menu a.active i {
   color: #6b5bcc;
 }
 
-/* Hover effect for all links */
 .footer-menu a:hover {
-  transform: translateY(-7px);
+  transform: translateY(-5px); /* কম transform */
   color: #000;
 }
+
 .footer-menu a:hover i {
   color: #000;
 }
 
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 0px; /* কম space */
+  }
 
-/* =========================
-   ONLY MOBILE (≤ 768px)
-   Desktop will NOT be affected
-========================= */
-@media screen and (max-width: 768px) {
+  .footer-section {
+    padding: 10px 10px 50px; /* কম padding */
+  }
+  
 
+  
+  .two-column-container {
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 0px;
+  }
+  
+  .double-column-container {
+    display: flex;
+    flex-direction: row !important;   /* column না */
+    flex-wrap: nowrap !important;     /* এক লাইনে */
+    gap: 8px;
+  }
+
+  .double-column-container .column-box {
+    flex: 0 0 50% !important; 
+    width: 50%;
+    min-width: 0 !important; 
+    padding: 20px;
+  }
+  
+  .column-box {
+    min-width: 100%;
+    padding: 10px;
+  }
+  
+  .column-title {
+    font-size: 16px;
+    font-family: "Alkatra", sans-serif;
+  }
+  
+  .column-links li a {
+    font-size: 13px;
+  }
+  
+  .download-section {
+    margin: 15px 0;
+    padding: 40px 10px;
+  }
+  
+  .download-title {
+    font-size: 16px;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    font-family: "Alkatra", sans-serif;
+  }
+  
+  .store-btn {
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    min-width: 120px;
+  }
+  
+  .social-container a {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    border-radius: 6px;
+  }
+  
   footer {
     height: 50px;
   }
-
+  
   .footer-menu a {
     font-size: 10px;
   }
-
+  
   .footer-menu a i {
     font-size: 16px;
   }
-
-  /* Mobile hover disable */
+  
   .footer-menu a:hover {
     transform: none;
-    color: #3b3b3b;
-  }
-
-  .footer-menu a:hover i {
-    color: #3b3b3b;
   }
 }
-
-
 
 /* DARK MODE */
 html.dark-mode .double-column-container {
@@ -362,33 +352,36 @@ html.dark-mode .double-column-container {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-html.dark-mode .column-box {
-
-  color: #f1f5f9;
-}
-
 html.dark-mode .column-title {
   color: #f1f5f9;
 }
 
 html.dark-mode .column-links li::before {
-  background-color: #9b03a8; /* dot color in dark mode */
+  background-color: #9b03a8;
 }
 
 html.dark-mode .column-links li:hover::before {
-  background-color: #55d6b3; /* hover dot in dark mode */
+  background-color: #55d6b3;
 }
 
 html.dark-mode .column-links li a {
-  color: #ccc; /* default link color in dark mode */
+  color: #ccc;
 }
 
 html.dark-mode .column-links li a:hover {
-  color: #9b03a8; /* hover link color in dark mode */
+  color: #9b03a8;
 }
 
+html.dark-mode .download-section {
+  background: #1e293b;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
 
-/* DARK MODE */
+html.dark-mode .download-title {
+  color: white;
+}
+
 html.dark-mode footer {
   background: #1e293b;
   border-top: 1px solid #333;

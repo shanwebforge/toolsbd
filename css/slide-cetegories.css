@@ -30,8 +30,8 @@
     --item-desc-color: #666;
     --item-icon-bg: rgba(142, 60, 250, 0.1);
     --item-icon-color: #8e3cfa;
-    --badge-bg: rgba(142, 60, 250, 0.15);
-    --badge-text: #8e3cfa;
+    --item-badge-bg: rgba(142, 60, 250, 0.15);
+    --item-badge-text: #8e3cfa;
     
     /* --- Scrollbar --- */
     --scrollbar-track: rgba(142, 60, 250, 0.1);
@@ -68,15 +68,15 @@ html.dark-mode {
     --item-desc-color: #b0b0b0;
     --item-icon-bg: rgba(142, 60, 250, 0.2);
     --item-icon-color: #bb86fc;
-    --badge-bg: rgba(187, 134, 252, 0.2);
-    --badge-text: #bb86fc;
+    --item-badge-bg: rgba(187, 134, 252, 0.2);
+    --item-badge-text: #bb86fc;
     
     /* --- Scrollbar --- */
     --scrollbar-track: rgba(187, 134, 252, 0.1);
     --scrollbar-thumb: rgba(187, 134, 252, 0.3);
     --scrollbar-thumb-hover: rgba(187, 134, 252, 0.5);
 }
-
+ 
 /* ====================================
    CSS Rules using Variables
    ==================================== */

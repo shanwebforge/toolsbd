@@ -325,6 +325,11 @@ html.dark-mode .star {
     padding: 0 0px;
 }
 .main-bg {
+    padding: 20px;
+    border-radius: 18px;
+    color: var(--slidecat-text-secondary);
+}
+.main-bg1 {
     background: linear-gradient(135deg, var(--slidecat-bg-start), var(--slidecat-bg-end));
     border: 1px solid var(--slidecat-border-light);
     padding: 20px;
@@ -961,7 +966,7 @@ html.dark-mode .star {
     border-radius: 50px;
     font-weight: 600;
     font-size: 15px;
-    margin: 25px auto;
+    margin: 10px auto;
     box-shadow: 0 4px 15px var(--badge-shadow);
     position: relative;
     overflow: hidden;
@@ -1021,19 +1026,20 @@ html.dark-mode .star {
     font-size: 1.1rem;
     color: var(--hero-description-color);
     line-height: 1.7;
-    margin-bottom: 30px;
+    margin: 0 auto 30px auto; /* এই লাইনটি গুরুত্বপূর্ণ */
     max-width: 800px;
     font-weight: 400;
     text-align: center;
-    justify-content: center;
+    display: block; /* নিশ্চিত করুন এটি block element */
 }
 
 /* Hero Links Container */
 .hero-link-shape {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 40px;
+    margin: 20px auto; /* বা margin-top: 40px; */
+    text-align: center;
+    justify-content: center;
 }
 
 .hero-link-bg,
@@ -1148,8 +1154,8 @@ html.dark-mode .star {
     }
     
     .performance-badge {
-        padding: 10px 20px;
-        font-size: 14px;
+        padding: 6px 10px;
+        font-size: 12px;
     }
 }
 
@@ -1200,26 +1206,26 @@ html.dark-mode .star {
     }
     
     .hero-link-shape {
-        flex-direction: column;
+        flex-direction: row;
         gap: 12px;
         margin-top: 30px;
     }
     
     .hero-link-bg,
     .hero-link-bg1 {
-        width: 100%;
-        padding: 14px 20px;
+
+        padding: 8px 10px;
         font-size: 16px;
     }
     
     .performance-badge {
-        padding: 10px 18px;
-        font-size: 13px;
+        padding: 6px 10px;
+        font-size: 10px;
         margin-bottom: 20px;
     }
     
     .performance-badge i {
-        font-size: 16px;
+        font-size: 10px;
     }
 }
 

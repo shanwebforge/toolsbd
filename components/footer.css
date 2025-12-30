@@ -75,10 +75,21 @@ body {
 
 /* FOOTER SECTION */
 .footer-section {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 10px 15px 20px;
   box-sizing: border-box;
+  background: linear-gradient(135deg, var(--footer-bg-gradient-1), var(--footer-bg-gradient-2));
+  
+  /* Top shadow with blur */
+  box-shadow: 
+    0 -4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 -2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+html.dark-mode .footer-section {
+  --footer-shadow-top: 0 -4px 15px -1px rgba(0, 0, 0, 0.3);
+  --footer-shadow-bottom: 0 -2px 8px -1px rgba(0, 0, 0, 0.2);
 }
 
 /* TWO COLUMN CONTAINER */
@@ -102,13 +113,11 @@ body {
   gap: 20px;
   margin-bottom: 30px;
   padding: 0px;
-  background: linear-gradient(135deg, var(--footer-bg-gradient-1), var(--footer-bg-gradient-2));
   border-radius: 15px;
   box-shadow: 0 4px 12px var(--footer-shadow);
   backdrop-filter: blur(10px);
   box-sizing: border-box;
   flex-wrap: wrap;
-  border: 1px solid var(--footer-border-color);
 }
 
 /* INDIVIDUAL COLUMN BOX */
@@ -173,12 +182,11 @@ body {
 .download-section {
   text-align: center;
   padding: 20px 10px;
-  background: linear-gradient(135deg, var(--footer-download-bg-1), var(--footer-download-bg-2));
+
   border-radius: 15px;
   margin: 30px auto;
-  max-width: 1200px;
+
   box-shadow: 0 5px 20px var(--footer-download-shadow);
-  border: 1px solid var(--footer-download-border);
 }
 
 .download-title {

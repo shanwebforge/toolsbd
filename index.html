@@ -200,9 +200,133 @@
       });
     }
   </script>
+
+  
 </head>
 
 <body>
+
+     <!-- DESKTOP LAYOUT -->
+    <div class="desktop-layout">
+        <!-- LEFT PANEL (Desktop Only) -->
+        <aside class="left-panel">
+            <!-- Logo -->
+            <div class="panel-logo">
+                <i class="fas fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="panel-nav">
+                <!-- Main Section -->
+                <div class="nav-section">
+                    <div class="section-title">Main</div>
+                    <ul>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="nav-text">Analytics</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-users"></i>
+                                <span class="nav-text">Users</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="nav-text">Sales</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Settings Section -->
+                <div class="nav-section">
+                    <div class="section-title">Settings</div>
+                    <ul>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-cog"></i>
+                                <span class="nav-text">General</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-shield-alt"></i>
+                                <span class="nav-text">Security</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-bell"></i>
+                                <span class="nav-text">Notifications</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-palette"></i>
+                                <span class="nav-text">Appearance</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- About Section -->
+                <div class="nav-section">
+                    <div class="section-title">About</div>
+                    <ul>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="nav-text">About Us</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-question-circle"></i>
+                                <span class="nav-text">Help & Support</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-file-alt"></i>
+                                <span class="nav-text">Documentation</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-star"></i>
+                                <span class="nav-text">Rate Us</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <!-- Panel Bottom -->
+            <div class="panel-bottom">
+                <div class="user-info">
+                    <div class="user-avatar">AJ</div>
+                    <div class="user-details">
+                        <h4>Admin User</h4>
+                        <p>System Administrator</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <main class="right-content">
+        
   <div class="stars-overlay"></div>
 
   <!-- Content sections -->
@@ -236,29 +360,24 @@
     <a href="#" class="seemore">View All</a>
   </div>
   </div>
-  <div id="count-section">লোড হচ্ছে...</div>
+  <div id="count-sections"></div>
 
-  <!-- 🔔 App Download Popup -->
-  <div id="appDownloadModal" class="app-modal" aria-hidden="true" role="dialog" aria-labelledby="appModalTitle">
-    <div class="app-modal-backdrop"></div>
-    <div class="app-modal-dialog" role="document">
-      <button class="app-modal-close" id="appModalClose" aria-label="Close">&times;</button>
-      <div class="app-container">
-        <div class="download-note">এই অ্যাপটি Android-এর জন্য তৈরি</div>
-        <div class="download-wrapper"></div>
-        <button class="install-btn" id="installBtn" style="display: none;">⚡ Install Now</button>
-        <small class="install-note">⚠️ Install Now বাটনে ক্লিক করলে যদি ইনস্টল না হয়, তাহলে notification bar থেকে ফাইলটি খুলে Install করুন।</small>
-        <a href="/assets/ToolsBD.apk" download class="download-link" id="downloadLink">
-          <button class="appbtn" id="downloadBtn">
-            <span class="btn-text">📲 অ্যাপ ডাউনলোড করুন</span>
-            <span class="progress-bar" id="progressBar"></span>
-            <span class="progress-percent" id="progressPercent" style="display: none;">0%</span>
-          </button>
-        </a>
-      </div>
+            </main>
     </div>
-  </div>
-
+    <script>
+        // Simple JavaScript for active link state (optional)
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
   <!-- Deferred scripts -->
   <script defer src="/scripts/dpop.js"></script>
   <script defer src="/scripts/sadow.js"></script>

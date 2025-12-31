@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Left Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== GLOBAL VARIABLES ===== */
+        :root {
+            --primary-color: #6b5bcc;
+            --secondary-color: #9b03a8;
+            --sidebar-bg: #ffffff;
+            --border-color: #dee2e6;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+        }
+
+        /* ===== DESKTOP LAYOUT ===== */
+        .desktop-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ===== LEFT PANEL (Desktop Only) ===== */
+        .left-panel {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 20px 0;
+            display: none; /* Hidden by default for mobile */
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 90;
+        }
+
+        /* Left Panel Logo */
+        .panel-logo {
+            padding: 0 25px 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+        }
+
+        .panel-logo i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .panel-logo span {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Navigation Menu */
+        .panel-nav {
+            padding: 0 20px;
+            flex-grow: 1;
+        }
+
+        .nav-section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            padding-left: 10px;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover {
+            background-color: rgba(107, 91, 204, 0.1);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .nav-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Panel Bottom */
+        .panel-bottom {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background-color: rgba(107, 91, 204, 0.1);
+            border-radius: 10px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .user-details h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .user-details p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== RIGHT CONTENT ===== */
+        .right-content {
+            flex: 1;
+            margin-left: 0;
+            width: 100%;
+            padding: 20px;
+        }
+
+        /* ===== DESKTOP MEDIA QUERY ===== */
+        @media (min-width: 992px) {
+            .left-panel {
+                display: flex; /* Show on desktop */
+            }
+            
+            .right-content {
+                margin-left: 280px; /* Push content right when panel is visible */
+                width: calc(100% - 280px);
+            }
+        }
+
+        /* ===== MOBILE HIDDEN ===== */
+        @media (max-width: 991px) {
+            .left-panel {
+                display: none !important; /* Force hide on mobile */
+            }
+            
+            .right-content {
+                margin-left: 0;
+                width: 100%;
+            }
+        }
+
+        /* Demo Content */
+        .demo-content {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        
+        .demo-content h2 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .demo-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- DESKTOP LAYOUT -->
+    <div class="desktop-layout">
+        <!-- LEFT PANEL (Desktop Only) -->
+        <aside class="left-panel">
+            <!-- Logo -->
+            <div class="panel-logo">
+                <i class="fas fa-chart-pie"></i>
+                <span>Dashboard</span>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="panel-nav">
+                <!-- Main Section -->
+                <div class="nav-section">
+                    <div class="section-title">Main</div>
+                    <ul>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-chart-line"></i>
+                                <span class="nav-text">Analytics</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-users"></i>
+                                <span class="nav-text">Users</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="nav-text">Sales</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Settings Section -->
+                <div class="nav-section">
+                    <div class="section-title">Settings</div>
+                    <ul>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-cog"></i>
+                                <span class="nav-text">General</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-shield-alt"></i>
+                                <span class="nav-text">Security</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-bell"></i>
+                                <span class="nav-text">Notifications</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-palette"></i>
+                                <span class="nav-text">Appearance</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- About Section -->
+                <div class="nav-section">
+                    <div class="section-title">About</div>
+                    <ul>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="nav-text">About Us</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-question-circle"></i>
+                                <span class="nav-text">Help & Support</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-file-alt"></i>
+                                <span class="nav-text">Documentation</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-star"></i>
+                                <span class="nav-text">Rate Us</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <!-- Panel Bottom -->
+            <div class="panel-bottom">
+                <div class="user-info">
+                    <div class="user-avatar">AJ</div>
+                    <div class="user-details">
+                        <h4>Admin User</h4>
+                        <p>System Administrator</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- RIGHT CONTENT -->
+        <main class="right-content">
+
+        </main>
+    </div>
+
+    <script>
+        // Simple JavaScript for active link state (optional)
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

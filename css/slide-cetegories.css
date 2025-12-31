@@ -82,6 +82,16 @@ html.dark-mode {
    ==================================== */
 
 /* MAIN WRAPPER */
+.slide-cat-section {
+    all: unset !important; /* Reset everything */
+    display: block !important;
+    width: 100% !important;
+    max-width: 1400px !important;
+    padding: 0 20px !important;
+    margin: 20px auto !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+}
 .sc-slide-cat-container {
     background: linear-gradient(135deg, var(--slidecat-bg-start), var(--slidecat-bg-end));
     width: 100%; 

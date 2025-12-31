@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* ===== GLOBAL VARIABLES ===== */
+        :root {
+            /* Light mode colors */
+            --primary-color: #6b5bcc;
+            --primary-light: #8a7dff;
+            --secondary-color: #9b03a8;
+            --success-color: #3ddc84;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+            
+            /* Background colors */
+            --body-bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --header-bg: #ffffff;
+            --sidebar-bg: #2d3246;
+            
+            /* Text colors */
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --text-light: #8d8c8c;
+            --text-white: #ffffff;
+            
+            /* Border and shadow */
+            --border-color: #dee2e6;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --shadow-hover: rgba(0, 0, 0, 0.12);
+            
+            /* Chart colors */
+            --chart-color-1: #6b5bcc;
+            --chart-color-2: #9b03a8;
+            --chart-color-3: #3ddc84;
+            --chart-color-4: #ffc107;
+            --chart-color-5: #17a2b8;
+            --chart-color-6: #dc3545;
+            --chart-color-7: #6f42c1;
+            --chart-color-8: #fd7e14;
+        }
+
+        html.dark-mode {
+            /* Dark mode colors */
+            --primary-color: #8a7dff;
+            --primary-light: #6b5bcc;
+            --secondary-color: #b967c0;
+            --success-color: #3ddc84;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --info-color: #17a2b8;
+            
+            /* Background colors */
+            --body-bg: #1a1d28;
+            --card-bg: #2d3246;
+            --header-bg: #2d3246;
+            --sidebar-bg: #252a3d;
+            
+            /* Text colors */
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --text-light: #8d8c8c;
+            --text-white: #ffffff;
+            
+            /* Border and shadow */
+            --border-color: #3e4459;
+            --shadow-color: rgba(0, 0, 0, 0.25);
+            --shadow-hover: rgba(0, 0, 0, 0.35);
+            
+            /* Chart colors */
+            --chart-color-1: #8a7dff;
+            --chart-color-2: #b967c0;
+            --chart-color-3: #3ddc84;
+            --chart-color-4: #ffc107;
+            --chart-color-5: #17a2b8;
+            --chart-color-6: #dc3545;
+            --chart-color-7: #a98fff;
+            --chart-color-8: #fd9843;
+        }
+
+        /* ===== BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--body-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 250px;
+            background-color: var(--sidebar-bg);
+            color: var(--text-white);
+            padding: 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.3s;
+        }
+
+        .logo {
+            padding: 0 20px 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            padding: 0 15px;
+        }
+
+        .nav-item {
+            margin-bottom: 8px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+        }
+
+        .nav-link.active {
+            background-color: var(--primary-color);
+            color: var(--text-white);
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .nav-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
+            padding: 20px;
+            max-width: calc(100% - 250px);
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            background-color: var(--header-bg);
+            padding: 15px 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .page-title h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .page-title p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            padding: 10px 15px 10px 40px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            width: 250px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(107, 91, 204, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .action-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--danger-color);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 10px;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border: 3px solid var(--card-bg);
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .user-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .user-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== STATS SUMMARY ===== */
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+        }
+
+        .stat-card.visitors::before {
+            background-color: var(--chart-color-1);
+        }
+
+        .stat-card.revenue::before {
+            background-color: var(--chart-color-2);
+        }
+
+        .stat-card.conversion::before {
+            background-color: var(--chart-color-3);
+        }
+
+        .stat-card.users::before {
+            background-color: var(--chart-color-4);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-hover);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .stat-icon.visitors {
+            background-color: var(--chart-color-1);
+        }
+
+        .stat-icon.revenue {
+            background-color: var(--chart-color-2);
+        }
+
+        .stat-icon.conversion {
+            background-color: var(--chart-color-3);
+        }
+
+        .stat-icon.users {
+            background-color: var(--chart-color-4);
+        }
+
+        .stat-info h3 {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .stat-change {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .stat-change.positive {
+            color: var(--success-color);
+        }
+
+        .stat-change.negative {
+            color: var(--danger-color);
+        }
+
+        /* ===== CHARTS CONTAINER ===== */
+        .charts-section {
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .chart-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .chart-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .time-filter {
+            padding: 7px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .time-filter:hover {
+            border-color: var(--primary-color);
+        }
+
+        .time-filter:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(107, 91, 204, 0.1);
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+
+        /* ===== DATA TABLES ===== */
+        .tables-section {
+            margin-bottom: 30px;
+        }
+
+        .tables-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .table-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .table-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .view-all {
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .view-all:hover {
+            color: var(--secondary-color);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .data-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 12px 15px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .data-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .data-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        .data-table tr:hover {
+            background-color: rgba(107, 91, 204, 0.05);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .status-badge.active {
+            background-color: rgba(61, 220, 132, 0.2);
+            color: var(--success-color);
+        }
+
+        .status-badge.pending {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: var(--warning-color);
+        }
+
+        .status-badge.inactive {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: var(--danger-color);
+        }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .charts-grid,
+            .tables-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                max-width: 100%;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .header-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .search-box input {
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stats-summary {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .stat-card {
+                padding: 18px;
+            }
+            
+            .stat-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .stat-value {
+                font-size: 1.6rem;
+            }
+            
+            .chart-wrapper {
+                height: 250px;
+            }
+            
+            .chart-card,
+            .table-card {
+                padding: 18px;
+            }
+            
+            .header-controls {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .search-box input {
+                width: 100%;
+            }
+            
+            .header-actions {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .main-content {
+                padding: 15px;
+            }
+            
+            .stats-summary {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-wrapper {
+                height: 220px;
+            }
+            
+            .user-info {
+                display: none;
+            }
+            
+            .data-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .chart-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .chart-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .time-filter {
+                flex-grow: 1;
+                text-align: center;
+            }
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 101;
+        }
+
+        @media (max-width: 1200px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="fas fa-chart-pie"></i>
+            <span>StatDash Pro</span>
+        </div>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span class="nav-text">Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span class="nav-text">Users</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="nav-text">Sales</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cogs"></i>
+                        <span class="nav-text">Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="nav-text">Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-bell"></i>
+                        <span class="nav-text">Notifications</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="nav-text">Help & Support</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div style="padding: 20px 15px; margin-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+            <div class="nav-item">
+                <a href="#" class="nav-link" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                    <span class="nav-text">Dark Mode</span>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="page-title">
+                <h1>Statistics Dashboard</h1>
+                <p>Monitor your key metrics and performance indicators</p>
+            </div>
+            
+            <div class="header-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search reports, metrics, users...">
+                </div>
+                
+                <div class="header-actions">
+                    <div class="action-btn" id="fullscreenToggle">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                    <div class="action-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-avatar">AJ</div>
+                        <div class="user-info">
+                            <h4>Admin User</h4>
+                            <p>System Administrator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- STATS SUMMARY -->
+        <section class="stats-summary">
+            <div class="stat-card visitors">
+                <div class="stat-icon visitors">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Total Visitors</h3>
+                    <div class="stat-value">42,851</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>18.5% from last month</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card revenue">
+                <div class="stat-icon revenue">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Total Revenue</h3>
+                    <div class="stat-value">$32,580</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>12.2% from last month</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card conversion">
+                <div class="stat-icon conversion">
+                    <i class="fas fa-percentage"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>Conversion Rate</h3>
+                    <div class="stat-value">5.8%</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>2.1% from last month</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stat-card users">
+                <div class="stat-icon users">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>New Users</h3>
+                    <div class="stat-value">2,418</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>24.8% from last month</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHARTS SECTION -->
+        <section class="charts-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Analytics Overview</h2>
+                    <p class="section-subtitle">Visual representation of key performance metrics</p>
+                </div>
+            </div>
+            
+            <div class="charts-grid">
+                <!-- LINE CHART -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Visitor Trends</h3>
+                        <div class="chart-controls">
+                            <select class="time-filter" id="lineChartFilter">
+                                <option value="week">Last 7 Days</option>
+                                <option value="month" selected>Last 30 Days</option>
+                                <option value="quarter">Last 3 Months</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="lineChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- BAR CHART -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Revenue by Category</h3>
+                        <div class="chart-controls">
+                            <select class="time-filter" id="barChartFilter">
+                                <option value="month" selected>This Month</option>
+                                <option value="quarter">This Quarter</option>
+                                <option value="year">This Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="barChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- PIE CHART -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">User Distribution</h3>
+                        <div class="chart-controls">
+                            <select class="time-filter" id="pieChartFilter">
+                                <option value="region" selected>By Region</option>
+                                <option value="age">By Age Group</option>
+                                <option value="device">By Device</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- DUAL AXIS CHART -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3 class="chart-title">Performance Metrics</h3>
+                        <div class="chart-controls">
+                            <select class="time-filter" id="dualChartFilter">
+                                <option value="week" selected>Weekly</option>
+                                <option value="month">Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="dualAxisChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DATA TABLES -->
+        <section class="tables-section">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Recent Activities & Data</h2>
+                    <p class="section-subtitle">Detailed view of user activities and transactions</p>
+                </div>
+            </div>
+            
+            <div class="tables-grid">
+                <!-- RECENT ACTIVITIES TABLE -->
+                <div class="table-card">
+                    <div class="table-title">
+                        <span>Recent Activities</span>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Name</th>
+                                    <th>Activity</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#0012</td>
+                                    <td>John Smith</td>
+                                    <td>Product Purchase</td>
+                                    <td><span class="status-badge active">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#0013</td>
+                                    <td>Emma Johnson</td>
+                                    <td>Subscription Renewal</td>
+                                    <td><span class="status-badge active">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#0014</td>
+                                    <td>Michael Brown</td>
+                                    <td>Account Upgrade</td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#0015</td>
+                                    <td>Sarah Williams</td>
+                                    <td>Service Request</td>
+                                    <td><span class="status-badge active">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>#0016</td>
+                                    <td>David Miller</td>
+                                    <td>Product Return</td>
+                                    <td><span class="status-badge inactive">Cancelled</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- TOP PERFORMERS TABLE -->
+                <div class="table-card">
+                    <div class="table-title">
+                        <span>Top Performers</span>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Revenue</th>
+                                    <th>Growth</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Alex Johnson</td>
+                                    <td>Sales</td>
+                                    <td>$12,450</td>
+                                    <td class="positive">+24.5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Maria Garcia</td>
+                                    <td>Marketing</td>
+                                    <td>$9,820</td>
+                                    <td class="positive">+18.2%</td>
+                                </tr>
+                                <tr>
+                                    <td>Robert Chen</td>
+                                    <td>Development</td>
+                                    <td>$8,560</td>
+                                    <td class="positive">+12.7%</td>
+                                </tr>
+                                <tr>
+                                    <td>Lisa Thompson</td>
+                                    <td>Support</td>
+                                    <td>$7,340</td>
+                                    <td class="positive">+9.8%</td>
+                                </tr>
+                                <tr>
+                                    <td>James Wilson</td>
+                                    <td>Operations</td>
+                                    <td>$6,890</td>
+                                    <td class="negative">-3.2%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Initialize charts and functionality
+        document.addEventListener("DOMContentLoaded", function() {
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const themeText = themeToggle.querySelector('.nav-text');
+            
+            // Check for saved theme or prefer-color-scheme
+            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+            const savedTheme = localStorage.getItem('theme');
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDarkScheme.matches)) {
+                document.documentElement.classList.add('dark-mode');
+                themeIcon.className = 'fas fa-sun';
+                themeText.textContent = 'Light Mode';
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark-mode');
+                if (document.documentElement.classList.contains('dark-mode')) {
+                    themeIcon.className = 'fas fa-sun';
+                    themeText.textContent = 'Light Mode';
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.className = 'fas fa-moon';
+                    themeText.textContent = 'Dark Mode';
+                    localStorage.setItem('theme', 'light');
+                }
+                updateChartColors();
+            });
+
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const sidebar = document.getElementById('sidebar');
+            
+            mobileMenuToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                if (sidebar.classList.contains('active')) {
+                    icon.className = 'fas fa-times';
+                } else {
+                    icon.className = 'fas fa-bars';
+                }
+            });
+
+            // Fullscreen toggle
+            const fullscreenToggle = document.getElementById('fullscreenToggle');
+            const fullscreenIcon = fullscreenToggle.querySelector('i');
+            
+            fullscreenToggle.addEventListener('click', function() {
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen().then(() => {
+                        fullscreenIcon.className = 'fas fa-compress';
+                    });
+                } else {
+                    document.exitFullscreen().then(() => {
+                        fullscreenIcon.className = 'fas fa-expand';
+                    });
+                }
+            });
+
+            // Initialize charts
+            initCharts();
+            
+            // Set active navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Close mobile menu after selection
+                    if (window.innerWidth <= 1200) {
+                        sidebar.classList.remove('active');
+                        mobileMenuToggle.querySelector('i').className = 'fas fa-bars';
+                    }
+                });
+            });
+
+            // Add click handlers for view all links
+            const viewAllLinks = document.querySelectorAll('.view-all');
+            viewAllLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('This would navigate to the full data view in a real application.');
+                });
+            });
+        });
+
+        // Initialize all charts
+        function initCharts() {
+            // Line Chart
+            const lineCtx = document.getElementById('lineChart').getContext('2d');
+            window.lineChart = new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Website Visitors',
+                        data: [12000, 15000, 18000, 22000, 25000, 28000, 32000, 35000, 38000, 42000, 45000, 48000],
+                        borderColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-color-1'),
+                        backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-color-1') + '20',
+                        borderWidth: 3,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary'),
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--border-color') + '40'
+                            },
+                            ticks: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary')
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--border-color') + '40'
+                            },
+                            ticks: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary'),
+                                callback: function(value) {
+                                    return value / 1000 + 'k';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Bar Chart
+            const barCtx = document.getElementById('barChart').getContext('2d');
+            window.barChart = new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Electronics', 'Fashion', 'Home & Kitchen', 'Books', 'Health', 'Sports'],
+                    datasets: [{
+                        label: 'Revenue ($)',
+                        data: [12500, 8200, 5400, 3100, 4800, 2600],
+                        backgroundColor: [
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-1'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-2'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-3'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-4'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-5'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-6')
+                        ],
+                        borderColor: [
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-1'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-2'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-3'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-4'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-5'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-6')
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--border-color') + '40'
+                            },
+                            ticks: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary')
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--border-color') + '40'
+                            },
+                            ticks: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary'),
+                                callback: function(value) {
+                                    return '$' + value / 1000 + 'k';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Pie Chart
+            const pieCtx = document.getElementById('pieChart').getContext('2d');
+            window.pieChart = new Chart(pieCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['North America', 'Europe', 'Asia', 'South America', 'Africa', 'Australia'],
+                    datasets: [{
+                        data: [35, 25, 20, 10, 7, 3],
+                        backgroundColor: [
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-1'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-2'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-3'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-4'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-5'),
+                            getComputedStyle(document.documentElement).getPropertyValue('--chart-color-6')
+                        ],
+                        borderWidth: 1,
+                        borderColor: getComputedStyle(document.documentElement).getPropertyValue('--card-bg')
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary'),
+                                font: {
+                                    size: 11
+                                },
+                                padding: 15
+                            }
+                        }
+                    },
+                    cutout: '65%'
+                }
+            });
+
+            // Dual Axis Chart
+            const dualCtx = document.getElementById('dualAxisChart').getContext('2d');
+            window.dualAxisChart = new Chart(dualCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6', 'Week 7', 'Week 8'],
+                    datasets: [
+                        {
+                            label: 'Revenue ($)',
+                            data: [4200, 4800, 5200, 5800, 6200, 6800, 7200, 7800],
+                            borderColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-color-1'),
+                            backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-color-1') + '20',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: 'Users',
+                            data: [120, 150, 180, 210, 240, 270, 300, 330],
+                            borderColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-color-3'),
+                            backgroundColor: getComputedStyle(document.documentElement).getPropertyValue('--chart-color-3') + '20',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-primary'),
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--border-color') + '40'
+                            },
+                            ticks: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary')
+                            }
+                        },
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            beginAtZero: true,
+                            grid: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--border-color') + '40'
+                            },
+                            ticks: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary'),
+                                callback: function(value) {
+                                    return '$' + value;
+                                }
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            beginAtZero: true,
+                            grid: {
+                                drawOnChartArea: false,
+                            },
+                            ticks: {
+                                color: getComputedStyle(document.documentElement).getPropertyValue('--text-secondary')
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update chart colors when theme changes
+        function updateChartColors() {
+            const isDarkMode = document.documentElement.classList.contains('dark-mode');
+            
+            // Update line chart
+            if (window.lineChart) {
+                lineChart.data.datasets[0].borderColor = isDarkMode ? '#8a7dff' : '#6b5bcc';
+                lineChart.data.datasets[0].backgroundColor = isDarkMode ? 'rgba(138, 125, 255, 0.1)' : 'rgba(107, 91, 204, 0.1)';
+                lineChart.options.scales.x.grid.color = isDarkMode ? 'rgba(62, 68, 89, 0.4)' : 'rgba(222, 226, 230, 0.4)';
+                lineChart.options.scales.y.grid.color = isDarkMode ? 'rgba(62, 68, 89, 0.4)' : 'rgba(222, 226, 230, 0.4)';
+                lineChart.options.scales.x.ticks.color = isDarkMode ? '#adb5bd' : '#6c757d';
+                lineChart.options.scales.y.ticks.color = isDarkMode ? '#adb5bd' : '#6c757d';
+                lineChart.options.plugins.legend.labels.color = isDarkMode ? '#f8f9fa' : '#212529';
+                lineChart.update();
+            }
+            
+            // Update bar chart
+            if (window.barChart) {
+                barChart.data.datasets[0].backgroundColor = isDarkMode 
+                    ? ['#8a7dff', '#b967c0', '#3ddc84', '#ffc107', '#17a2b8', '#dc3545']
+                    : ['#6b5bcc', '#9b03a8', '#3ddc84', '#ffc107', '#17a2b8', '#dc3545'];
+                barChart.data.datasets[0].borderColor = isDarkMode 
+                    ? ['#8a7dff', '#b967c0', '#3ddc84', '#ffc107', '#17a2b8', '#dc3545']
+                    : ['#6b5bcc', '#9b03a8', '#3ddc84', '#ffc107', '#17a2b8', '#dc3545'];
+                barChart.options.scales.x.grid.color = isDarkMode ? 'rgba(62, 68, 89, 0.4)' : 'rgba(222, 226, 230, 0.4)';
+                barChart.options.scales.y.grid.color = isDarkMode ? 'rgba(62, 68, 89, 0.4)' : 'rgba(222, 226, 230, 0.4)';
+                barChart.options.scales.x.ticks.color = isDarkMode ? '#adb5bd' : '#6c757d';
+                barChart.options.scales.y.ticks.color = isDarkMode ? '#adb5bd' : '#6c757d';
+                barChart.update();
+            }
+            
+            // Update pie chart
+            if (window.pieChart) {
+                pieChart.data.datasets[0].backgroundColor = isDarkMode 
+                    ? ['#8a7dff', '#b967c0', '#3ddc84', '#ffc107', '#17a2b8', '#dc3545']
+                    : ['#6b5bcc', '#9b03a8', '#3ddc84', '#ffc107', '#17a2b8', '#dc3545'];
+                pieChart.data.datasets[0].borderColor = isDarkMode ? '#2d3246' : '#ffffff';
+                pieChart.options.plugins.legend.labels.color = isDarkMode ? '#f8f9fa' : '#212529';
+                pieChart.update();
+            }
+            
+            // Update dual axis chart
+            if (window.dualAxisChart) {
+                dualAxisChart.data.datasets[0].borderColor = isDarkMode ? '#8a7dff' : '#6b5bcc';
+                dualAxisChart.data.datasets[0].backgroundColor = isDarkMode ? 'rgba(138, 125, 255, 0.1)' : 'rgba(107, 91, 204, 0.1)';
+                dualAxisChart.data.datasets[1].borderColor = isDarkMode ? '#3ddc84' : '#3ddc84';
+                dualAxisChart.data.datasets[1].backgroundColor = isDarkMode ? 'rgba(61, 220, 132, 0.1)' : 'rgba(61, 220, 132, 0.1)';
+                dualAxisChart.options.scales.x.grid.color = isDarkMode ? 'rgba(62, 68, 89, 0.4)' : 'rgba(222, 226, 230, 0.4)';
+                dualAxisChart.options.scales.y.grid.color = isDarkMode ? 'rgba(62, 68, 89, 0.4)' : 'rgba(222, 226, 230, 0.4)';
+                dualAxisChart.options.scales.x.ticks.color = isDarkMode ? '#adb5bd' : '#6c757d';
+                dualAxisChart.options.scales.y.ticks.color = isDarkMode ? '#adb5bd' : '#6c757d';
+                dualAxisChart.options.scales.y1.ticks.color = isDarkMode ? '#adb5bd' : '#6c757d';
+                dualAxisChart.options.plugins.legend.labels.color = isDarkMode ? '#f8f9fa' : '#212529';
+                dualAxisChart.update();
+            }
+        }
+    </script>
+</body>
+</html>

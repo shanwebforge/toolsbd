@@ -56,3 +56,6 @@ export function initUpdatesSlider() {
     slider.style.cursor = 'grab';
   });
 }
+
+
+

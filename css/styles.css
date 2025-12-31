@@ -1202,8 +1202,8 @@ html.dark-mode .star {
         gap: 12px;
     }
     
-        .hero-link-shape {
-        gap: 15px;
+     .hero-link-shape {
+        gap: 10px;
         margin: 15px auto;
         padding: 0 10px;
     }
@@ -1270,9 +1270,9 @@ html.dark-mode .star {
     }
     
 .hero-link-shape {
-        flex-direction: column; /* Vertical stacking */
+        flex-direction: row; /* Vertical stacking */
         align-items: center;
-        gap: 12px;
+        gap: 10px;
         margin: 12px auto;
         width: 100%;
         padding: 0 15px;
@@ -1282,7 +1282,7 @@ html.dark-mode .star {
     .hero-link-bg1 {
         width: 100%; /* Full width on mobile */
         max-width: 300px; /* But not too wide */
-        padding: 12px 24px;
+        padding: 10px 16px;
         font-size: 15px;
         min-width: auto; /* Remove min-width constraint */
         justify-content: center;
@@ -1290,7 +1290,7 @@ html.dark-mode .star {
     
     .hero-link-bg i,
     .hero-link-bg1 i {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 

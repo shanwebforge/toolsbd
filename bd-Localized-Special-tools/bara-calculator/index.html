@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>বাস ভাড়া ক্যালকুলেটর</title>
@@ -19,27 +22,7 @@
     })();
   </script>
   <style>
-     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    .container {
-      max-width: 480px;
-      background: white;
-      margin: auto;
-      padding: 25px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-    h1 {
-      color: #2a4d69;
-      margin-bottom: 25px;
-    }
+    
     label {
       display: block;
       margin: 15px 0 8px;
@@ -78,30 +61,7 @@
       white-space: pre-line;
     }
 
-    @media (max-width: 480px) {
-      .container {
-        padding: 20px 15px;
-      }
-    }
 
-
-    /* Dark Mode - Body */
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
-
-/* Container */
-html.dark-mode .container {
-  background-color: #1e293b;
-  color: #f1f5f9;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-}
-
-/* Headings */
-html.dark-mode h1 {
-  color: #fff; /* Light Blue */
-}
 
 /* Labels */
 html.dark-mode label {
@@ -134,9 +94,25 @@ html.dark-mode .result {
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-  <div class="container">
-    <h1>[From-To] ভিত্তিক বাস ভাড়া ক্যালকুলেটর</h1>
+<div class="file-header">
+    <div class="file-title">
+        <h2>🚌 বাস ভাড়া ক্যালকুলেটর</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>বাংলাদেশের বিভিন্ন রুটে বাস ভাড়া গণনা করুন</p>
+        <p>BRTC, লোকাল, AC, নন-AC বাসের ভাড়ার পার্থক্য</p>
+        <p>দূরত্ব ভিত্তিক এবং রুট নির্দিষ্ট ভাড়া গণনা</p>
+        <p>ছাত্র, বৃদ্ধ, এবং বিশেষ শ্রেণীর জন্য ছাড়ের হার</p>
+        <p>একাধিক যাত্রীর জন্য মোট ভাড়া গণনা করুন</p>
+        <p>যাত্রাপথের দূরত্ব এবং আনুমানিক সময় দেখুন</p>
+    </div>
+</div>
+<div class="file-footer">
 
     <label for="fromDivision">From বিভাগ নির্বাচন করুন:</label>
     <select id="fromDivision" onchange="loadFromDistricts()">
@@ -165,7 +141,8 @@ html.dark-mode .result {
 
     <div class="result" id="result"></div>
   </div>
-
+  </div>
+</main>
 <script>
   const divisions = {
     "ঢাকা": ["ঢাকা", "গাজীপুর", "মানিকগঞ্জ", "মুন্সিগঞ্জ", "নারায়ণগঞ্জ", "নরসিংদী", "কিশোরগঞ্জ"],

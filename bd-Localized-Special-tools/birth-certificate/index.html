@@ -15,39 +15,14 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>জন্ম সনদ আবেদন তথ্য</title>
   <style>
-/* 🌞 Light Mode (Default) */
-* {
-  box-sizing: border-box;
-}
 
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-.container {
-  max-width: 700px;
-  background: #fff;
-  margin: auto;
-  padding: 30px 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-h1 {
-  font-size: 26px;
-  margin-bottom: 20px;
-  color: #2a4d69;
-}
 
 p {
   font-size: 16px;
@@ -123,21 +98,7 @@ button:hover,
     justify-content: flex-start;
   }
 }
-/* 🌙 Dark Mode Overrides */
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
 
-html.dark-mode .container {
-  background-color: #1e293b;
-  color: #f1f5f9;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-}
-
-html.dark-mode h1 {
-  color: #bfdbfe;
-}
 
 html.dark-mode p {
   color: #cbd5e1;
@@ -171,10 +132,16 @@ html.dark-mode .copied-msg {
 </head>
 <body>
 
-  <div class="container">
-    <h1>📝 জন্ম সনদ আবেদন তথ্য</h1>
-
-    <p>
+ <main class="file-section">
+  <div class="file-container">
+    <div class="file-header">
+    <div class="file-title">
+        <h2>📝 জন্ম সনদ আবেদন তথ্য</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+           <p>
       জন্ম সনদ হলো একজন নাগরিকের জন্মের তথ্য নিশ্চিত করার একটি সরকারি দলিল। বাংলাদেশে জন্ম সনদ সাধারণত স্থানীয় ইউনিয়ন পরিষদ বা পৌরসভা অফিস থেকে পাওয়া যায়।
     </p>
 
@@ -185,6 +152,13 @@ html.dark-mode .copied-msg {
     <p>
       এখন অনলাইনে জন্ম সনদের জন্য আবেদন করা যায় বাংলাদেশ সরকারের <strong>জাতীয় ই-সেবা</strong> পোর্টালের মাধ্যমে।
     </p>
+
+    </div>
+</div>
+    
+
+
+    <div class="file-footer">
 
     <div class="link-section">
       <div class="link-text" id="birthCertLink">
@@ -198,7 +172,8 @@ html.dark-mode .copied-msg {
 
     <div class="copied-msg" id="copiedMsg">✅ লিংক কপি হয়েছে!</div>
   </div>
-
+  </div>
+  </main>
   <script>
     function copyLink() {
       const link = document.getElementById("birthCertLink").textContent;

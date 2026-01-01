@@ -15,19 +15,14 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>MP3 Cutter Tool</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 480px;
-      margin: 40px auto;
-      padding: 20px;
-      text-align: center;
-      background: #f9f9f9;
-    }
+
     input[type=file], input[type=number] {
       margin: 10px 0;
       padding: 8px;
@@ -58,27 +53,34 @@
       width: 100%;
     }
     @media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
+
 
 }
-    /* ======= Dark Mode Styles ======= */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
   </style>
 </head>
 <body>
 
-  <h2>MP3 কাটার টুল</h2>
+ <main class="file-section">
+  <div class="file-container">
 
+ <div class="file-header">
+    <div class="file-title">
+        <h2>✂️ MP3 Cutter</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Cut and trim MP3 audio files to desired length</p>
+        <p>Extract specific segments from long audio tracks</p>
+        <p>Set precise start and end points with visual waveform</p>
+        <p>Fade in and fade out effects for smooth transitions</p>
+        <p>Save edited audio without quality loss</p>
+        <p>Batch process multiple audio files at once</p>
+    </div>
+</div>
+
+  <div class="file-footer">
   <input type="file" id="audioFile" accept="audio/mp3,audio/mpeg" />
   
   <label for="startTime">শুরু সময় (সেকেন্ডে):</label>
@@ -90,6 +92,10 @@ html.dark-mode .container {
   <button id="cutBtn" disabled>কাটার অংশ প্লে করুন ও ডাউনলোড করুন</button>
 
   <audio id="audioPlayer" controls></audio>
+  </div>
+
+  </div>
+ </main>
 
   <script>
     const audioFile = document.getElementById('audioFile');

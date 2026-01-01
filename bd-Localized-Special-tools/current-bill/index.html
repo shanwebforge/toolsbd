@@ -15,34 +15,14 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>বিদ্যুৎ বিল ক্যালকুলেটর</title>
   <style>
-   /* Light Mode (Default) */
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-.container {
-  max-width: 450px;
-  background-color: #fff;
-  margin: auto;
-  padding: 25px 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-h1 {
-  margin-bottom: 25px;
-  color: #2a4d69;
-}
 
 label {
   display: block;
@@ -83,26 +63,8 @@ button:hover {
   color: #1e3550;
 }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 20px 15px;
-  }
-}
 
-/* Dark Mode Overrides */
-html.dark-mode body {
-  background: #000;
-}
 
-html.dark-mode .container {
-  background-color: #1e293b;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-  color: #fff;
-}
-
-html.dark-mode h1 {
-  color: #fff;
-}
 
 html.dark-mode label {
   color: #fff;
@@ -134,9 +96,25 @@ html.dark-mode #result {
   </style>
 </head>
 <body>
+<div class="file-section">
+  <div class="file-container">
 
-  <div class="container">
-    <h1>বিদ্যুৎ বিল ক্যালকুলেটর</h1>
+<div class="file-header">
+    <div class="file-title">
+        <h2>⚡ বিদ্যুৎ বিল ক্যালকুলেটর</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>DPDC, DESCO, WZPDCL সহ বিভিন্ন বিভাগের বিল গণনা করুন</p>
+        <p>ইউনিট খরচ, সার্ভিস চার্জ, ভ্যাট সব মিলিয়ে মোট বিল</p>
+        <p>বিদ্যুৎ বিভাগের স্ল্যাব রেট অনুযায়ী সঠিক গণনা</p>
+        <p>মাসিক বিদ্যুৎ ব্যবহার থেকে আনুমানিক বিল দেখুন</p>
+        <p>লোডশেডিং ও অতিরিক্ত ব্যবহারের প্রভাব বিশ্লেষণ</p>
+        <p>পূর্ববর্তী মাসের সাথে বর্তমান বিলের তুলনা</p>
+    </div>
+</div>
+<div class="file-footer">
 
     <label for="units">ব্যবহৃত ইউনিট (kWh) লিখুন:</label>
     <input type="number" id="units" placeholder="উদাহরণ: 150" min="0" />
@@ -145,6 +123,8 @@ html.dark-mode #result {
 
     <div class="result" id="result"></div>
   </div>
+  </div>
+</div>
 
   <script>
     function calculateBill() {

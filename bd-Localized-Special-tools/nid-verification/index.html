@@ -15,36 +15,16 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   
   <title>NID Verification Link Info</title>
   <style>
     /* Light Mode (default) */
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-.container {
-  max-width: 600px;
-  margin: auto;
-  background: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-h1 {
-  color: #2c3e50;
-  margin-bottom: 15px;
-  font-size: 24px;
-}
 
 p.description {
   font-size: 15px;
@@ -114,21 +94,7 @@ p.description {
   }
 }
 
-/* Dark Mode */
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.05);
-  color: #cbd5e1;
-}
-
-html.dark-mode h1 {
-  color: #bfdbfe;
-}
 
 html.dark-mode p.description {
   color: #94a3b8;
@@ -161,13 +127,23 @@ html.dark-mode .copied-msg {
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
+    <div class="file-header">
+    <div class="file-title">
+        <h2>🔎 NID Verification Link Info</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p> আপনি যদি আপনার জাতীয় পরিচয়পত্র (NID) অনলাইনে যাচাই করতে চান, তাহলে নিচের অফিসিয়াল লিংকে গিয়ে আপনার তথ্য যাচাই করতে পারবেন।</p>
 
-  <div class="container">
-    <h1>🔎 NID Verification Link Info</h1>
-    <p class="description">
-      আপনি যদি আপনার জাতীয় পরিচয়পত্র (NID) অনলাইনে যাচাই করতে চান, তাহলে নিচের অফিসিয়াল লিংকে গিয়ে আপনার তথ্য যাচাই করতে পারবেন।
-    </p>
-
+    </div>
+</div>
+    
+    
+    
+    <div class="file-footer">
     <div class="link-box">
       <div class="link-text" id="nidLink">
         https://services.nidw.gov.bd/nid-pub/
@@ -179,8 +155,8 @@ html.dark-mode .copied-msg {
     </div>
 
     <div class="copied-msg" id="copiedMsg">✅ Link copied to clipboard!</div>
-  </div>
-
+  </div></div>
+ </main>
   <script>
     function copyLink() {
       const link = document.getElementById("nidLink").textContent;

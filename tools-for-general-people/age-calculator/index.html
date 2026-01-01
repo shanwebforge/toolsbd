@@ -16,37 +16,13 @@
     })();
   </script>
   <title>Age Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
 <link rel="stylesheet" href="/css/styles.css" />
 <link rel="stylesheet" href="/components/header.css">
+<link rel="stylesheet" href="/components/footer.css">
 <style>
-/* Global */
-* {
-  box-sizing: border-box;
-}
 
-body {
-background: #f4f6f9;
-margin: 0;
-padding: 20px;
-color: #333;
-  font-family: Arial, sans-serif;
-}
-
-.container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-
-h1 {
-  margin-bottom: 20px;
-  color: #a6dfe0;
-}
 
 input[type="date"] {
   padding: 10px;
@@ -94,21 +70,7 @@ button:hover {
   }
 
 }
-/* Dark Mode Support */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
-
-html.dark-mode h1,
-html.dark-mode .result {
-  color: #81e6d9;
-}
 
 html.dark-mode input[type="date"] {
   background: #475569;
@@ -118,17 +80,33 @@ html.dark-mode input[type="date"] {
 </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
-  <h1>🧮 Age Calculator</h1>
-  
+<div class="file-header">
+    <div class="file-title">
+        <h2>🎂 Age Calculator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Calculate exact age in years, months, weeks, and days</p>
+        <p>Find how many days until your next birthday</p>
+        <p>Calculate age at a specific future or past date</p>
+        <p>Convert age between different time units</p>
+        <p>Compare ages between two different persons</p>
+        <p>Calculate pet age in "human years" equivalent</p>
+    </div>
+</div>
+  <div class="file-footer">
   <input type="date" id="dob" />
   <button id="calc-btn">Calculate Age</button>
 
   <div id="result-en" class="result"></div>
   <div id="result-bn" class="result"></div>
 </div>
-
+  </div>
+  </main>
 <script>const calcBtn = document.getElementById('calc-btn');
 const dobInput = document.getElementById('dob');
 const resultEn = document.getElementById('result-en');
@@ -190,5 +168,6 @@ calcBtn.addEventListener('click', () => {
 });
 </script>
 <script src="/components/header.js"></script>
+<script src="/components/footer.js"></script>
 </body>
 </html>

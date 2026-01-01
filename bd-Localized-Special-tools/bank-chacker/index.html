@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
 <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
 <title>স্থানীয় ব্যাংক শাখা চেকার</title>
@@ -19,23 +22,7 @@
     })();
   </script>
 <style>
-   body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-  .container {
-    max-width: 520px;
-    margin: auto;
-    background: white;
-    padding: 25px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin-top: 70px;
-    margin-bottom: 70px;
-  }
+
   select {
     width: 100%;
     padding: 12px;
@@ -49,22 +36,8 @@
     text-align: left;
   }
   
-  h2 {
-    margin-bottom: 15px;
-  }
 
 
-
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
-
-html.dark-mode .container {
-  background-color: #1e293b;
-  color: #e2e8f0;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-}
 
 html.dark-mode select {
   background-color: #334155;
@@ -81,10 +54,24 @@ html.dark-mode h2 {
 </style>
 </head>
 <body>
-
-<div class="container">
-  <h1>স্থানীয় ব্যাংক শাখা চেকার</h1>
-
+ <main class="file-section">
+  <div class="file-container">
+<div class="file-header">
+    <div class="file-title">
+        <h2>🏦 স্থানীয় ব্যাংক শাখা চেকার</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>আপনার এলাকায় নিকটস্থ ব্যাংক শাখা খুঁজুন</p>
+        <p>বাংলাদেশের সকল ব্যাংকের শাখা তথ্য ডাটাবেজ</p>
+        <p>শাখার ঠিকানা, ফোন নাম্বার এবং ওপেনিং আওয়ার</p>
+        <p>ATM বুথ, ব্যাংকিং আউটলেট এবং এজেন্ট ব্যাংকিং পয়েন্ট</p>
+        <p>লাইভ সার্ভিস স্ট্যাটাস এবং শাখার ভিড়ের তথ্য</p>
+        <p>শাখা থেকে দূরত্ব এবং যাওয়ার দিকনির্দেশনা</p>
+    </div>
+</div>
+  <iv class="file-footer">
   <label for="divisionSelect">বিভাগ নির্বাচন করুন:</label>
   <select id="divisionSelect" onchange="loadDistricts()">
     <option value="">-- বিভাগ নির্বাচন করুন --</option>
@@ -98,7 +85,7 @@ html.dark-mode h2 {
   <h2 id="bankHeading" style="display:none;">আপনার এলাকার ব্যাংক শাখাসমূহ:</h2>
   <ul id="bankList"></ul>
 </div>
-
+ </main>
 <script>
   const divisions = {
     "ঢাকা": ["ঢাকা", "গাজীপুর", "মানিকগঞ্জ", "মুন্সিগঞ্জ", "নারায়ণগঞ্জ", "নরসিংদী", "কিশোরগঞ্জ"],

@@ -16,27 +16,14 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-   body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- background: #f4f6f9;
-margin: 0;
-padding: 20px;
-color: #333;
-}
-.container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
+
+
 h2 {
   text-align: center;
   color: #2c3e50;
@@ -97,14 +84,7 @@ button:hover {
 }
 
 /* ==== Dark Mode ==== */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
+
 html.dark-mode h2,
 html.dark-mode label {
   color: #80cbc4;
@@ -133,9 +113,25 @@ html.dark-mode .result {
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
-  <h2>EMI ক্যালকুলেটর</h2>
+    <div class="file-header">
+    <div class="file-title">
+        <h2>🏦 EMI ক্যালকুলেটর</h2>
+        <div class="title-underline"></div>
+    </div>
+    <div class="file-content-text">
+        <p>ঋণের মাসিক কিস্তি (EMI) সহজে গণনা করুন</p>
+        <p>হোম লোন, কার লোন, পার্সোনাল লোনের জন্য পৃথক গণনা</p>
+        <p>সুদের হার এবং ঋণ মেয়াদ পরিবর্তন করে দেখুন</p>
+        <p>মোট প্রদেয় সুদ এবং মোট পরিশোধের পরিমাণ জানুন</p>
+        <p>বিভিন্ন ব্যাংক ও আর্থিক প্রতিষ্ঠানের সুদের হার তুলনা করুন</p>
+        <p>ঋণ পরিশোধের সময়সূচী এবং আমোর্টাইজেশন চার্ট দেখুন</p>
+    </div>
+</div>
+
+
 
   <label for="loanAmount">লোনের পরিমাণ (৳)</label>
   <input type="number" id="loanAmount" placeholder="লোনের পরিমাণ লিখুন" min="1" step="0.01" />
@@ -150,6 +146,10 @@ html.dark-mode .result {
 
   <div class="result" id="result">ফলাফল এখানে দেখুন</div>
 </div>
+</div>
+</main>
+
+
 
 <script>
   function calculateEMI() {

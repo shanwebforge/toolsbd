@@ -16,31 +16,14 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
- background: #f4f6f9;
-margin: 0;
-padding: 20px;
-color: #333;
-}
-.container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 25px;
-}
+
+
 label {
   display: block;
   font-weight: 600;
@@ -84,26 +67,14 @@ button:hover {
   white-space: pre-line;
 }
 @media (max-width: 768px) {
-  .container {
-    padding: 20px;
-  }
 
-  h2 {
-    font-size: 16px !important;
-  }
+
 
 }
 
 
 /* ==== Dark Mode ==== */
-html.dark-mode body {
-  background: #000;
-  color: #fff;
-}
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
+
 html.dark-mode h2,
 html.dark-mode label {
   color: #fff;
@@ -132,10 +103,25 @@ html.dark-mode .result {
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
-  <h2>বাংলাদেশ ট্যাক্স ক্যালকুলেটর</h2>
-
+<div class="file-header">
+    <div class="file-title">
+        <h2>📊 বাংলাদেশ ট্যাক্স ক্যালকুলেটর</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>বাংলাদেশের আয়কর স্ল্যাব অনুযায়ী কর গণনা করুন</p>
+        <p>পুরুষ, মহিলা ও প্রতিবন্ধীদের জন্য পৃথক কর রেট</p>
+        <p>বিভিন্ন কর রেয়াত ও ছাড় (ট্যাক্স রিবেট) অন্তর্ভুক্ত করুন</p>
+        <p>ন্যূনতম কর এবং করযোগ্য আয় নির্ধারণ করুন</p>
+        <p>টিআইএন ভেরিফিকেশন এবং কর রিটার্ন ফরম্যাট</p>
+        <p>বিনিয়োগ ও সঞ্চয়ের উপর কর প্রভাব বিশ্লেষণ করুন</p>
+    </div>
+</div>
+<div class="file-footer">
   <label for="annualIncome">বার্ষিক আয় (৳)</label>
   <input type="number" id="annualIncome" placeholder="আপনার বার্ষিক আয় লিখুন" min="0" step="0.01" />
 
@@ -143,7 +129,8 @@ html.dark-mode .result {
 
   <div class="result" id="result">ফলাফল এখানে দেখুন</div>
 </div>
-
+</div>
+</main>
 <script>
   // ২০২৪ সালের বাংলাদেশ ট্যাক্স স্ল্যাব অনুযায়ী (সাধারণ ব্যক্তি)
   // উৎস: https://dor.gov.bd/tax-rate

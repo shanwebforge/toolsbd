@@ -2,33 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>bKash/Nagad/Rocket Charge Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
+  <link rel="stylesheet" href="/components/header.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f1f5f9;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
 
-    .container {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 400px;
-    }
 
-    h2 {
-      margin-bottom: 20px;
-    }
+
 
     select, input {
       width: 100%;
@@ -61,22 +45,12 @@
     }
 
     @media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
+
 
 }
 
-    /* ===== Dark Mode Support ===== */
-    html.dark-mode body {
-      background: #0f172a;
-      color: #f1f5f9;
-    }
 
-    html.dark-mode .container {
-      background: #1e293b;
-      color: #f1f5f9;
-    }
+
 
     html.dark-mode input,
     html.dark-mode select {
@@ -95,10 +69,25 @@
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
-  <h2>Cash Out Charge Calculator</h2>
-
+<div class="file-header">
+    <div class="file-title">
+        <h2>💳 Cash Out Charge Calculator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Calculate cash withdrawal charges for different banks</p>
+        <p>Compare fees across various banking institutions</p>
+        <p>Include ATM charges and transaction fees</p>
+        <p>Calculate net amount received after deductions</p>
+        <p>Set up custom charge rates for specific banks</p>
+        <p>Save frequent calculations for future reference</p>
+    </div>
+</div>
+  <div class="file-footer">
   <select id="service">
     <option value="bKash">bKash</option>
     <option value="Rocket">Rocket</option>
@@ -111,7 +100,8 @@
 
   <div class="result" id="result"></div>
 </div>
-
+  </div>
+ </main>
 <script>
   function getChargeAmount(service, amount) {
     if (service === 'Nagad') {
@@ -142,6 +132,7 @@
     `;
   }
 </script>
-
+<script src="/components/header.js"></script>
+<script src="/components/footer.js"></script>
 </body>
 </html>

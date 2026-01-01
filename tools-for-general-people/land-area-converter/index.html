@@ -4,31 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Land Area Converter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 100px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 20px;
-    }
 
     .input-group {
       margin-bottom: 20px;
@@ -65,25 +46,8 @@
     .results div {
       margin-bottom: 8px;
     }
-@media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
 
-}
-    /* Dark mode */
-    html.dark-mode body {
-      background: #000;
-      color: #fff;
-    }
 
-    html.dark-mode .container {
-      background: #1e293b;
-    }
-
-    html.dark-mode h1 {
-      color: #a7ffeb;
-    }
 
     html.dark-mode input {
       background: #334155;
@@ -106,8 +70,26 @@
   </script>
 </head>
 <body>
-  <div class="container">
-    <h1>🌾 Land Area Converter</h1>
+ <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>🏞️ Land Area Converter</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Convert between different land measurement units</p>
+        <p>Bangladeshi units: Katha, Bigha, Decimal, Acre</p>
+        <p>International units: Square Feet, Square Meter, Hectare</p>
+        <p>Calculate plot areas with length and width inputs</p>
+        <p>Save conversion history for future reference</p>
+        <p>Compare land values in different measurement systems</p>
+    </div>
+</div>
+
+<div class="file-footer">
     <div class="input-group">
       <label for="inputValue">পরিমাণ (কাঠা / ডেসিমেল / একর):</label>
       <input type="number" id="inputValue" placeholder="যেকোনো পরিমাণ লিখুন..." />
@@ -126,7 +108,8 @@
       <div>একর: ০</div>
     </div>
   </div>
-
+  </div>
+  </main>
   <script>
     const input = document.getElementById('inputValue');
     const unit = document.getElementById('unit');

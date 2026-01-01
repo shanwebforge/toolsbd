@@ -15,24 +15,14 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>Bangla Subtitle Generator (ভিডিও আপলোড সহ)</title>
   <style>
-    body {
-      max-width: 600px;
-      margin: 40px auto;
-      font-family: 'Noto Sans Bengali', sans-serif, sans-serif;
-      background: #f9f9f9;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    h2 {
-      text-align: center;
-      color: #077A7D;
-      margin-bottom: 20px;
-    }
+
     video {
       width: 100%;
       border-radius: 8px;
@@ -119,27 +109,34 @@
     }
 
     @media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
+
 
 }
 
-    /* ======= Dark Mode Styles ======= */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-  <h2>Bangla Subtitle Generator (ভিডিও আপলোড সহ)</h2>
+<div class="file-header">
+    <div class="file-title">
+        <h2>📝 Bangla Subtitle Generator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Automatically generate Bangla subtitles for videos</p>
+        <p>Support for SRT, VTT, and ASS subtitle formats</p>
+        <p>Edit and sync subtitles with video timeline</p>
+        <p>Customize font, size, color, and position of subtitles</p>
+        <p>Translate existing subtitles to Bangla language</p>
+        <p>Export subtitles with video or as separate file</p>
+    </div>
+</div>
+
+  <div class="file-footer">
 
   <label for="videoFile">ভিডিও আপলোড করুন (সর্বোচ্চ 1 মিনিট):</label>
   <input type="file" id="videoFile" accept="video/*" />
@@ -162,7 +159,9 @@ html.dark-mode .container {
   <div class="subtitle-list" id="subtitleList"></div>
 
   <button id="downloadBtn">সাবটাইটেল .srt ফাইল ডাউনলোড করুন</button>
-
+  </div>
+  </div>
+  </main>
   <script>
     const videoFileInput = document.getElementById('videoFile');
     const uploadedVideo = document.getElementById('uploadedVideo');

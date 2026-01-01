@@ -15,19 +15,14 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>ভিডিও থেকে অডিও কনভার্টার</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 480px;
-      margin: 40px auto;
-      padding: 20px;
-      text-align: center;
-      background: #f9f9f9;
-    }
+
     input[type=file] {
       margin: 20px 0;
     }
@@ -51,27 +46,34 @@
     }
 
     @media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
+
 
 }
-    /* ======= Dark Mode Styles ======= */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
+
   </style>
 </head>
 <body>
 
-  <h2>ভিডিও থেকে অডিও কনভার্টার</h2>
+ <main class="file-section">
+  <div class="file-container">
 
+<div class="file-header">
+    <div class="file-title">
+        <h2>🎵 ভিডিও থেকে অডিও কনভার্টার</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>যেকোনো ভিডিও ফাইল থেকে অডিও এক্সট্র্যাক্ট করুন</p>
+        <p>MP3, WAV, FLAC, AAC সহ বিভিন্ন ফরম্যাটে কনভার্ট করুন</p>
+        <p>ভিডিও আপলোড ছাড়াই অনলাইনে সরাসরি রূপান্তর করুন</p>
+        <p>বিটরেট, স্যাম্পল রেট এবং অডিও কোয়ালিটি কন্ট্রোল করুন</p>
+        <p>ভিডিওর নির্দিষ্ট অংশ থেকে শুধু অডিও কাটুন</p>
+        <p>একসাথে একাধিক ভিডিও থেকে অডিও এক্সট্র্যাক্ট করুন</p>
+    </div>
+</div>
+  <div class="file-footer">
   <input type="file" id="videoFile" accept="video/*" />
   
   <button id="extractBtn" disabled>অডিও আলাদা করুন</button>
@@ -79,7 +81,9 @@ html.dark-mode .container {
   <audio id="audioPlayer" controls style="display:none;"></audio>
 
   <a id="downloadLink" style="display:none; margin-top:20px; display: inline-block; background:#077A7D; color:#fff; padding:10px 20px; border-radius:6px; text-decoration:none;">ডাউনলোড করুন</a>
-
+  </div>
+</div>
+</main>
   <script>
     const videoFileInput = document.getElementById('videoFile');
     const extractBtn = document.getElementById('extractBtn');

@@ -6,6 +6,8 @@
   <title>PDF Bangla Font Fixer</title>
 
   <!-- Header/Footer Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
    <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
@@ -14,27 +16,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f2f5;
-      margin: 0;
-      padding: 20px;
-    }
-    .container {
-      max-width: 700px;
-      margin: auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      margin-top: 100px;
-      margin-bottom: 100px;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 20px;
-    }
+   
     textarea {
       width: 100%;
       height: 200px;
@@ -58,28 +40,14 @@
     button:hover {
       background-color: #066264;
     }
-@media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
 
-}
-    /* Dark Mode */
-    html.dark-mode body {
-      background: #000;
-      color: #fff;
-    }
-    html.dark-mode .container {
-      background: #1e293b;
-    }
+    
     html.dark-mode textarea {
       background: #334155;
       color: #fff;
       border-color: #475569;
     }
-    html.dark-mode h1 {
-      color: #fff;
-    }
+
   </style>
 
   <!-- Dark Mode Script -->
@@ -97,12 +65,29 @@
   </script>
 </head>
 <body>
-  <div class="container">
-    <h1>📄 PDF Bangla Font Fixer</h1>
+ <main class="file-section">
+  <div class="file-container">
+    
+ <div class="file-header">
+    <div class="file-title">
+        <h2>📄 PDF Bangla Font Fixer</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Fix Bengali font display issues in PDF documents</p>
+        <p>Convert garbled or broken Bengali text to readable format</p>
+        <p>Embed Bengali fonts properly in PDF files</p>
+        <p>Support for popular Bengali fonts (SolaimanLipi, Nikosh, etc.)</p>
+        <p>Batch process multiple PDF files at once</p>
+        <p>Download corrected PDF files with proper Bengali text rendering</p>
+    </div>
+</div>
+<div class="file-footer">
     <textarea id="banglaText" placeholder="এখানে বাংলা লিখুন..."></textarea>
     <button onclick="generatePDF()">✅ PDF ডাউনলোড করুন</button>
   </div>
-
+</main>
   <script>
     async function generatePDF() {
       const { jsPDF } = window.jspdf;

@@ -4,31 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Brick & Cement Calculator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 100px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #333;
-    }
+  
 
     label {
       display: block;
@@ -42,7 +24,7 @@
       font-size: 16px;
       margin-top: 5px;
       border-radius: 6px;
-      border: 2px solid #ccc;
+      border: 1px solid #ccc;
     }
 
     input:focus {
@@ -61,21 +43,8 @@
       margin-bottom: 10px;
       font-size: 16px;
     }
-@media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
 
-}
-    /* Dark Mode */
-    html.dark-mode body {
-      background: #000;
-      color: #fff;
-    }
-
-    html.dark-mode .container {
-      background: #1e293b;
-    }
+ 
 
     html.dark-mode input {
       background: #334155;
@@ -88,9 +57,14 @@
       color: #a7ffeb;
     }
 
-    html.dark-mode h1 {
-      color: #a7ffeb;
+    h5 {
+      font-size: 14px;
+      margin-bottom: 0px;
+      padding: 10px;
+      text-align: left;
     }
+
+
   </style>
 
   <script>
@@ -103,10 +77,24 @@
   </script>
 </head>
 <body>
-
-  <div class="container">
-    <h1>🧱 Brick & Cement Calculator</h1>
-
+ <main class="file-section">
+  <div class="file-container">
+<div class="file-header">
+    <div class="file-title">
+        <h2>🧱 Brick & Cement Calculator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Calculate required bricks, cement, and sand for construction</p>
+        <p>Account for wall thickness, room size, and door/window openings</p>
+        <p>Calculate material costs based on current market prices</p>
+        <p>Save different construction project calculations</p>
+        <p>Export material lists for purchasing and budgeting</p>
+        <p>Compare costs between different construction materials</p>
+    </div>
+</div>
+<div class="file-footer">
     <label for="length">দেয়ালের দৈর্ঘ্য (মিটার):</label>
     <input type="number" id="length" placeholder="যেমন: 5" />
 
@@ -124,7 +112,8 @@
       <div>🔢 মোট খরচ: ৳০</div>
     </div>
   </div>
-
+  </div>
+  </main>
   <script>
     const lengthInput = document.getElementById('length');
     const heightInput = document.getElementById('height');
@@ -146,11 +135,11 @@
       const totalCost = brickCost + cementCost;
 
       output.innerHTML = `
-        <div>🧱 ইটের সংখ্যা: ${Math.round(bricks)} টি</div>
-        <div>🎯 সিমেন্টের বস্তা: ${Math.ceil(cementBags)} বস্তা</div>
-        <div>💰 ইটের খরচ: ৳${Math.round(brickCost)}</div>
-        <div>💰 সিমেন্টের খরচ: ৳${Math.round(cementCost)}</div>
-        <div>🔢 মোট খরচ: ৳${Math.round(totalCost)}</div>
+        <h5>🧱 ইটের সংখ্যা: ${Math.round(bricks)} টি</h5>
+        <h5>🎯 সিমেন্টের বস্তা: ${Math.ceil(cementBags)} বস্তা</h5>
+        <h5>💰 ইটের খরচ: ৳${Math.round(brickCost)}</h5>
+        <h5>💰 সিমেন্টের খরচ: ৳${Math.round(cementCost)}</h5>
+        <h5>🔢 মোট খরচ: ৳${Math.round(totalCost)}</h5>
       `;
     }
 

@@ -2,30 +2,15 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Signature Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
+  <link rel="stylesheet" href="/components/header.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    html {
-      background: #f8fafc;
-      color: #222;
-    }
-
-    html.dark-mode {
-      background: #1e293b;
-      color: #e2e8f0;
-    }
-
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      padding: 30px;
-      text-align: center;
-      background: inherit;
-      color: inherit;
-    }
-
-    h1 {
-      margin-bottom: 20px;
-    }
+   
 
     .signature-pad {
       border: 2px dashed #077A7D;
@@ -77,21 +62,39 @@
       .signature-pad {
         height: 200px;
       }
-      h1 {font-size: 16px !important;}
     }
   </style>
 </head>
 <body>
 
-  <h1>✍️ অনলাইন সিগনেচার জেনারেটর</h1>
+ <main class="file-section">
+  <div class="file-container">
 
+<div class="file-header">
+    <div class="file-title">
+        <h2>✍️ অনলাইন সিগনেচার জেনারেটর</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>• মাউস, টাচস্ক্রিন বা স্টাইলাস দিয়ে স্বাক্ষর তৈরি করুন</p>
+        <p>• বিভিন্ন কালার, থিকনেস এবং স্টাইলের অপশন</p>
+        <p>• PNG, JPG, SVG বা PDF ফরম্যাটে ডাউনলোড করুন</p>
+        <p>• স্বাক্ষর ট্রান্সপারেন্ট ব্যাকগ্রাউন্ডে সংরক্ষণ করুন</p>
+        <p>• পূর্বের তৈরি স্বাক্ষর এডিট এবং পুনরায় ব্যবহার করুন</p>
+        <p>• অনলাইন ফর্ম বা ইমেইলে ব্যবহারের জন্য অনুমোদিত ফরম্যাট</p>
+    </div>
+</div>
+<div class="file-footer">
   <canvas id="signature" class="signature-pad"></canvas>
 
   <div class="button-group">
     <button id="clearBtn">🧹 পরিষ্কার করুন</button>
     <button id="saveBtn">💾 ডাউনলোড করুন (PNG)</button>
   </div>
-
+</div>
+</div>
+</main>
   <script>
     const canvas = document.getElementById("signature");
     const ctx = canvas.getContext("2d");
@@ -166,6 +169,7 @@
       link.click();
     });
   </script>
-
+<script src="/components/header.js"></script>
+<script src="/components/footer.js"></script>
 </body>
 </html>

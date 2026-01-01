@@ -4,31 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Room Allocation Planner</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f2f5;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .container {
-      max-width: 700px;
-      margin: 100px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-bottom: 20px;
-    }
+  
 
     form {
       display: flex;
@@ -118,26 +100,7 @@
       margin-top: 30px;
     }
 
-    @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
 
-}
-
-    /* ===== Dark Mode ===== */
-    html.dark-mode body {
-      background: #000;
-      color: #fff;
-    }
-
-    html.dark-mode .container {
-      background: #1e293b;
-    }
-
-    html.dark-mode h1 {
-      color: #fff;
-    }
 
     html.dark-mode input {
       background: #334155;
@@ -180,9 +143,24 @@
   </script>
 </head>
 <body>
-
-  <div class="container">
-    <h1>🛏️ Room Allocation Planner</h1>
+ <main class="file-section">
+  <div class="file-container">
+ <div class="file-header">
+    <div class="file-title">
+        <h2>🛏️ Room Allocation Planner</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Plan room assignments for events, hotels, or accommodations</p>
+        <p>Assign rooms based on capacity, preferences, and special needs</p>
+        <p>Create visual floor plans and room layouts</p>
+        <p>Track room availability and occupancy status</p>
+        <p>Generate room allocation reports and lists</p>
+        <p>Manage guest information and room preferences</p>
+    </div>
+</div>
+  <div class="file-footer">
     <form id="room-form">
       <input type="text" id="room-number" placeholder="রুম নাম/নম্বর লিখুন" autocomplete="off" required />
       <input type="number" id="guest-count" placeholder="অতিথির সংখ্যা" min="1" required />
@@ -192,7 +170,8 @@
     <div id="room-list"></div>
     <p id="empty-msg" class="empty-msg">কোনো রুম আলোকেশন নেই। নতুন রুম যোগ করুন।</p>
   </div>
-
+  </div>
+  </main>
   <script>
     const form = document.getElementById('room-form');
     const roomNumberInput = document.getElementById('room-number');

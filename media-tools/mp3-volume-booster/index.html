@@ -16,6 +16,8 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
@@ -37,17 +39,9 @@
     })();
   </script>
   <title>MP3 Volume Booster</title>
-    <link rel="stylesheet" href="/components/header.css" />
-  <link rel="stylesheet" href="/components/footer.css" />
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 480px;
-      margin: 40px auto;
-      padding: 20px;
-      text-align: center;
-      background: #f0f0f0;
-    }
+
     input[type=file] {
       margin: 20px 0;
     }
@@ -78,27 +72,34 @@
       margin-top: 10px;
     }
     @media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
+
 
 }
     /* ======= Dark Mode Styles ======= */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-  <h2>MP3 Volume Booster</h2>
+<div class="file-header">
+    <div class="file-title">
+        <h2>💳 Cash Out Charge Calculator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Calculate cash withdrawal charges for different banks</p>
+        <p>Compare fees across various banking institutions</p>
+        <p>Include ATM charges and transaction fees</p>
+        <p>Calculate net amount received after deductions</p>
+        <p>Set up custom charge rates for specific banks</p>
+        <p>Save frequent calculations for future reference</p>
+    </div>
+</div>
 
+  <div class="file-footer">
   <input type="file" id="audioFile" accept="audio/mp3,audio/mpeg" />
   
   <label for="volumeRange">ভলিউম বুস্ট করুন: <span id="volumeValue">1.0</span>x</label>
@@ -107,6 +108,9 @@ html.dark-mode .container {
   <audio id="audioPlayer" controls></audio>
 
   <button id="downloadBtn" disabled>বুস্টেড MP3 ডাউনলোড</button>
+  </div>
+  </div>
+ </main>
 
   <script>
     const audioFile = document.getElementById('audioFile');

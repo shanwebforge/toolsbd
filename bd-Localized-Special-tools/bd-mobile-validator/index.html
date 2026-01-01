@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BD Mobile Validator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
 <link rel="stylesheet" href="/components/header.css">
 <link rel="stylesheet" href="/components/footer.css">
  <script>
@@ -19,31 +22,7 @@
     })();
   </script>
 <style>
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
 
-   .container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-  margin-top: 100px;
-  margin-bottom: 100px;
-}
-
-h1 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: #2a2a2a;
-}
 
 input[type="text"] {
   width: 80%;
@@ -82,21 +61,7 @@ button:hover {
 }
 
 
-/* 🌙 Dark Mode Overrides */
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
 
-html.dark-mode .container {
-  background-color: #1e293b;
-  color: #f1f5f9;
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.05);
-}
-
-html.dark-mode h1 {
-  color: #e2e8f0;
-}
 
 html.dark-mode input[type="text"] {
   background-color: #334155;
@@ -120,12 +85,31 @@ html.dark-mode #result {
 </head>
 <body>
 
-<div class="container">
-  <h1>BD Mobile Number Validator</h1>
+ <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>📱 BD Mobile Number Validator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Validate Bangladeshi mobile numbers for correct format</p>
+        <p>Identify mobile operators (GP, Robi, Banglalink, Airtel, Teletalk)</p>
+        <p>Check if number is prepaid, postpaid, or MFS account</p>
+        <p>Format numbers with country code (+880) automatically</p>
+        <p>Batch validate multiple numbers at once</p>
+        <p>Detect fake or invalid mobile numbers</p>
+    </div>
+</div>
+  <div class="file-footer">
   <input type="text" id="mobile-input" placeholder="Enter Bangladeshi Number" />
   <button id="validate-btn">Validate</button>
   <div id="result"></div>
 </div>
+</div>
+</main>
 
 <script>const input = document.getElementById('mobile-input');
 const validateBtn = document.getElementById('validate-btn');

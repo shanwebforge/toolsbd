@@ -6,37 +6,13 @@
   <title>QR Code Generator</title>
 
   <!-- Common Header CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="/css/sub-file.css" />
    <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/components/header.css">
   <link rel="stylesheet" href="/components/footer.css">
   <style>
-/* Global */
-* {
-  box-sizing: border-box;
-}
 
-body {
-  margin: 0;
-  padding: 100px 20px 20px;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
-  background: #1e293b;
-}
-
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #1e293b;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.3);
-}
-
-h1 {
-  margin-bottom: 20px;
-  color: #a6dfe0;
-}
 
 input[type="text"] {
   width: 60%;
@@ -77,10 +53,7 @@ button:hover {
 
 /* Responsive for small devices */
 @media (max-width: 768px) {
-  .container {
-    width: 100%;
-    padding: 20px;
-  }
+
 
   input[type="text"] {
     width: 100%;
@@ -88,24 +61,10 @@ button:hover {
 
   button {
     font-size: 16px;
-  }
-  h1 {font-size: 16px;}
+
+}
 }
 
-/* Dark Mode Support */
-html.dark-mode body {
-  background: #000;
-  color: #fff;
-}
-
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
-
-html.dark-mode h1 {
-  color: #81e6d9;
-}
 
 html.dark-mode input[type="text"] {
   background: #1e293b;
@@ -119,13 +78,32 @@ html.dark-mode #qrcode {
 </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
-  <h1>QR Code Generator</h1>
+<div class="file-header">
+    <div class="file-title">
+        <h2>🔳 QR Code Generator</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Generate QR codes for URLs, text, contact info, and WiFi</p>
+        <p>Customize QR code colors, size, and design elements</p>
+        <p>Add logo or image in the center of QR code</p>
+        <p>Download QR codes in PNG, SVG, and PDF formats</p>
+        <p>Create batch QR codes for multiple links at once</p>
+        <p>Scan and decode existing QR codes from images</p>
+    </div>
+</div>
+<div class="file-footer">
   <input type="text" id="url-input" placeholder="Enter URL here" />
   <button id="generate-btn">Generate QR Code</button>
   <div id="qrcode"></div>
 </div>
+
+  </div>
+  </main>
 <script>
 const generateBtn = document.getElementById('generate-btn');
 const urlInput = document.getElementById('url-input');

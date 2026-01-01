@@ -2,31 +2,18 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>বাংলা রিজিউম জেনারেটর</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
+  <link rel="stylesheet" href="/components/header.css" />
+  <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f0f4f8;
-      margin: 0;
-      padding: 20px;
-      color: #222;
-    }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 30px;
-      justify-content: center;
-    }
 
     form {
-      background: #fff;
+
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -64,7 +51,7 @@
     }
 
     .preview {
-      background: #fff;
+
       padding: 20px;
       border-radius: 12px;
       width: 380px;
@@ -106,20 +93,30 @@
         top: 0;
       }
     }
-
-    @media (max-width: 768px) {
-  h1 {
-    font-size: 16px !important;
-  }
-
-}
   </style>
 </head>
 <body>
 
-<h1>📝 বাংলা রিজিউম (CV) তৈরি করুন</h1>
+ <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
+<div class="file-header">
+    <div class="file-title">
+        <h2>📝 বাংলা রিজিউম (CV) তৈরি করুন</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>পেশাদার বাংলা রিজিউম টেমপ্লেট ব্যবহার করুন</p>
+        <p>বিভিন্ন শিল্প ও চাকরির ধরনের জন্য কাস্টমাইজড ফরম্যাট</p>
+        <p>সহজে সম্পাদনা করুন এবং PDF বা DOC ফরম্যাটে ডাউনলোড করুন</p>
+        <p>রিজিউমের জন্য টিপস এবং সর্বোত্তম অনুশীলন দেখুন</p>
+        <p>এক ক্লিকে বিভিন্ন টেমপ্লেট স্টাইলে সুইচ করুন</p>
+        <p>অনলাইনে শেয়ার করার জন্য লিঙ্ক জেনারেট করুন</p>
+    </div>
+</div>
+
+<div class="file-footer">
   <form id="cv-form">
     <label>পুরো নাম</label>
     <input type="text" id="name" required>
@@ -155,7 +152,11 @@
     </div>
     <button onclick="window.print()">🖨️ প্রিন্ট বা PDF সংরক্ষণ</button>
   </div>
+
 </div>
+
+  </div>
+ </main>
 
 <script>
   const form = document.getElementById("cv-form");
@@ -198,6 +199,7 @@
     }
   });
 </script>
-
+<script src="/components/header.js"></script>
+<script src="/components/footer.js"></script>
 </body>
 </html>

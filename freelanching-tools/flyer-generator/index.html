@@ -3,25 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>📢 Digital Flyer Generator (Advanced)</title>
+  <title>Digital Flyer Generator (Advanced)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f2f4f8;
-      margin: 0;
-      padding: 20px;
-    }
-    .container {
-      max-width: 900px;
-      margin: 100px auto;
-      background: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+
+
     h1 {
       text-align: center;
       color: #333;
@@ -101,19 +91,14 @@
     }
 
     @media (max-width: 768px) {
+
   h1 {
     font-size: 16px !important;
   }
 
 }
-    /* Dark mode */
-    html.dark-mode body {
-      background: #000;
-      color: #fff;
-    }
-    html.dark-mode .container {
-      background: #1e293b;
-    }
+
+
     html.dark-mode input, 
     html.dark-mode textarea, 
     html.dark-mode select {
@@ -142,9 +127,25 @@
   </script>
 </head>
 <body>
-  <div class="container">
-    <h1>📢 Digital Flyer Generator (Advanced)</h1>
-
+  
+ <main class="file-section">
+  <div class="file-container">
+<div class="file-header">
+    <div class="file-title">
+        <h2>📢 Digital Flyer Generator (Advanced)</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>• Create professional flyers with customizable templates</p>
+        <p>• Add text, images, shapes, and icons with drag-and-drop</p>
+        <p>• Choose from multiple layout options and design themes</p>
+        <p>• Export in high-quality PNG, JPG, and PDF formats</p>
+        <p>• Add QR codes and social media links to your flyers</p>
+        <p>• Share directly to social media or download for printing</p>
+    </div>
+</div>
+<div class="file-footer">
     <div class="form-group">
       <input type="text" id="title" placeholder="ফ্লায়ার শিরোনাম লিখুন" />
       <div class="flex-row">
@@ -231,7 +232,10 @@
       </div>
     </div>
   </div>
+</div>
 
+</div>
+</div>
   <!-- Include libraries -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>

@@ -15,36 +15,13 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>গাড়ি রেজিস্ট্রেশন তথ্য (BRTA)</title>
   <style>
-    /* 🌞 Light Mode (Default) */
- body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f6f9;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-.container {
-  max-width: 600px;
-  margin: auto;
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-  color: #2c3e50;
-}
-
 p.description {
   font-size: 15px;
   line-height: 1.6;
@@ -122,21 +99,7 @@ input[type="text"] {
     justify-content: flex-start;
   }
 }
-/* 🌙 Dark Mode Overrides */
-html.dark-mode body {
-  background: #000;
-  color: #a7ffeb;
-}
 
-html.dark-mode .container {
-  background-color: #1e293b;
-  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-  color: #f1f5f9;
-}
-
-html.dark-mode h1 {
-  color: #bfdbfe;
-}
 
 html.dark-mode p.description {
   color: #cbd5e1;
@@ -173,12 +136,21 @@ html.dark-mode .copied-msg {
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
+    <div class="file-header">
+    <div class="file-title">
+        <h2>🚗 গাড়ি রেজিস্ট্রেশন তথ্য</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p> গাড়ির নাম্বার দিয়ে বাংলাদেশ রোড ট্রান্সপোর্ট অথরিটি (BRTA) এর ওয়েবসাইটে যাচাই করতে নিচের লিংক ব্যবহার করুন।</p>
 
-  <div class="container">
-    <h1>🚗 গাড়ি রেজিস্ট্রেশন তথ্য</h1>
-    <p class="description">
-      গাড়ির নাম্বার দিয়ে বাংলাদেশ রোড ট্রান্সপোর্ট অথরিটি (BRTA) এর ওয়েবসাইটে যাচাই করতে নিচের লিংক ব্যবহার করুন।
-    </p>
+    </div>
+</div>
+    
+    <div class="file-footer">
 
     <input type="text" id="vehicleNumber" placeholder="যেমনঃ ঢাকা-মেট্রো-গ ১২৩৪৫৬" />
 
@@ -194,7 +166,8 @@ html.dark-mode .copied-msg {
 
     <div class="copied-msg" id="copiedMsg">✅ লিংক কপি হয়েছে!</div>
   </div>
-
+  </div>
+  </main>
   <script>
     function copyLink() {
       const link = document.getElementById("brtaLink").textContent;

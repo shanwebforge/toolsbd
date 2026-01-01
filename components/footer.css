@@ -18,7 +18,7 @@
             --footer-download-shadow: rgba(0, 0, 0, 0.1);
             --footer-download-title: #333;
             --footer-menu-bg: #fff;
-            --footer-menu-border: #ccc;
+            --footer-menu-border: #6b5bcc;
             --footer-menu-shadow: rgba(0, 0, 0, 0.1);
             --footer-menu-text: #8d8c8c;
             --footer-menu-active: #6b5bcc;
@@ -49,7 +49,7 @@
             --footer-download-shadow: rgba(0, 0, 0, 0.2);
             --footer-download-title: #ffffff;
             --footer-menu-bg: #1e293b;
-            --footer-menu-border: #333;
+            --footer-menu-border: #6b5bcc;
             --footer-menu-shadow: rgba(0, 0, 0, 0.3);
             --footer-menu-text: #ccc;
             --footer-menu-active: #6b5bcc;
@@ -82,6 +82,7 @@
             padding: 10px 15px 20px;
             box-sizing: border-box;
             background: linear-gradient(135deg, var(--footer-bg-gradient-1), var(--footer-bg-gradient-2));
+            border-top: 2px solid var(--footer-menu-border);
             /* Top shadow with blur */
             box-shadow: 
                 0 -4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -337,7 +338,7 @@
             /* For mobile, we change the order to have download section on top */
             .three-column-container {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
                 margin-bottom: 0px;
             }
             
@@ -357,7 +358,7 @@
                 flex: 0 0 50% !important; 
                 width: 50%;
                 min-width: 0 !important; 
-                padding: 20px;
+                padding: 10px;
             }
             
             .column-box {
@@ -376,13 +377,13 @@
             }
             
             .download-section {
-                margin: 15px 0;
+                margin: 0px 0;
                 padding: 40px 10px;
             }
             
             .download-title {
                 font-size: 16px;
-                margin-top: -5px;
+                margin-top: 0px;
                 margin-bottom: 10px;
                 font-family: "Alkatra", sans-serif;
                 font-display: swap;
@@ -427,7 +428,7 @@
             }
             
             .download-section {
-                padding: 20px 10px;
+                padding: 0px 0px;
             }
             
             .store-btn {

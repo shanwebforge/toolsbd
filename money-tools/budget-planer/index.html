@@ -16,34 +16,14 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
 
- body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
- 
-background: #f4f6f9;
-margin: 0;
-padding: 20px;
-color: #333;
- }
-.container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin-top: 70px;
-      margin-bottom: 70px;
-    }
-h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #34495e;
-}
+
 label {
   display: block;
   font-weight: 600;
@@ -101,23 +81,13 @@ button:hover, .add-expense-btn:hover {
   white-space: pre-line;
 }
 @media (max-width: 768px) {
-  .container {
-    padding: 20px;
-  }
-  h2 {font-size: 16px !important;}
+
+
 }
 
 
 /* ===== Dark Mode ===== */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
-html.dark-mode h2,
+
 html.dark-mode label {
   color: #80cbc4;
 }
@@ -151,10 +121,25 @@ html.dark-mode .result {
   </style>
 </head>
 <body>
+ <main class="file-section">
+  <div class="file-container">
 
-<div class="container">
-  <h2>Budget Planner (মাসিক/বার্ষিক)</h2>
-
+<div class="file-header">
+    <div class="file-title">
+        <h2>📅 Budget Planner (মাসিক/বার্ষিক)</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>মাসিক ও বার্ষিক বাজেট তৈরি এবং ট্র্যাক করুন</p>
+        <p>আয়, ব্যয় এবং সঞ্চয়ের বিশদ বিভাজন করুন</p>
+        <p>বিভিন্ন ব্যয় বিভাগ (ঘরোয়া, শিক্ষা, চিকিৎসা) যোগ করুন</p>
+        <p>বাজেট বনাম প্রকৃত ব্যয়ের তুলনা দেখুন</p>
+        <p>ভিজ্যুয়াল চার্ট ও গ্রাফের মাধ্যমে বিশ্লেষণ করুন</p>
+        <p>পূর্ববর্তী মাস/বছরের বাজেট ডেটা তুলনা করুন</p>
+    </div>
+</div>
+  <div class="file-footer">
   <label for="budgetType">বাজেট টাইপ</label>
   <select id="budgetType">
     <option value="monthly" selected>মাসিক</option>
@@ -177,6 +162,9 @@ html.dark-mode .result {
 
   <div class="result" id="result">ফলাফল এখানে দেখুন</div>
 </div>
+
+  </div>
+ </main>
 
 <script>
   const addExpenseBtn = document.querySelector('.add-expense-btn');

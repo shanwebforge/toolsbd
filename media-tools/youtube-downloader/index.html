@@ -15,19 +15,14 @@
       } catch (e) {}
     })();
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
     <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>YouTube ভিডিও ডাউনলোডার</title>
   <style>
-    body {
-      max-width: 480px;
-      margin: 40px auto;
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      text-align: center;
-      background: #f9f9f9;
-    }
+
     input[type=text] {
       width: 100%;
       padding: 10px;
@@ -55,30 +50,40 @@
     }
 
     @media (max-width: 768px) {
-  h2 {
-    font-size: 16px !important;
-  }
+
 
 }
-    /* ======= Dark Mode Styles ======= */
-html.dark-mode body{
-  background: #000;
-  color: #fff;
-}
 
-html.dark-mode .container {
-  background: #1e293b;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.7);
-}
   </style>
 </head>
 <body>
 
-  <h2>YouTube ভিডিও ডাউনলোডার</h2>
+ <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>📥 YouTube Video Downloader</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>Download YouTube videos in multiple resolutions (360p to 4K)</p>
+        <p>Extract audio only as MP3, M4A, or other audio formats</p>
+        <p>Download entire playlists and channels in batch</p>
+        <p>Choose from various video formats (MP4, WebM, 3GP)</p>
+        <p>Fast download speeds with pause/resume capability</p>
+        <p>Support for age-restricted and private videos</p>
+    </div>
+</div>
+
+  <div class="file-footer">
   <input type="text" id="youtubeUrl" placeholder="ইউটিউব ভিডিও URL দিন..." />
   <button id="downloadBtn">ভিডিও ডাউনলোড করুন</button>
   <p id="message"></p>
-
+  </div>
+  </div>
+</main>
   <script>
     const downloadBtn = document.getElementById('downloadBtn');
     const youtubeUrlInput = document.getElementById('youtubeUrl');

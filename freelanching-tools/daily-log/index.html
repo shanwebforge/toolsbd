@@ -3,31 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <title>Daily Task Logger</title>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f2f5;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      min-height: 100vh;
-      align-items: flex-start;
-    }
-    .container {
-      max-width: 700px;
-      width: 100%;
-      background: #fff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      margin-top: 100px;
-      margin-bottom: 100px;
-    }
+
+
     h1 {
       text-align: center;
       margin-bottom: 20px;
@@ -126,11 +110,7 @@
   }
 
 }
-    /* Dark mode styles */
-    html.dark-mode body {
-      background: #000;
-      color: #fff;
-    }
+
     html.dark-mode .container {
       background: #1e293b;
     }
@@ -140,8 +120,28 @@
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Daily Task Logger</h1>
+
+
+ <main class="file-section">
+  <div class="file-container">
+
+<div class="file-header">
+    <div class="file-title">
+        <h2>📝 Daily Task Logger</h2>
+        <div class="title-underline"></div>
+    </div>
+    
+    <div class="file-content-text">
+        <p>• Log and track your daily activities and tasks</p>
+        <p>• Categorize tasks by type, priority, and duration</p>
+        <p>• Add time stamps and notes for each completed task</p>
+        <p>• Generate daily, weekly, and monthly reports</p>
+        <p>• Analyze productivity patterns and time usage</p>
+        <p>• Export logs for review or time management analysis</p>
+    </div>
+</div>
+
+  <div class="file-footer">
     <form id="task-form">
       <input type="text" id="task-input" placeholder="নতুন টাস্ক লিখুন..." autocomplete="off" />
       <button type="submit">Add</button>
@@ -149,7 +149,8 @@
     <ul id="task-list"></ul>
     <p id="empty-msg" class="empty-msg">কোনো টাস্ক নেই। নতুন টাস্ক যোগ করুন।</p>
   </div>
-
+  </div>
+ </main>
 <script>
   const form = document.getElementById('task-form');
   const input = document.getElementById('task-input');

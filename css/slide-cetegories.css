@@ -83,7 +83,7 @@ html.dark-mode {
 
 /* MAIN WRAPPER */
 .slide-cat-section {
-    all: unset !important; /* Reset everything */
+    all: unset !important;
     display: block !important;
     width: 100% !important;
     max-width: 1400px !important;
@@ -93,6 +93,7 @@ html.dark-mode {
     position: relative !important;
     min-height: 250px;
 }
+
 .sc-slide-cat-container {
     background: linear-gradient(135deg, var(--slidecat-bg-start), var(--slidecat-bg-end));
     width: 100%; 
@@ -107,6 +108,11 @@ html.dark-mode {
     margin-bottom: 10px;
     border-radius: 18px;
     color: var(--slidecat-text-secondary);
+    transition: transform 0.3s ease;
+}
+
+.sc-slide-cat-container:hover {
+    transform: translateY(-3px);
 }
 
 /* GLASS TABS WRAPPER */
@@ -142,12 +148,13 @@ html.dark-mode {
     align-items: center;
     justify-content: center;
     line-height: 1;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 /* HOVER */
 .sc-glass-tabs .sc-tab:hover {
     background: var(--slidecat-tab-hover-bg);
+    transform: translateY(-2px);
 }
 
 /* ACTIVE TAB */
@@ -157,6 +164,7 @@ html.dark-mode {
     color: var(--slidecat-tab-active-text) !important;
     font-weight: 700;
     height: 100%;
+    transform: scale(1.05);
 }
 
 /* CONTENT */
@@ -164,12 +172,20 @@ html.dark-mode {
     display: none;
     animation: fadeIn 0.4s ease;
 }
+
 .sc-category-box.active {
     display: block;
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(0px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+        opacity: 0; 
+        transform: translateY(10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
 }
 
 /* CARD */
@@ -181,6 +197,12 @@ html.dark-mode {
     position: relative;
     box-sizing: border-box;
     overflow: hidden;
+    opacity: 0.95;
+    transition: opacity 0.3s ease;
+}
+
+.sc-glass-card:hover {
+    opacity: 1;
 }
 
 /* TOP DATE */
@@ -188,12 +210,18 @@ html.dark-mode {
     display: flex;
     justify-content: flex-end;
 }
+
 .sc-card-top .sc-date {
     background: var(--slidecat-date-bg);
     padding: 5px 12px;
     border-radius: 12px;
     font-size: 12px;
     font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.sc-card-top:hover .sc-date {
+    transform: scale(1.05);
 }
 
 /* TITLE */
@@ -203,6 +231,11 @@ html.dark-mode {
     font-weight: 700;
     line-height: 1.4;
     color: var(--slidecat-text-secondary);
+    transition: transform 0.3s ease;
+}
+
+.sc-glass-card:hover .sc-card-title {
+    transform: translateX(3px);
 }
 
 /* SUBTEXT */
@@ -212,6 +245,11 @@ html.dark-mode {
     font-size: 15px;
     line-height: 1.5;
     color: var(--slidecat-text-sub);
+    transition: opacity 0.3s ease;
+}
+
+.sc-glass-card:hover .sc-card-sub {
+    opacity: 1;
 }
 
 /* ITEMS CONTAINER */
@@ -234,10 +272,16 @@ html.dark-mode {
 .sc-items-container::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
     border-radius: 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sc-items-container:hover::-webkit-scrollbar-thumb {
+    transform: scale(1.1);
 }
 
 .sc-items-container::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-thumb-hover);
+    transform: scale(1.2);
 }
 
 /* ITEM LINK */
@@ -256,14 +300,14 @@ html.dark-mode {
     border: 1px solid var(--item-border);
     border-radius: 12px;
     padding: 15px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 }
 
 .sc-item-link:hover .sc-item {
     background: var(--item-hover-bg);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* ITEM ICON */
@@ -277,11 +321,22 @@ html.dark-mode {
     align-items: center;
     justify-content: center;
     margin-right: 15px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sc-item-link:hover .sc-item-icon {
+    transform: scale(1.1);
+    background: rgba(142, 60, 250, 0.2);
 }
 
 .sc-item-icon i {
     font-size: 22px;
     color: var(--item-icon-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sc-item-link:hover .sc-item-icon i {
+    transform: rotate(8deg) scale(1.2);
 }
 
 /* ITEM CONTENT */
@@ -296,6 +351,12 @@ html.dark-mode {
     color: var(--item-title-color);
     margin-bottom: 4px;
     line-height: 1.3;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.sc-item-link:hover .sc-item-title {
+    transform: translateX(3px);
+    color: var(--item-icon-color);
 }
 
 .sc-item-desc {
@@ -303,18 +364,29 @@ html.dark-mode {
     color: var(--item-desc-color);
     line-height: 1.4;
     opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.sc-item-link:hover .sc-item-desc {
+    opacity: 1;
 }
 
 /* ITEM BADGE */
 .sc-item-badge {
-    background: var(--badge-bg);
-    color: var(--badge-text);
+    background: var(--item-badge-bg);
+    color: var(--item-badge-text);
     padding: 4px 10px;
     border-radius: 20px;
     font-size: 11px;
     font-weight: 600;
     margin-left: 10px;
     white-space: nowrap;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.sc-item-link:hover .sc-item-badge {
+    transform: scale(1.1);
+    background: rgba(142, 60, 250, 0.25);
 }
 
 /* CARD ICON */
@@ -330,6 +402,13 @@ html.dark-mode {
     font-size: 15px;
     white-space: nowrap;
     color: var(--slidecat-icon-text);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.8;
+}
+
+.sc-glass-card:hover .sc-card-icon {
+    transform: scale(1.1);
+    opacity: 1;
 }
 
 /* ======================= */
@@ -340,6 +419,11 @@ html.dark-mode {
         width: 100%;
         left: 0;
         right: 0;
+        transform: translateY(0) !important;
+    }
+
+    .sc-slide-cat-container:hover {
+        transform: translateY(0) !important;
     }
 
     .sc-glass-tabs {
@@ -352,10 +436,16 @@ html.dark-mode {
         font-size: 12px;
         padding: 0 10px;
         height: 100%;
+        transform: translateY(0) !important;
+    }
+
+    .sc-glass-tabs .sc-tab:hover {
+        transform: translateY(0) !important;
     }
 
     .sc-glass-tabs .sc-tab.active {
         height: 100%;
+        transform: scale(1) !important;
     }
 
     .sc-card-title {
@@ -372,6 +462,11 @@ html.dark-mode {
     
     .sc-item {
         padding: 12px;
+        transform: translateY(0) !important;
+    }
+    
+    .sc-item-link:hover .sc-item {
+        transform: translateY(-3px) !important;
     }
     
     .sc-item-icon {
@@ -397,5 +492,32 @@ html.dark-mode {
         font-size: 10px;
         padding: 3px 8px;
     }
+    
+    .sc-card-icon {
+        transform: scale(1) !important;
+    }
 }
 
+/* Smooth transitions for all interactive elements */
+.sc-slide-cat-container,
+.sc-tab,
+.sc-glass-card,
+.sc-date,
+.sc-card-title,
+.sc-card-sub,
+.sc-item,
+.sc-item-icon,
+.sc-item-icon i,
+.sc-item-title,
+.sc-item-desc,
+.sc-item-badge,
+.sc-card-icon,
+.sc-items-container::-webkit-scrollbar-thumb {
+    transition: 
+        transform 0.3s ease,
+        background-color 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        opacity 0.3s ease;
+}

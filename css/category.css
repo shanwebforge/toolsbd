@@ -76,12 +76,12 @@ html.dark-mode {
     text-decoration: none;
     color: inherit;
     min-height: 200px;
-    transition: var(--cat-transition);
+ 
 }
 
 .cat-item:hover {
     background: var(--item-hover-bg);
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
@@ -95,7 +95,6 @@ html.dark-mode {
     align-items: center;
     justify-content: center;
     margin-bottom: 15px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .cat-item:hover .cat-icon {
@@ -106,7 +105,7 @@ html.dark-mode {
 .cat-icon i {
     font-size: 22px;
     color: var(--item-icon-color);
-    transition: transform 0.3s ease, color 0.3s ease;
+
 }
 
 .cat-item:hover .cat-icon i {
@@ -127,24 +126,19 @@ html.dark-mode {
     font-weight: bold;
     margin-bottom: 10px;
     color: var(--item-title-color);
-    transition: transform 0.3s ease;
+
 }
 
-.cat-item:hover .cat-title {
-    transform: translateX(5px);
-}
 
 .cat-desc {
     font-size: 18px;
     color: var(--item-desc-color);
     line-height: 1.3;
-    opacity: 0.9;
-    transition: opacity 0.3s ease;
+
+
 }
 
-.cat-item:hover .cat-desc {
-    opacity: 1;
-}
+
 
 /* ====================================
    Info Panel & Actions
@@ -159,13 +153,11 @@ html.dark-mode {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
+
+
 }
 
-.cat-item:hover .info-panel {
-    opacity: 1;
-}
+
 
 .top-info {
     display: flex;
@@ -175,14 +167,12 @@ html.dark-mode {
     border: 1px solid var(--info-panel-bdr);
     border-radius: 10px;
     background: var(--info-panel-bg);
-    backdrop-filter: blur(3px);
-    transform: translateY(0);
-    transition: transform 0.3s ease;
+
+
+ 
 }
 
-.cat-item:hover .top-info {
-    transform: translateY(-3px);
-}
+
 
 .info-row {
     display: flex;
@@ -190,22 +180,18 @@ html.dark-mode {
     gap: 6px;
     font-size: 16px;
     color: var(--info-panel-text);
-    transition: transform 0.3s ease;
+
 }
 
-.cat-item:hover .info-row {
-    transform: translateX(-2px);
-}
+
 
 .info-row i {
     font-size: 20px;
     color: var(--info-acent);
-    transition: transform 0.3s ease;
+
 }
 
-.info-row:hover i {
-    transform: scale(1.2);
-}
+
 
 .bottom-actions {
     display: flex;
@@ -217,31 +203,25 @@ html.dark-mode {
     background: var(--info-panel-bg);
     backdrop-filter: blur(3px);
     align-items: flex-end;
-    transform: translateY(0);
-    transition: transform 0.3s ease;
+
 }
 
-.cat-item:hover .bottom-actions {
-    transform: translateY(3px);
-}
+
 
 .bottom-actions i {
     font-size: 22px;
     color: var(--info-acent);
     cursor: pointer;
-    transition: transform 0.2s ease, color 0.2s ease;
+
 }
 
-.bottom-actions i:hover {
-    color: var(--info-acent-h);
-    transform: scale(1.3);
-}
+
 
 .eye-count,
 .file-count {
     font-weight: bold;
     color: var(--info-acent);
-    transition: color 0.3s ease;
+
 }
 
 .cat-item:hover .eye-count,
@@ -316,12 +296,10 @@ html.dark-mode {
         padding: 14px;
         gap: 14px;
         min-height: 85px;
-        transform: translateY(0) !important;
+
     }
     
-    .cat-item:hover {
-        transform: translateY(-2px) !important;
-    }
+
     
     .cat-icon {
         width: 40px;
@@ -349,11 +327,7 @@ html.dark-mode {
         border-radius: 12px;
         gap: 20px;
     }
-    
-    .main-catagory-title-h1 {
-        font-size: 18px;
-        font-family: "Alkatra";
-    }
+
     
     .cat-icon {
         font-size: 24px;

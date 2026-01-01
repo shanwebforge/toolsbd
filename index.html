@@ -21,8 +21,7 @@
   <!-- Critical CSS -->
 
   <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/components/header.css" />
-  <link rel="stylesheet" defer href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
   
   <!-- Preconnect for external resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,7 +89,8 @@
         '/css/sort-catagory.css',
         '/css/slide-cetegories.css',  
         '/blog/css/homeposts.css',
-        '/components/footer.css'
+        '/components/footer.css',
+        '/components/header.css',
       ];
       
       stylesheets.forEach(href => {
@@ -122,9 +122,7 @@
       // Load non-critical CSS
       loadNonCriticalCSS();
 
-      // Load sections
-      loadSection('/highlight-page/img-slide.html', 'img-slide-section');
-      
+     
       // Category click tracking
       setupCategoryClickTracking();
       
@@ -380,11 +378,12 @@
         });
     </script>
   <!-- Deferred scripts -->
-  <script defer src="/scripts/dpop.js"></script>
-  <script defer src="/scripts/sadow.js"></script>
-  <script defer src="/components/header.js"></script>
-  <script defer src="/components/footer.js"></script>
+     <link rel="stylesheet" defer href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script defer src="/scripts/dpop.js" defer></script>
+  <script defer src="/scripts/sadow.js" defer></script>
+  <script defer src="/components/header.js" defer></script>
+  <script defer src="/components/footer.js" defer></script>
   <script defer src="/scripts/script.js"></script>
-  <script type="module" defer src="/blog/js/loadRecentPostsHome.js"></script>
+  <script type="module" defer src="/blog/js/loadRecentPostsHome.js" defer></script>
 </body>
 </html>

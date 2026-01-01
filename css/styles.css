@@ -184,7 +184,7 @@ body {
     color: var(--text-dark);
     font-weight: 700;
     font-family: "Noto Sans Bengali", "Alkatra", "Archivo Black",
-                 "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif;
+                 "Bungee", "Prosto One", "Rubik Mono One", system-ui, sans-serif; font-display: swap;
     overflow-x: hidden;
     background: transparent;
 }
@@ -347,7 +347,7 @@ html.dark-mode .star {
     font-size: 17px;
     font-weight: 500;
     color: var(--text-dark);
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    transform: box-shadow 0.3s ease, transform 0.2s ease;
     text-decoration: none !important;
     text-align: center;
     max-width: 400px;
@@ -368,7 +368,7 @@ html.dark-mode .star {
     font-size: 16px;
     border-radius: 6px;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    transform: transform 0.2s ease, background-color 0.3s ease;
     width: 100%;
     text-align: center;
     overflow: hidden;
@@ -385,7 +385,7 @@ html.dark-mode .star {
     height: 100%;
     background-color: rgba(0,0,0,.2);
     width: 0%;
-    transition: width 0.3s ease;
+    transform: width 0.3s ease;
 }
 
 .progress-percent {
@@ -401,7 +401,7 @@ html.dark-mode .star {
 
 .appbtn:hover {
     background-color: var(--accent-hover);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 .download-note {
@@ -423,7 +423,7 @@ html.dark-mode .star {
     font-size: 16px;
     border-radius: 6px;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease;
+    transform: transform 0.2s ease, background-color 0.3s ease;
     width: 100%;
     display: none;
 }
@@ -476,7 +476,7 @@ html.dark-mode .star {
     line-height: 1;
     cursor: pointer;
     box-shadow: 0 6px 18px rgba(0,0,0,.2);
-    transition: transform 0.2s ease;
+    transform: transform 0.2s ease;
 }
 
 .app-modal-close:hover {
@@ -574,7 +574,7 @@ html.dark-mode .star {
     font-weight: 600;
     color: var(--fs-item-text);
     border-left: 4px solid transparent;
-    transition: transform 0.3s ease;
+    transform: transform 0.3s ease;
 }
 
 .fs-item:hover {
@@ -583,7 +583,7 @@ html.dark-mode .star {
 
 .fs-item i {
     font-size: 18px;
-    transition: transform 0.3s ease;
+    transform: transform 0.3s ease;
 }
 
 .fs-item:hover i {
@@ -625,7 +625,7 @@ html.dark-mode .star {
     border-radius: 50%;
     background: var(--fs-chart-bg);
     position: relative;
-    transition: transform 0.5s ease;
+    transform: transform 0.5s ease;
 }
 
 .fs-circle-chart:hover {
@@ -655,7 +655,7 @@ html.dark-mode .star {
     align-items: center;
     justify-content: center;
     font-weight: 800;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .fs-segment:hover {
@@ -768,7 +768,7 @@ html.dark-mode .star {
     border-radius: 16px;
     padding: 30px;
     box-shadow: 0 4px 20px var(--main-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
 }
@@ -794,7 +794,7 @@ html.dark-mode .star {
     box-shadow: 0 2px 8px var(--catbar-shadow);
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transform: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .catbar-box:hover {
@@ -807,7 +807,7 @@ html.dark-mode .star {
 .catbar-box i {
     font-size: 28px;
     color: var(--catbar-icon);
-    transition: transform 0.3s ease;
+    transform: transform 0.3s ease;
     z-index: 1;
 }
 
@@ -822,7 +822,7 @@ html.dark-mode .star {
     text-align: center;
     line-height: 1.3;
     z-index: 1;
-    transition: color 0.3s ease;
+    transform: color 0.3s ease;
 }
 
 /* Performance Badge */
@@ -840,33 +840,26 @@ html.dark-mode .star {
     border-radius: 50px;
     font-weight: 600;
     font-size: 15px;
-    margin: 10px auto;
     box-shadow: 0 4px 15px var(--badge-shadow);
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .performance-badge:hover {
-    transform: translateY(-3px);
     box-shadow: 0 6px 20px var(--badge-shadow);
 }
 
 .performance-badge i {
     color: var(--badge-icon);
     font-size: 18px;
-    animation: pulse 2s infinite;
-    transition: transform 0.3s ease;
+
 }
 
 .performance-badge:hover i {
     transform: scale(1.2);
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
 
 /* ===== HERO SECTION ===== */
 .hero-text {
@@ -882,7 +875,6 @@ html.dark-mode .star {
     position: relative;
     padding-bottom: 15px;
     text-align: center;
-    transition: opacity 0.3s ease;
 }
 
 .hero-description {
@@ -891,10 +883,10 @@ html.dark-mode .star {
     line-height: 1.7;
     margin: 0 auto 30px auto;
     max-width: 800px;
+    min-height: 50px;
     font-weight: 400;
     text-align: center;
     display: block;
-    transition: opacity 0.3s ease;
 }
 
 .hero-link-shape {
@@ -917,7 +909,6 @@ html.dark-mode .star {
     color: var(--hero-link-text);
     text-decoration: none;
     border-radius: 12px;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -935,14 +926,14 @@ html.dark-mode .star {
 
 .hero-link-bg:hover,
 .hero-link-bg1:hover {
-    transform: translateY(-5px) scale(1.05);
+    transform: translateY(-1px) scale(1.05);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .hero-link-bg i,
 .hero-link-bg1 i {
     font-size: 20px;
-    transition: transform 0.3s ease;
+    transform: transform 0.3s ease;
 }
 
 .hero-link-bg:hover i,
@@ -1163,7 +1154,6 @@ html.dark-mode .star {
         z-index: 90;
         box-sizing: border-box;
         margin: 0;
-        transition: transform 0.3s ease;
     }
 
     html.dark-mode .left-panel {
@@ -1233,7 +1223,7 @@ html.dark-mode .star {
         gap: 12px;
         padding: 12px 15px;
         border-radius: 10px;
-        transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        transform: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
         color: #212529;
     }
 
@@ -1266,7 +1256,7 @@ html.dark-mode .star {
         font-size: 1.2rem;
         width: 24px;
         text-align: center;
-        transition: transform 0.3s ease;
+        transform: transform 0.3s ease;
     }
 
     .nav-link:hover i {
@@ -1296,7 +1286,7 @@ html.dark-mode .star {
         padding: 15px;
         background-color: rgba(107, 91, 204, 0.1);
         border-radius: 10px;
-        transition: transform 0.3s ease;
+        transform: transform 0.3s ease;
     }
 
     .user-info:hover {
@@ -1318,7 +1308,7 @@ html.dark-mode .star {
         justify-content: center;
         font-weight: bold;
         font-size: 1.2rem;
-        transition: transform 0.3s ease;
+        transform: transform 0.3s ease;
     }
 
     .user-info:hover .user-avatar {
@@ -1355,7 +1345,7 @@ html.dark-mode .star {
         margin-left: 280px !important;
         padding: 0 !important;
         box-sizing: border-box;
-        margin-top: 100px !important;
+        margin-top: 20px !important;
         margin-bottom: 0 !important;
     }
 
@@ -1367,18 +1357,7 @@ html.dark-mode .star {
 }
 
 /* Dark Mode Toggle Animation */
-.dark-mode .main-bg {
-    animation: fadeInDark 0.5s ease;
-}
 
-@keyframes fadeInDark {
-    from {
-        opacity: 0.8;
-    }
-    to {
-        opacity: 1;
-    }
-}
 
 /* FINAL FIX */
 .main-section2 { 
@@ -1395,49 +1374,39 @@ html.dark-mode .star {
     position: relative; 
 }
 
-/* Additional transition fixes */
+/* Additional transform fixes */
 .catbar-box:nth-child(1) i { 
     color: #2ecc71; 
-    transition: transform 0.3s ease, color 0.3s ease; 
+    transform: transform 0.3s ease, color 0.3s ease; 
 }
 
 .catbar-box:nth-child(2) i { 
     color: #e74c3c; 
-    transition: transform 0.3s ease, color 0.3s ease; 
+    transform: transform 0.3s ease, color 0.3s ease; 
 }
 
 .catbar-box:nth-child(3) i { 
     color: #3498db; 
-    transition: transform 0.3s ease, color 0.3s ease; 
+    transform: transform 0.3s ease, color 0.3s ease; 
 }
 
 .catbar-box:nth-child(4) i { 
     color: #9b59b6; 
-    transition: transform 0.3s ease, color 0.3s ease; 
+    transform: transform 0.3s ease, color 0.3s ease; 
 }
 
 .catbar-box:nth-child(5) i { 
     color: #f39c12; 
-    transition: transform 0.3s ease, color 0.3s ease; 
+    transform: transform 0.3s ease, color 0.3s ease; 
 }
 
 .catbar-box:nth-child(6) i { 
     color: #1abc9c; 
-    transition: transform 0.3s ease, color 0.3s ease; 
+    transform: transform 0.3s ease, color 0.3s ease; 
 }
 
 .catbar-box:nth-child(7) i { 
     color: #d35400; 
-    transition: transform 0.3s ease, color 0.3s ease; 
+    transform: transform 0.3s ease, color 0.3s ease; 
 }
 
-/* Smooth transitions for all interactive elements */
-a, button, .catbar-box, .fs-item, .nav-link, .hero-link-bg, .hero-link-bg1 {
-    transition: 
-        transform 0.3s ease,
-        background-color 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        opacity 0.3s ease;
-}

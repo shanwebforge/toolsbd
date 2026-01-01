@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বাংলাদেশ জরুরি হেল্পলাইন | Emergency Help Lines BD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Import Bengali Font */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800;900&display=swap');
+        
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans Bengali', system-ui, sans-serif;
+            background: linear-gradient(135deg, #94f8ba 0%, #f35ef3 100%) fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: #000;
+            font-weight: 700;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Dark Mode */
+        .dark-mode body {
+            background: linear-gradient(135deg, #034d36 0%, #5a0067 100%) fixed;
+            color: #fff;
+        }
+
+        /* Color Variables */
+        :root {
+            --color-primary: #8e3cfa;
+            --color-primary-light: #a96cff;
+            --color-primary-dark: #7425db;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-error: #ef4444;
+            --color-info: #3b82f6;
+            --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --shadow-dark: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .dark-mode .page-header {
+            background: rgba(30, 30, 30, 0.9);
+        }
+
+        .page-title {
+            font-size: 3rem;
+            color: #dc143c;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .dark-mode .page-subtitle {
+            color: #f3f4f6;
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: linear-gradient(135deg, #ff0000 0%, #ff6b6b 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-dark);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .emergency-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .emergency-number {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin: 20px 0;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Help Grid */
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Help Card */
+        .help-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            border-top: 8px solid;
+            overflow: hidden;
+        }
+
+        .dark-mode .help-card {
+            background: rgba(30, 30, 30, 0.95);
+        }
+
+        .help-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-dark);
+        }
+
+        /* Card Colors */
+        .police { border-color: #1e40af; }
+        .fire { border-color: #dc2626; }
+        .ambulance { border-color: #059669; }
+        .women { border-color: #c026d3; }
+        .child { border-color: #f59e0b; }
+        .electricity { border-color: #3b82f6; }
+        .gas { border-color: #f97316; }
+        .water { border-color: #06b6d4; }
+        .health { border-color: #10b981; }
+        .legal { border-color: #8b5cf6; }
+        .info { border-color: #6366f1; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        /* Icon background colors */
+        .police .card-icon { background: #1e40af; }
+        .fire .card-icon { background: #dc2626; }
+        .ambulance .card-icon { background: #059669; }
+        .women .card-icon { background: #c026d3; }
+        .child .card-icon { background: #f59e0b; }
+        .electricity .card-icon { background: #3b82f6; }
+        .gas .card-icon { background: #f97316; }
+        .water .card-icon { background: #06b6d4; }
+        .health .card-icon { background: #10b981; }
+        .legal .card-icon { background: #8b5cf6; }
+        .info .card-icon { background: #6366f1; }
+
+        .card-title {
+            font-size: 1.6rem;
+            margin: 0;
+            color: #1f2937;
+        }
+
+        .dark-mode .card-title {
+            color: #f3f4f6;
+        }
+
+        .card-subtitle {
+            font-size: 1rem;
+            color: #6b7280;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .dark-mode .card-subtitle {
+            color: #d1d5db;
+        }
+
+        /* Number Display */
+        .number-display {
+            background: #f3f4f6;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            border: 2px dashed #d1d5db;
+        }
+
+        .dark-mode .number-display {
+            background: #374151;
+            border-color: #4b5563;
+        }
+
+        .phone-number {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #1f2937;
+            margin: 15px 0;
+            direction: ltr;
+            letter-spacing: 2px;
+        }
+
+        .dark-mode .phone-number {
+            color: #f3f4f6;
+        }
+
+        .service-hours {
+            color: #6b7280;
+            font-size: 1rem;
+            margin: 10px 0;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .dark-mode .service-hours {
+            color: #d1d5db;
+            background: rgba(55, 65, 81, 0.7);
+        }
+
+        /* Call Button */
+        .call-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .call-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(142, 60, 250, 0.4);
+        }
+
+        .call-btn i {
+            margin-right: 12px;
+        }
+
+        /* Important Notice */
+        .notice-box {
+            background: #fff3cd;
+            border-left: 8px solid #ffc107;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .dark-mode .notice-box {
+            background: #5a4b2c;
+            border-left-color: #f59e0b;
+        }
+
+        .notice-title {
+            color: #856404;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .dark-mode .notice-title {
+            color: #fef3c7;
+        }
+
+        .notice-box ul {
+            margin: 0;
+            padding-left: 25px;
+        }
+
+        .notice-box li {
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .dark-mode .footer {
+            background: rgba(30, 30, 30, 0.9);
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .copyright {
+            color: #6b7280;
+            font-size: 1rem;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-dark);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px auto;
+            }
+            
+            .page-title {
+                font-size: 2.2rem;
+            }
+            
+            .page-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .help-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .emergency-number {
+                font-size: 3.5rem;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .card-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 2.2rem;
+            }
+            
+            .theme-toggle {
+                top: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .emergency-number {
+                font-size: 2.8rem;
+            }
+            
+            .phone-number {
+                font-size: 1.8rem;
+            }
+            
+            .help-card {
+                padding: 20px;
+            }
+            
+            .notice-box {
+                padding: 20px;
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .help-card {
+            animation: fadeInUp 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .help-card:nth-child(1) { animation-delay: 0.1s; }
+        .help-card:nth-child(2) { animation-delay: 0.2s; }
+        .help-card:nth-child(3) { animation-delay: 0.3s; }
+        .help-card:nth-child(4) { animation-delay: 0.4s; }
+        .help-card:nth-child(5) { animation-delay: 0.5s; }
+        .help-card:nth-child(6) { animation-delay: 0.6s; }
+        .help-card:nth-child(7) { animation-delay: 0.7s; }
+        .help-card:nth-child(8) { animation-delay: 0.8s; }
+        .help-card:nth-child(9) { animation-delay: 0.9s; }
+        .help-card:nth-child(10) { animation-delay: 1.0s; }
+        .help-card:nth-child(11) { animation-delay: 1.1s; }
+
+        /* Service Badge */
+        .service-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0 40px;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dark-mode .nav-btn {
+            background: rgba(30, 30, 30, 0.9);
+            color: #fff;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1 class="page-title">বাংলাদেশ জরুরি হেল্পলাইন</h1>
+            <p class="page-subtitle">Emergency Help Lines - Bangladesh</p>
+            <p>সরকারি ও বেসরকারি জরুরি সেবাসমূহের সংক্ষিপ্ত তালিকা</p>
+        </header>
+
+        <!-- Quick Navigation -->
+        <div class="quick-nav">
+            <a href="#police" class="nav-btn">🚓 পুলিশ</a>
+            <a href="#fire" class="nav-btn">🚒 ফায়ার সার্ভিস</a>
+            <a href="#ambulance" class="nav-btn">🚑 অ্যাম্বুলেন্স</a>
+            <a href="#women" class="nav-btn">👩 নারী নির্যাতন</a>
+            <a href="#child" class="nav-btn">👶 শিশু হেল্পলাইন</a>
+        </div>
+
+        <!-- Emergency Banner -->
+        <div class="emergency-banner">
+            <h2><i class="fas fa-exclamation-triangle"></i> সর্বোচ্চ জরুরি নম্বর</h2>
+            <div class="emergency-number">৯৯৯</div>
+            <p style="font-size: 1.2rem; margin-bottom: 10px;">জাতীয় জরুরি সেবা (পুলিশ, ফায়ার সার্ভিস, অ্যাম্বুলেন্স)</p>
+            <p style="font-size: 1.1rem;"><i class="fas fa-clock"></i> ২৪ ঘণ্টা, টোল ফ্রি | <i class="fas fa-phone"></i> সর্বত্র প্রযোজ্য</p>
+        </div>
+
+        <!-- Main Services Grid -->
+        <div class="help-grid">
+            <!-- Police -->
+            <div class="help-card police" id="police">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">পুলিশ সেবা</h3>
+                        <p class="card-subtitle">Police Emergency Service</p>
+                        <span class="service-badge">জরুরি সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">১০০</div>
+                    <p>জরুরি পুলিশ সহায়তা</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> ২৪/৭ সার্ভিস</div>
+                </div>
+                <a href="tel:100" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Fire Service -->
+            <div class="help-card fire" id="fire">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-fire-extinguisher"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">ফায়ার সার্ভিস</h3>
+                        <p class="card-subtitle">Fire Emergency Service</p>
+                        <span class="service-badge">জরুরি সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">১০১</div>
+                    <p>অগ্নি নির্বাপণ ও উদ্ধার</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> ২৪/৭ সার্ভিস</div>
+                </div>
+                <a href="tel:101" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Ambulance -->
+            <div class="help-card ambulance" id="ambulance">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">অ্যাম্বুলেন্স সার্ভিস</h3>
+                        <p class="card-subtitle">Ambulance & Medical Emergency</p>
+                        <span class="service-badge">জরুরি সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">১০২</div>
+                    <p>জরুরি মেডিক্যাল সহায়তা</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> ২৪/৭ সার্ভিস</div>
+                </div>
+                <a href="tel:102" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Women Abuse -->
+            <div class="help-card women" id="women">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">নারী নির্যাতন প্রতিরোধ</h3>
+                        <p class="card-subtitle">Women & Child Abuse Helpline</p>
+                        <span class="service-badge">সামাজিক সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">১০৯</div>
+                    <p>নারী ও শিশু নির্যাতন প্রতিরোধ</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> সকাল ৮টা - রাত ১০টা</div>
+                </div>
+                <a href="tel:109" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Child Helpline -->
+            <div class="help-card child" id="child">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">শিশু হেল্পলাইন</h3>
+                        <p class="card-subtitle">Child Helpline</p>
+                        <span class="service-badge">সামাজিক সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">১০৯৮</div>
+                    <p>শিশু সহায়তা ও সুরক্ষা</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> ২৪/৭ সার্ভিস</div>
+                </div>
+                <a href="tel:1098" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Electricity -->
+            <div class="help-card electricity">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">বিদ্যুৎ জরুরি সেবা</h3>
+                        <p class="card-subtitle">Electricity Emergency Service</p>
+                        <span class="service-badge">যোগাযোগ সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">৩৩৩</div>
+                    <p>ডেসকো/পল্লী বিদ্যুৎ জরুরি সমস্যা</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> সকাল ৯টা - রাত ১০টা</div>
+                </div>
+                <a href="tel:333" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Gas Service -->
+            <div class="help-card gas">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">গ্যাস জরুরি সেবা</h3>
+                        <p class="card-subtitle">Gas Emergency Service</p>
+                        <span class="service-badge">যোগাযোগ সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">১৬৪৩০</div>
+                    <p>টিঅ্যান্ডটি/কর্ণফুলি গ্যাস লিকেজ</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> ২৪/৭ সার্ভিস</div>
+                </div>
+                <a href="tel:16430" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Water Service -->
+            <div class="help-card water">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">পানি সেবা</h3>
+                        <p class="card-subtitle">Water Supply Emergency</p>
+                        <span class="service-badge">যোগাযোগ সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">১৬১৬৩</div>
+                    <p>ওয়াসা জরুরি পানি সমস্যা</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> সকাল ৮টা - রাত ১০টা</div>
+                </div>
+                <a href="tel:16163" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Health Information -->
+            <div class="help-card health">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">স্বাস্থ্য বাতায়ন</h3>
+                        <p class="card-subtitle">Health Information Helpline</p>
+                        <span class="service-badge">স্বাস্থ্য সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">১৬২৬৩</div>
+                    <p>স্বাস্থ্য সংক্রান্ত তথ্য ও পরামর্শ</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> ২৪/৭ সার্ভিস</div>
+                </div>
+                <a href="tel:16263" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Legal Aid -->
+            <div class="help-card legal">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">আইন সহায়তা</h3>
+                        <p class="card-subtitle">Legal Aid Services</p>
+                        <span class="service-badge">আইনি সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">১৬৪৩০</div>
+                    <p>বিনামূল্যে আইনি পরামর্শ</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> সকাল ৯টা - রাত ৫টা</div>
+                </div>
+                <a href="tel:16430" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+
+            <!-- Information Service -->
+            <div class="help-card info">
+                <div class="card-header">
+                    <div class="card-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title">তথ্য ও সেবা</h3>
+                        <p class="card-subtitle">Government Information Service</p>
+                        <span class="service-badge">তথ্য সেবা</span>
+                    </div>
+                </div>
+                <div class="number-display">
+                    <div class="phone-number">৩৩৩</div>
+                    <p>সরকারি সব তথ্য ও সেবা</p>
+                    <div class="service-hours"><i class="fas fa-clock"></i> সকাল ৮টা - রাত ১২টা</div>
+                </div>
+                <a href="tel:333" class="call-btn">
+                    <i class="fas fa-phone-alt"></i> কল করুন
+                </a>
+            </div>
+        </div>
+
+        <!-- Important Notice -->
+        <div class="notice-box">
+            <h3 class="notice-title">
+                <i class="fas fa-exclamation-circle"></i> গুরুত্বপূর্ণ নির্দেশনা
+            </h3>
+            <ul>
+                <li><strong>জরুরি অবস্থায় সরাসরি ৯৯৯ নম্বরে কল করুন</strong> - এটি পুলিশ, ফায়ার সার্ভিস ও অ্যাম্বুলেন্সের সমন্বিত সেবা</li>
+                <li>ভুয়া বা অপ্রয়োজনীয় কল থেকে বিরত থাকুন - জরুরি লাইন ব্যস্ত রাখা দণ্ডনীয় অপরাধ</li>
+                <li>কল করার সময় আপনার সঠিক অবস্থান (ঠিকানা, এলাকা, ল্যান্ডমার্ক) পরিষ্কারভাবে বলুন</li>
+                <li>সমস্যার ধরন ও জরুরিতার মাত্রা সম্পর্কে সংক্ষেপে তথ্য দিন</li>
+                <li>এই সকল সেবাগুলো সম্পূর্ণ বিনামূল্যে ও টোল ফ্রি</li>
+                <li>কোনো প্রকার হয়রানি, মিথ্যা তথ্য বা ভুয়া কল প্রদান করবেন না</li>
+                <li>জরুরি নয় এমন বিষয়ের জন্য সংশ্লিষ্ট দপ্তরের নিয়মিত নম্বর ব্যবহার করুন</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p><strong>বাংলাদেশ সরকারের জরুরি সেবা সমূহ</strong></p>
+            <p>যেকোনো জরুরি অবস্থায় সাহায্যের জন্য এই নম্বরগুলো ব্যবহার করুন</p>
+            <p style="margin-top: 20px; color: #666;">
+                <i class="fas fa-phone"></i> সকল নম্বর টোল-ফ্রি | 
+                <i class="fas fa-clock"></i> অধিকাংশ সার্ভিস ২৪/৭ | 
+                <i class="fas fa-shield-alt"></i> সরকারি নিয়ন্ত্রণাধীন
+            </p>
+            <p class="copyright">© ২০২৪ বাংলাদেশ জরুরি হেল্পলাইন সার্ভিস | সকল অধিকার সংরক্ষিত</p>
+        </footer>
+    </div>
+
+    <script>
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            const html = document.documentElement;
+            const isDarkMode = html.classList.contains('dark-mode');
+            
+            if (isDarkMode) {
+                html.classList.remove('dark-mode');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.documentElement.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        // Add click animation to call buttons
+        document.querySelectorAll('.call-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Animation effect
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+                
+                // Log the call (for analytics)
+                const serviceName = this.closest('.help-card').querySelector('.card-title').textContent;
+                console.log(`Calling service: ${serviceName}`);
+            });
+        });
+
+        // Smooth scroll for quick navigation
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add service category filter
+        const serviceCategories = document.querySelectorAll('.service-badge');
+        serviceCategories.forEach(badge => {
+            badge.addEventListener('click', function() {
+                const category = this.textContent;
+                alert(`${category} ক্যাটাগরির সব সার্ভিস দেখানো হবে`);
+                // Implement category filtering logic here
+            });
+        });
+
+        // Highlight emergency numbers
+        document.querySelectorAll('.phone-number').forEach(number => {
+            if (['১০০', '১০১', '১০২', '৯৯৯'].includes(number.textContent.trim())) {
+                number.style.color = '#dc2626';
+                number.style.fontSize = '2.4rem';
+            }
+        });
+    </script>
+</body>
+</html>

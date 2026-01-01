@@ -323,6 +323,7 @@ html.dark-mode .star {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 0px;
+    min-height: 250px;
 }
 .main-bg {
     padding: 20px;
@@ -1559,13 +1560,13 @@ html.dark-mode .star {
         margin-left: 280px !important;
         padding: 0 !important; /* No padding */
         box-sizing: border-box;
-        margin-top: 0 !important;
+        margin-top: 100px !important;
         margin-bottom: 0 !important;
     }
 
     /* Remove all padding/margin from right content children */
     .right-content > * {
-        margin-top: 0 !important;
+        margin-top: 0px !important;
         margin-bottom: 0 !important;
     }
 

@@ -16,32 +16,14 @@
     })();
   </script>
   <title>কোরআন সূরা অনুবাদ</title>
+ <link rel="stylesheet" href="/css/sub-file.css" />
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <style>
-    body {
-  font-family: 'Noto Sans Bengali', sans-serif;
-  background: #f5f5f5;
-  padding: 20px;
-  color: #333;
-  margin: 0;
-}
 
-.container {
-  display: flex;
-  max-width: 1000px;
-  width: 100%;
-  min-height: 90vh;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,.1);
-  overflow: hidden;
-  margin-top: 70px !important;
-  margin-bottom: 70px !important;
-  margin-left: auto;
-  margin-right: auto;
-}
+
+
 
 .left-panel {
   width: 30%;
@@ -152,16 +134,7 @@
   }
 }
 
-/* 🌙 Dark Mode (html.dark-mode system) */
-    html.dark-mode body {
-     background: #000;
-     color: #fff;
-    }
 
-    html.dark-mode .container {
-      background: #1e293b !important;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.8);
-    }
 
     html.dark-mode .left-panel {
       border-color: #3a5a59;
@@ -211,7 +184,9 @@
   </style>
 </head>
 <body>
-  <div class="container">
+
+<main class="file-section">
+  <div class="file-container">
     <div class="left-panel">
       <h1>সূরা তালিকা</h1>
       <ul id="surahList"></ul>
@@ -224,6 +199,7 @@
   </p>
     </div>
   </div>
+</main>
 
   <script>
     const surahNames = [

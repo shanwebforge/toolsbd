@@ -67,7 +67,19 @@ html.dark-mode body {
   /* Backdrop Effects */
   --backdrop-blur: blur(2px);
   --backdrop-bg: rgba(255, 255, 255, 0.7);
+
+
+/* SHORTCUT SECTION  */
+
+    --shortcut-table-bg: #fff;
+    --shortcut-table-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    --shortcut-table-border: #ddd;
+    --shortcut-table-header-bg: #6c63ff;
+    --shortcut-table-header-color: white;
+    --shortcut-kbd-bg: #e0e0e0;
 }
+
+
 
 /* Dark Mode Variables */
 html.dark-mode {
@@ -97,10 +109,18 @@ html.dark-mode {
   
   /* Backdrop Effects - Dark Mode */
   --backdrop-bg-dark: rgba(26, 26, 26, 0.8);
+
+
+
+/* Sort Section*/
+    --shortcut-section-bg: transparent;
+    --shortcut-table-bg: #242424;;
+    --shortcut-table-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+    --shortcut-table-border: #333;
+    --shortcut-table-header-bg: #1e293b;
+    --shortcut-table-header-color: #fff;
+    --shortcut-kbd-bg: #333;
 }
-
-
-
 
 
 
@@ -288,4 +308,174 @@ html.dark-mode .file-content-text p::before {
 
   }
 }
+
+
+
+
+
+
+
+/* ==================== SHORTCUT SECTION STYLES ==================== */
+.shortcut-section {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    background: var(--shortcut-section-bg);
+}
+
+.shortcut-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--shortcut-title-color);
+}
+
+.shortcut-table-wrapper {
+    overflow-x: auto;
+}
+
+.shortcut-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--shortcut-table-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shortcut-table-shadow);
+}
+
+.shortcut-table th,
+.shortcut-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--shortcut-table-border);
+    color: var(--shortcut-text-color);
+}
+
+.shortcut-table thead {
+    background: var(--shortcut-table-header-bg);
+    color: var(--shortcut-table-header-color);
+}
+
+.shortcut-table kbd {
+
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    line-height: 20px;
+    color: var(--shortcut-text-color);
+}
+
+/* Optional: Hover effect for rows */
+.shortcut-table tbody tr:hover {
+    background-color: rgba(var(--color-primary-rgb, 108, 99, 255), 0.05);
+}
+
+
+
+.shortcut-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--shortcut-table-border);
+    background-color: var(--shortcut-row-bg);
+}
+
+.shortcut-row:last-child {
+    border-bottom: none;
+}
+
+.shortcut-row.header {
+    background-color: var(--shortcut-table-header-bg);
+    font-weight: bold;
+    color: var(--shortcut-table-header-color);
+}
+
+.shortcut-key,
+.shortcut-action {
+    width: 48%;
+    font-size: 16px;
+    color: var(--shortcut-text-color);
+}
+
+
+.title-container {
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: white;
+    margin: 20px auto;
+    border: var(--card-border);
+}
+
+.main-title {
+    font-size: 28px;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.title-divider {
+    height: 2px;
+    width: 150px;
+    background: var(--color-accent);
+    margin: 20px auto;
+    border-radius: 2px;
+}
+
+.sub-title {
+    font-size: 16px;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+
+
+
+
+
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .shortcut-section {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        padding: 0 15px;
+    }
+    
+    .shortcut-title {
+        font-size: 20px;
+    }
+    
+    .shortcut-table th,
+    .shortcut-table td {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+      .shortcut-row {
+    flex-direction: row; /* keep row even in mobile */
+    flex-wrap: wrap;     /* allow wrap if needed */
+    align-items: flex-start;
+  }
+
+  .shortcut-key,
+  .shortcut-action {
+    width: 50%;          /* each takes half */
+    font-size: 14px;
+  }
+        .main-title {
+    font-size: 18px; margin-bottom: 10px;}
+        .sub-title {
+    font-size: 12px; margin-bottom: 0px;}
+}
+
+
+
 

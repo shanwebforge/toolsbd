@@ -243,7 +243,6 @@ html.dark-mode {
         gap: 18px;
     }
 }
-
 @media (max-width: 768px) {
     .items-container {
         grid-template-columns: repeat(2, 1fr);
@@ -251,30 +250,35 @@ html.dark-mode {
     }
     
     .sortc-item {
-        padding: 16px;
-        gap: 12px;
-        min-height: 90px;
+        padding: 10px;
+        gap: 4px;
+        min-height: 50px;
     }
     
     .sortc-item-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    }
+
+        .sortc-item-icon i {
+        font-size: 14px;
     }
     
     .sortc-item-title {
         font-size: 16px;
     }
     
+    /* এখানে desortc ই থাকবে */
     .sortc-item-desortc {
-        font-size: 13px;
+        font-size: 10px;
         -webkit-line-clamp: 2;
     }
     
     .sortc-item-badge {
-        padding: 5px 10px;
+        padding: 5px 5px;
         font-size: 11px;
-        min-width: 45px;
+        min-width: 20px;
     }
     
     .main-catagory-title-h1 .title-text {
@@ -283,7 +287,6 @@ html.dark-mode {
     
     .main-catagory-title-h1 .catagory-description {
         font-size: 12px;
-    
     }
 }
 
@@ -294,30 +297,31 @@ html.dark-mode {
     }
     
     .sortc-item {
-        padding: 14px;
-        gap: 14px;
-        min-height: 85px;
+        padding: 10px;
+        gap: 5px;
+        min-height: 50px; /* 20px থেকে 50px করলাম */
     }
     
     .sortc-item-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
+        width: 32px;
+        height: 32px;
+        max-width: 32px;
     }
     
     .sortc-item-title {
         font-size: 15px;
     }
     
+    /* এখানেও desortc ই থাকবে */
     .sortc-item-desortc {
-        font-size: 12px;
+        font-size: 10px;
         -webkit-line-clamp: 2;
     }
     
     .sortc-item-badge {
         padding: 4px 8px;
         font-size: 10px;
-        min-width: 40px;
+        min-width: 40px; /* 20px থেকে 40px করলাম */
     }
     
     .main-catagory-title-h1 .title-text {

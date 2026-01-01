@@ -91,6 +91,7 @@ html.dark-mode {
     margin: 20px auto !important;
     box-sizing: border-box !important;
     position: relative !important;
+    min-height: 250px;
 }
 .sc-slide-cat-container {
     background: linear-gradient(135deg, var(--slidecat-bg-start), var(--slidecat-bg-end));

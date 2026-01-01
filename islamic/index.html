@@ -20,23 +20,11 @@
     })();
   </script>
 
-  <script type="module">
-    document.addEventListener('DOMContentLoaded', async () => {
-      try {
-        const module = await import('/scripts/cat-slide.js');
-        if (typeof module.initUpdatesSlider === 'function') {
-          module.initUpdatesSlider();
-        }
-      } catch (error) {
-        console.error('Error loading updates slider:', error);
-      }
-    });
-  </script>
 
 
-  <link rel="stylesheet" href="/css/islamic.css" />
 
- 
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-catagory.css" />
   <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -44,8 +32,12 @@
 <body>
 <main>
 
-  <div class="islamic-section">
-
+  <div class="sub-section"> 
+<div class="title-container">
+    <h1 class="main-title">Islamic Tools & Future</h1>
+    <p class="sub-title">Essential Islamic tools and future planning utilities - Prayer Time Calculators, Quran Resources, Zakat Calculators, Islamic Date Converters, Hajj & Umrah Guides, Islamic Finance Tools, Dua Collections, and spiritual planning resources</p>
+    <div class="title-divider"></div>
+</div>
 <div class="main-section">
 <div class="container">
   <div class="header">
@@ -56,14 +48,14 @@
   </div>
 </div></div>
 
-    <div class="islamic-category-grid">
+    <div class="sub-category-grid">
 
       <!-- সূরা অনুবাদ -->
-      <a href="quran/" class="islamic-catagory-item">
-        <div class="islamic-catagory-icon"><i class="fas fa-book"></i></div>
-        <div class="islamic-catagory-content">
-          <div class="islamic-catagory-title">সূরা অনুবাদ</div>
-          <div class="islamic-catagory-desc">Read Quran translation in Bangla easily online.</div>
+      <a href="quran/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-book"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">সূরা অনুবাদ</div>
+          <div class="sub-catagory-desc">Read Quran translation in Bangla easily online.</div>
         </div>
         <div class="info-panel">
           <div class="info-box">
@@ -74,11 +66,11 @@
       </a>
 
       <!-- কোরআন – শ্রবণ -->
-      <a href="quran-audio/" class="islamic-catagory-item">
-        <div class="islamic-catagory-icon"><i class="fas fa-headphones"></i></div>
-        <div class="islamic-catagory-content">
-          <div class="islamic-catagory-title">কোরআন – শ্রবণ</div>
-          <div class="islamic-catagory-desc">Listen to Quran recitation online.</div>
+      <a href="quran-audio/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-headphones"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">কোরআন – শ্রবণ</div>
+          <div class="sub-catagory-desc">Listen to Quran recitation online.</div>
         </div>
         <div class="info-panel">
           <div class="info-box">
@@ -89,11 +81,11 @@
       </a>
 
       <!-- ইসলামিক নাম -->
-      <a href="islamic-name/" class="islamic-catagory-item">
-        <div class="islamic-catagory-icon"><i class="fas fa-user"></i></div>
-        <div class="islamic-catagory-content">
-          <div class="islamic-catagory-title">ইসলামিক নাম</div>
-          <div class="islamic-catagory-desc">Find meaningful Islamic names easily.</div>
+      <a href="sub-name/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-user"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">ইসলামিক নাম</div>
+          <div class="sub-catagory-desc">Find meaningful sub names easily.</div>
         </div>
         <div class="info-panel">
           <div class="info-box">
@@ -104,11 +96,11 @@
       </a>
 
       <!-- ইসলামিক কুইজ -->
-      <a href="islamic-quiz/" class="islamic-catagory-item">
-        <div class="islamic-catagory-icon"><i class="fas fa-question-circle"></i></div>
-        <div class="islamic-catagory-content">
-          <div class="islamic-catagory-title">ইসলামিক কুইজ</div>
-          <div class="islamic-catagory-desc">Test your Islamic knowledge with quizzes.</div>
+      <a href="sub-quiz/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-question-circle"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">ইসলামিক কুইজ</div>
+          <div class="sub-catagory-desc">Test your sub knowledge with quizzes.</div>
         </div>
         <div class="info-panel">
           <div class="info-box">
@@ -119,11 +111,11 @@
       </a>
 
       <!-- যাকাত ক্যালকুলেটর -->
-      <a href="jakat-calculator/" class="islamic-catagory-item">
-        <div class="islamic-catagory-icon"><i class="fas fa-calculator"></i></div>
-        <div class="islamic-catagory-content">
-          <div class="islamic-catagory-title">যাকাত ক্যালকুলেটর</div>
-          <div class="islamic-catagory-desc">Calculate your Zakat online easily.</div>
+      <a href="jakat-calculator/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-calculator"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">যাকাত ক্যালকুলেটর</div>
+          <div class="sub-catagory-desc">Calculate your Zakat online easily.</div>
         </div>
         <div class="info-panel">
           <div class="info-box">
@@ -134,11 +126,11 @@
       </a>
 
       <!-- Quran Search -->
-      <a href="quran-search/" class="islamic-catagory-item">
-        <div class="islamic-catagory-icon"><i class="fas fa-search"></i></div>
-        <div class="islamic-catagory-content">
-          <div class="islamic-catagory-title">Quran Search</div>
-          <div class="islamic-catagory-desc">Search for Quran verses online easily.</div>
+      <a href="quran-search/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-search"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Quran Search</div>
+          <div class="sub-catagory-desc">Search for Quran verses online easily.</div>
         </div>
         <div class="info-panel">
           <div class="info-box">
@@ -149,11 +141,11 @@
       </a>
 
       <!-- Digital Tasbih -->
-      <a href="digital-tasbih/" class="islamic-catagory-item">
-        <div class="islamic-catagory-icon"><i class="fas fa-pray"></i></div>
-        <div class="islamic-catagory-content">
-          <div class="islamic-catagory-title">Digital Tasbih</div>
-          <div class="islamic-catagory-desc">Count your Tasbih online easily.</div>
+      <a href="digital-tasbih/" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-pray"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Digital Tasbih</div>
+          <div class="sub-catagory-desc">Count your Tasbih online easily.</div>
         </div>
         <div class="info-panel">
           <div class="info-box">
@@ -164,11 +156,11 @@
       </a>
 
       <!-- Loading Placeholder -->
-      <a href="#" class="islamic-catagory-item">
-        <div class="islamic-catagory-icon"><i class="fas fa-spinner fa-spin"></i></div>
-        <div class="islamic-catagory-content">
-          <div class="islamic-catagory-title">Loading...</div>
-          <div class="islamic-catagory-desc">More Islamic tools coming soon!</div>
+      <a href="#" class="sub-catagory-item">
+        <div class="sub-catagory-icon"><i class="fas fa-spinner fa-spin"></i></div>
+        <div class="sub-catagory-content">
+          <div class="sub-catagory-title">Loading...</div>
+          <div class="sub-catagory-desc">More sub tools coming soon!</div>
         </div>
         <div class="info-panel">
           <div class="info-box">
@@ -194,7 +186,7 @@
   });
 </script>
 <script src="/scripts/script.js"></script>
-<script src="/scripts/islamic.js"></script>
+<script src="/scripts/sub.js"></script>
 <script src="/components/header.js"></script>
 <script src="/components/footer.js"></script>
 </body>

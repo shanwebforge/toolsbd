@@ -22,13 +22,18 @@
   </script>
 
   <!-- ✅ Stylesheets -->
-  <link rel="stylesheet" href="/components/headerhome.css" />
+  <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/sub-file.css" />
 </head>
 <body>
     <div class="shortcut-section">
-  <h2 class="shortcut-title">Grameenphone code</h2>
+<div class="title-container">
+    <h1 class="main-title">Grameenphone USSD Codes</h1>
+    <p class="sub-title">Essential Grameenphone mobile codes for balance check, internet packages, GP STAR services, mobile banking, bonus offers, customer care, and account management - Complete GP USSD code directory with all working codes</p>
+    <div class="title-divider"></div>
+</div>
 <div class="shortcut-table">
   <div class="shortcut-row header">
     <div class="shortcut-key">কোড</div>
@@ -157,113 +162,9 @@
 </div>
 </div>
 
-
-<style>
-    .shortcut-section {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  margin-top: 70px;
-  margin-bottom: 70px;
-}
-
-.shortcut-title {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 16px;
-  color: #333;
-}
-
-.shortcut-table {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.shortcut-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 16px;
-  border-bottom: 1px solid #eee;
-  background-color: #f9f9f9;
-}
-
-.shortcut-row:last-child {
-  border-bottom: none;
-}
-
-.shortcut-row.header {
-  background-color: #e0e0e0;
-  font-weight: bold;
-}
-
-.shortcut-key kbd {
-  background-color: #ddd;
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-right: 4px;
-  display: inline-block;
-}
-
-.shortcut-key,
-.shortcut-action {
-  width: 48%;
-  font-size: 16px;
-  color: #222;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  .shortcut-row {
-    flex-direction: row; /* keep row even in mobile */
-    flex-wrap: wrap;     /* allow wrap if needed */
-    align-items: flex-start;
-  }
-
-  .shortcut-key,
-  .shortcut-action {
-    width: 50%;          /* each takes half */
-    font-size: 14px;
-  }
-}
-
-
-/* Dark mode */
-html.dark-mode body {
-  background-color: #000;
-}
-html.dark-mode .shortcut-title {
-  color: #fff;
-}
-html.dark-mode .shortcut-table {
-  border-color: #444;
-}
-html.dark-mode .shortcut-row {
-  background-color: #222;
-  border-bottom: 1px solid #444;
-}
-html.dark-mode .shortcut-row.header {
-  background-color: #333;
-  color: #fff;
-}
-html.dark-mode .shortcut-key,
-html.dark-mode .shortcut-action {
-  color: #ddd;
-}
-html.dark-mode .shortcut-key kbd {
-  background-color: #444;
-  color: #fff;
-}
-
-</style>
-
-
-
   <!-- ✅ Scripts -->
-  <script src="/components/headerhome.js"></script>
+  <script src="/components/header.js"></script>
   <script src="/components/footer.js"></script>
+  <script src="/scripts/script.js"></script>
 </body>
 </html>

@@ -23,9 +23,7 @@
     --panel-text: #444;
 
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(90deg, #8e3cfa 0, #a855f7 50%, #d946ef 100%);
-    --gradient-secondary: linear-gradient(90deg, #8e3cfa 0, #46e0e5 50%, #22d3ee 100%);
+
 
     
 
@@ -185,86 +183,11 @@ html.dark-mode {
    Header Styles
    ==================================== */
 
-.main-catagory-title-h1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.main-catagory-title-h1 .title-text {
-    font-size: 32px;
-    font-weight: 800;
-    margin: 0;
-    background: var(--gradient-secondary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.5px;
-
-}
-
-
-.main-catagory-title-h1 .catagory-description {
-    font-size: 16px;
-    color: var(--text-secondary);
-    margin-top: 12px;
-    max-width: 700px;
-    line-height: 1.5;
-    opacity: 0.8;
-    text-align: center;
-}
 
 
 
-.dot-line {
-    width: 200px;
-    height: 20px;
-    margin: 0px auto;
-    position: relative;
-    opacity: 0.7;
-
-}
 
 
-/* Dots */
-.dot-line::before,
-.dot-line::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-
-}
-
-.dot-line:hover::before,
-.dot-line:hover::after {
-    background: var(--accent-hover);
-}
-
-.dot-line::before {
-    left: 0;
-}
-
-.dot-line::after {
-    right: 0;
-}
-
-.dot-line {
-    background: linear-gradient(90deg, 
-        transparent 0%,
-        var(--accent) 50%,
-        transparent 100%);
-    background-size: 100% 2px;
-    background-position: center;
-    background-repeat: no-repeat;
-
-}
 
 
 

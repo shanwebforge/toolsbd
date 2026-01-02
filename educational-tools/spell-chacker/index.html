@@ -116,7 +116,10 @@ html.dark-mode .highlight {
   </style>
 </head>
 <body>
-
+<div class="desktop-layout">
+<div id="sidepanel-container"></div>
+<div class="right-content">
+  
   <main class="file-section">
   <div class="file-container">
 
@@ -145,6 +148,8 @@ html.dark-mode .highlight {
 </div>
   </div>
   </main>
+</div>
+</div>
 <script>
   // ✅ Preloaded common English words (তুমি চাইলে বড়তর word list load করতে পারো JSON file থেকে)
   const englishWordsSet = new Set([
@@ -186,5 +191,7 @@ html.dark-mode .highlight {
 
 <script src="/components/header.js"></script>
 <script src="/components/footer.js"></script>
+<script src="/scripts/script.js"></script>
+<script src="/components/sidepanel.js"></script>
 </body>
 </html>

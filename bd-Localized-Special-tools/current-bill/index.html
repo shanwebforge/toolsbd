@@ -96,6 +96,11 @@ html.dark-mode #result {
   </style>
 </head>
 <body>
+  <div class="desktop-layout">
+<div id="sidepanel-container"></div>
+<div class="right-content">
+
+
 <div class="file-section">
   <div class="file-container">
 
@@ -125,7 +130,8 @@ html.dark-mode #result {
   </div>
   </div>
 </div>
-
+</div>
+  </div>
   <script>
     function calculateBill() {
       const units = Number(document.getElementById('units').value);
@@ -164,5 +170,7 @@ html.dark-mode #result {
   </script>
 <script src="/components/header.js"></script>
 <script src="/components/footer.js"></script>
+<script src="/scripts/script.js"></script>
+<script src="/components/sidepanel.js"></script>
 </body>
 </html>

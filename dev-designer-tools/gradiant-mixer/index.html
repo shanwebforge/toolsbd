@@ -219,7 +219,10 @@ html.dark-mode .dir-btn.active {
 </head>
 <body>
 
-
+<div class="desktop-layout">
+<div id="sidepanel-container"></div>
+<div class="right-content">
+  
 
    <main class="file-section">
   <div class="file-container">
@@ -257,6 +260,8 @@ html.dark-mode .dir-btn.active {
 <button onclick="copyCode()">Copy Code</button>
   </div>
 </main>
+</div>
+</div>
 
 <script>
 const color1 = document.getElementById('color1');
@@ -297,5 +302,7 @@ updateGradient();
 </script>
   <script src="/components/header.js"></script>
   <script src="/components/footer.js"></script>
+  <script src="/scripts/script.js"></script>
+  <script src="/components/sidepanel.js"></script>
 </body>
 </html>

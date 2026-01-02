@@ -3,17 +3,12 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="/css/styles.css"/>
  <link rel="stylesheet" href="/components/header.css" />
   <link rel="stylesheet" href="/components/footer.css" />
 <title>যোগাযোগ করুন | Contact Us</title>
 <style>
-  body {
-    font-family: 'SolaimanLipi', Arial, sans-serif;
-    background-color: #f9fafb;
-    color: #333;
-    margin: 0; padding: 0;
-    line-height: 1.6;
-  }
+
   .container {
     max-width: 700px;
     margin: auto;
@@ -105,6 +100,12 @@
 </style>
 </head>
 <body>
+
+  <div class="desktop-layout">
+<div id="sidepanel-container"></div>
+<div class="right-content">
+
+
   <div class="container">
     <h1>যোগাযোগ করুন</h1>
 
@@ -127,7 +128,8 @@
       <p>ঠিকানা: সিলেট, বাংলাদেশ</p>
     </div>
   </div>
-
+</div>
+  </div>
   <script>
     // সাধারণ ফর্ম সাবমিশন হ্যান্ডলার (ডেমো জন্য)
     const form = document.getElementById('contact-form');
@@ -142,5 +144,7 @@
  
   <script src="/components/header.js"></script>
   <script src="/components/footer.js"></script>
+  <script src="/scripts/script.js"></script>
+  <script src="/components/sidepanel.js"></script>
 </body>
 </html>

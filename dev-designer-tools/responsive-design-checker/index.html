@@ -136,6 +136,10 @@ html.dark-mode iframe {
   </style>
 </head>
 <body>
+  <div class="desktop-layout">
+<div id="sidepanel-container"></div>
+<div class="right-content">
+  
    <main class="file-section">
   <div class="file-container">
 
@@ -178,6 +182,8 @@ html.dark-mode iframe {
 
   </div>
    </main>
+</div>
+  </div>
   <script>
     function loadSite() {
       const url = document.getElementById("urlInput").value.trim();
@@ -214,5 +220,7 @@ html.dark-mode iframe {
   </script>
 <script src="/components/header.js"></script>
 <script src="/components/footer.js"></script>
+<script src="/scripts/script.js"></script>
+<script src="/components/sidepanel.js"></script>
 </body>
 </html>

@@ -194,7 +194,9 @@ html.dark-mode .totals span {
   </style>
 </head>
 <body>
-
+<div class="desktop-layout">
+<div id="sidepanel-container"></div>
+<div class="right-content">
 <div class="container">
   <h2>📒 বিক্রয়/লেনদেন হিসাবপত্র</h2>
 
@@ -241,6 +243,9 @@ html.dark-mode .totals span {
     <p><span>মোট ব্যয়:</span> ৳<span id="totalExpense">0.00</span></p>
     <p><strong><span>লাভ/ঘাটতি:</span> ৳<span id="netTotal">0.00</span></strong></p>
   </div>
+</div>
+
+</div>
 </div>
 
 <script>
@@ -295,5 +300,7 @@ html.dark-mode .totals span {
 </script>
 <script src="/components/header.js"></script>
 <script src="/components/footer.js"></script>
+<script src="/scripts/script.js"></script>
+<script src="/components/sidepanel.js"></script>
 </body>
 </html>

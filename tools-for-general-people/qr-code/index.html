@@ -78,6 +78,11 @@ html.dark-mode #qrcode {
 </style>
 </head>
 <body>
+  <div class="desktop-layout">
+<div id="sidepanel-container"></div>
+<div class="right-content">
+
+
  <main class="file-section">
   <div class="file-container">
 
@@ -104,6 +109,8 @@ html.dark-mode #qrcode {
 
   </div>
   </main>
+</div>
+  </div>
 <script>
 const generateBtn = document.getElementById('generate-btn');
 const urlInput = document.getElementById('url-input');
@@ -130,6 +137,8 @@ generateBtn.addEventListener('click', () => {
 </script>
 <script src="/components/header.js"></script>
 <script src="/components/footer.js"></script>
+<script src="/scripts/script.js"></script>
+<script src="/components/sidepanel.js"></script>
 
 <!-- QR Script -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>

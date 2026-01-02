@@ -259,46 +259,6 @@ body {
     text-align: center;
 }
 
-/* Dot Line */
-.dot-line {
-    width: 200px;
-    height: 20px;
-    margin: 0px auto 20px;
-    position: relative;
-}
-
-/* Dots */
-.dot-line::before,
-.dot-line::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-}
-
-.dot-line::before {
-    left: 0;
-}
-
-.dot-line::after {
-    right: 0;
-}
-
-.dot-line {
-    background: linear-gradient(90deg, 
-        transparent 0%,
-        var(--accent) 50%,
-        transparent 100%);
-    background-size: 100% 2px;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-
 
 
 
@@ -321,13 +281,7 @@ body {
     line-height: 1.2;
 }
 
-.title-divider {
-    height: 2px;
-    width: 150px;
-    background: var(--card-gradient-start, --dot-line-gradient-start);
-    margin: 20px auto;
-    border-radius: 2px;
-}
+
 
 .sub-title {
     font-size: 16px;

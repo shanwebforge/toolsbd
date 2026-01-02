@@ -7,14 +7,12 @@ document.addEventListener("DOMContentLoaded", function() {
       return res.text();
     })
     .then(data => {
-      // Footer DOM তৈরি করে body-এর শেষে যোগ করা
       const placeholder = document.createElement('div');
       placeholder.innerHTML = data;
       document.body.appendChild(placeholder);
       
-      // ===== FOOTER MARGIN ADJUSTMENT =====
-      adjustFooterMargin();
-      // ===== END FOOTER MARGIN ADJUSTMENT =====
+      // Force adjust footer margin for ALL pages
+      forceAdjustFooterMargin();
       
       // Footer menu active link
       const links = document.querySelectorAll(".footer-menu a");
@@ -31,66 +29,94 @@ document.addEventListener("DOMContentLoaded", function() {
       console.error("Footer load error:", error.message);
     });
   
-// আপনার existing JS-এর মধ্যে এই function update করুন
-function adjustFooterMargin() {
-    const isIndexPage = window.location.pathname === '/' || 
-                       window.location.pathname === '/index.html' ||
-                       window.location.pathname === '/index' ||
-                       window.location.pathname.endsWith('/');
+  // Strong function to force footer margin
+  function forceAdjustFooterMargin() {
+    console.log('=== FORCE ADJUSTING FOOTER MARGIN ===');
     
     const isDesktop = window.innerWidth >= 992;
     const leftPanel = document.querySelector('.left-panel');
     const footerSection = document.querySelector('.footer-section');
     
-    if (!footerSection) return;
-    
-    // Apply margin only to index.html on desktop with left panel
-    if (isIndexPage && isDesktop && leftPanel) {
-      footerSection.classList.add('index-footer-margin');
-      
-      // FORCE apply styles
-// FORCE apply styles অংশ update করুন
-footerSection.style.cssText = `
-  margin-left: 280px !important; /* এখানেও same value দিন */
-  width: calc(100% - 280px) !important;
-  padding: 0 10px !important;
-  box-sizing: border-box !important;
-`;
-      
-      // Also apply to .footer-bg
-      const footerBg = footerSection.querySelector('.footer-bg');
-      if (footerBg) {
-        footerBg.style.cssText = `
-          width: 100% !important;
-          padding: 10px !important;
-          box-sizing: border-box !important;
-        `;
-      }
-    } else {
-      footerSection.classList.remove('index-footer-margin');
-      footerSection.style.cssText = '';
-      
-      const footerBg = footerSection.querySelector('.footer-bg');
-      if (footerBg) {
-        footerBg.style.cssText = '';
-      }
+    if (!footerSection) {
+      console.error('Footer section not found!');
+      return;
     }
-}
+    
+    console.log('Desktop:', isDesktop);
+    console.log('Left Panel exists:', !!leftPanel);
+    
+    // ALWAYS apply margin on desktop regardless of left panel
+    if (isDesktop) {
+      console.log('Applying desktop footer styling');
+      
+      // Remove any existing classes first
+      footerSection.classList.remove('has-left-panel-margin');
+      
+      // Force reflow
+      void footerSection.offsetWidth;
+      
+      // Add the class
+      footerSection.classList.add('has-left-panel-margin');
+      
+      // Apply inline styles as backup
+      footerSection.style.cssText = `
+        margin-left: 280px !important;
+        width: calc(100% - 280px) !important;
+        max-width: calc(1400px - 280px) !important;
+        padding: 10px 15px 20px !important;
+        box-sizing: border-box !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      `;
+      
+      console.log('Footer style applied:', footerSection.style.cssText);
+    } else {
+      console.log('Mobile/Tablet - Removing margin');
+      footerSection.classList.remove('has-left-panel-margin');
+      footerSection.style.cssText = `
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 1400px !important;
+        width: 100% !important;
+        padding: 10px 15px 20px !important;
+        box-sizing: border-box !important;
+      `;
+    }
+    
+    console.log('=== FOOTER ADJUSTMENT COMPLETE ===');
+  }
   
-  // Adjust footer on window resize
-  window.addEventListener('resize', adjustFooterMargin);
+  // Adjust on resize with debounce
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(forceAdjustFooterMargin, 250);
+  });
   
-  // Adjust footer when left panel visibility changes
+  // Run again after a short delay to ensure everything loaded
+  setTimeout(forceAdjustFooterMargin, 500);
+  setTimeout(forceAdjustFooterMargin, 1000);
+  
+  // Also run when window loads completely
+  window.addEventListener('load', function() {
+    setTimeout(forceAdjustFooterMargin, 300);
+  });
+  
+  // Use MutationObserver for dynamic content
   const observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
-      if (mutation.attributeName === 'style' || mutation.attributeName === 'class') {
-        setTimeout(adjustFooterMargin, 100);
+      if (mutation.type === 'childList' || mutation.attributeName === 'style' || mutation.attributeName === 'class') {
+        setTimeout(forceAdjustFooterMargin, 100);
       }
     });
   });
   
-  const leftPanel = document.querySelector('.left-panel');
-  if (leftPanel) {
-    observer.observe(leftPanel, { attributes: true });
-  }
+  // Observe body for any changes
+  observer.observe(document.body, { 
+    childList: true, 
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['style', 'class']
+  });
 });

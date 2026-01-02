@@ -1147,9 +1147,9 @@ html.dark-mode .star {
         padding: 20px 0;
         flex-direction: column;
         position: fixed;
-        top: 80px;
+        top: 70px;
         left: 0;
-        height: calc(100vh - 80px - 70px);
+        height: calc(100vh - 50px - 60px);
         overflow-y: auto;
         z-index: 90;
         box-sizing: border-box;
@@ -1195,8 +1195,46 @@ html.dark-mode .star {
         flex-grow: 1;
     }
 
+    /* Remove default list styling */
+    .panel-nav ul {
+        list-style-type: none !important;
+        padding-left: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* nav Sections */
     .nav-section {
         margin-bottom: 25px;
+        background: rgba(142, 60, 250, 0.03);
+        border-radius: 12px;
+        padding: 18px;
+        border: 1px solid rgba(142, 60, 250, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .nav-section:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(142, 60, 250, 0.1);
+    }
+
+    html.dark-mode .nav-section {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Theme Section (At Bottom) */
+    .nav-theme-section {
+        margin-top: auto;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, rgba(142, 60, 250, 0.1) 0%, rgba(106, 17, 203, 0.1) 100%);
+        border-radius: 12px;
+        padding: 16px;
+        border: 1px solid rgba(142, 60, 250, 0.2);
+    }
+
+    html.dark-mode .nav-theme-section {
+        background: linear-gradient(135deg, rgba(106, 17, 203, 0.15) 0%, rgba(37, 117, 252, 0.15) 100%);
+        border-color: rgba(163, 92, 255, 0.2);
     }
 
     .section-title {
@@ -1215,6 +1253,7 @@ html.dark-mode .star {
 
     .nav-item {
         margin-bottom: 8px;
+        list-style-type: none !important; /* Remove bullet point */
     }
 
     .nav-link {
@@ -1223,8 +1262,9 @@ html.dark-mode .star {
         gap: 12px;
         padding: 12px 15px;
         border-radius: 10px;
-        transform: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
         color: #212529;
+        text-decoration: none !important; /* Remove underline */
     }
 
     html.dark-mode .nav-link {
@@ -1252,13 +1292,6 @@ html.dark-mode .star {
         color: white;
     }
 
-    .nav-link i {
-        font-size: 1.2rem;
-        width: 24px;
-        text-align: center;
-        transform: transform 0.3s ease;
-    }
-
     .nav-link:hover i {
         transform: scale(1.1);
     }
@@ -1277,66 +1310,6 @@ html.dark-mode .star {
 
     html.dark-mode .panel-bottom {
         border-top-color: #3e4459;
-    }
-
-    .user-info {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 15px;
-        background-color: rgba(107, 91, 204, 0.1);
-        border-radius: 10px;
-        transform: transform 0.3s ease;
-    }
-
-    .user-info:hover {
-        transform: translateY(-2px);
-    }
-
-    html.dark-mode .user-info {
-        background-color: rgba(138, 125, 255, 0.2);
-    }
-
-    .user-avatar {
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #6b5bcc, #9b03a8);
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 1.2rem;
-        transform: transform 0.3s ease;
-    }
-
-    .user-info:hover .user-avatar {
-        transform: scale(1.1);
-    }
-
-    html.dark-mode .user-avatar {
-        background: linear-gradient(135deg, #8a7dff, #b967c0);
-    }
-
-    .user-details h4 {
-        font-size: 0.95rem;
-        font-weight: 600;
-        margin-bottom: 3px;
-        color: #212529;
-    }
-
-    html.dark-mode .user-details h4 {
-        color: #f8f9fa;
-    }
-
-    .user-details p {
-        font-size: 0.85rem;
-        color: #6c757d;
-    }
-
-    html.dark-mode .user-details p {
-        color: #adb5bd;
     }
 
     /* RIGHT CONTENT */

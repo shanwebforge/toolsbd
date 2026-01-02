@@ -81,8 +81,8 @@
             margin: 0 auto;
             padding: 10px 15px 20px;
             box-sizing: border-box;
-            background: linear-gradient(135deg, var(--footer-bg-gradient-1), var(--footer-bg-gradient-2));
-            border-top: 2px solid var(--footer-menu-border);
+        
+            border-top: 1px solid var(--footer-menu-border);
             /* Top shadow with blur */
             box-shadow: 
                 0 -4px 6px -1px rgba(0, 0, 0, 0.1),

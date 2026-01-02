@@ -1,7 +1,7 @@
 // Google Translate Integration - New Approach
 document.addEventListener("DOMContentLoaded", function() {
   // Load header first
-  fetch('/components/headerhome.html')
+  fetch('/components/headerhome1.html')
     .then(res => res.text())
     .then(data => {
       const placeholder = document.createElement('div');

@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeDarkMode();
     initializeMobileMenu();
     initializePageTitle();
+    initializeCanvasThemeSelector(); // নতুন ফাংশন যোগ করা হয়েছে
   }
   
   // Header layout
@@ -97,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
     pageTitle.textContent = titleText;
   }
   
-  // Search functionality from JS 1
+  // Search functionality
   function initializeSearchFunctionality() {
     const searchIconBtn = document.getElementById('searchIconBtn') || document.querySelector('.search-icon');
     const searchContainer = document.getElementById("searchContainer");
@@ -181,7 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!searchContainer.classList.contains("hidden")) {
           searchInput.focus();
           searchPopup.classList.add("hidden");
-          // Smooth scroll to search container if needed
           searchContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
       });
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   
-  // Language toggle from JS 1
+  // Language toggle
   function initializeLanguageToggle() {
     const langToggleIcon = document.getElementById('langToggleIcon');
     const langMenu = document.getElementById('langMenu');
@@ -240,17 +240,14 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Improved language change function from JS 1
     function changeLanguage(lang) {
       if (lang === 'bn') {
-        // For Bangla translation
         if (!window.google || !google.translate) {
           loadGoogleTranslate(() => setLanguage('bn'));
         } else {
           setLanguage('bn');
         }
       } else {
-        // For English (reset)
         resetToEnglish();
       }
     }
@@ -288,8 +285,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (select) {
           select.value = lang;
           select.dispatchEvent(new Event('change'));
-          
-          // Set cookie to persist language selection
           document.cookie = `googtrans=/en/${lang}; path=/; max-age=31536000`;
           clearInterval(interval);
         } else if (attempts >= maxAttempts) {
@@ -300,75 +295,176 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function resetToEnglish() {
-      // Clear translation cookies
       document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
       document.cookie = 'googtrans=/en/en; path=/; max-age=31536000';
       
-      // If translate widget is loaded, reset it
       if (document.querySelector('.goog-te-combo')) {
         const select = document.querySelector('.goog-te-combo');
         select.value = 'en';
         select.dispatchEvent(new Event('change'));
       }
       
-      // Reload the page to ensure full reset
       setTimeout(() => location.reload(), 100);
     }
   }
   
-  // Dark mode - combined from both JS files
+  // Dark mode - Main function
   function initializeDarkMode() {
     const themeToggleIcon = document.getElementById('themeToggleIcon');
     const toggleThemeDesktop = document.getElementById('toggleThemeDesktop');
-    const toggleThemeMobile = document.getElementById('toggleThemeMobile');
     
-    // 🌙 Apply saved theme from JS 1
+    // Apply saved theme
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-
-    document.documentElement.classList.toggle('dark-mode', isDark);
-    if (toggleThemeDesktop) toggleThemeDesktop.checked = isDark;
-    if (toggleThemeMobile) toggleThemeMobile.checked = isDark;
+    let isDark;
     
-    // Set initial icon based on current theme (from JS 1)
+    if (savedTheme === 'system' || !savedTheme) {
+      isDark = prefersDark;
+    } else {
+      isDark = savedTheme === 'dark';
+    }
+
+    if (savedTheme === 'light') {
+      document.documentElement.classList.remove('dark-mode');
+      isDark = false;
+    } else if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark-mode');
+      isDark = true;
+    } else {
+      // System or no saved theme
+      document.documentElement.classList.toggle('dark-mode', prefersDark);
+      isDark = prefersDark;
+    }
+    
+    if (toggleThemeDesktop) toggleThemeDesktop.checked = isDark;
+    
+    // Set initial icon based on current theme
     if (themeToggleIcon) {
       themeToggleIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
     }
 
-    // 🌙 Toggle theme logic - global function for both header and home
-    window.toggleDarkMode = function() {
-      const enableDark = !document.documentElement.classList.contains("dark-mode");
-      document.documentElement.classList.toggle("dark-mode", enableDark);
-      localStorage.setItem("theme", enableDark ? "dark" : "light");
+    // Global toggle function
+    window.toggleDarkMode = function(theme) {
+      let enableDark;
+      
+      if (theme) {
+        // If theme is specified (from canvas)
+        if (theme === 'system') {
+          localStorage.setItem('theme', 'system');
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.classList.toggle('dark-mode', prefersDark);
+          enableDark = prefersDark;
+        } else if (theme === 'light') {
+          localStorage.setItem('theme', 'light');
+          document.documentElement.classList.remove('dark-mode');
+          enableDark = false;
+        } else if (theme === 'dark') {
+          localStorage.setItem('theme', 'dark');
+          document.documentElement.classList.add('dark-mode');
+          enableDark = true;
+        }
+      } else {
+        // Simple toggle (from header icon)
+        enableDark = !document.documentElement.classList.contains("dark-mode");
+        const themeToSave = enableDark ? 'dark' : 'light';
+        document.documentElement.classList.toggle("dark-mode", enableDark);
+        localStorage.setItem("theme", themeToSave);
+      }
 
-      // Sync both toggle checkboxes
+      // Sync desktop toggle
       if (toggleThemeDesktop) toggleThemeDesktop.checked = enableDark;
-      if (toggleThemeMobile) toggleThemeMobile.checked = enableDark;
       
       // Update icon
       if (themeToggleIcon) {
         themeToggleIcon.className = enableDark ? 'fas fa-sun' : 'fas fa-moon';
       }
       
-      return enableDark; // Return the new state
+      // Update canvas theme display
+      updateCanvasThemeDisplay();
+      
+      return enableDark;
     };
 
     // Event listeners
     if (toggleThemeDesktop) {
-      toggleThemeDesktop.addEventListener('change', window.toggleDarkMode);
-    }
-    
-    if (toggleThemeMobile) {
-      toggleThemeMobile.addEventListener('change', window.toggleDarkMode);
+      toggleThemeDesktop.addEventListener('change', () => {
+        const enableDark = !document.documentElement.classList.contains("dark-mode");
+        const themeToSave = enableDark ? 'dark' : 'light';
+        window.toggleDarkMode(themeToSave);
+      });
     }
     
     if (themeToggleIcon) {
-      themeToggleIcon.addEventListener('click', window.toggleDarkMode);
+      themeToggleIcon.addEventListener('click', () => {
+        const enableDark = !document.documentElement.classList.contains("dark-mode");
+        const themeToSave = enableDark ? 'dark' : 'light';
+        window.toggleDarkMode(themeToSave);
+      });
+    }
+    
+    // Update canvas display initially
+    updateCanvasThemeDisplay();
+  }
+  
+  // Update canvas theme display
+  function updateCanvasThemeDisplay() {
+    const currentThemeElement = document.getElementById('canvasCurrentTheme');
+    const themeOptions = document.querySelectorAll('.theme-option');
+    
+    if (!currentThemeElement) return;
+    
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    let displayText = '';
+    
+    switch(savedTheme) {
+      case 'system':
+        displayText = 'System';
+        break;
+      case 'light':
+        displayText = 'Light';
+        break;
+      case 'dark':
+        displayText = 'Dark';
+        break;
+      default:
+        displayText = 'System';
+    }
+    
+    currentThemeElement.textContent = displayText;
+    
+    // Update active state of theme buttons
+    if (themeOptions.length > 0) {
+      themeOptions.forEach(option => {
+        option.classList.remove('active');
+        if (option.getAttribute('data-theme') === savedTheme) {
+          option.classList.add('active');
+        }
+      });
     }
   }
   
-  // Mobile menu - SIMPLE AND WORKING
+  // Initialize canvas theme selector
+  function initializeCanvasThemeSelector() {
+    const themeOptions = document.querySelectorAll('.theme-option');
+    
+    if (themeOptions.length > 0) {
+      themeOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const selectedTheme = this.getAttribute('data-theme');
+          window.toggleDarkMode(selectedTheme);
+          
+          // Update active state
+          themeOptions.forEach(opt => opt.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+      
+      // Initial update
+      updateCanvasThemeDisplay();
+    }
+  }
+  
+  // Mobile menu
   function initializeMobileMenu() {
     const menuToggle = document.getElementById('menuToggle');
     const mobileCanvas = document.getElementById('mobileCanvas');
@@ -380,27 +476,40 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create overlay
     const overlay = document.createElement('div');
     overlay.className = 'canvas-overlay';
+    overlay.id = 'canvasOverlay';
     document.body.appendChild(overlay);
     
-    // Open canvas - from JS 1
+    // Open canvas
     if (menuToggle) {
       menuToggle.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        mobileCanvas.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        openCanvas();
       });
     }
     
-    // Close canvas
+    // Open canvas function
+    function openCanvas() {
+      mobileCanvas.classList.add('active');
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      
+      // Update canvas theme display when opening
+      updateCanvasThemeDisplay();
+    }
+    
+    // Close canvas function
     function closeCanvas() {
       mobileCanvas.classList.remove('active');
       overlay.classList.remove('active');
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
     }
     
-    // Close button - from JS 1
+    // Close button
     if (closeCanvasBtn) {
       closeCanvasBtn.addEventListener('click', function(e) {
         e.preventDefault();
@@ -409,20 +518,20 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
     
-    // Close on overlay click - from JS 1
+    // Close on overlay click
     overlay.addEventListener('click', function(e) {
       e.preventDefault();
       closeCanvas();
     });
     
-    // Close on ESC key - from JS 1
+    // Close on ESC key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && mobileCanvas.classList.contains('active')) {
         closeCanvas();
       }
     });
     
-    // Close on window resize (if goes to desktop) - from JS 1
+    // Close on window resize (if goes to desktop)
     window.addEventListener('resize', function() {
       if (window.innerWidth > 768 && mobileCanvas.classList.contains('active')) {
         closeCanvas();
@@ -442,8 +551,18 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
     
-    // IMPORTANT: Canvas links - NO event listener interference
-    // লিঙ্কগুলো সম্পূর্ণ স্বাভাবিকভাবে কাজ করবে
+    // Canvas links
+    setTimeout(() => {
+      const canvasLinks = document.querySelectorAll('.canvas-link');
+      canvasLinks.forEach(link => {
+        const newLink = link.cloneNode(true);
+        link.parentNode.replaceChild(newLink, link);
+        
+        newLink.addEventListener('click', function(e) {
+          closeCanvas();
+        });
+      });
+    }, 100);
   }
   
   // Page title
@@ -451,36 +570,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updatePageTitle();
   }
   
-  // Initialize theme icon for home page (from JS 1)
-  function initializeHomeThemeIcon() {
-    setTimeout(() => {
-      const icon = document.getElementById('themeToggleIcon');
-      if (!icon) return;
-
-      // Detect initial state
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
-      
-      // Set initial icon
-      icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
-
-      // On click, call the global toggleDarkMode function
-      icon.addEventListener('click', () => {
-        if (typeof window.toggleDarkMode === 'function') {
-          window.toggleDarkMode();
-          
-          // Update icon after toggle
-          const nowDark = document.documentElement.classList.contains("dark-mode");
-          icon.className = nowDark ? 'fas fa-sun' : 'fas fa-moon';
-        }
-      });
-    }, 100);
-  }
-  
   // Load header
   loadHeader();
-  
-  // Initialize home theme icon if needed
-  initializeHomeThemeIcon();
 });

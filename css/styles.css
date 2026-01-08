@@ -601,6 +601,17 @@ html.dark-mode body::before {
 }
 
 /* Category Box Styling */
+/* Category Grid Styling */
+.catbar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
 .catbar-box {
     display: flex;
     flex-direction: column;
@@ -665,6 +676,7 @@ html.dark-mode body::before {
     position: relative;
     overflow: hidden;
     transform: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
 }
 
 .performance-badge:hover {
@@ -806,6 +818,7 @@ html.dark-mode body::before {
     .performance-badge {
         padding: 6px 10px;
         font-size: 12px;
+
     }
 }
 
@@ -829,6 +842,11 @@ html.dark-mode body::before {
     .hero-description {
         font-size: 0.95rem;
         line-height: 1.6;
+    }
+    .catbar-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        padding: 15px;
     }
     
     .catbar-box {
@@ -981,17 +999,6 @@ html.dark-mode body::before {
     color: #d35400; 
     transform: transform 0.3s ease, color 0.3s ease; 
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 .left-panel {

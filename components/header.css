@@ -1,16 +1,4 @@
-/* ===== BASE STYLES ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    padding-top: 70px;
-    position: relative;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
 
 /* ===== HEADER STYLES ===== */
 header[data-header="main"] {
@@ -948,9 +936,7 @@ html.dark-mode .menu-toggle {
 
 /* Tablet (481px to 768px) */
 @media (max-width: 768px) {
-    body {
-        padding-top: 60px;
-    }
+
     
     header[data-header="main"] {
         height: 60px;
@@ -1086,9 +1072,7 @@ html.dark-mode .menu-toggle {
 
 /* Mobile (480px and below) */
 @media (max-width: 480px) {
-    body {
-        padding-top: 56px;
-    }
+
     
     header[data-header="main"] {
         height: 56px;

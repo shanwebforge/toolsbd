@@ -1,468 +1,301 @@
-/**
- * ToolsBD - Optimized Main Script
- * Version: 3.0.0
- * Last Updated: 2024
- */
+// Right click AND text selection block এর কোড:
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("selectstart", (e) => e.preventDefault());
 
-// ============================================
-// 1. UTILITY FUNCTIONS
-// ============================================
-
-// Bangla digit converter
-const banglaDigit = (num) => {
-  const en = '0123456789';
-  const bn = '০১২৩৪৫৬৭৮৯';
-  return num.toString().split('').map(d => {
-    const index = en.indexOf(d);
-    return index !== -1 ? bn[index] : d;
-  }).join('');
-};
-
-// Time formatter with AM/PM in Bangla
-const formatTimeToBangla = (timeStr) => {
-  if (!timeStr) return '';
-  const [h, m] = timeStr.split(':').map(Number);
-  const ampm = h >= 12 ? 'পি.এম' : 'এ.এম';
-  const hour = h % 12 || 12;
-  return `${banglaDigit(hour)}:${banglaDigit(m.toString().padStart(2, '0'))} ${ampm}`;
-};
-
-// Calculate remaining time
-const getTimeRemaining = (time) => {
-  if (!time) return '';
-  const now = new Date();
-  const [h, m] = time.split(':').map(Number);
-  const target = new Date();
-  
-  // Bangladesh Timezone (UTC+6)
-  target.setUTCHours(h - 6, m, 0, 0);
-  if (target < now) target.setDate(target.getDate() + 1);
-  
-  const diff = target - now;
-  const hours = Math.floor(diff / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  
-  return `${banglaDigit(hours)} ঘণ্টা ${banglaDigit(minutes)} মিনিট বাকি`;
-};
-
-// Reverse geocoding
-const reverseGeocode = async (lat, lon) => {
-  try {
-    const response = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`,
-      { headers: { 'Accept-Language': 'bn' } }
-    );
-    const data = await response.json();
-    return {
-      full: data.address?.city || data.address?.town || data.address?.state || "অজানা",
-      details: data.address || {}
-    };
-  } catch {
-    return { full: "অজানা", details: {} };
-  }
-};
-
-// Load prayer times
-const getPrayerTimes = async (lat, lon, displayName) => {
-  const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2&school=1&timezonestring=Asia/Dhaka`;
-  
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-    
-    if (data.code !== 200) throw new Error('API Error');
-    
-    const timings = data.data.timings;
-    const locationEl = document.getElementById("location");
-    
-    if (locationEl) {
-      locationEl.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${displayName}`;
-    }
-    
-    const prayers = [
-      { name: "🕋 ফজর", time: timings.Fajr },
-      { name: "🕌 যোহর", time: timings.Dhuhr },
-      { name: "🕒 আসর", time: timings.Asr },
-      { name: "🌇 মাগরিব", time: timings.Maghrib },
-      { name: "🌙 এশা", time: timings.Isha }
-    ];
-    
-    const prayerListEl = document.getElementById("prayer-list");
-    if (prayerListEl) {
-      prayerListEl.innerHTML = prayers.map(prayer => `
-        <div class="prayer-box">
-          <div class="prayer-name">${prayer.name}</div>
-          <div class="prayer-time">${formatTimeToBangla(prayer.time)}</div>
-          <div class="time-remaining">${getTimeRemaining(prayer.time)}</div>
-        </div>
-      `).join('');
-    }
-    
-  } catch (error) {
-    console.error('Prayer times error:', error);
-    const prayerListEl = document.getElementById("prayer-list");
-    if (prayerListEl) {
-      prayerListEl.innerHTML = '<p class="error">❌ নামাজের সময় লোড ব্যর্থ</p>';
-    }
-  }
-};
-
-// Get user location for prayer times
-const getUserLocation = () => {
-  const locationEl = document.getElementById("location");
-  
-  if (!locationEl) return;
-  
-  if (!navigator.geolocation) {
-    locationEl.textContent = "⚠️ লোকেশন সাপোর্ট নেই";
-    getPrayerTimes(23.8103, 90.4125, "ঢাকা");
-    return;
-  }
-  
-  const onSuccess = async (position) => {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    const location = await reverseGeocode(lat, lon);
-    await getPrayerTimes(lat, lon, location.full);
-  };
-  
-  const onError = () => {
-    getPrayerTimes(23.8103, 90.4125, "ঢাকা");
-  };
-  
-  navigator.geolocation.getCurrentPosition(onSuccess, onError, {
-    enableHighAccuracy: true,
-    timeout: 10000,
-    maximumAge: 60000
-  });
-};
-
-// ============================================
-// 2. DOM CONTENT LOADING
-// ============================================
-
-// Configuration for section loading
-const SECTION_CONFIG = {
-  sections: [
-    { path: "/highlight-page/img-slide.html", id: "img-slide-section" },
-    { path: "/update-notice/notice-home.html", id: "latest-updates-section" },
-    { path: "/highlight-page/intro.html", id: "intro-section" },
-    { path: "/highlight-page/count.html", id: "count-section" },
-    { path: "/home-cetegories/help-cetegories/help-desk.html", id: "help-section" },
-    { path: "home-cetegories/slide-cetegories/slide-cat.html", id: "slide-cat-section" },
-    { path: "home-cetegories/keyboard-sortcut/key-sort.html", id: "key-section" },
-    { path: "home-cetegories/tools-cetegories/catagory.html", id: "catagory-section" },
-    { path: "home-cetegories/oparator/oparator.html", id: "sort-section" },
-    { path: "/islamic/islamic.html", id: "islamic-section" },
-    { path: "/daily-use-tools/daily-use.html", id: "daily-section" },
-    { path: "/dev-designer-tools/dev-design.html", id: "dev-section" },
-    { path: "/educational-tools/edu.html", id: "edu-section" },
-    { path: "/freelanching-tools/free.html", id: "free-section" },
-    { path: "/dokan-tools/dokan.html", id: "dokan-section" },
-    { path: "/money-tools/money.html", id: "money-section" },
-    { path: "/media-tools/media.html", id: "media-section" },
-    { path: "/bd-Localized-Special-tools/localized.html", id: "localized-section" },
-    { path: "/tools-for-general-people/general.html", id: "general-section" }
-  ],
-  
-  // Batch loading configuration
-  batchSize: 3,
-  delayBetweenBatches: 100
-};
-
-// Load a single section
-const loadSection = async (path, elementId) => {
-  const element = document.getElementById(elementId);
-  if (!element) return;
-  
-  try {
-    const response = await fetch(path);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const html = await response.text();
-    element.innerHTML = html;
-    
-    // Initialize components if needed
-    if (elementId === "slide-cat-section") {
-      initTabSwitching();
-      initArrowNavigation();
-    }
-    
-  } catch (error) {
-    console.error(`Failed to load ${path}:`, error);
-    element.innerHTML = '<div class="error-message">কনটেন্ট লোড করতে সমস্যা হয়েছে!</div>';
-  }
-};
-
-// Load all sections with batching
-const loadAllSections = () => {
-  const { sections, batchSize, delayBetweenBatches } = SECTION_CONFIG;
-  
-  const loadBatch = (startIndex) => {
-    const endIndex = Math.min(startIndex + batchSize, sections.length);
-    const batch = sections.slice(startIndex, endIndex);
-    
-    // Load current batch in parallel
-    const promises = batch.map(({ path, id }) => loadSection(path, id));
-    
-    Promise.all(promises).then(() => {
-      // Load next batch if exists
-      if (endIndex < sections.length) {
-        setTimeout(() => loadBatch(endIndex), delayBetweenBatches);
-      }
-    });
-  };
-  
-  loadBatch(0);
-};
-
-// ============================================
-// 3. SECURITY & PROTECTION
-// ============================================
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('contextmenu', (e) => e.preventDefault());
+});
 
 const initSecurityProtection = () => {
   // Prevent context menu
   document.addEventListener("contextmenu", (e) => e.preventDefault());
   
-  // Prevent developer tools
-  document.addEventListener("keydown", (e) => {
-    if (
-      e.key === "F12" ||
-      (e.ctrlKey && e.shiftKey && e.key === "I") ||
-      (e.ctrlKey && e.key === "U") ||
-      (e.ctrlKey && e.shiftKey && e.key === "J")
-    ) {
-      e.preventDefault();
-    }
-  });
-  
   // Prevent text selection
   document.addEventListener("selectstart", (e) => e.preventDefault());
   
-  // Prevent dragging
-  document.addEventListener("dragstart", (e) => e.preventDefault());
-  
   // Protect images
   document.querySelectorAll('img').forEach(img => {
-    img.setAttribute('draggable', 'false');
     img.addEventListener('contextmenu', (e) => e.preventDefault());
   });
 };
 
-// ============================================
-// 4. APP DOWNLOAD FUNCTIONALITY
-// ============================================
+// sidepanel
 
-const initAppDownload = () => {
-  const downloadLink = document.getElementById('downloadLink');
-  const downloadBtn = document.getElementById('downloadBtn');
-  const progressBar = document.getElementById('progressBar');
-  const progressPercent = document.getElementById('progressPercent');
-  const installBtn = document.getElementById('installBtn');
-  
-  if (!downloadLink || !downloadBtn) return;
-  
-  let downloadComplete = false;
-  let progressInterval = null;
-  
-  const resetDownload = () => {
-    if (progressInterval) clearInterval(progressInterval);
-    downloadComplete = false;
-    if (progressBar) progressBar.style.width = '0%';
-    if (progressPercent) {
-      progressPercent.textContent = '0%';
-      progressPercent.style.display = 'none';
+class SidePanel {
+    constructor() {
+        this.panelContainerId = 'sidepanel-container';
+        this.panelPath = '/components/sidepanel.html';
+        this.currentTheme = this.getSavedTheme() || 'system';
+        this.isInitialized = false;
     }
-    if (installBtn) installBtn.style.display = 'none';
-    if (downloadBtn) downloadBtn.classList.remove('download-complete');
-  };
-  
-  downloadLink.addEventListener('click', (e) => {
-    if (downloadComplete) return;
-    
-    e.preventDefault();
-    resetDownload();
-    
-    if (progressPercent) progressPercent.style.display = 'block';
-    
-    let progress = 0;
-    progressInterval = setInterval(() => {
-      progress += Math.floor(Math.random() * 10) + 5;
-      
-      if (progress >= 100) {
-        progress = 100;
-        clearInterval(progressInterval);
-        downloadComplete = true;
+
+    /**
+     * Initialize the side panel
+     */
+    init() {
+        // Prevent multiple initializations
+        if (this.isInitialized) {
+            return;
+        }
         
-        if (installBtn) installBtn.style.display = 'block';
-        if (downloadBtn) downloadBtn.classList.add('download-complete');
-      }
-      
-      if (progressPercent) progressPercent.textContent = progress + '%';
-      if (progressBar) progressBar.style.width = progress + '%';
-    }, 300);
-  });
-  
-  if (installBtn) {
-    installBtn.addEventListener('click', () => {
-      window.location.href = "/assets/ToolsBD.apk";
-    });
-  }
-  
-  // Reset on page visibility change
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden') {
-      resetDownload();
+        // Apply theme IMMEDIATELY on page load
+        this.applyCurrentTheme();
+        
+        // Then load the side panel
+        this.loadSidePanel();
+        
+        this.isInitialized = true;
     }
-  });
-};
 
-// ============================================
-// 5. TAB SWITCHING (Slide Categories)
-// ============================================
+    /**
+     * Load side panel HTML
+     */
+    async loadSidePanel() {
+        try {
+            // Check if we're on desktop
+            if (!this.isDesktop()) {
+                return;
+            }
 
-const initTabSwitching = () => {
-  const tabs = document.querySelectorAll(".sc-tab");
-  const contents = document.querySelectorAll(".sc-category-box");
-  
-  if (!tabs.length || !contents.length) return;
-  
-  const activateTab = (tab) => {
-    // Deactivate all
-    tabs.forEach(t => t.classList.remove("active"));
-    contents.forEach(c => c.classList.remove("active"));
-    
-    // Activate selected
-    tab.classList.add("active");
-    const targetContent = document.getElementById(tab.dataset.target);
-    if (targetContent) targetContent.classList.add("active");
-  };
-  
-  tabs.forEach(tab => {
-    tab.addEventListener("click", () => activateTab(tab));
-  });
-  
-  // Activate first tab by default
-  if (tabs[0]) activateTab(tabs[0]);
-};
+            // Check if panel container exists
+            const container = document.getElementById(this.panelContainerId);
+            if (!container) {
+                console.warn(`SidePanel: Container with id "${this.panelContainerId}" not found.`);
+                return;
+            }
 
-// ============================================
-// 6. ARROW NAVIGATION
-// ============================================
+            // Load the panel HTML
+            const response = await fetch(this.panelPath);
+            if (!response.ok) {
+                throw new Error(`Failed to load side panel: ${response.status}`);
+            }
 
-const initArrowNavigation = () => {
-  const slider = document.getElementById('categorySlider');
-  const leftArrow = document.getElementById('arrowLeft');
-  const rightArrow = document.getElementById('arrowRight');
-  
-  if (!slider || !leftArrow || !rightArrow) return;
-  
-  const scrollAmount = 120; // pixels per click
-  
-  leftArrow.addEventListener('click', () => {
-    slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-  });
-  
-  rightArrow.addEventListener('click', () => {
-    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-  });
-  
-  // Keyboard navigation
-  document.addEventListener('keydown', (e) => {
-    if (!document.activeElement.closest('#categorySlider')) return;
-    
-    if (e.key === 'ArrowLeft') {
-      slider.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    } else if (e.key === 'ArrowRight') {
-      slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            const html = await response.text();
+            container.innerHTML = html;
+
+            // Initialize panel functionality
+            this.initializePanel();
+
+        } catch (error) {
+            console.error('SidePanel Error:', error);
+        }
     }
-  });
-};
 
-// ============================================
-// 7. FAST SCROLL BEHAVIOR
-// ============================================
+    /**
+     * Initialize panel functionality after loading
+     */
+    initializePanel() {
+        this.setActiveNavLink();
+        this.setupThemeSwitcher();
+        this.setupNavInteractions();
+        this.updateThemeDisplay();
+    }
 
-const initFastScroll = () => {
-  // Set fast scroll by default
-  document.documentElement.style.scrollBehavior = "auto";
-  
-  // Handle anchor links with fast scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href === "#") return;
-      
-      const target = document.querySelector(href);
-      if (!target) return;
-      
-      e.preventDefault();
-      target.scrollIntoView({
-        behavior: 'auto', // Fast scroll
-        block: 'start'
-      });
-    });
-  });
-};
+    /**
+     * Set active navigation link based on current page
+     */
+    setActiveNavLink() {
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-link');
 
-// ============================================
-// 8. MAIN INITIALIZATION
-// ============================================
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            
+            // Extract filename from href
+            const href = link.getAttribute('href');
+            if (href === currentPage) {
+                link.classList.add('active');
+            }
+            
+            // Handle root/index
+            if (currentPage === '' && href === 'index.html') {
+                link.classList.add('active');
+            }
+        });
+    }
 
-const init = () => {
-  console.log('🚀 ToolsBD - Initializing...');
-  
-  // Initialize security first
-  initSecurityProtection();
-  
-  // Initialize fast scroll
-  initFastScroll();
-  
-  // Load all sections
-  loadAllSections();
-  
-  // Initialize app download
-  initAppDownload();
-  
-  // Initialize prayer times if elements exist
-  if (document.getElementById("prayer-list") && document.getElementById("location")) {
-    getUserLocation();
-  }
-  
-  console.log('✅ ToolsBD - Initialization complete');
-};
+    /**
+     * Setup theme switcher functionality
+     */
+    setupThemeSwitcher() {
+        const themeButtons = document.querySelectorAll('.theme-option');
 
-// ============================================
-// 9. EVENT LISTENERS & EXPORTS
-// ============================================
+        // Add click handlers
+        themeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const theme = button.getAttribute('data-theme');
+                this.setTheme(theme);
+            });
 
-// DOM Ready
+            // Highlight current theme button
+            if (button.getAttribute('data-theme') === this.currentTheme) {
+                button.classList.add('active-theme');
+            }
+        });
+        
+        this.updateThemeDisplay();
+    }
+
+    /**
+     * Update theme display text
+     */
+    updateThemeDisplay() {
+        const themeDisplay = document.getElementById('leftPanelCurrentTheme');
+        if (themeDisplay) {
+            themeDisplay.textContent = this.capitalizeFirst(this.currentTheme);
+        }
+    }
+
+    /**
+     * Set theme and save preference
+     * @param {string} theme - Theme name
+     */
+    setTheme(theme) {
+        this.currentTheme = theme;
+        
+        // Save to localStorage
+        localStorage.setItem('preferred-theme', theme);
+        
+        // Apply theme to document IMMEDIATELY
+        this.applyCurrentTheme();
+        
+        // Update display
+        this.updateThemeDisplay();
+        
+        // Update active button
+        document.querySelectorAll('.theme-option').forEach(btn => {
+            btn.classList.remove('active-theme');
+            if (btn.getAttribute('data-theme') === theme) {
+                btn.classList.add('active-theme');
+            }
+        });
+        
+        // Dispatch custom event
+        document.dispatchEvent(new CustomEvent('themeChanged', { detail: { theme } }));
+    }
+
+    /**
+     * Apply current theme to document
+     */
+    applyCurrentTheme() {
+        const html = document.documentElement;
+        
+        // Remove existing theme classes
+        html.classList.remove('dark-mode', 'light-mode');
+        
+        // Apply based on theme preference
+        if (this.currentTheme === 'dark') {
+            html.classList.add('dark-mode');
+        } else if (this.currentTheme === 'light') {
+            html.classList.add('light-mode');
+        } else {
+            // System theme - use prefers-color-scheme
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                html.classList.add('dark-mode');
+            } else {
+                html.classList.add('light-mode');
+            }
+        }
+    }
+
+    /**
+     * Setup navigation interactions
+     */
+    setupNavInteractions() {
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // If it's an internal link, update active state
+                const href = link.getAttribute('href');
+                if (href && !href.startsWith('http') && !href.startsWith('#')) {
+                    // Remove active class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    // Add active class to clicked link
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+
+    /**
+     * Get saved theme from localStorage
+     * @returns {string|null} Saved theme or null
+     */
+    getSavedTheme() {
+        return localStorage.getItem('preferred-theme');
+    }
+
+    /**
+     * Check if device is desktop
+     * @returns {boolean} True if desktop
+     */
+    isDesktop() {
+        return window.matchMedia('(min-width: 992px)').matches;
+    }
+
+    /**
+     * Capitalize first letter
+     * @param {string} string - String to capitalize
+     * @returns {string} Capitalized string
+     */
+    capitalizeFirst(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    /**
+     * Update panel for window resize
+     */
+    handleResize() {
+        if (this.isDesktop()) {
+            // If panel not loaded yet, load it
+            const container = document.getElementById(this.panelContainerId);
+            if (container && container.children.length === 0) {
+                this.loadSidePanel();
+            }
+        } else {
+            // Remove panel on mobile
+            const container = document.getElementById(this.panelContainerId);
+            if (container) {
+                container.innerHTML = '';
+            }
+        }
+    }
+}
+
+// Create side panel instance IMMEDIATELY
+const sidePanel = new SidePanel();
+
+// Apply theme BEFORE DOM is fully loaded to prevent FOUC (Flash of Unstyled Content)
+sidePanel.applyCurrentTheme();
+
+// Initialize side panel when DOM is loaded
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => {
+        sidePanel.init();
+        
+        // Listen for resize events
+        window.addEventListener('resize', () => {
+            sidePanel.handleResize();
+        });
+    });
 } else {
-  init();
+    sidePanel.init();
+    window.addEventListener('resize', () => {
+        sidePanel.handleResize();
+    });
 }
 
-// Make utility functions available globally if needed
-if (typeof window !== 'undefined') {
-  window.ToolsBD = {
-    banglaDigit,
-    formatTimeToBangla,
-    getTimeRemaining,
-    reverseGeocode,
-    getPrayerTimes,
-    loadSection
-  };
+// Listen for system theme changes
+if (window.matchMedia) {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', () => {
+        if (sidePanel.currentTheme === 'system') {
+            sidePanel.applyCurrentTheme();
+            sidePanel.updateThemeDisplay();
+        }
+    });
 }
 
-// Export for module usage
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    banglaDigit,
-    formatTimeToBangla,
-    getTimeRemaining,
-    reverseGeocode,
-    getPrayerTimes,
-    loadSection,
-    init
-  };
-}
+// Make sidePanel available globally for other scripts
+window.sidePanel = sidePanel;

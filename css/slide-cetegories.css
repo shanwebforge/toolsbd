@@ -81,7 +81,7 @@ html.dark-mode {
    CSS Rules using Variables
    ==================================== */
 
-/* MAIN WRAPPER */
+/* MAIN WRAPPER - FIXED HEIGHT SOLUTION */
 .slide-cat-section {
     all: unset !important;
     display: block !important;
@@ -91,7 +91,8 @@ html.dark-mode {
     margin: 20px auto !important;
     box-sizing: border-box !important;
     position: relative !important;
-    min-height: 250px;
+    min-height: 650px !important; /* FIXED HEIGHT */
+    height: 650px !important; /* FIXED HEIGHT */
 }
 
 .sc-slide-cat-container {
@@ -109,13 +110,17 @@ html.dark-mode {
     border-radius: 18px;
     color: var(--slidecat-text-secondary);
     transition: transform 0.3s ease;
+    /* FIXED CONTAINER HEIGHT */
+    height: 600px !important;
+    min-height: 600px !important;
+    max-height: 600px !important;
 }
 
 .sc-slide-cat-container:hover {
     transform: translateY(-3px);
 }
 
-/* GLASS TABS WRAPPER */
+/* GLASS TABS WRAPPER - FIXED HEIGHT */
 .sc-glass-tabs {
     display: flex;
     justify-content: space-between;
@@ -126,9 +131,13 @@ html.dark-mode {
     backdrop-filter: blur(25px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     width: 100%;
-    height: 60px;
+    height: 60px !important; /* FIXED HEIGHT */
+    min-height: 60px !important;
+    max-height: 60px !important;
     overflow: hidden;
     box-sizing: border-box;
+    position: relative;
+    z-index: 2;
 }
 
 /* TABS */
@@ -143,7 +152,7 @@ html.dark-mode {
     white-space: nowrap;
     font-family: "Alkatra";
     color: var(--slidecat-tab-text);
-    height: 100%;
+    height: 100% !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -163,18 +172,43 @@ html.dark-mode {
     box-shadow: var(--slidecat-tab-shadow);
     color: var(--slidecat-tab-active-text) !important;
     font-weight: 700;
-    height: 100%;
+    height: 100% !important;
     transform: scale(1.05);
 }
 
-/* CONTENT */
+/* CONTENT CONTAINER - FIXED HEIGHT */
+.sc-content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 540px !important; /* 600px - 60px (tabs height) */
+    min-height: 540px !important;
+    max-height: 540px !important;
+    overflow: hidden;
+}
+
+/* CATEGORY BOXES - ALL SAME FIXED HEIGHT */
 .sc-category-box {
     display: none;
     animation: fadeIn 0.4s ease;
+    width: 100%;
+    height: 540px !important; /* FIXED HEIGHT */
+    min-height: 540px !important;
+    max-height: 540px !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 .sc-category-box.active {
     display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    position: relative;
 }
 
 @keyframes fadeIn {
@@ -188,7 +222,7 @@ html.dark-mode {
     }
 }
 
-/* CARD */
+/* CARD - FIXED HEIGHT */
 .sc-glass-card {
     width: 100%;
     padding: 22px;
@@ -199,6 +233,9 @@ html.dark-mode {
     overflow: hidden;
     opacity: 0.95;
     transition: opacity 0.3s ease;
+    height: 540px !important; /* FIXED HEIGHT */
+    min-height: 540px !important;
+    max-height: 540px !important;
 }
 
 .sc-glass-card:hover {
@@ -252,11 +289,14 @@ html.dark-mode {
     opacity: 1;
 }
 
-/* ITEMS CONTAINER */
+/* ITEMS CONTAINER - FIXED SCROLLABLE HEIGHT */
 .sc-items-container {
-    max-height: 400px;
+    height: 370px !important; /* FIXED HEIGHT */
+    min-height: 370px !important;
+    max-height: 370px !important;
     overflow-y: auto;
     padding-right: 5px;
+    position: relative;
 }
 
 /* Custom Scrollbar */
@@ -415,19 +455,35 @@ html.dark-mode {
 /* MOBILE 768px            */
 /* ======================= */
 @media (max-width: 768px) {
+    .slide-cat-section {
+        min-height: 580px !important;
+        height: 580px !important;
+        padding: 0 10px !important;
+    }
+    
     .sc-slide-cat-container {
-        width: 100%;
-        left: 0;
-        right: 0;
+        height: 550px !important;
+        min-height: 550px !important;
+        max-height: 550px !important;
+        margin-top: 10px;
+        margin-bottom: 10px;
         transform: translateY(0) !important;
     }
 
     .sc-slide-cat-container:hover {
         transform: translateY(0) !important;
     }
+    
+    .sc-content-wrapper {
+        height: 500px !important; /* 550px - 50px */
+        min-height: 500px !important;
+        max-height: 500px !important;
+    }
 
     .sc-glass-tabs {
-        height: 40px;
+        height: 50px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
         gap: 0px;
         padding: 0 0px;
     }
@@ -435,7 +491,7 @@ html.dark-mode {
     .sc-glass-tabs .sc-tab {
         font-size: 12px;
         padding: 0 10px;
-        height: 100%;
+        height: 100% !important;
         transform: translateY(0) !important;
     }
 
@@ -444,8 +500,15 @@ html.dark-mode {
     }
 
     .sc-glass-tabs .sc-tab.active {
-        height: 100%;
+        height: 100% !important;
         transform: scale(1) !important;
+    }
+    
+    .sc-category-box,
+    .sc-glass-card {
+        height: 500px !important;
+        min-height: 500px !important;
+        max-height: 500px !important;
     }
 
     .sc-card-title {
@@ -457,7 +520,9 @@ html.dark-mode {
     }
     
     .sc-items-container {
-        max-height: 350px;
+        height: 340px !important;
+        min-height: 340px !important;
+        max-height: 340px !important;
     }
     
     .sc-item {
@@ -498,6 +563,46 @@ html.dark-mode {
     }
 }
 
+/* Smaller Mobile 480px */
+@media (max-width: 480px) {
+    .slide-cat-section {
+        min-height: 520px !important;
+        height: 520px !important;
+        margin: 10px auto !important;
+    }
+    
+    .sc-slide-cat-container {
+        height: 500px !important;
+        min-height: 500px !important;
+        max-height: 500px !important;
+    }
+    
+    .sc-content-wrapper {
+        height: 450px !important; /* 500px - 50px */
+        min-height: 450px !important;
+        max-height: 450px !important;
+    }
+    
+    .sc-category-box,
+    .sc-glass-card {
+        height: 450px !important;
+        min-height: 450px !important;
+        max-height: 450px !important;
+        padding: 15px;
+    }
+    
+    .sc-items-container {
+        height: 300px !important;
+        min-height: 300px !important;
+        max-height: 300px !important;
+    }
+    
+    .sc-glass-tabs .sc-tab {
+        font-size: 11px;
+        padding: 0 5px;
+    }
+}
+
 /* Smooth transitions for all interactive elements */
 .sc-slide-cat-container,
 .sc-tab,
@@ -520,4 +625,15 @@ html.dark-mode {
         border-color 0.3s ease,
         box-shadow 0.3s ease,
         opacity 0.3s ease;
+}
+
+/* Prevent any content shifting */
+.sc-slide-cat-container,
+.sc-glass-tabs,
+.sc-content-wrapper,
+.sc-category-box,
+.sc-glass-card,
+.sc-items-container {
+    contain: layout size style !important;
+    will-change: transform;
 }

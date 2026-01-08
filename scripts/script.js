@@ -1,23 +1,36 @@
-// Right click AND text selection block এর কোড:
-document.addEventListener("contextmenu", (e) => e.preventDefault());
-document.addEventListener("selectstart", (e) => e.preventDefault());
-
-document.querySelectorAll('img').forEach(img => {
-  img.addEventListener('contextmenu', (e) => e.preventDefault());
+// Disable DevTools keyboard shortcuts
+document.addEventListener('keydown', function(e) {
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && e.key === "I") ||
+    (e.ctrlKey && e.key === "U")
+  ) {
+    e.preventDefault();
+  }
 });
 
-const initSecurityProtection = () => {
-  // Prevent context menu
-  document.addEventListener("contextmenu", (e) => e.preventDefault());
-  
-  // Prevent text selection
-  document.addEventListener("selectstart", (e) => e.preventDefault());
-  
-  // Protect images
-  document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('contextmenu', (e) => e.preventDefault());
+// Disable right-click context menu
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
+
+// Disable text selection
+document.addEventListener('selectstart', function(e) {
+  e.preventDefault();
+});
+
+// Disable drag (for images & content)
+document.addEventListener('dragstart', function(e) {
+  e.preventDefault();
+});
+
+// Optional: Prevent saving images via right-click or dragging
+document.querySelectorAll('img').forEach(function(img) {
+  img.setAttribute('draggable', 'false');
+  img.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
   });
-};
+});
 
 // sidepanel
 

@@ -246,10 +246,18 @@
   <!-- Deferred scripts -->
      <link rel="stylesheet" defer href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script defer src="/scripts/dpop.js" defer></script>
-  <script defer src="/scripts/main.js" dafer></script>
+  <script>
+if (window.innerWidth > 992) {
+  var s = document.createElement("script");
+  s.src = "/components/sidepanel.js";
+  s.defer = true;
+  document.body.appendChild(s);
+}
+</script>
   <script defer src="/components/header.js" defer></script>
   <script defer src="/components/footer.js" defer></script>
   <script defer src="/scripts/script.js"></script>
+  <script defer src="/scripts/main.js"></script>
   <script type="module" defer src="/blog/js/loadRecentPostsHome.js" defer></script>
 </body>
 </html>

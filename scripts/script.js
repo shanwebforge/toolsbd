@@ -226,6 +226,9 @@ class SidePanel {
         return localStorage.getItem('preferred-theme');
     }
 
+
+
+    
     /**
      * Check if device is desktop
      * @returns {boolean} True if desktop

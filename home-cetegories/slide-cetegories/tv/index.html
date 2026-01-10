@@ -14,22 +14,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #121212;
-            --secondary-dark: #1E1E1E;
-            --accent-dark: #BB86FC;
-            --text-dark: #E1E1E1;
-            
+
             --primary-light: #FFFFFF;
             --secondary-light: #F5F5F5;
             --accent-light: #6200EE;
             --text-light: #333333;
             
-            --current-primary: var(--primary-dark);
-            --current-secondary: var(--secondary-dark);
-            --current-accent: var(--accent-dark);
-            --current-text: var(--text-dark);
         }
 
+
+           html.dark-mode {
+            --primary-dark: #121212;
+            --secondary-dark: #1E1E1E;
+            --accent-dark: #BB86FC;
+            --text-dark: #E1E1E1;
+           }
 
 
         /* Animated Background */
@@ -69,11 +68,11 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             overflow: hidden;
             transition: all 0.3s ease;
-            position: relative;
+            position: sticky;
         }
 
         .player-section:hover {
-            transform: translateY(-5px);
+            transform: translateY(-1px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
 
@@ -119,11 +118,13 @@
 
         /* Channel List */
         .channel-list {
-            background-color: var(--current-secondary);
+            background-color: var(--card-bg);
+            border: 1px soli var(--card-border);
             border-radius: 16px;
             padding: 20px;
             height: 100%;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 10px auto;
         }
 
         .channel-list-header {
@@ -137,16 +138,16 @@
 
         .channel-list-title {
             font-size: 1.5rem;
-            font-weight: 600;
+            font-weight: 700;
             margin: 0;
         }
 
         .channel-count {
-            background-color: var(--current-accent);
-            color: var(--current-primary);
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            background-color: var(--accent-light);
+            color: var(--text-dark);
+            padding: 4px 15px;
+            border-radius: 40px;
+            font-size: 1rem;
             font-weight: 600;
         }
 
@@ -195,24 +196,6 @@
         }
 
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer a {
-            color: var(--current-accent);
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
 
         /* Responsive Adjustments */
         @media (max-width: 992px) {
@@ -275,84 +258,133 @@
                 <div class="player-section">
                     <div class="embed-container">
                         <iframe name="player" allowfullscreen 
-                                src="tv1.html?stream=sports1"></iframe>
-                        <!--div class="player-info">
-                            <div class="channel-title">Sports Channel 1</div>
-                            <div class="program-info">Live: Premier League Football</div>
-                        </div--->
+                                src="/home-cetegories/slide-cetegories/tv/btv.html"></iframe>
+
                     </div>
                 </div>
             </div>
             
             <!-- Channel List Column -->
-            <div class="col-lg-3 col-md-4">
+      
                 <div class="channel-list">
                     <div class="channel-list-header">
-                        <h2 class="channel-list-title">Channels</h2>
-                        <div class="channel-count">12/250</div>
+                        <h2 class="channel-list-title"> Bangla Channels</h2>
+                        <div class="channel-count">11</div>
                     </div>
                     <div class="channel-grid">
-                        <div class="channel-item active" onclick="changeChannel('tv1.html?stream=sports1', 'Sports Channel 1', 'Live: Premier League Football')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Sports Channel 1">
-                            <div class="channel-name">Sports 1</div>
+                        <div class="channel-item active" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/btv.html?stream=btv', 'Jamuna Tv', 'BTV')">
+                            <img src="/assets/tv-btv.webp" class="channel-thumbnail" alt="BTV">
+                            <div class="channel-name">BTV</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv2.html?stream=sports2', 'Sports Channel 2', 'Live: Tennis Championship')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Sports Channel 2">
-                            <div class="channel-name">Sports 2</div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/jamuna.html?stream=Jamuna Tv', 'Jamuna Tv', 'Jamuna Tv')">
+                            <img src="/assets/tv-jamuna.webp" class="channel-thumbnail" alt="Jamuna Tv">
+                            <div class="channel-name">Jamuna Tv</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv3.html?stream=sports3', 'Sports Channel 3', 'Live: Basketball')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Sports Channel 3">
-                            <div class="channel-name">Sports 3</div>
+                       <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/channel24.html?stream=channel24', 'Channel24', 'Channel24')">
+                            <img src="/assets/tv-channel24.webp" class="channel-thumbnail" alt="Channel24">
+                            <div class="channel-name">Channel24</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv4.html?stream=sports4', 'Sports Channel 4', 'Live: Motorsports')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Sports Channel 4">
-                            <div class="channel-name">Sports 4</div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/independent.html?stream=independent', 'independent', 'independent')">
+                            <img src="/assets/tv-independent.webp" class="channel-thumbnail" alt="independent">
+                            <div class="channel-name">independent</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv5.html?stream=sports5', 'Sports Channel 5', 'Live: Extreme Sports')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Sports Channel 5">
-                            <div class="channel-name">Sports 5</div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/ntv.html?stream=ntv', 'NTV', 'NTV')">
+                            <img src="/assets/tv-ntv.webp" class="channel-thumbnail" alt="NTV">
+                            <div class="channel-name">NTV</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv6.html?stream=movie1', 'Movie Channel', 'Avengers: Endgame')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Movie Channel">
-                            <div class="channel-name">Movie Channel</div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/ekattor.html?stream=EkattorTV', 'Ekattor TV', 'Ekattor TV')">
+                            <img src="/assets/tv-71.webp" class="channel-thumbnail" alt="Ekattor TV">
+                            <div class="channel-name">Ekattor TV</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv7.html?stream=news1', 'News 24', 'Breaking News')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="News 24">
-                            <div class="channel-name">News 24</div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/dipto.html?stream=dipto', 'Dipto', 'Dipto')">
+                            <img src="/assets/tv-dipto.webp" class="channel-thumbnail" alt="Dipto">
+                            <div class="channel-name">Dipto</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv8.html?stream=music1', 'Music Channel', 'Top 40 Hits')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Music Channel">
-                            <div class="channel-name">Music Channel</div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/banglavision.html?stream=banglavision', 'banglavision', 'banglavision')">
+                            <img src="/assets/tv-bn.webp" class="channel-thumbnail" alt="banglavision">
+                            <div class="channel-name">Banglavision</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv9.html?stream=documentary1', 'Documentary Channel', 'Wildlife Special')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Documentary Channel">
-                            <div class="channel-name">Documentary</div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/?stream=channeli', 'channeli', 'channeli')">
+                            <img src="/assets/tv-channeli.webp" class="channel-thumbnail" alt="channeli">
+                            <div class="channel-name">Channel-i</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv10.html?stream=kids1', 'Kids Channel', 'Cartoon Time')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Kids Channel">
-                            <div class="channel-name">Kids Channel</div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/atnlive.html?stream=atnlive', 'ATN Live', 'ATN Live')">
+                            <img src="/assets/tv-atnlive.webp" class="channel-thumbnail" alt="ATN Live">
+                            <div class="channel-name">ATN Live</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv11.html?stream=comedy1', 'Comedy Central', 'Stand-up Special')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Comedy Central">
-                            <div class="channel-name">Comedy Central</div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/atnnews.html?stream=ATN News', 'ATN News', 'ATN News')">
+                            <img src="/assets/tv-atnbangla.webp" class="channel-thumbnail" alt="ATN News">
+                            <div class="channel-name">ATN News</div>
                         </div>
-                        <div class="channel-item" onclick="changeChannel('tv12.html?stream=premium1', 'Premium Channel', 'Exclusive Content')">
-                            <img src="https://placehold.co/420x300/000000/ffffff?text=LIVE%20TV" class="channel-thumbnail" alt="Premium Channel">
-                            <div class="channel-name">Premium Channel</div>
-                        </div>
+                       
                     </div>
                 </div>
+
+
+
+
+                    <div class="channel-list">
+                    <div class="channel-list-header">
+                        <h2 class="channel-list-title"> Sports Channels</h2>
+                        <div class="channel-count">11</div>
+                    </div>
+                    <div class="channel-grid">
+                        <div class="channel-item active" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/btv.html?stream=btv', 'Jamuna Tv', 'BTV')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=BTV" class="channel-thumbnail" alt="BTV">
+                            <div class="channel-name">BTV</div>
+                        </div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/jamuna.html?stream=Jamuna Tv', 'Jamuna Tv', 'Jamuna Tv')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=Jamuna Tv" class="channel-thumbnail" alt="Jamuna Tv">
+                            <div class="channel-name">Jamuna Tv</div>
+                        </div>
+                       <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/channel24.html?stream=channel24', 'Channel24', 'Channel24')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=Channel24" class="channel-thumbnail" alt="Channel24">
+                            <div class="channel-name">Channel24</div>
+                        </div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/independent.html?stream=independent', 'independent', 'independent')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=independent" class="channel-thumbnail" alt="independent">
+                            <div class="channel-name">independent</div>
+                        </div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/ntv.html?stream=ntv', 'NTV', 'NTV')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=NTV" class="channel-thumbnail" alt="NTV">
+                            <div class="channel-name">NTV</div>
+                        </div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/ekattor.html?stream=EkattorTV', 'Ekattor TV', 'Ekattor TV')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=Ekattor%20TV" class="channel-thumbnail" alt="Ekattor TV">
+                            <div class="channel-name">Ekattor TV</div>
+                        </div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/dipto.html?stream=dipto', 'Dipto', 'Dipto')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=Dipto" class="channel-thumbnail" alt="Dipto">
+                            <div class="channel-name">Dipto</div>
+                        </div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/banglavision.html?stream=banglavision', 'banglavision', 'banglavision')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=banglavision%20" class="channel-thumbnail" alt="banglavision">
+                            <div class="channel-name">Banglavision</div>
+                        </div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/?stream=channeli', 'channeli', 'channeli')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=Channel i" class="channel-thumbnail" alt="channeli">
+                            <div class="channel-name">Channel-i</div>
+                        </div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/atnlive.html?stream=atnlive', 'ATN Live', 'ATN Live')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=ATN%20LIVE" class="channel-thumbnail" alt="ATN Live">
+                            <div class="channel-name">ATN Live</div>
+                        </div>
+                        <div class="channel-item" onclick="changeChannel('/home-cetegories/slide-cetegories/tv/atnnews.html?stream=ATN News', 'ATN News', 'ATN News')">
+                            <img src="https://placehold.co/420x300/000000/ffffff?text=ATN News" class="channel-thumbnail" alt="ATN News">
+                            <div class="channel-name">ATN News</div>
+                        </div>
+                       
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <div>
-            <img src="https://hitscounter.dev/api/hit?url=https%3A%2F%2Fgithub.com%2Fsohag1192%2FLive-Tv-Server&label=&icon=github&color=%23198754&message=&style=flat&tz=UTC" alt="GitHub hits">
-        </div>
-        
-    </div>
+
+
+
 
     <script>
        
@@ -422,5 +454,7 @@
     </script>
     <script src="/components/header.js"></script>
     <script src="/components/footer.js"></script>
+    <script src="/scripts/script.js"></script>
+    <script src="/components/sidepanel.js"></script>
 </body>
 </html>

@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium Live TV Streaming Service">
+    <link rel="shortcut icon" href="https://placehold.co/16x16/000000/ffffff?text=TV"/>
+    <title>StreamTV | Live Streaming Platform</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e293b;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --card-bg: #1e293b;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            max-width: 1920px;
+            margin: 0 auto;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Modern Top Bar */
+        .top-bar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            color: var(--accent-color);
+            font-size: 2rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-color), #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .live-badge {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .live-badge i {
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .channel-info {
+            background: var(--card-bg);
+            padding: 8px 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .current-channel {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .current-program {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .quality-selector {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 8px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .fullscreen-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex: 1;
+            padding: 2rem;
+            gap: 2rem;
+            height: calc(100vh - 80px);
+        }
+
+        /* Player Section */
+        .player-section {
+            flex: 3;
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        .player-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background: #000;
+        }
+
+        .player-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: var(--text-secondary);
+        }
+
+        .player-placeholder i {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            opacity: 0.5;
+        }
+
+        .player-placeholder h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .player-placeholder p {
+            font-size: 1rem;
+            max-width: 400px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .player-controls-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .player-section:hover .player-controls-overlay {
+            opacity: 1;
+        }
+
+        .playback-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .control-btn:hover {
+            background: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .volume-slider {
+            width: 100px;
+            height: 4px;
+            -webkit-appearance: none;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+        }
+
+        /* Channels Sidebar */
+        .channels-sidebar {
+            flex: 1;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        .channels-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .channels-header h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .channels-header h2 i {
+            color: var(--accent-color);
+        }
+
+        .channels-count {
+            background: var(--accent-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .channels-search {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            width: 100%;
+            background: var(--secondary-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .channels-grid {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .channel-card {
+            background: var(--secondary-color);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 20px var(--shadow-color);
+        }
+
+        .channel-card.active {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), 0 10px 20px var(--shadow-color);
+        }
+
+        .channel-card.active::before {
+            content: '▶';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent-color);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            z-index: 2;
+        }
+
+        .channel-thumbnail {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #334155, #475569);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .channel-thumbnail i {
+            opacity: 0.7;
+        }
+
+        .channel-info {
+            padding: 12px;
+        }
+
+        .channel-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .channel-category {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Floating Controls */
+        .floating-controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .floating-btn {
+            background: var(--accent-color);
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+            border: none;
+            font-size: 1.2rem;
+        }
+
+        .floating-btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.6);
+        }
+
+        /* Category Colors */
+        .channel-card[data-category="sports"] .channel-thumbnail {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+        }
+
+        .channel-card[data-category="movies"] .channel-thumbnail {
+            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+        }
+
+        .channel-card[data-category="news"] .channel-thumbnail {
+            background: linear-gradient(135deg, #059669, #10b981);
+        }
+
+        .channel-card[data-category="music"] .channel-thumbnail {
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+        }
+
+        .channel-card[data-category="entertainment"] .channel-thumbnail {
+            background: linear-gradient(135deg, #db2777, #ec4899);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-content {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .player-section {
+                height: 60vh;
+            }
+            
+            .channels-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar {
+                padding: 1rem;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .controls {
+                order: 3;
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+            
+            .channels-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 0.75rem;
+            }
+            
+            .floating-controls {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            
+            .floating-btn {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        .channels-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .channels-grid::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .channels-grid::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .channels-grid::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Loading Animation */
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: 200px 0; }
+        }
+
+        .loading {
+            background: linear-gradient(90deg, #2d3748 25%, #4a5568 50%, #2d3748 75%);
+            background-size: 200px 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Channel Transitions */
+        .channel-card {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="logo">
+                <i class="fas fa-satellite-dish logo-icon"></i>
+                <span class="logo-text">StreamTV</span>
+                <div class="live-badge">
+                    <i class="fas fa-circle"></i>
+                    LIVE
+                </div>
+            </div>
+            
+            <div class="controls">
+                <div class="channel-info">
+                    <div>
+                        <div class="current-channel" id="currentChannel">Sports Channel 1</div>
+                        <div class="current-program" id="currentProgram">Premier League Football</div>
+                    </div>
+                    <i class="fas fa-tv" style="color: var(--accent-color);"></i>
+                </div>
+                
+                <select class="quality-selector" id="qualitySelector">
+                    <option value="auto">Auto Quality</option>
+                    <option value="1080p">1080p</option>
+                    <option value="720p">720p</option>
+                    <option value="480p">480p</option>
+                </select>
+                
+                <button class="fullscreen-btn" id="fullscreenBtn">
+                    <i class="fas fa-expand"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Player Section -->
+            <div class="player-section">
+                <div class="player-container" id="playerContainer">
+                    <div class="player-placeholder">
+                        <i class="fas fa-satellite"></i>
+                        <h2>Select a Channel to Start Streaming</h2>
+                        <p>Choose from our premium selection of live TV channels in crystal clear quality</p>
+                    </div>
+                </div>
+                
+                <div class="player-controls-overlay">
+                    <div class="playback-controls">
+                        <button class="control-btn" id="playPauseBtn">
+                            <i class="fas fa-pause"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        <button class="control-btn">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                        <div class="volume-control">
+                            <i class="fas fa-volume-up"></i>
+                            <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80">
+                        </div>
+                    </div>
+                    
+                    <div class="player-info">
+                        <div style="font-weight: 600; font-size: 1.1rem;" id="playerChannel">Sports Channel 1</div>
+                        <div style="color: var(--text-secondary);" id="playerProgram">Live: Premier League Football</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Channels Sidebar -->
+            <div class="channels-sidebar">
+                <div class="channels-header">
+                    <h2><i class="fas fa-broadcast-tower"></i> Live Channels</h2>
+                    <div class="channels-count" id="channelsCount">12</div>
+                </div>
+                
+                <div class="channels-search">
+                    <input type="text" class="search-box" id="channelSearch" placeholder="Search channels...">
+                </div>
+                
+                <div class="channels-grid" id="channelsGrid">
+                    <!-- Channels will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Controls -->
+        <div class="floating-controls">
+            <button class="floating-btn" id="prevChannelBtn" title="Previous Channel">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="floating-btn" id="nextChannelBtn" title="Next Channel">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Channel Data
+        const channels = [
+            { id: 1, name: "Sports 1", category: "sports", icon: "fa-futbol", stream: "sports1", program: "Premier League Football" },
+            { id: 2, name: "Sports 2", category: "sports", icon: "fa-baseball-bat-ball", stream: "sports2", program: "Tennis Championship" },
+            { id: 3, name: "Sports 3", category: "sports", icon: "fa-basketball", stream: "sports3", program: "NBA Live" },
+            { id: 4, name: "Sports 4", category: "sports", icon: "fa-flag-checkered", stream: "sports4", program: "Formula 1 Racing" },
+            { id: 5, name: "Sports 5", category: "sports", icon: "fa-person-skiing", stream: "sports5", program: "Winter Sports" },
+            { id: 6, name: "Movie Central", category: "movies", icon: "fa-film", stream: "movie1", program: "Blockbuster Movies" },
+            { id: 7, name: "News 24", category: "news", icon: "fa-newspaper", stream: "news1", program: "Breaking News" },
+            { id: 8, name: "Music Hits", category: "music", icon: "fa-music", stream: "music1", program: "Top 40 Charts" },
+            { id: 9, name: "Documentary", category: "entertainment", icon: "fa-globe", stream: "doc1", program: "Nature & Wildlife" },
+            { id: 10, name: "Kids Zone", category: "entertainment", icon: "fa-child", stream: "kids1", program: "Cartoon Network" },
+            { id: 11, name: "Comedy Central", category: "entertainment", icon: "fa-face-laugh", stream: "comedy1", program: "Stand-up Special" },
+            { id: 12, name: "Premium", category: "movies", icon: "fa-crown", stream: "premium1", program: "Exclusive Content" }
+        ];
+
+        let currentChannelIndex = 0;
+        let isPlaying = true;
+
+        // Initialize channels
+        function initializeChannels() {
+            const channelsGrid = document.getElementById('channelsGrid');
+            const channelsCount = document.getElementById('channelsCount');
+            
+            channelsCount.textContent = channels.length;
+            
+            channels.forEach((channel, index) => {
+                const channelCard = document.createElement('div');
+                channelCard.className = `channel-card ${index === 0 ? 'active' : ''}`;
+                channelCard.dataset.category = channel.category;
+                channelCard.dataset.index = index;
+                
+                channelCard.innerHTML = `
+                    <div class="channel-thumbnail">
+                        <i class="fas ${channel.icon}"></i>
+                    </div>
+                    <div class="channel-info">
+                        <div class="channel-name">${channel.name}</div>
+                        <div class="channel-category">
+                            <i class="fas fa-tag"></i>
+                            ${channel.category.charAt(0).toUpperCase() + channel.category.slice(1)}
+                        </div>
+                    </div>
+                `;
+                
+                channelCard.addEventListener('click', () => changeChannel(index));
+                channelsGrid.appendChild(channelCard);
+            });
+            
+            updateCurrentChannelInfo();
+        }
+
+        // Change Channel
+        function changeChannel(index) {
+            const channelCards = document.querySelectorAll('.channel-card');
+            channelCards.forEach(card => card.classList.remove('active'));
+            
+            const selectedCard = document.querySelector(`.channel-card[data-index="${index}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('active');
+                selectedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            
+            currentChannelIndex = index;
+            updateCurrentChannelInfo();
+            
+            // Update player placeholder
+            const playerPlaceholder = document.querySelector('.player-placeholder');
+            const channel = channels[index];
+            playerPlaceholder.innerHTML = `
+                <i class="fas ${channel.icon}"></i>
+                <h2>${channel.name}</h2>
+                <p>Now Playing: ${channel.program}</p>
+                <p style="margin-top: 1rem; color: var(--accent-color); font-size: 0.9rem;">
+                    <i class="fas fa-circle" style="animation: blink 1.5s infinite;"></i>
+                    Streaming Live...
+                </p>
+            `;
+        }
+
+        // Update channel info
+        function updateCurrentChannelInfo() {
+            const channel = channels[currentChannelIndex];
+            document.getElementById('currentChannel').textContent = channel.name;
+            document.getElementById('currentProgram').textContent = channel.program;
+            document.getElementById('playerChannel').textContent = channel.name;
+            document.getElementById('playerProgram').textContent = `Live: ${channel.program}`;
+        }
+
+        // Channel navigation
+        function nextChannel() {
+            currentChannelIndex = (currentChannelIndex + 1) % channels.length;
+            changeChannel(currentChannelIndex);
+        }
+
+        function prevChannel() {
+            currentChannelIndex = (currentChannelIndex - 1 + channels.length) % channels.length;
+            changeChannel(currentChannelIndex);
+        }
+
+        // Search functionality
+        function setupSearch() {
+            const searchBox = document.getElementById('channelSearch');
+            searchBox.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                const channelCards = document.querySelectorAll('.channel-card');
+                
+                channelCards.forEach(card => {
+                    const channelName = card.querySelector('.channel-name').textContent.toLowerCase();
+                    const channelCategory = card.querySelector('.channel-category').textContent.toLowerCase();
+                    
+                    if (channelName.includes(searchTerm) || channelCategory.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Fullscreen functionality
+        function setupFullscreen() {
+            const fullscreenBtn = document.getElementById('fullscreenBtn');
+            const playerSection = document.querySelector('.player-section');
+            
+            fullscreenBtn.addEventListener('click', () => {
+                if (!document.fullscreenElement) {
+                    playerSection.requestFullscreen().catch(err => {
+                        console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                    });
+                    fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+                } else {
+                    document.exitFullscreen();
+                    fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                }
+            });
+            
+            document.addEventListener('fullscreenchange', () => {
+                if (!document.fullscreenElement) {
+                    fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                }
+            });
+        }
+
+        // Play/Pause functionality
+        function setupPlaybackControls() {
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            const volumeSlider = document.getElementById('volumeSlider');
+            
+            playPauseBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                playPauseBtn.innerHTML = isPlaying ? 
+                    '<i class="fas fa-pause"></i>' : 
+                    '<i class="fas fa-play"></i>';
+                
+                // In a real app, this would control actual video playback
+                const playerPlaceholder = document.querySelector('.player-placeholder');
+                if (isPlaying) {
+                    playerPlaceholder.style.opacity = '1';
+                } else {
+                    playerPlaceholder.style.opacity = '0.5';
+                }
+            });
+            
+            volumeSlider.addEventListener('input', (e) => {
+                // In a real app, this would control actual volume
+                console.log(`Volume set to ${e.target.value}%`);
+            });
+        }
+
+        // Keyboard shortcuts
+        function setupKeyboardShortcuts() {
+            document.addEventListener('keydown', (e) => {
+                const channelCards = document.querySelectorAll('.channel-card');
+                
+                switch(e.key) {
+                    case 'ArrowUp':
+                    case 'ArrowLeft':
+                        e.preventDefault();
+                        prevChannel();
+                        break;
+                    case 'ArrowDown':
+                    case 'ArrowRight':
+                        e.preventDefault();
+                        nextChannel();
+                        break;
+                    case ' ':
+                        e.preventDefault();
+                        document.getElementById('playPauseBtn').click();
+                        break;
+                    case 'f':
+                    case 'F':
+                        e.preventDefault();
+                        document.getElementById('fullscreenBtn').click();
+                        break;
+                    case '1':
+                    case '2':
+                    case '3':
+                    case '4':
+                    case '5':
+                    case '6':
+                    case '7':
+                    case '8':
+                    case '9':
+                        const num = parseInt(e.key) - 1;
+                        if (num < channelCards.length) {
+                            changeChannel(num);
+                        }
+                        break;
+                }
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeChannels();
+            setupSearch();
+            setupFullscreen();
+            setupPlaybackControls();
+            setupKeyboardShortcuts();
+            
+            // Setup floating buttons
+            document.getElementById('nextChannelBtn').addEventListener('click', nextChannel);
+            document.getElementById('prevChannelBtn').addEventListener('click', prevChannel);
+            
+            // Setup quality selector
+            document.getElementById('qualitySelector').addEventListener('change', (e) => {
+                console.log(`Quality changed to: ${e.target.value}`);
+                // In a real app, this would change stream quality
+            });
+        });
+    </script>
+</body>
+</html>

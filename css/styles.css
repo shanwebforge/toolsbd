@@ -797,9 +797,9 @@ html.dark-mode body::before {
     }
     
     .catbar-box {
-        min-width: 100px;
-        padding: 18px 12px;
-        gap: 10px;
+        min-width: 60px;
+        padding: 15px 10px;
+        gap: 5px;
     }
     
     .catbar-box i {
@@ -845,12 +845,12 @@ html.dark-mode body::before {
     }
     .catbar-grid {
         grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-        padding: 15px;
+        gap: 8px;
+        padding: 10px;
     }
     
     .catbar-box {
-        min-width: 90px;
+        min-width: 60px;
         padding: 15px 10px;
         gap: 8px;
     }

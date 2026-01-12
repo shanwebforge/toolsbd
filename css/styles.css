@@ -999,6 +999,10 @@ html.dark-mode body::before {
     color: #d35400; 
     transform: transform 0.3s ease, color 0.3s ease; 
 }
+.catbar-box:nth-child(8) i { 
+    color: #d300d3; 
+    transform: transform 0.3s ease, color 0.3s ease; 
+}
 
 
 .left-panel {

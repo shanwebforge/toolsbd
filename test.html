@@ -1,98 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Test</title>
-    <!-- এই লাইনটি যোগ করুন -->
-    <link rel="stylesheet" href="dist/output.css">
+    <meta name="referrer" content="no-referrer" />
+   <title>bien sport 1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/shaka-player.ui.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.3.6/controls.min.css" crossorigin="anonymous" />
+</script>
+<body bgcolor='black' style='margin:0'>
+</script>
 </head>
-<body class="bg-gray-100 min-h-screen p-8">
-    
-    <div class="max-w-4xl mx-auto">
-        <!-- Success Message -->
-        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-8">
-            <h1 class="text-2xl font-bold">✅ Tailwind CSS Working Successfully!</h1>
-            <p>File: dist/output.css (11,289 bytes)</p>
+
+<body>
+    <center>
+            <div data-shaka-player-container style='width: 100%; height: 100%'>
+            <video autoplay data-shaka-player id='video' style='width:100%;height:100%;'></video>
         </div>
+    </center>
+    <script>
+        const manifestUri = "https://dcqkiaqc3sngm.cloudfront.net/CH5/masterCH5.mpd";
+        async function init() {
+            const video = document.getElementById('video');
+            const ui = video['ui'];
+            const controls = ui.getControls();
+            const player = controls.getPlayer();
+            window.player = player;
+            window.ui = ui;
+            player.configure({
+                drm: {
+                    "clearKeys": {
+                        '9fbffd1ff21340169a5a1142bcf4ddad': '4b3898bc8a6ffd8b5cb34a7cd906dc35'
+                    }
+                }
+            });
+            player.addEventListener('error', onPlayerErrorEvent);
+            controls.addEventListener('error', onUIErrorEvent);
+            try {
+                await player.load(manifestUri);
+                console.log('The video has now been loaded!');
+            } catch (error) {
+                onPlayerError(error);
+            }}
 
-        <!-- Test Components -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            <!-- Card 1 -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-bold text-blue-600 mb-4">Buttons</h2>
-                <div class="space-y-3">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Primary Button
-                    </button>
-                    <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                        Secondary Button
-                    </button>
-                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                        Success Button
-                    </button>
-                </div>
-            </div>
+        function onPlayerErrorEvent(errorEvent) {
+            onPlayerError(event.detail);
+        }
 
-            <!-- Card 2 -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-bold text-purple-600 mb-4">Text Styles</h2>
-                <div class="space-y-2">
-                    <h1 class="text-3xl font-bold">Heading 1</h1>
-                    <h2 class="text-2xl font-semibold">Heading 2</h2>
-                    <p class="text-gray-600">Normal paragraph text</p>
-                    <p class="text-red-500 font-bold">Error message</p>
-                </div>
-            </div>
+        function onPlayerError(error) {
+            console.error('Error code', error.code, 'object', error);
+        }
 
-            <!-- Card 3 -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-bold text-green-600 mb-4">Grid System</h2>
-                <div class="grid grid-cols-3 gap-2">
-                    <div class="bg-blue-200 p-3 text-center">1</div>
-                    <div class="bg-blue-300 p-3 text-center">2</div>
-                    <div class="bg-blue-400 p-3 text-center">3</div>
-                    <div class="bg-blue-500 p-3 text-center text-white">4</div>
-                    <div class="bg-blue-600 p-3 text-center text-white">5</div>
-                    <div class="bg-blue-700 p-3 text-center text-white">6</div>
-                </div>
-            </div>
+        function onUIErrorEvent(errorEvent) {
+            onPlayerError(event.detail);
+        }
 
-            <!-- Card 4 -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-bold text-yellow-600 mb-4">Responsive Design</h2>
-                <p class="text-sm md:text-base lg:text-lg xl:text-xl text-gray-700">
-                    This text changes size on different screens. Resize your browser to see the effect.
-                </p>
-                <div class="mt-4 flex space-x-2">
-                    <span class="bg-red-500 text-white px-2 py-1 rounded text-sm">Mobile</span>
-                    <span class="bg-yellow-500 text-white px-2 py-1 rounded text-sm">Tablet</span>
-                    <span class="bg-green-500 text-white px-2 py-1 rounded text-sm">Desktop</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Installation Info -->
-        <div class="mt-8 bg-gray-800 text-white rounded-lg p-6">
-            <h3 class="text-xl font-bold mb-4">📦 Installation Successful!</h3>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><code>dist/output.css</code> - Compiled Tailwind CSS</li>
-                <li><code>input.css</code> - Your source CSS file</li>
-                <li><code>tailwind.config.js</code> - Configuration file</li>
-                <li><code>postcss.config.js</code> - PostCSS configuration</li>
-            </ul>
-            
-            <div class="mt-4">
-                <h4 class="font-bold">Next Steps:</h4>
-                <ol class="list-decimal pl-5 mt-2">
-                    <li>Add <code>&lt;link rel="stylesheet" href="dist/output.css"&gt;</code> to your HTML</li>
-                    <li>Use Tailwind classes like <code>class="bg-blue-500 text-white p-4"</code></li>
-                    <li>Run <code>npm run dev</code> for auto-compilation</li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
+        function initFailed(errorEvent) {
+            console.error('Unable to load the UI library!');
+        }
+        document.addEventListener('shaka-ui-loaded', init);
+        document.addEventListener('shaka-ui-load-failed', initFailed);
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+@theme {
+  /* Background & Layout */
+  --color-background: #f8fafc;
+  --color-foreground: #0a0f1c;
+  
+  /* Primary/Accent Colors */
+  --color-primary: #8e3cfa;
+  --color-primary-dark: #7a28e0;
+  --color-primary-light: #a35cff;
+  
+  /* Secondary Colors */
+  --color-secondary: #cc13bd;
+  --color-secondary-light: #f518f5;
+  
+  /* Card & Surface Colors */
+  --color-card: #ffffff;
+  --color-card-foreground: #333333;
+  --color-muted: #f9f9f9;
+  --color-muted-foreground: #666666;
+  
+  /* Border Colors */
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-light: rgba(255, 255, 255, 0.15);
+  
+  /* Status Colors */
+  --color-success: #2e7d32;
+  --color-success-bg: #e0f4e0;
+  --color-error: #df3704;
+  --color-error-bg: #fee2e2;
+  
+  /* Gradient Colors */
+  --color-gradient-1: rgba(154, 234, 245, 0.85);
+  --color-gradient-2: rgba(248, 138, 138, 0.85);
+  
+  /* Footer Colors */
+  --color-footer-gradient-1: rgba(239, 179, 241, 0.8);
+  --color-footer-gradient-2: rgba(179, 219, 241, 0.8);
+  
+  /* Badge Colors */
+  --color-badge-bg: #dcb8fd;
+  --color-badge-border: #af5dfc;
+  --color-badge-text: #6b21a8;
+  
+  /* Social Colors */
+  --color-playstore: #3ddc84;
+  --color-applestore: #000000;
+  
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.125rem;
+  --radius-full: 9999px;
+  
+  /* Fonts */
+  --font-sans: "Noto Sans Bengali", "Alkatra", "Archivo Black", system-ui, sans-serif;
+  --font-bengali: "Hind Siliguri", "Galada", sans-serif;
+}
+
+/* Dark Mode Variables */
+.dark {
+  --color-background: #0a0f1c;
+  --color-foreground: #f1f5f9;
+  --color-card: #1e293b;
+  --color-card-foreground: #f1f5f9;
+  --color-muted: #1f1f1f;
+  --color-muted-foreground: #cbd5e1;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-gradient-1: rgba(23, 4, 61, 0.911);
+  --color-gradient-2: rgb(0, 0, 0);
+  --color-footer-gradient-1: rgba(71, 12, 71, 0.9);
+  --color-footer-gradient-2: rgba(0, 0, 0, 0.9);
+  --color-badge-bg: rgba(142, 60, 250, 0.2);
+  --color-badge-text: #cbd5e1;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: var(--color-foreground);
+  background: var(--color-background);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Background Gradient Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(135deg, var(--color-gradient-1), var(--color-gradient-2)),
+    url('/assets/home-bg.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.dark body::before {
+  background-blend-mode: multiply;
+}
+
+/* Bengali Font Support */
+:lang(bn), [lang="bn"] {
+  font-family: var(--font-bengali);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(90deg, #440992 0%, #f518f5 50%, #440992 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(90deg, #f518f5 0%, #32beab 50%, #f518f5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero Gradient Text */
+.hero-gradient {
+  background: linear-gradient(90deg, #373838, #cc13bd, #373838);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .hero-gradient {
+  background: linear-gradient(90deg, #4ca7aa, #bb24bb, #8e3cfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Button Gradients */
+.btn-gradient-1 {
+  background: linear-gradient(90deg, #cc13bd 0%, #8e3cfa 100%);
+}
+
+.btn-gradient-2 {
+  background: linear-gradient(90deg, #8e3cfa 0%, #cc13bd 100%);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 3px;
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Text balance for titles */
+.text-balance {
+  text-wrap: balance;
+}

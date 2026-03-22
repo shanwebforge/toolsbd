@@ -150,7 +150,7 @@ const InvoiceGenerator = () => {
                 </tbody>
                 <tfoot>
                   <tr className="total-row font-bold bg-gray-100 dark:bg-gray-700">
-                    <td colSpan="3" className="text-right p-3 border border-gray-300 dark:border-gray-600">মোট</td>
+                  <td colSpan={3} className="text-right p-3 border border-gray-300 dark:border-gray-600">মোট</td>
                     <td className="p-3 border border-gray-300 dark:border-gray-600">{invoice.total.toFixed(2)}</td>
                   </tr>
                 </tfoot>

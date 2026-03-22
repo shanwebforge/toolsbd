@@ -2,8 +2,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import Hero from "./Home/Hero.tsx";
-import Categories from "./Home/Cetegories.tsx";
+import Hero from "./Home/Hero";
+import Categories from "./Home/Cetegories";
 
 export default function HomePage() {
   return (

@@ -1,122 +1,79 @@
-
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useTheme } from "next-themes";
+import { Moon, Sun, Menu, X, Bookmark, ArrowRight } from "lucide-react";
 
 const Header = () => {
-  const [theme, setTheme] = useState("light");
+  const { theme, setTheme } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    if (storedTheme) {
-      setTheme(storedTheme);
-    } else if (prefersDark) {
-      setTheme("dark");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   return (
-    <header className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow-md">
-      <div className="container mx-auto px-4 py-2 flex justify-between items-center">
-        <div className="flex items-center">
-          <Link href="/" legacyBehavior>
-            <a>
-              <Image
-                src="/logo.webp"
-                alt="ToolsBD"
-                width={161}
-                height={56}
-                className="cursor-pointer"
-              />
-            </a>
+    <header className="sticky top-0 z-[60] w-full bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
+      <div className="container mx-auto px-4 h-20 flex justify-between items-center">
+        
+        {/* লোগো */}
+        <Link href="/" className="shrink-0">
+          <Image src="/logo.webp" alt="ToolsBD" width={110} height={40} className="dark:brightness-125" />
+        </Link>
+
+        {/* ডানদিকের সেকশন */}
+        <div className="flex items-center gap-2">
+          
+          {/* PC তে শুধু এই বাটনটি দেখাবে */}
+          <Link href="/join" className="hidden lg:flex items-center gap-2 bg-blue-600 text-white px-6 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/20">
+            Join Now <ArrowRight size={16} />
           </Link>
-        </div>
-        <nav className="hidden md:flex items-center space-x-4">
-          <Link href="/" legacyBehavior>
-            <a className="hover:text-gray-600 dark:hover:text-gray-300">Home</a>
-          </Link>
-          <Link href="/blog" legacyBehavior>
-            <a className="hover:text-gray-600 dark:hover:text-gray-300">Blog</a>
-          </Link>
-          <a
-            href="//"
-            className="hover:text-gray-600 dark:hover:text-gray-300"
-          >
-            Shop
-          </a>
-          <Link href="/nav-menu/about" legacyBehavior>
-            <a className="hover:text-gray-600 dark:hover:text-gray-300">
-              About
-            </a>
-          </Link>
-          <Link href="/nav-menu/service" legacyBehavior>
-            <a className="hover:text-gray-600 dark:hover:text-gray-300">
-              Services
-            </a>
-          </Link>
-          <Link href="/nav-menu/contact" legacyBehavior>
-            <a className="hover:text-gray-600 dark:hover:text-gray-300">
-              Contact
-            </a>
-          </Link>
-        </nav>
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={toggleTheme}
-            className="focus:outline-none"
-            aria-label="Toggle Theme"
-          >
-            {theme === "light" ? (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+
+          {/* মোবাইল আইকনগুলো (পিসিতে hidden) */}
+          <div className="flex lg:hidden items-center gap-2">
+             <button className="p-2.5 rounded-full text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-900">
+                <Bookmark size={20} />
+             </button>
+
+             {/* ডার্ক মোড টগল (শুধু মোবাইল) */}
+             <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="p-2.5 rounded-full text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-900"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                />
-              </svg>
-            ) : (
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                />
-              </svg>
-            )}
-          </button>
+                {theme === "dark" ? <Sun size={20} className="text-yellow-400" /> : <Moon size={20} />}
+             </button>
+
+             {/* হামবার্গার মেনু */}
+             <button onClick={() => setIsOpen(true)} className="p-2.5 text-blue-600 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                <Menu size={24} />
+             </button>
+          </div>
         </div>
       </div>
+
+      {/* মোবাইল ক্যানভাস (Background কালারসহ) */}
+      {isOpen && (
+        <div className="fixed inset-0 z-[100] lg:hidden">
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsOpen(false)} />
+          
+          {/* Content - এখানে bg-white/bg-gray-950 দেওয়া হয়েছে */}
+          <div className="absolute right-0 top-0 h-full w-[280px] bg-white dark:bg-gray-950 p-6 shadow-2xl transition-all">
+            <div className="flex justify-between items-center mb-10">
+                <Image src="/logo.webp" alt="Logo" width={90} height={30} />
+                <button onClick={() => setIsOpen(false)} className="p-2 bg-gray-100 dark:bg-gray-900 rounded-full">
+                  <X size={20} />
+                </button>
+            </div>
+            <nav className="flex flex-col space-y-4">
+              <Link href="/" className="text-lg font-bold">Home</Link>
+              <Link href="/blog" className="text-lg font-bold">Blog</Link>
+              <Link href="/join" className="text-blue-600 font-bold">Get Started</Link>
+            </nav>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

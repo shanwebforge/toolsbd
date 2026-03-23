@@ -1,18 +1,19 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "./styles.css";
 import Header from "@/components/Header";
 import FooterNav from "@/components/FooterNav";
 import Footer from "@/components/Footer";
-import LeftPanel from "@/components/LeftPanel"; // এটি যোগ করা হয়েছে
+import LeftPanel from "@/components/LeftPanel";
 import { ThemeProvider } from "next-themes";
+import SecurityWrapper from "@/components/SecurityWrapper"; // এটাকে আলাদা ফাইলে রাখাই বেস্ট
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: "ToolsBD - Free Tools, Tech, free ai, blog, code, sort code, command, secret code, prompt",
-  description: "বাংলায় সহজ কিছু প্রয়োজনীয় অনলাইন টুলস।",
+// মেটাডেটা এখন কাজ করবে কারণ এটা সার্ভার সাইড
+export const metadata = {
+  title: "ToolxBD / Free Tools And Ai Hub",
+  description: "Advanced Design Engine by Shan",
 };
 
 export default function RootLayout({
@@ -23,21 +24,25 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
+        {/* ThemeProvider সবার উপরে থাকবে */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Header />
-          
-          <div className="flex">
-            {/* LeftPanel শুধু পিসিতে দেখাবে, সেটি কম্পোনেন্টের ভেতরেই কন্ট্রোল করা আছে */}
-            <LeftPanel />
+          <SecurityWrapper>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              
+              <div className="flex flex-1">
+                <LeftPanel />
 
-            {/* মেইন কন্টেন্ট এরিয়া: পিসিতে বামপাশে ২৪০পিএক্স বা ৬৪ ইউনিট গ্যাপ রাখা হয়েছে */}
-            <main className="flex-1 w-full min-h-screen lg:pl-64 transition-all duration-300">
-              {children}
-            </main>
-          </div>
+                {/* মেইন কন্টেন্ট এরিয়া */}
+                <main className="flex-1 w-full lg:pl-64 transition-all duration-300">
+                  {children}
+                </main>
+              </div>
 
-          <FooterNav />
-          <Footer />
+              <FooterNav />
+              <Footer />
+            </div>
+          </SecurityWrapper>
         </ThemeProvider>
       </body>
     </html>

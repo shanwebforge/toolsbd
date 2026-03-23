@@ -42,7 +42,6 @@ export const toolsData: Tool[] = [
   { name: "JSON Formatter", icon: Braces, link: "/dev-designer-tools/json-formatter-validator", category: "Dev & Designer Tools", desc: "Format & validate JSON" },
   { name: "CSS Minifier", icon: Code, link: "/dev-designer-tools/css-minifier", category: "Dev & Designer Tools", desc: "Minify CSS code" },
   { name: "JS Minifier", icon: Code, link: "/dev-designer-tools/js-minifier", category: "Dev & Designer Tools", desc: "Minify JavaScript code" },
-
   { name: "Base64 Encoder", icon: Code, link: "/dev-designer-tools/base64-encoder", category: "Dev & Designer Tools", desc: "Minify JavaScript code" },
   { name: "Facebook Dp", icon: Code, link: "/dev-designer-tools/facebook-dp", category: "Dev & Designer Tools", desc: "Minify JavaScript code" },
   { name: "Logo Generator", icon: Code, link: "/dev-designer-tools/logo-generator", category: "Dev & Designer Tools", desc: "Minify JavaScript code" },
@@ -52,12 +51,20 @@ export const toolsData: Tool[] = [
   { name: "Responsive design checker", icon: Code, link: "/dev-designer-tools/responsive-design-checker", category: "Dev & Designer Tools", desc: "Minify JavaScript code" },
 
   // Freelancing Tools
-  { name: "Invoice Generator", icon: FileText, link: "/tools/invoice", category: "Freelancing Tools", desc: "Generate professional invoices" },
-  { name: "Proposal Template", icon: Briefcase, link: "/tools/proposal", category: "Freelancing Tools", desc: "Client proposal templates" },
-  { name: "Time Tracker", icon: Clock, link: "/tools/time-tracker", category: "Freelancing Tools", desc: "Track work hours" },
-  { name: "Project Manager", icon: TrendingUp, link: "/tools/project-manager", category: "Freelancing Tools", desc: "Manage projects & tasks" },
-  { name: "Client Manager", icon: Users, link: "/tools/client-manager", category: "Freelancing Tools", desc: "Manage client information" },
-  { name: "Payment Tracker", icon: DollarSign, link: "/tools/payment-tracker", category: "Freelancing Tools", desc: "Track payments & income" },
+  { name: "Invoice Generator", icon: FileText, link: "/freelanching-tools/invoice-genarator", category: "Freelancing Tools", desc: "Generate professional invoices" },
+  { name: "Proposal Template", icon: Briefcase, link: "/freelanching-tools/proposal", category: "Freelancing Tools", desc: "Client proposal templates" },
+  { name: "Time Tracker", icon: Clock, link: "/freelanching-tools/time-tracking", category: "Freelancing Tools", desc: "Track work hours" },
+  { name: "Project Manager", icon: TrendingUp, link: "/freelanching-tools/project-manager", category: "Freelancing Tools", desc: "Manage projects & tasks" },
+  { name: "Client Manager", icon: Users, link: "/freelanching-tools/client-manager", category: "Freelancing Tools", desc: "Manage client information" },
+  { name: "Payment Tracker", icon: DollarSign, link: "/freelanching-tools/client-payment-tracker", category: "Freelancing Tools", desc: "Track payments & income" },
+
+  { name: "Contract Template", icon: DollarSign, link: "/freelanching-tools/contract-template-generator", category: "Freelancing Tools", desc: "Track payments & income" },
+  { name: "Daily Log", icon: DollarSign, link: "/freelanching-tools/daily-log", category: "Freelancing Tools", desc: "Track payments & income" },
+  { name: "Employee Evaluation", icon: DollarSign, link: "/freelanching-tools/employee-evaluation", category: "Freelancing Tools", desc: "Track payments & income" },
+  { name: "Fiverr Gig", icon: DollarSign, link: "/freelanching-tools/fiverr-gig-keyword-tool", category: "Freelancing Tools", desc: "Track payments & income" },
+  { name: "Flyer Generator", icon: DollarSign, link: "/freelanching-tools/flyer-generator", category: "Freelancing Tools", desc: "Track payments & income" },
+  { name: "Payment Tracker", icon: DollarSign, link: "/freelanching-tools/#", category: "Freelancing Tools", desc: "Track payments & income" },
+
 
   // Islamic Tools
   { name: "Prayer Times", icon: Sun, link: "/tools/prayer-times", category: "Islamic Tools", desc: "Daily prayer times" },
@@ -68,13 +75,17 @@ export const toolsData: Tool[] = [
   { name: "Tasbih Counter", icon: Star, link: "/tools/tasbih", category: "Islamic Tools", desc: "Digital tasbih counter" },
 
   // Media Tools
-  { name: "Video Editor", icon: Video, link: "/tools/video-editor", category: "Media Tools", desc: "Edit videos online" },
-  { name: "Image Editor", icon: Camera, link: "/tools/image-editor", category: "Media Tools", desc: "Edit photos & images" },
-  { name: "Audio Editor", icon: Mic, link: "/tools/audio-editor", category: "Media Tools", desc: "Edit audio files" },
-  { name: "Video Converter", icon: Video, link: "/tools/video-converter", category: "Media Tools", desc: "Convert video formats" },
-  { name: "Image Compressor", icon: Camera, link: "/tools/image-compressor", category: "Media Tools", desc: "Compress images" },
-  { name: "Screen Recorder", icon: Radio, link: "/tools/screen-recorder", category: "Media Tools", desc: "Record screen" },
-
+  { name: "Video Editor", icon: Video, link: "/media-tools/video-editor", category: "Media Tools", desc: "Edit videos online" },
+  { name: "Image Editor", icon: Camera, link: "/media-tools/image-editor", category: "Media Tools", desc: "Edit photos & images" },
+  { name: "Mp3 Cutter", icon: Mic, link: "/media-tools/mp3-cutter", category: "Media Tools", desc: "Edit audio files" },
+  { name: "Video to Audio", icon: Video, link: "/media-tools/video-to-audio", category: "Media Tools", desc: "Convert video formats" },
+  { name: "Image Compressor", icon: Camera, link: "/media-tools/image-compressor", category: "Media Tools", desc: "Compress images" },
+  { name: "Voice Over", icon: Radio, link: "/media-tools/voiceover", category: "Media Tools", desc: "Voce Over" },
+  { name: "Mp3 Volume Booster", icon: Radio, link: "/media-tools/mp3-volume-booster", category: "Media Tools", desc: "Voce Over" },
+  { name: "Content Scheduler", icon: Radio, link: "/media-tools/content-scheduler", category: "Media Tools", desc: "Voce Over" },
+  { name: "Bangla Subtitle", icon: Radio, link: "/media-tools/bangla-subtitle", category: "Media Tools", desc: "Voce Over" },
+  { name: "Youtube Downloader", icon: Radio, link: "/media-tools/youtube-downloader", category: "Media Tools", desc: "Voce Over" },
+  
   // Dokan Tools
   { name: "Product Manager", icon: Package, link: "/tools/product-manager", category: "Dokan Tools", desc: "Manage store products" },
   { name: "Inventory Tracker", icon: Package, link: "/tools/inventory", category: "Dokan Tools", desc: "Track inventory" },

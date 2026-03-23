@@ -1,147 +1,186 @@
-
-"use client";
+'use client';
 
 import { useState } from 'react';
+import { Hash, Languages, ArrowRightLeft, Copy, Check, Info, Sparkles } from 'lucide-react';
 
-const NumberToWordPage = () => {
-  const [numberInput, setNumberInput] = useState('');
-  const [language, setLanguage] = useState('bn');
-  const [result, setResult] = useState('ফলাফল এখানে দেখানো হবে');
+export default function NumberToWordPage() {
+    const [numberInput, setNumberInput] = useState('');
+    const [language, setLanguage] = useState('bn');
+    const [result, setResult] = useState('');
+    const [copied, setCopied] = useState(false);
 
-  const numberToBanglaWords = (num: number): string => {
-    if (num === 0) return "শূন্য";
+    const numberToBanglaWords = (num: number): string => {
+        if (num === 0) return "শূন্য";
+        const ones = ["", "এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়", "সাত", "আট", "নয়"];
+        const teens = ["দশ", "এগারো", "বারো", "তেরো", "চৌদ্দ", "পনেরো", "ষোল", "সতেরো", "আঠারো", "উনিশ"];
+        const tens = ["", "", "বিশ", "ত্রিশ", "চল্লিশ", "পঞ্চাশ", "ষাট", "সত্তর", "আশি", "নব্বই"];
+        
+        function twoDigitWords(n: number): string {
+            if (n < 10) return ones[n];
+            else if (n >= 10 && n < 20) return teens[n - 10];
+            else {
+                let t = Math.floor(n / 10);
+                let o = n % 10;
+                return tens[t] + (o > 0 ? " " + ones[o] : "");
+            }
+        }
 
-    const ones = ["", "এক", "দুই", "তিন", "চার", "পাঁচ", "ছয়", "সাত", "আট", "নয়"];
-    const teens = ["দশ", "এগারো", "বারো", "তেরো", "চৌদ্দ", "পনেরো", "ষোল", "সতেরো", "আঠারো", "উনিশ"];
-    const tens = ["", "", "বিশ", "ত্রিশ", "চল্লিশ", "পঞ্চাশ", "ষাট", "সত্তর", "আশি", "নব্বই"];
-    const hundreds = "শত";
-    const thousands = "হাজার";
-    const lakhs = "লাখ";
-    const crores = "কোটি";
+        let word = "";
+        let crore = Math.floor(num / 10000000);
+        num = num % 10000000;
+        let lakh = Math.floor(num / 100000);
+        num = num % 100000;
+        let thousand = Math.floor(num / 1000);
+        num = num % 1000;
+        let hundred = Math.floor(num / 100);
+        num = num % 100;
 
-    function twoDigitWords(n: number): string {
-      if (n < 10) return ones[n];
-      else if (n >= 10 && n < 20) return teens[n - 10];
-      else {
-        let t = Math.floor(n / 10);
-        let o = n % 10;
-        return tens[t] + (o > 0 ? " " + ones[o] : "");
-      }
-    }
+        if (crore > 0) word += numberToBanglaWords(crore) + " কোটি ";
+        if (lakh > 0) word += twoDigitWords(lakh) + " লাখ ";
+        if (thousand > 0) word += twoDigitWords(thousand) + " হাজার ";
+        if (hundred > 0) word += ones[hundred] + " শত ";
+        if (num > 0) word += twoDigitWords(num);
+        
+        return word.trim();
+    };
 
-    let word = "";
+    const numberToEnglishWords = (num: number): string => {
+        if (num === 0) return "zero";
+        const a = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
+        const b = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
 
-    let crore = Math.floor(num / 10000000);
-    num = num % 10000000;
+        function inWords(n: number): string {
+            if (n < 20) return a[n];
+            if (n < 100) return b[Math.floor(n / 10)] + (n % 10 ? "-" + a[n % 10] : "");
+            if (n < 1000) return a[Math.floor(n / 100)] + " hundred" + (n % 100 ? " and " + inWords(n % 100) : "");
+            if (n < 1000000) return inWords(Math.floor(n / 1000)) + " thousand" + (n % 1000 ? " " + inWords(n % 1000) : "");
+            if (n < 1000000000) return inWords(Math.floor(n / 1000000)) + " million" + (n % 1000000 ? " " + inWords(n % 1000000) : "");
+            return inWords(Math.floor(n / 1000000000)) + " billion" + (n % 1000000000 ? " " + inWords(n % 1000000000) : "");
+        }
+        return inWords(num).trim();
+    };
 
-    let lakh = Math.floor(num / 100000);
-    num = num % 100000;
+    const handleConvert = () => {
+        const num = parseInt(numberInput);
+        if (isNaN(num) || num < 0) {
+            setResult(language === 'bn' ? "সঠিক সংখ্যা দিন।" : "Please enter a valid number.");
+            return;
+        }
+        const converted = language === 'bn' ? numberToBanglaWords(num) : numberToEnglishWords(num);
+        setResult(converted.charAt(0).toUpperCase() + converted.slice(1));
+    };
 
-    let thousand = Math.floor(num / 1000);
-    num = num % 1000;
+    const copyToClipboard = () => {
+        if (!result) return;
+        navigator.clipboard.writeText(result);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
 
-    let hundred = Math.floor(num / 100);
-    num = num % 100;
+    return (
+        <div className="min-h-screen bg-gray-50 dark:bg-zinc-950 py-10 px-4">
+            <div className="max-w-4xl mx-auto">
+                
+                {/* Main Converter Card */}
+                <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-xl overflow-hidden border border-gray-100 dark:border-zinc-800 mb-8">
+                    <div className="bg-gradient-to-r from-violet-600 to-indigo-600 p-8 text-white">
+                        <div className="flex items-center gap-3 mb-2">
+                            <Hash className="w-8 h-8" />
+                            <h1 className="text-2xl sm:text-3xl font-bold">Number to Words</h1>
+                        </div>
+                        <p className="text-violet-100 text-sm">Convert any numeric value into written text format instantly.</p>
+                    </div>
 
-    if (crore > 0) {
-      word += numberToBanglaWords(crore) + " " + crores + " ";
-    }
-    if (lakh > 0) {
-      word += numberToBanglaWords(lakh) + " " + lakhs + " ";
-    }
-    if (thousand > 0) {
-      word += numberToBanglaWords(thousand) + " " + thousands + " ";
-    }
-    if (hundred > 0) {
-      word += ones[hundred] + " " + hundreds + " ";
-    }
-    if (num > 0) {
-      word += twoDigitWords(num);
-    }
-    return word.trim();
-  }
+                    <div className="p-6 sm:p-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div className="space-y-2">
+                                <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">Enter Number</label>
+                                <div className="relative">
+                                    <input 
+                                        type="number" 
+                                        value={numberInput}
+                                        onChange={(e) => setNumberInput(e.target.value)}
+                                        placeholder="e.g. 1250"
+                                        className="w-full p-4 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-violet-500 transition-all outline-none"
+                                    />
+                                </div>
+                            </div>
 
-  const numberToEnglishWords = (num: number): string => {
-    if (num === 0) return "zero";
+                            <div className="space-y-2">
+                                <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">Select Language</label>
+                                <div className="relative">
+                                    <select 
+                                        value={language}
+                                        onChange={(e) => setLanguage(e.target.value)}
+                                        className="w-full p-4 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-violet-500 transition-all outline-none appearance-none cursor-pointer"
+                                    >
+                                        <option value="bn">Bengali (বাংলা)</option>
+                                        <option value="en">English (ইংরেজি)</option>
+                                    </select>
+                                    <Languages className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                                </div>
+                            </div>
+                        </div>
 
-    const a = [
-      "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
-      "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen",
-      "seventeen", "eighteen", "nineteen"
-    ];
-    const b = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+                        <button 
+                            onClick={handleConvert}
+                            className="w-full py-4 bg-violet-600 hover:bg-violet-700 text-white font-bold rounded-2xl shadow-lg shadow-violet-500/20 transition-all active:scale-95 flex items-center justify-center gap-2 mb-8"
+                        >
+                            Convert Now <ArrowRightLeft className="w-5 h-5" />
+                        </button>
 
-    function inWords(num: number): string {
-      if (num < 20) return a[num];
-      if (num < 100) return b[Math.floor(num / 10)] + (num % 10 ? "-" + a[num % 10] : "");
-      if (num < 1000) return a[Math.floor(num / 100)] + " hundred" + (num % 100 ? " and " + inWords(num % 100) : "");
-      if (num < 1000000) return inWords(Math.floor(num / 1000)) + " thousand" + (num % 1000 ? " " + inWords(num % 1000) : "");
-      if (num < 1000000000) return inWords(Math.floor(num / 1000000)) + " million" + (num % 1000000 ? " " + inWords(num % 1000000) : "");
-      return inWords(Math.floor(num / 1000000000)) + " billion" + (num % 1000000000 ? " " + inWords(num % 1000000000) : "");
-    }
+                        {result && (
+                            <div className="relative group animate-in fade-in zoom-in duration-300">
+                                <div className="p-6 bg-violet-50 dark:bg-violet-900/10 border border-violet-100 dark:border-violet-900/20 rounded-3xl">
+                                    <p className="text-xs font-bold text-violet-600 dark:text-violet-400 uppercase mb-2">Output Text</p>
+                                    <h2 className="text-xl sm:text-2xl font-black text-gray-800 dark:text-zinc-100 leading-relaxed pr-10">
+                                        {result}
+                                    </h2>
+                                    <button 
+                                        onClick={copyToClipboard}
+                                        className="absolute top-6 right-6 p-2 bg-white dark:bg-zinc-800 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-700 hover:text-violet-600 transition-all"
+                                    >
+                                        {copied ? <Check className="w-5 h-5 text-green-500" /> : <Copy className="w-5 h-5" />}
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
 
-    return inWords(num).trim();
-  }
+                {/* Quick Reference Section */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="md:col-span-2 bg-white dark:bg-zinc-900 p-8 rounded-[2rem] border border-gray-100 dark:border-zinc-800">
+                        <h3 className="flex items-center gap-2 font-bold text-gray-800 dark:text-zinc-200 mb-6">
+                            <Sparkles className="w-5 h-5 text-yellow-500" /> Conversion Examples
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                            <div className="p-3 bg-gray-50 dark:bg-zinc-800/50 rounded-xl border border-gray-100 dark:border-zinc-800">
+                                <span className="font-bold text-violet-600">123:</span> এক শত তেইশ
+                            </div>
+                            <div className="p-3 bg-gray-50 dark:bg-zinc-800/50 rounded-xl border border-gray-100 dark:border-zinc-800">
+                                <span className="font-bold text-violet-600">2,500:</span> Two Thousand Five Hundred
+                            </div>
+                            <div className="p-3 bg-gray-50 dark:bg-zinc-800/50 rounded-xl border border-gray-100 dark:border-zinc-800">
+                                <span className="font-bold text-violet-600">100,000:</span> এক লক্ষ
+                            </div>
+                            <div className="p-3 bg-gray-50 dark:bg-zinc-800/50 rounded-xl border border-gray-100 dark:border-zinc-800">
+                                <span className="font-bold text-violet-600">5M:</span> Fifty Lakh / 50,00,000
+                            </div>
+                        </div>
+                    </div>
 
-  const convertNumber = () => {
-    if (numberInput.trim() === "") {
-      setResult("অনুগ্রহ করে একটি সংখ্যা দিন।");
-      return;
-    }
+                    <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2rem] border border-gray-100 dark:border-zinc-800">
+                        <h3 className="flex items-center gap-2 font-bold text-gray-800 dark:text-zinc-200 mb-4">
+                            <Info className="w-5 h-5 text-blue-500" /> Why use this?
+                        </h3>
+                        <p className="text-sm text-gray-500 dark:text-zinc-500 leading-relaxed">
+                            Perfect for bank checks, official invoices, and academic documents where writing numbers in words is mandatory to prevent errors.
+                        </p>
+                    </div>
+                </div>
 
-    const num = parseInt(numberInput);
-    if (isNaN(num) || num < 0) {
-      setResult("সঠিক এবং ধনাত্মক সংখ্যা দিন।");
-      return;
-    }
-
-    if (language === "bn") {
-      const banglaWords = numberToBanglaWords(num);
-      setResult(banglaWords);
-    } else {
-      const englishWords = numberToEnglishWords(num);
-      setResult(englishWords.charAt(0).toUpperCase() + englishWords.slice(1));
-    }
-  };
-
-  return (
-    <div className="file-section">
-      <div className="file-container">
-        <div className="file-header">
-          <div className="file-title">
-            <h2>🔢 সংখ্যা থেকে লেখা উদাহরণ</h2>
-            <div className="title-underline"></div>
-          </div>
-          <div className="file-content-text">
-            <p>১২৩ → "এক শত তেইশ" / "One Hundred Twenty Three"</p>
-            <p>২,৫০০ → "দুই হাজার পাঁচশত" / "Two Thousand Five Hundred"</p>
-            <p>১,০০,০০০ → "এক লক্ষ" / "One Lakh"</p>
-            <p>৫,০০০,০০০ → "পঞ্চাশ লক্ষ" / "Five Million"</p>
-            <p>১২.৭৫ → "বারো দশমিক সাত পাঁচ" / "Twelve Point Seven Five"</p>
-            <p>৳২,৫০০.৫০ → "দুই হাজার পাঁচশত টাকা পঞ্চাশ পয়সা"</p>
-            <p>$১০০.২৫ → "একশত ডলার পঁচিশ সেন্ট"</p>
-          </div>
+            </div>
         </div>
-
-        <div className="nword-container">
-          <h3 style={{ textAlign: 'center' }}>সংখ্যা থেকে লেখা উদাহরণ</h3>
-
-          <label htmlFor="numberInput">সংখ্যা দিন:</label>
-          <input type="number" id="numberInput" placeholder="যেমন: 1200" min="0" value={numberInput} onChange={(e) => setNumberInput(e.target.value)} />
-
-          <label htmlFor="languageSelect">ভাষা নির্বাচন করুন:</label>
-          <select id="languageSelect" value={language} onChange={(e) => setLanguage(e.target.value)}>
-            <option value="bn">বাংলা</option>
-            <option value="en">English</option>
-          </select>
-
-          <button onClick={convertNumber}>রূপান্তর করুন</button>
-
-          <div className="result" id="resultBox">{result}</div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default NumberToWordPage;
+    );
+}

@@ -1,129 +1,159 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { StickyNote, Plus, Trash2, Eraser, Clock, Search, BookOpen } from 'lucide-react';
 
-const DeleteIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-    </svg>
-);
+interface Note {
+    id: number;
+    content: string;
+    date: string;
+}
 
 export default function NotepadPage() {
-    const [notes, setNotes] = useState<string[]>([]);
+    const [notes, setNotes] = useState<Note[]>([]);
     const [noteInput, setNoteInput] = useState('');
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        try {
-            const savedNotes = localStorage.getItem('notesArray');
-            if (savedNotes) {
+        setMounted(true);
+        const savedNotes = localStorage.getItem('notesArray');
+        if (savedNotes) {
+            try {
                 setNotes(JSON.parse(savedNotes));
+            } catch (e) {
+                console.error("Failed to load notes");
             }
-        } catch (error) {
-            console.error("Failed to parse notes from localStorage", error);
-            setNotes([]);
         }
     }, []);
 
     useEffect(() => {
-        // Avoid writing the initial empty array to localStorage
-        if (notes.length > 0) {
+        if (mounted && notes.length > 0) {
             localStorage.setItem('notesArray', JSON.stringify(notes));
+        } else if (mounted && notes.length === 0) {
+            localStorage.removeItem('notesArray');
         }
-    }, [notes]);
+    }, [notes, mounted]);
 
     const saveNote = () => {
         const trimmedNote = noteInput.trim();
-        if (!trimmedNote) {
-            alert('Please write a note before saving.');
-            return;
-        }
-        const updatedNotes = [...notes, trimmedNote];
-        setNotes(updatedNotes);
+        if (!trimmedNote) return;
+
+        const newNote: Note = {
+            id: Date.now(),
+            content: trimmedNote,
+            date: new Date().toLocaleString('en-US', { 
+                month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' 
+            })
+        };
+
+        setNotes([newNote, ...notes]);
         setNoteInput('');
     };
 
-    const clearInput = () => {
-        if (noteInput && confirm('Are you sure you want to clear the current note?')) {
-            setNoteInput('');
-        }
+    const deleteNote = (id: number) => {
+        setNotes(notes.filter(note => note.id !== id));
     };
 
-    const deleteNote = (indexToDelete: number) => {
-        if (confirm('Are you sure you want to delete this note?')) {
-            const updatedNotes = notes.filter((_, index) => index !== indexToDelete);
-            setNotes(updatedNotes);
-            // If this was the last note, clear localStorage
-            if (updatedNotes.length === 0) {
-                localStorage.removeItem('notesArray');
-            }
-        }
+    const clearInput = () => {
+        if (noteInput) setNoteInput('');
     };
+
+    if (!mounted) return null;
 
     return (
-        <main className="p-4 sm:p-6 md:p-8">
-            <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-                <div className="mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">📝 Quick Note Taker</h2>
-                    <div className="w-24 h-1 bg-blue-500 mt-2"></div>
-                </div>
-
-                <div className="text-gray-700 dark:text-gray-300 space-y-2 mb-8">
-                    <p>• Instantly create and list your notes.</p>
-                    <p>• Create checklists and track your work progress.</p>
-                    <p>• Mark and organize important items.</p>
-                    <p>• Save notes in different categories.</p>
-                    <p>• Easily edit, update, and delete.</p>
-                </div>
-
-                <div className="max-w-2xl mx-auto">
-                    <h3 className="text-xl font-semibold mb-4 text-left text-gray-800 dark:text-gray-200">Create a New Note</h3>
-                    <textarea 
-                        id="noteArea"
-                        value={noteInput}
-                        onChange={(e) => setNoteInput(e.target.value)}
-                        placeholder="Write your note here..."
-                        className="w-full h-40 p-4 font-mono text-base bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 resize-y"
-                    />
-                    <div className="mt-4 flex justify-end gap-4">
-                        <button 
-                            onClick={clearInput}
-                            className="py-2 px-5 font-semibold text-white bg-red-500 hover:bg-red-600 rounded-lg shadow-md transition-colors disabled:opacity-50"
-                            disabled={!noteInput}
-                        >
-                            Clear Input
-                        </button>
-                        <button 
-                            onClick={saveNote}
-                            className="py-2 px-5 font-semibold text-white bg-blue-500 hover:bg-blue-600 rounded-lg shadow-md transition-colors disabled:opacity-50"
-                             disabled={!noteInput.trim()}
-                        >
-                           Save Note
-                        </button>
+        <div className="min-h-screen bg-gray-50 dark:bg-zinc-950 py-10 px-4">
+            <div className="max-w-5xl mx-auto">
+                
+                {/* Header Section */}
+                <div className="bg-white dark:bg-zinc-900 rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-zinc-800 mb-8">
+                    <div className="bg-gradient-to-r from-emerald-500 to-teal-600 p-6 sm:p-8 text-white">
+                        <div className="flex items-center gap-3">
+                            <StickyNote className="w-8 h-8" />
+                            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight">Quick Notes</h1>
+                        </div>
+                        <p className="text-emerald-100 text-sm mt-1">Capture your thoughts instantly. Saved locally in your browser.</p>
                     </div>
 
-                    <div className="mt-8 border-t border-gray-200 dark:border-gray-700 pt-6">
-                        <h3 className="text-xl font-semibold mb-4 text-left text-gray-800 dark:text-gray-200">Saved Notes</h3>
-                        <div className="space-y-4 max-h-96 overflow-y-auto pr-2">
-                            {notes.length > 0 ? (
-                                notes.map((note, index) => (
-                                    <div key={index} className="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow relative text-left">
-                                        <p className="whitespace-pre-wrap font-mono text-gray-800 dark:text-gray-200">{note}</p>
-                                        <button 
-                                            onClick={() => deleteNote(index)}
-                                            className="absolute top-2 right-2 p-1.5 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
-                                            aria-label="Delete note"
-                                        >
-                                           <DeleteIcon />
-                                        </button>
-                                    </div>
-                                ))
-                            ) : (
-                                <p className="text-center text-gray-500 dark:text-gray-400">No saved notes found.</p>
-                            )}
+                    <div className="p-6">
+                        <div className="relative group">
+                            <textarea 
+                                value={noteInput}
+                                onChange={(e) => setNoteInput(e.target.value)}
+                                placeholder="Type your thoughts here..."
+                                className="w-full h-44 p-5 text-lg bg-gray-50 dark:bg-zinc-800 border-2 border-transparent focus:border-emerald-500/30 rounded-2xl text-gray-800 dark:text-zinc-200 focus:ring-4 focus:ring-emerald-500/5 transition-all outline-none resize-none"
+                            />
+                            <div className="absolute bottom-4 right-4 flex gap-2">
+                                <button 
+                                    onClick={clearInput}
+                                    disabled={!noteInput}
+                                    className="p-3 bg-white dark:bg-zinc-700 text-gray-400 hover:text-red-500 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-600 transition-all active:scale-95 disabled:opacity-0"
+                                >
+                                    <Eraser className="w-5 h-5" />
+                                </button>
+                                <button 
+                                    onClick={saveNote}
+                                    disabled={!noteInput.trim()}
+                                    className="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-bold rounded-xl shadow-lg shadow-emerald-500/20 transition-all active:scale-95 disabled:opacity-50 flex items-center gap-2"
+                                >
+                                    <Plus className="w-5 h-5" /> Save Note
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Notes Display Section */}
+                <div className="mb-6 flex items-center justify-between px-2">
+                    <h2 className="text-sm font-black uppercase tracking-widest text-gray-400 dark:text-zinc-600 flex items-center gap-2">
+                        <BookOpen className="w-4 h-4" /> Your Collection ({notes.length})
+                    </h2>
+                </div>
+
+                {notes.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {notes.map((note) => (
+                            <div 
+                                key={note.id} 
+                                className="group bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-gray-100 dark:border-zinc-800 shadow-sm hover:shadow-xl hover:shadow-emerald-500/5 transition-all relative overflow-hidden flex flex-col min-h-[180px]"
+                            >
+                                <div className="absolute top-0 left-0 w-1 h-full bg-emerald-500 opacity-0 group-hover:opacity-100 transition-all" />
+                                
+                                <p className="text-gray-700 dark:text-zinc-300 whitespace-pre-wrap leading-relaxed flex-grow font-medium">
+                                    {note.content}
+                                </p>
+
+                                <div className="mt-4 pt-4 border-t border-gray-50 dark:border-zinc-800 flex justify-between items-center">
+                                    <span className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400 dark:text-zinc-500 uppercase">
+                                        <Clock className="w-3 h-3" /> {note.date}
+                                    </span>
+                                    <button 
+                                        onClick={() => deleteNote(note.id)}
+                                        className="p-2 text-gray-300 hover:text-red-500 dark:text-zinc-700 dark:hover:text-red-400 transition-colors"
+                                    >
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-center py-24 bg-white dark:bg-zinc-900 rounded-[2rem] border-2 border-dashed border-gray-100 dark:border-zinc-800">
+                        <div className="bg-gray-50 dark:bg-zinc-800/50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <Search className="w-8 h-8 text-gray-300 dark:text-zinc-700" />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-800 dark:text-zinc-200">No notes found</h3>
+                        <p className="text-gray-400 dark:text-zinc-500 mt-2">Your saved notes will appear here.</p>
+                    </div>
+                )}
+
+                {/* Footer Info */}
+                <div className="mt-12 text-center">
+                    <p className="text-xs text-gray-400 dark:text-zinc-600 max-w-md mx-auto leading-relaxed">
+                        Tip: Notes are stored in your device's LocalStorage. Clearing your browser cache or switching devices will reset your notes.
+                    </p>
+                </div>
+
             </div>
-        </main>
+        </div>
     );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
+import { Plus, Trash2, CheckCircle2, Circle, TrendingUp, Target, Award, ListTodo } from 'lucide-react';
 
 interface Habit {
     id: number;
@@ -8,18 +9,13 @@ interface Habit {
     done: boolean;
 }
 
-// Trash Icon Component for the delete button
-const TrashIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-    </svg>
-);
-
 export default function HabitTrackerPage() {
     const [habits, setHabits] = useState<Habit[]>([]);
     const [habitInput, setHabitInput] = useState('');
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
+        setMounted(true);
         const storedHabits = localStorage.getItem('habits');
         if (storedHabits) {
             setHabits(JSON.parse(storedHabits));
@@ -27,20 +23,18 @@ export default function HabitTrackerPage() {
     }, []);
 
     useEffect(() => {
-        if (habits.length > 0) { 
+        if (mounted) {
             localStorage.setItem('habits', JSON.stringify(habits));
         }
-    }, [habits]);
+    }, [habits, mounted]);
 
     const addHabit = (e: FormEvent) => {
         e.preventDefault();
         const text = habitInput.trim();
-        if (!text) {
-            alert("Habit cannot be empty.");
-            return;
-        }
+        if (!text) return;
+        
         const newHabit: Habit = { id: Date.now(), text, done: false };
-        setHabits([...habits, newHabit]);
+        setHabits([newHabit, ...habits]);
         setHabitInput('');
     };
 
@@ -51,78 +45,119 @@ export default function HabitTrackerPage() {
     };
 
     const deleteHabit = (id: number) => {
-        if (confirm("Are you sure you want to delete this habit?")) {
-            const updatedHabits = habits.filter(habit => habit.id !== id);
-            setHabits(updatedHabits);
-            // If this was the last habit, clear localStorage
-            if (updatedHabits.length === 0) {
-                localStorage.removeItem('habits');
-            }
-        }
+        const updatedHabits = habits.filter(habit => habit.id !== id);
+        setHabits(updatedHabits);
+        if (updatedHabits.length === 0) localStorage.removeItem('habits');
     };
 
     const completedCount = habits.filter(h => h.done).length;
+    const progressPercentage = habits.length > 0 ? Math.round((completedCount / habits.length) * 100) : 0;
+
+    if (!mounted) return null;
 
     return (
-        <main className="p-4 sm:p-6 md:p-8">
-            <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6">
-                <div className="mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">📈 Daily Habit Tracker</h2>
-                    <div className="w-24 h-1 bg-blue-500 mt-2"></div>
+        <div className="min-h-screen bg-gray-50 dark:bg-zinc-950 py-10 px-4">
+            <div className="max-w-2xl mx-auto">
+                
+                {/* Header & Stats Card */}
+                <div className="bg-white dark:bg-zinc-900 rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-zinc-800 mb-6">
+                    <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 sm:p-8 text-white">
+                        <div className="flex justify-between items-center">
+                            <div>
+                                <h1 className="text-2xl sm:text-3xl font-bold flex items-center gap-2">
+                                    <Target className="w-8 h-8" /> Habit Tracker
+                                </h1>
+                                <p className="text-indigo-100 text-sm mt-1">Build better routines, one day at a time.</p>
+                            </div>
+                            <div className="hidden sm:flex items-center justify-center w-16 h-16 rounded-full border-4 border-white/20 relative">
+                                <span className="text-sm font-bold">{progressPercentage}%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="p-6 bg-indigo-50/50 dark:bg-zinc-800/50 border-b border-gray-100 dark:border-zinc-800">
+                        <div className="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <p className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Total</p>
+                                <p className="text-xl font-black text-gray-800 dark:text-white">{habits.length}</p>
+                            </div>
+                            <div className="border-x border-gray-200 dark:border-zinc-700">
+                                <p className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Done</p>
+                                <p className="text-xl font-black text-green-500">{completedCount}</p>
+                            </div>
+                            <div>
+                                <p className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Goal</p>
+                                <p className="text-xl font-black text-indigo-500">{progressPercentage}%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="p-6">
+                        <form onSubmit={addHabit} className="flex gap-2">
+                            <input 
+                                type="text" 
+                                value={habitInput}
+                                onChange={(e) => setHabitInput(e.target.value)}
+                                placeholder="Write a new habit..."
+                                className="flex-grow p-4 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 transition-all outline-none"
+                            />
+                            <button type="submit" className="p-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg shadow-indigo-500/20 transition-all active:scale-95">
+                                <Plus className="w-6 h-6" />
+                            </button>
+                        </form>
+                    </div>
                 </div>
 
-                <div className="text-gray-700 dark:text-gray-300 space-y-2 mb-6">
-                    <p>• Track your daily habits and build routines effectively</p>
-                    <p>• Monitor progress with visual charts and statistics</p>
-                    <p>• Set reminders for important habits and activities</p>
-                    <p>• Analyze your consistency with streak counters</p>
-                    <p>• Export data for personal review and analysis</p>
-                    <p>• Set goals and track achievement percentages</p>
-                </div>
-
-                <div className="max-w-2xl mx-auto">
-                    <h3 className="text-xl font-semibold mb-4 text-center text-gray-800 dark:text-gray-200">Add a New Habit</h3>
-                    <form onSubmit={addHabit} className="flex flex-col sm:flex-row gap-3 mb-6">
-                        <input 
-                            type="text" 
-                            value={habitInput}
-                            onChange={(e) => setHabitInput(e.target.value)}
-                            placeholder="e.g., Read a book for 15 minutes"
-                            className="flex-grow p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
-                        />
-                        <button type="submit" className="py-3 px-6 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            Add Habit
-                        </button>
-                    </form>
-
-                    <div className="space-y-3">
-                        {habits.map(habit => (
-                            <div key={habit.id} className="flex items-center justify-between bg-gray-100 dark:bg-gray-700 p-4 rounded-lg shadow">
-                                <div className="flex items-center">
-                                    <input 
-                                        type="checkbox" 
-                                        checked={habit.done}
-                                        onChange={() => toggleHabit(habit.id)}
-                                        className="h-5 w-5 rounded text-blue-500 focus:ring-blue-500 border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:checked:bg-blue-500"
-                                    />
-                                    <span className={`ml-4 text-lg ${habit.done ? 'line-through text-gray-500 dark:text-gray-400' : 'text-gray-800 dark:text-gray-200'}`}>
+                {/* Habit List */}
+                <div className="space-y-3">
+                    {habits.length > 0 ? (
+                        habits.map(habit => (
+                            <div key={habit.id} className={`group flex items-center justify-between p-4 bg-white dark:bg-zinc-900 rounded-2xl border transition-all ${habit.done ? 'border-transparent opacity-60' : 'border-gray-100 dark:border-zinc-800 shadow-sm'}`}>
+                                <div className="flex items-center gap-4 flex-grow cursor-pointer" onClick={() => toggleHabit(habit.id)}>
+                                    {habit.done ? (
+                                        <CheckCircle2 className="w-6 h-6 text-green-500" />
+                                    ) : (
+                                        <Circle className="w-6 h-6 text-gray-300 dark:text-zinc-600 group-hover:text-indigo-400" />
+                                    )}
+                                    <span className={`text-base font-medium transition-all ${habit.done ? 'line-through text-gray-400' : 'text-gray-700 dark:text-zinc-200'}`}>
                                         {habit.text}
                                     </span>
                                 </div>
-                                <button onClick={() => deleteHabit(habit.id)} className="text-gray-400 hover:text-red-500 dark:text-gray-500 dark:hover:text-red-400 transition-colors">
-                                    <TrashIcon />
+                                <button 
+                                    onClick={() => deleteHabit(habit.id)}
+                                    className="p-2 text-gray-300 hover:text-red-500 dark:text-zinc-600 dark:hover:text-red-400 transition-colors"
+                                >
+                                    <Trash2 className="w-5 h-5" />
                                 </button>
                             </div>
-                        ))}
-                    </div>
-                    
-                    {habits.length > 0 && (
-                        <div className="mt-6 text-center text-lg font-semibold text-gray-700 dark:text-gray-300">
-                            Total Habits: {habits.length}, Completed: {completedCount}
+                        ))
+                    ) : (
+                        <div className="text-center py-20 bg-white dark:bg-zinc-900 rounded-3xl border border-dashed border-gray-200 dark:border-zinc-800">
+                            <ListTodo className="w-16 h-16 mx-auto mb-4 text-gray-200 dark:text-zinc-800" />
+                            <p className="text-gray-400 dark:text-zinc-500 font-medium">No habits added yet.<br/>Start by adding one above!</p>
                         </div>
                     )}
                 </div>
+
+                {/* English Info Section */}
+                <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="flex items-start gap-3 p-4 bg-white dark:bg-zinc-900 rounded-2xl border border-gray-100 dark:border-zinc-800">
+                        <TrendingUp className="w-5 h-5 text-indigo-500 mt-1" />
+                        <div>
+                            <h4 className="font-bold text-sm dark:text-zinc-200">Track Consistency</h4>
+                            <p className="text-xs text-gray-500 dark:text-zinc-500">Regular tracking helps you stay committed to your long-term goals.</p>
+                        </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 bg-white dark:bg-zinc-900 rounded-2xl border border-gray-100 dark:border-zinc-800">
+                        <Award className="w-5 h-5 text-yellow-500 mt-1" />
+                        <div>
+                            <h4 className="font-bold text-sm dark:text-zinc-200">Daily Rewards</h4>
+                            <p className="text-xs text-gray-500 dark:text-zinc-500">Checking off a task releases dopamine, boosting your mood.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </main>
+        </div>
     );
 }

@@ -1,78 +1,130 @@
-
-"use client";
+'use client';
 
 import { useState, useEffect } from 'react';
+import { Copy, Check, MousePointer2, Settings2, Sparkles, RefreshCcw } from 'lucide-react';
 
-const GradientGeneratorPage = () => {
-  const [color1, setColor1] = useState('#1C24D0');
-  const [color2, setColor2] = useState('#B82230');
-  const [direction, setDirection] = useState('to right');
-  const [cssCode, setCssCode] = useState('');
+export default function GradientGeneratorPage() {
+    const [color1, setColor1] = useState('#8B5CF6'); // Purple
+    const [color2, setColor2] = useState('#4F46E5'); // Indigo
+    const [direction, setDirection] = useState('to right');
+    const [copied, setCopied] = useState(false);
 
-  const directions = [
-    { label: '↖', value: '-135deg', title: 'Top Left' },
-    { label: '→', value: 'to right', title: 'Right' },
-    { label: '←', value: 'to left', title: 'Left' },
-    { label: '↓', value: 'to bottom', title: 'Bottom' },
-    { label: '↑', value: 'to top', title: 'Top' },
-    { label: '↗', value: '135deg', title: 'Top Right' },
-  ];
+    const directions = [
+        { label: '↖', value: 'to top left' },
+        { label: '↑', value: 'to top' },
+        { label: '↗', value: 'to top right' },
+        { label: '←', value: 'to left' },
+        { label: '→', value: 'to right' },
+        { label: '↙', value: 'to bottom left' },
+        { label: '↓', value: 'to bottom' },
+        { label: '↘', value: 'to bottom right' },
+    ];
 
-  useEffect(() => {
-    const grad = `linear-gradient(${direction}, ${color1}, ${color2})`;
-    setCssCode(`background: ${grad};`);
-  }, [color1, color2, direction]);
+    const cssCode = `background: linear-gradient(${direction}, ${color1}, ${color2});`;
 
-  const copyCode = () => {
-    navigator.clipboard.writeText(cssCode);
-    alert("CSS code copied!");
-  };
+    const copyCode = () => {
+        navigator.clipboard.writeText(cssCode);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
 
-  return (
-    <div className="flex justify-center items-start pt-10">
-      <div className="w-full max-w-md p-8 rounded-2xl bg-white/30 dark:bg-gray-800/30 shadow-lg backdrop-blur-md text-center">
-        <h2 className="text-2xl font-bold text-gray-800 dark:text-white">CSS Gradient Generator</h2>
-        <div className="w-20 h-1 bg-indigo-500 mx-auto mt-2 mb-6 rounded"></div>
+    return (
+        <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 py-12 px-4 flex items-center justify-center">
+            <div className="w-full max-w-md bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-2xl border border-purple-100 dark:border-zinc-800 overflow-hidden">
+                
+                {/* Visual Header */}
+                <div 
+                    className="h-32 w-full transition-all duration-700 relative flex items-center justify-center"
+                    style={{ background: `linear-gradient(${direction}, ${color1}, ${color2})` }}
+                >
+                    <div className="bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/30">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-white drop-shadow-sm">Live Preview</span>
+                    </div>
+                </div>
 
-        <div className="flex gap-5 justify-center flex-wrap my-5">
-          <div className="bg-white/50 dark:bg-gray-700/50 p-4 rounded-xl text-center shadow-md">
-            <label className="text-sm font-semibold text-gray-600 dark:text-gray-300 block mb-2">Color 1</label>
-            <input type="color" value={color1} onChange={(e) => setColor1(e.target.value)} className="w-16 h-10 border-none rounded-lg cursor-pointer bg-transparent" />
-          </div>
-          <div className="bg-white/50 dark:bg-gray-700/50 p-4 rounded-xl text-center shadow-md">
-            <label className="text-sm font-semibold text-gray-600 dark:text-gray-300 block mb-2">Color 2</label>
-            <input type="color" value={color2} onChange={(e) => setColor2(e.target.value)} className="w-16 h-10 border-none rounded-lg cursor-pointer bg-transparent" />
-          </div>
+                <div className="p-8">
+                    <div className="flex items-center gap-2 mb-6">
+                        <Settings2 className="w-4 h-4 text-indigo-500" />
+                        <h2 className="text-sm font-black uppercase tracking-widest text-gray-800 dark:text-zinc-200">Gradient Studio</h2>
+                    </div>
+
+                    {/* Color Pickers */}
+                    <div className="grid grid-cols-2 gap-4 mb-8">
+                        <div className="bg-zinc-50 dark:bg-zinc-800/50 p-3 rounded-2xl border border-gray-100 dark:border-zinc-800">
+                            <label className="text-[9px] font-black uppercase tracking-tighter text-gray-400 block mb-2">Start Color</label>
+                            <div className="flex items-center gap-3">
+                                <input 
+                                    type="color" 
+                                    value={color1} 
+                                    onChange={(e) => setColor1(e.target.value)} 
+                                    className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" 
+                                />
+                                <span className="text-xs font-mono font-bold text-gray-600 dark:text-zinc-400 uppercase">{color1}</span>
+                            </div>
+                        </div>
+                        <div className="bg-zinc-50 dark:bg-zinc-800/50 p-3 rounded-2xl border border-gray-100 dark:border-zinc-800">
+                            <label className="text-[9px] font-black uppercase tracking-tighter text-gray-400 block mb-2">End Color</label>
+                            <div className="flex items-center gap-3">
+                                <input 
+                                    type="color" 
+                                    value={color2} 
+                                    onChange={(e) => setColor2(e.target.value)} 
+                                    className="w-8 h-8 rounded-lg cursor-pointer border-none bg-transparent" 
+                                />
+                                <span className="text-xs font-mono font-bold text-gray-600 dark:text-zinc-400 uppercase">{color2}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Directions Grid */}
+                    <div className="mb-8">
+                        <label className="text-[9px] font-black uppercase tracking-tighter text-gray-400 block mb-3 text-center">Set Flow Direction</label>
+                        <div className="grid grid-cols-4 gap-2">
+                            {directions.map(d => (
+                                <button 
+                                    key={d.value}
+                                    onClick={() => setDirection(d.value)}
+                                    className={`h-10 flex items-center justify-center rounded-xl transition-all border ${
+                                        direction === d.value 
+                                        ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg shadow-indigo-500/20' 
+                                        : 'bg-white dark:bg-zinc-800 border-gray-100 dark:border-zinc-700 text-gray-400 hover:border-purple-300'
+                                    }`}
+                                >
+                                    <span className="text-lg">{d.label}</span>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Code Section */}
+                    <div className="relative group mb-6">
+                        <div className="bg-zinc-900 dark:bg-black p-4 rounded-2xl font-mono text-[10px] text-indigo-300 break-all leading-relaxed border border-zinc-800 group-hover:border-indigo-500/50 transition-colors">
+                            {cssCode}
+                        </div>
+                        <button 
+                            onClick={copyCode}
+                            className="absolute right-2 top-2 p-2 bg-zinc-800 hover:bg-zinc-700 rounded-lg text-zinc-400 transition-colors"
+                        >
+                            {copied ? <Check className="w-3 h-3 text-green-400" /> : <Copy className="w-3 h-3" />}
+                        </button>
+                    </div>
+
+                    <button 
+                        onClick={copyCode}
+                        className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-black uppercase tracking-widest text-[11px] rounded-2xl shadow-xl shadow-indigo-500/20 active:scale-95 transition-all flex items-center justify-center gap-2"
+                    >
+                        {copied ? <Check className="w-4 h-4" /> : <Sparkles className="w-4 h-4" />}
+                        {copied ? 'Copied Successfully' : 'Generate CSS Code'}
+                    </button>
+                </div>
+
+                {/* Footer Micro-tip */}
+                <div className="p-4 bg-zinc-50 dark:bg-zinc-800/50 border-t border-gray-100 dark:border-zinc-800 text-center">
+                    <p className="text-[9px] font-bold text-gray-400 uppercase tracking-widest flex items-center justify-center gap-1">
+                        <MousePointer2 className="w-3 h-3" /> Tip: Use high contrast for vibrant UI
+                    </p>
+                </div>
+            </div>
         </div>
-
-        <div className="my-5">
-          <label className="text-base font-semibold text-gray-700 dark:text-gray-200 mb-3 block text-center">Direction</label>
-          <div className="flex justify-center items-center gap-3 flex-wrap">
-            {directions.map(d => (
-              <button 
-                key={d.value} 
-                title={d.title}
-                className={`w-11 h-11 flex items-center justify-center text-xl rounded-lg border transition-all ${direction === d.value ? 'bg-indigo-500 text-white border-indigo-600' : 'bg-white/40 dark:bg-gray-600/40 border-gray-300 dark:border-gray-500 hover:bg-indigo-100 dark:hover:bg-gray-600'}`}
-                onClick={() => setDirection(d.value)}
-              >
-                {d.label}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div id="preview" style={{ background: `linear-gradient(${direction}, ${color1}, ${color2})` }} className="h-48 rounded-2xl my-6 border border-black/10 dark:border-white/10"></div>
-        
-        <div className="p-4 rounded-lg font-mono text-sm break-all bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
-          {cssCode}
-        </div>
-
-        <button onClick={copyCode} className="w-full p-3 bg-indigo-600 text-white rounded-lg mt-4 text-base font-bold transition hover:bg-indigo-700">
-          Copy Code
-        </button>
-      </div>
-    </div>
-  );
+    );
 }
-
-export default GradientGeneratorPage;

@@ -11,7 +11,6 @@ const LeftPanel = () => {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return null;
 
   // বর্তমান একটিভ থিম ডার্ক কি না তা নিশ্চিত হওয়া
   const isDark = resolvedTheme === "dark";

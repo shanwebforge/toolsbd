@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Palette, Copy, Check, Pipette, RefreshCw, Layers } from 'lucide-react';
+import { Palette, Copy, Check, Pipette, RefreshCw, Layers, Sparkles, Code } from 'lucide-react';
 
 export default function ColorPickerPage() {
-    const [color, setColor] = useState('#6366f1');
+    const [color, setColor] = useState('#7c3aed');
     const [palette, setPalette] = useState<string[]>([]);
     const [copiedColor, setCopiedColor] = useState<string | null>(null);
 
@@ -17,14 +17,12 @@ export default function ColorPickerPage() {
         if (!baseRGB) return;
 
         const newPalette: string[] = [];
-        // Generating a mix of tints and shades
         for (let i = 1; i <= 5; i++) {
             const factor = i * 0.15;
-            newPalette.push(rgbToHex(adjustBrightness(baseRGB, factor))); // Tint
-            newPalette.push(rgbToHex(adjustBrightness(baseRGB, -factor))); // Shade
+            newPalette.push(rgbToHex(adjustBrightness(baseRGB, factor))); 
+            newPalette.push(rgbToHex(adjustBrightness(baseRGB, -factor))); 
         }
-        // Unique and sorted palette
-        setPalette(Array.from(new Set(newPalette)));
+        setPalette(Array.from(new Set(newPalette)).sort());
     };
 
     const handleCopy = (hex: string) => {
@@ -33,7 +31,6 @@ export default function ColorPickerPage() {
         setTimeout(() => setCopiedColor(null), 1500);
     };
 
-    // Helpers
     const hexToRgb = (hex: string) => {
         const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         return result ? {
@@ -54,86 +51,72 @@ export default function ColorPickerPage() {
     };
 
     return (
-        <div className="min-h-screen bg-indigo-50 dark:bg-zinc-950 py-12 px-4">
-            <div className="max-w-5xl mx-auto">
+        <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 py-10 px-4 font-sans">
+            <div className="max-w-4xl mx-auto">
                 
-                {/* Header Section */}
-                <div className="bg-white dark:bg-zinc-900 rounded-[3rem] shadow-2xl shadow-indigo-500/5 overflow-hidden border border-purple-100 dark:border-zinc-800 mb-8">
-                    <div className="bg-gradient-to-br from-purple-600 to-indigo-700 p-10 text-white relative">
-                        <div className="relative z-10">
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="p-3 bg-white/20 rounded-2xl backdrop-blur-md">
-                                    <Palette className="w-8 h-8" />
-                                </div>
-                                <h1 className="text-3xl font-black tracking-tighter uppercase">Color Studio</h1>
-                            </div>
-                            <p className="text-purple-100 text-sm max-w-md font-medium">
-                                Create stunning color schemes for your frontend projects instantly. Pick a base and we'll handle the rest.
-                            </p>
-                        </div>
-                        <Pipette className="absolute top-6 right-8 w-32 h-32 text-white/10 rotate-12" />
+                {/* Header Section - Primary Purple */}
+                <div className="text-center mb-8">
+                    <div className="inline-flex items-center justify-center p-3 bg-purple-600 rounded-lg shadow-lg shadow-purple-500/20 mb-4">
+                        <Palette className="w-6 h-6 text-white" />
                     </div>
+                    <h1 className="text-2xl font-bold text-slate-800 dark:text-white tracking-tight uppercase">Color Studio</h1>
+                    <p className="text-slate-400 text-xs font-medium mt-1">Generate professional UI color palettes instantly.</p>
+                </div>
 
-                    <div className="p-8 sm:p-12">
-                        <div className="flex flex-col md:flex-row items-center gap-12 mb-12">
-                            {/* Main Picker */}
+                {/* Main Picker Card - Border Radius LG */}
+                <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-md border border-slate-200 dark:border-zinc-800 overflow-hidden mb-6">
+                    <div className="p-6 sm:p-10">
+                        <div className="flex flex-col md:flex-row items-center gap-10">
+                            
+                            {/* Visual Picker */}
                             <div className="relative group">
-                                <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                <div className="relative flex flex-col items-center">
-                                    <input 
-                                        type="color" 
-                                        value={color}
-                                        onChange={(e) => setColor(e.target.value)} 
-                                        className="w-48 h-48 border-8 border-white dark:border-zinc-800 cursor-pointer rounded-full shadow-2xl transition-transform hover:scale-105 appearance-none bg-transparent"
-                                        style={{ accentColor: color }}
-                                    />
-                                    <div className="mt-6 px-6 py-2 bg-gray-100 dark:bg-zinc-800 rounded-full font-mono font-bold text-gray-600 dark:text-zinc-300 border border-gray-200 dark:border-zinc-700">
+                                <input 
+                                    type="color" 
+                                    value={color}
+                                    onChange={(e) => setColor(e.target.value)} 
+                                    className="w-40 h-40 cursor-pointer rounded-lg border-4 border-slate-100 dark:border-zinc-800 shadow-xl appearance-none bg-transparent"
+                                />
+                                <div className="mt-4 text-center">
+                                    <span className="px-4 py-2 bg-slate-100 dark:bg-zinc-800 rounded-lg font-mono font-bold text-sm text-slate-600 dark:text-zinc-300 border border-slate-200 dark:border-zinc-700">
                                         {color.toUpperCase()}
-                                    </div>
+                                    </span>
                                 </div>
                             </div>
 
-                            {/* Info */}
-                            <div className="flex-grow space-y-6">
-                                <div className="space-y-2">
-                                    <h3 className="text-xl font-black text-gray-800 dark:text-zinc-100 flex items-center gap-2">
-                                        <RefreshCw className="w-5 h-5 text-indigo-500" /> Dynamic Palette
-                                    </h3>
-                                    <p className="text-sm text-gray-500 dark:text-zinc-500 leading-relaxed">
-                                        We automatically generate 10 unique variations based on your selection, ranging from deep shades to bright tints. Click any tile to copy the Hex code.
-                                    </p>
+                            {/* Controls - Secondary Indigo */}
+                            <div className="flex-grow space-y-4">
+                                <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400">
+                                    <RefreshCw className="w-5 h-5" />
+                                    <h3 className="font-bold text-lg">Auto-Generation</h3>
                                 </div>
-                                <div className="flex flex-wrap gap-3">
-                                    <span className="px-4 py-2 bg-purple-50 dark:bg-purple-900/10 text-purple-600 dark:text-purple-400 text-xs font-bold rounded-xl border border-purple-100 dark:border-purple-900/20">Frontend Ready</span>
-                                    <span className="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold rounded-xl border border-indigo-100 dark:border-indigo-900/20">Hex Support</span>
-                                </div>
+                                <p className="text-sm text-slate-500 dark:text-zinc-400 leading-relaxed">
+                                    Pick a base color and we'll calculate 10 different shades and tints optimized for modern web interfaces and components.
+                                </p>
+                                <button 
+                                    className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg transition-all active:scale-95 text-xs uppercase tracking-widest flex items-center gap-2"
+                                    onClick={() => generatePalette(color)}
+                                >
+                                    <Pipette className="w-4 h-4" /> Refresh Palette
+                                </button>
                             </div>
                         </div>
 
-                        {/* Palette Grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6">
+                        {/* Palette Grid - Border Radius LG */}
+                        <div className="mt-12 grid grid-cols-2 sm:grid-cols-5 gap-4">
                             {palette.map((hex, index) => (
                                 <div 
                                     key={index}
-                                    className="group relative h-32 rounded-[2rem] cursor-pointer flex items-end justify-center p-4 transition-all hover:-translate-y-2 shadow-lg overflow-hidden"
-                                    style={{ backgroundColor: hex }}
                                     onClick={() => handleCopy(hex)}
+                                    className="group relative h-24 rounded-lg cursor-pointer transition-transform hover:-translate-y-1 shadow-sm flex items-end justify-center p-2 overflow-hidden border border-black/5"
+                                    style={{ backgroundColor: hex }}
                                 >
-                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
-                                    <span className="relative z-10 text-[10px] font-black tracking-widest text-white drop-shadow-md uppercase bg-black/20 px-2 py-1 rounded-lg backdrop-blur-sm">
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors" />
+                                    <span className="relative z-10 text-[9px] font-black text-white bg-black/20 px-2 py-1 rounded backdrop-blur-sm uppercase">
                                         {hex}
                                     </span>
-                                    
-                                    {copiedColor === hex ? (
+                                    {copiedColor === hex && (
                                         <div className="absolute inset-0 flex items-center justify-center bg-white/90 dark:bg-zinc-900/90 animate-in fade-in duration-200">
-                                            <div className="flex flex-col items-center gap-1">
-                                                <Check className="w-6 h-6 text-green-500" />
-                                                <span className="text-[10px] font-black text-gray-800 dark:text-white uppercase">Copied</span>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                                            <Copy className="w-4 h-4 text-white drop-shadow-md" />
+                                            <Check className="w-5 h-5 text-emerald-500" />
                                         </div>
                                     )}
                                 </div>
@@ -142,20 +125,31 @@ export default function ColorPickerPage() {
                     </div>
                 </div>
 
-                {/* Integration Card */}
-                <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] border border-purple-100 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-6">
-                    <div className="flex items-center gap-4">
-                        <div className="p-3 bg-indigo-600 rounded-2xl">
-                            <Layers className="w-6 h-6 text-white" />
+                {/* Details Section - Same Style as NumToWord */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg border border-slate-200 dark:border-zinc-800">
+                        <div className="flex items-center gap-2 mb-3 text-purple-600">
+                            <Sparkles className="w-4 h-4" />
+                            <h3 className="font-bold text-sm uppercase tracking-tight">UI Optimization</h3>
                         </div>
-                        <div>
-                            <h4 className="font-bold text-gray-800 dark:text-zinc-200">Developer Tip</h4>
-                            <p className="text-xs text-gray-500 dark:text-zinc-500">Copy these codes directly into your Tailwind `tailwind.config.js` file.</p>
-                        </div>
+                        <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">
+                            These variations are generated using brightness adjustment algorithms, ensuring you have the perfect contrast for borders, backgrounds, and hover states.
+                        </p>
                     </div>
-                    <button className="px-6 py-3 bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-zinc-300 rounded-2xl font-bold text-sm hover:bg-indigo-600 hover:text-white transition-all">
-                        Export as JSON
-                    </button>
+
+                    <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg border border-slate-200 dark:border-zinc-800">
+                        <div className="flex items-center gap-2 mb-3 text-indigo-600">
+                            <Code className="w-4 h-4" />
+                            <h3 className="font-bold text-sm uppercase tracking-tight">Developer Ready</h3>
+                        </div>
+                        <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">
+                            Instantly copy any Hex code for your CSS or Tailwind config. Use lighter tints for cards and deeper shades for text or prominent buttons.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="mt-10 text-center">
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Design System Engine &copy; 2026</p>
                 </div>
 
             </div>

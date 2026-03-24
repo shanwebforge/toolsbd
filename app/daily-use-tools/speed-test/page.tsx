@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Gauge, ArrowDownCircle, ArrowUpCircle, Globe, Monitor, MapPin, Zap, RefreshCcw, ShieldCheck } from 'lucide-react';
+import { ArrowDownCircle, ArrowUpCircle, Globe, Monitor, MapPin, Zap, ShieldCheck, RefreshCw, Cpu, Database, Battery } from 'lucide-react';
 
 export default function SpeedTestPage() {
     const [mainSpeed, setMainSpeed] = useState('--');
@@ -10,8 +10,15 @@ export default function SpeedTestPage() {
     const [status, setStatus] = useState('Ready to test your connection');
     const [isTesting, setIsTesting] = useState(false);
     const [networkData, setNetworkData] = useState<any>(null);
+    const [deviceInfo, setDeviceInfo] = useState<any>({
+        ram: '--',
+        cores: '--',
+        battery: '--',
+        browser: '--'
+    });
 
     useEffect(() => {
+        // Fetch Network Info
         const fetchNetworkInfo = async () => {
             try {
                 const res = await fetch("https://geolocation-db.com/json/");
@@ -21,174 +28,191 @@ export default function SpeedTestPage() {
                 console.error("Failed to load network info");
             }
         };
+
+        // Fetch Device Hardware Info
+        const getDeviceInfo = async () => {
+            const info: any = {
+                ram: (navigator as any).deviceMemory ? `${(navigator as any).deviceMemory} GB` : 'Unknown',
+                cores: navigator.hardwareConcurrency ? `${navigator.hardwareConcurrency} Cores` : 'Unknown',
+                browser: navigator.userAgent.split(' ').pop()
+            };
+
+            if ('getBattery' in navigator) {
+                const battery: any = await (navigator as any).getBattery();
+                info.battery = `${Math.round(battery.level * 100)}%`;
+            }
+
+            setDeviceInfo(info);
+        };
+
         fetchNetworkInfo();
+        getDeviceInfo();
     }, []);
 
     const startSpeedTest = async () => {
         setIsTesting(true);
-        setStatus("Initialising sensors...");
+        setStatus("Connecting to server...");
         setMainSpeed("--");
         setDownloadSpeed("--");
         setUploadSpeed("--");
 
-        // Download speed test
+        // 1. Download Test (Streaming mode for accuracy)
         try {
-            setStatus("Measuring Download Speed...");
+            setStatus("Measuring Download...");
+            const downloadUrl = `https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg?nocache=${Date.now()}`;
+            
             const start = performance.now();
-            const response = await fetch(`https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg?nocache=${Date.now()}`, {
-                method: "GET",
-                headers: { 'Range': 'bytes=0-1000000' },
-                cache: "no-store"
-            });
-            const blob = await response.blob();
-            const end = performance.now();
-            const duration = (end - start) / 1000;
-            const bits = blob.size * 8;
-            const speedMbps = (bits / duration / 1024 / 1024).toFixed(2);
+            const response = await fetch(downloadUrl, { cache: "no-store" });
+            
+            if (!response.body) throw new Error("Body not found");
+            
+            const reader = response.body.getReader();
+            let loaded = 0;
 
-            setDownloadSpeed(speedMbps);
-            setMainSpeed(speedMbps);
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+                loaded += value.length;
+                
+                const intermediateTime = (performance.now() - start) / 1000;
+                if (intermediateTime > 0) {
+                    const intermediateSpeed = ((loaded * 8) / intermediateTime / (1024 * 1024)).toFixed(2);
+                    setMainSpeed(intermediateSpeed);
+                }
+            }
+
+            const end = performance.now();
+            const finalDownloadSpeed = ((loaded * 8) / ((end - start) / 1000) / (1024 * 1024)).toFixed(2);
+
+            setDownloadSpeed(finalDownloadSpeed);
+            setMainSpeed(finalDownloadSpeed);
         } catch (e) {
-            setDownloadSpeed('Error');
+            setDownloadSpeed('Err');
         }
 
-        // Upload speed test
+        // 2. Upload Test (Bigger chunk for accuracy)
         try {
-            setStatus("Measuring Upload Speed...");
-            const data = new Blob([new Uint8Array(1_000_000)]); 
+            setStatus("Measuring Upload...");
+            const byteSize = 8 * 1024 * 1024; // 8MB chunk
+            const uploadData = new Uint8Array(byteSize);
+            
             const start = performance.now();
             await fetch("https://api.sofy.ai/api/v1/test/upload", {
                 method: "POST",
-                body: data,
+                body: uploadData,
+                mode: 'cors'
             });
             const end = performance.now();
-            const duration = (end - start) / 1000;
-            const bits = data.size * 8;
-            const speedMbps = (bits / duration / 1024 / 1024).toFixed(2);
-
-            setUploadSpeed(speedMbps);
+            
+            const finalUploadSpeed = ((byteSize * 8) / ((end - start) / 1000) / (1024 * 1024)).toFixed(2);
+            setUploadSpeed(finalUploadSpeed);
         } catch (e) {
-            setUploadSpeed('Error');
+            setUploadSpeed('Err');
         }
 
-        setStatus("System check complete.");
+        setStatus("Test complete.");
         setIsTesting(false);
     };
 
     return (
-        <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 py-10 px-4">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 py-8 px-4 font-sans">
+            <div className="max-w-4xl mx-auto mt-4">
                 
-                {/* Main Speed Card */}
-                <div className="bg-white dark:bg-zinc-900 rounded-[3rem] shadow-2xl overflow-hidden border border-gray-100 dark:border-zinc-800 mb-8">
-                    <div className="bg-indigo-600 p-8 text-white relative overflow-hidden">
-                        <div className="absolute top-0 right-0 p-10 opacity-10">
-                            <Zap className="w-40 h-40" />
+                {/* Main Gauge Card */}
+                <div className="bg-white dark:bg-zinc-900 rounded-3xl shadow-xl overflow-hidden border border-slate-200 dark:border-zinc-800 mb-6 transition-all duration-300">
+                    <div className="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-8 text-white relative">
+                        <div className="absolute top-0 right-0 p-4 opacity-10 animate-pulse">
+                            <Zap className="w-24 h-24" />
                         </div>
                         <div className="relative z-10 flex items-center justify-between">
                             <div>
-                                <h1 className="text-3xl font-black italic tracking-tighter uppercase">Speed Test Pro</h1>
-                                <p className="text-indigo-200 text-xs font-bold tracking-widest">{status}</p>
+                                <h1 className="text-2xl font-black tracking-tighter uppercase">Speed Test Pro</h1>
+                                <div className="flex items-center gap-2 mt-1">
+                                    <div className={`w-2 h-2 rounded-full ${isTesting ? 'bg-yellow-400 animate-ping' : 'bg-emerald-400'}`} />
+                                    <p className="text-purple-100 text-[11px] font-bold tracking-widest uppercase">{status}</p>
+                                </div>
                             </div>
-                            <ShieldCheck className="w-8 h-8 text-indigo-300" />
+                            <ShieldCheck className="w-7 h-7 text-white/80" />
                         </div>
                     </div>
 
-                    <div className="p-8 sm:p-12 text-center">
-                        {/* Gauge Display */}
+                    <div className="p-10 text-center">
                         <div className="relative inline-flex items-center justify-center mb-10">
-                            <div className={`w-56 h-56 sm:w-64 sm:h-64 rounded-full border-8 border-gray-100 dark:border-zinc-800 flex flex-col items-center justify-center transition-all duration-700 ${isTesting ? 'border-t-indigo-500 animate-spin-slow' : 'border-indigo-500/20'}`}>
-                                <span className="text-5xl sm:text-6xl font-black text-gray-800 dark:text-white tracking-tighter">
-                                    {mainSpeed}
-                                </span>
-                                <span className="text-xs font-black text-indigo-500 uppercase tracking-widest">Mbps</span>
+                            <div className={`w-52 h-52 rounded-full border-[8px] flex flex-col items-center justify-center transition-all duration-500 ${isTesting ? 'border-slate-100 border-t-purple-500 animate-spin-slow shadow-[0_0_30px_rgba(168,85,247,0.2)]' : 'border-purple-500/10'}`}>
+                                <div className="text-center">
+                                    <span className="text-6xl font-black text-slate-800 dark:text-white tracking-tighter block leading-none">
+                                        {mainSpeed}
+                                    </span>
+                                    <span className="text-xs font-black text-purple-500 uppercase tracking-[0.3em] mt-2 block">Mbps</span>
+                                </div>
                             </div>
-                            {isTesting && (
-                                <div className="absolute inset-0 rounded-full border-4 border-indigo-500 animate-ping opacity-20" />
-                            )}
                         </div>
 
-                        {/* Sub Speeds */}
-                        <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto mb-10">
-                            <div className="bg-zinc-50 dark:bg-zinc-800 p-4 rounded-3xl border border-gray-100 dark:border-zinc-700">
+                        <div className="grid grid-cols-2 gap-6 max-w-sm mx-auto mb-10">
+                            <div className="bg-slate-50 dark:bg-zinc-800/40 p-5 rounded-3xl border border-slate-100 dark:border-zinc-800 transition-transform hover:scale-105">
                                 <ArrowDownCircle className="w-5 h-5 text-emerald-500 mx-auto mb-2" />
-                                <p className="text-[10px] font-bold text-gray-400 uppercase">Download</p>
-                                <p className="text-xl font-black text-gray-800 dark:text-zinc-100">{downloadSpeed} <span className="text-[10px]">Mb</span></p>
+                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Download</p>
+                                <p className="text-2xl font-black text-slate-800 dark:text-zinc-100 leading-none mt-1">{downloadSpeed}</p>
                             </div>
-                            <div className="bg-zinc-50 dark:bg-zinc-800 p-4 rounded-3xl border border-gray-100 dark:border-zinc-700">
+                            <div className="bg-slate-50 dark:bg-zinc-800/40 p-5 rounded-3xl border border-slate-100 dark:border-zinc-800 transition-transform hover:scale-105">
                                 <ArrowUpCircle className="w-5 h-5 text-blue-500 mx-auto mb-2" />
-                                <p className="text-[10px] font-bold text-gray-400 uppercase">Upload</p>
-                                <p className="text-xl font-black text-gray-800 dark:text-zinc-100">{uploadSpeed} <span className="text-[10px]">Mb</span></p>
+                                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Upload</p>
+                                <p className="text-2xl font-black text-slate-800 dark:text-zinc-100 leading-none mt-1">{uploadSpeed}</p>
                             </div>
                         </div>
 
                         <button 
                             onClick={startSpeedTest}
                             disabled={isTesting}
-                            className={`px-12 py-5 rounded-full font-black uppercase tracking-widest text-sm transition-all active:scale-95 shadow-xl ${isTesting ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-indigo-600 text-white shadow-indigo-500/30 hover:bg-indigo-700'}`}
+                            className={`px-12 py-4 rounded-2xl font-black uppercase tracking-[0.2em] text-xs transition-all active:scale-[0.95] shadow-2xl flex items-center gap-3 mx-auto ${isTesting ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:shadow-purple-500/40'}`}
                         >
-                            {isTesting ? 'Testing...' : 'Start Speed Test'}
+                            {isTesting ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4 fill-current" />}
+                            {isTesting ? 'Testing Now' : 'Run Speed Test'}
                         </button>
                     </div>
                 </div>
 
-                {/* Network & Device Info Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="bg-white dark:bg-zinc-900 p-6 rounded-[2rem] border border-gray-100 dark:border-zinc-800 flex items-center gap-4">
-                        <div className="p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-2xl">
-                            <MapPin className="w-6 h-6 text-indigo-500" />
-                        </div>
-                        <div>
-                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Location</p>
-                            <p className="text-sm font-bold text-gray-700 dark:text-zinc-300">
-                                {networkData ? `${networkData.city}, ${networkData.country_name}` : 'Scanning...'}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="bg-white dark:bg-zinc-900 p-6 rounded-[2rem] border border-gray-100 dark:border-zinc-800 flex items-center gap-4">
-                        <div className="p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl">
-                            <Globe className="w-6 h-6 text-emerald-500" />
-                        </div>
-                        <div>
-                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Public IP</p>
-                            <p className="text-sm font-bold text-gray-700 dark:text-zinc-300">
-                                {networkData ? networkData.IPv4 : '0.0.0.0'}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className="bg-white dark:bg-zinc-900 p-6 rounded-[2rem] border border-gray-100 dark:border-zinc-800 flex items-center gap-4">
-                        <div className="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-2xl">
-                            <Monitor className="w-6 h-6 text-blue-500" />
-                        </div>
-                        <div>
-                            <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Platform</p>
-                            <p className="text-xs font-bold text-gray-700 dark:text-zinc-300 truncate max-w-[150px]">
-                                {typeof window !== 'undefined' ? navigator.platform : 'Unknown'}
-                            </p>
-                        </div>
-                    </div>
+                {/* Hardware & Network Info Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <InfoCard icon={<MapPin className="text-rose-500" />} label="Location" value={networkData ? `${networkData.city}` : '...'} />
+                    <InfoCard icon={<Globe className="text-indigo-500" />} label="IP Address" value={networkData ? networkData.IPv4 : '...'} />
+                    <InfoCard icon={<Cpu className="text-amber-500" />} label="Processor" value={deviceInfo.cores} />
+                    <InfoCard icon={<Database className="text-emerald-500" />} label="Memory (RAM)" value={deviceInfo.ram} />
+                    <InfoCard icon={<Battery className="text-pink-500" />} label="Battery" value={deviceInfo.battery} />
+                    <InfoCard icon={<Monitor className="text-sky-500" />} label="User Agent" value={deviceInfo.browser} />
+                    <InfoCard icon={<Zap className="text-yellow-500" />} label="ISP" value={networkData ? networkData.state : '...'} />
+                    <InfoCard icon={<Globe className="text-purple-500" />} label="Country" value={networkData ? networkData.country_name : '...'} />
                 </div>
 
-                <div className="mt-8 text-center">
-                    <p className="text-[10px] text-gray-400 dark:text-zinc-600 font-medium px-10">
-                        *This test calculates speed by measuring time to download/upload small data chunks. Results may vary based on server distance and browser overhead.
-                    </p>
-                </div>
-
+                <p className="mt-8 text-center text-[10px] text-slate-400 dark:text-zinc-600 font-bold uppercase tracking-[0.2em]">
+                    *Hardware specs are provided by browser API. Accuracy may vary.
+                </p>
             </div>
             
-            {/* Custom Animation for Spinner */}
             <style jsx>{`
                 @keyframes spin-slow {
                     from { transform: rotate(0deg); }
                     to { transform: rotate(360deg); }
                 }
                 .animate-spin-slow {
-                    animation: spin-slow 2s linear infinite;
+                    animation: spin-slow 1.5s linear infinite;
                 }
             `}</style>
+        </div>
+    );
+}
+
+// Helper Component for Info Cards
+function InfoCard({ icon, label, value }: { icon: any, label: string, value: string }) {
+    return (
+        <div className="bg-white dark:bg-zinc-900 p-4 rounded-2xl border border-slate-200 dark:border-zinc-800 flex flex-col gap-2 shadow-sm transition-all hover:border-purple-300 dark:hover:border-purple-900">
+            <div className="p-2 bg-slate-50 dark:bg-zinc-800/50 w-fit rounded-xl">
+                {icon}
+            </div>
+            <div>
+                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{label}</p>
+                <p className="text-xs font-black text-slate-700 dark:text-zinc-200 truncate mt-0.5">{value}</p>
+            </div>
         </div>
     );
 }

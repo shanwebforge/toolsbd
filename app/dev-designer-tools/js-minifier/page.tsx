@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { 
   Copy, Trash2, Zap, Check, Code2, 
-  Settings2, Info, Scissors, Sparkles 
+  Settings2, Info, Scissors, Sparkles, FileCode, ShieldCheck 
 } from 'lucide-react';
 
 const JSMinifier: React.FC = () => {
@@ -16,13 +16,16 @@ const JSMinifier: React.FC = () => {
     if (!inputJS) return;
     let result = inputJS;
     
-    result = result.replace(/\/\/.*/g, ''); // Remove single line comments
-    result = result.replace(/\/\*[\s\S]*?\*\//g, ''); // Remove multi-line comments
+    // Remove comments
+    result = result.replace(/\/\/.*/g, ''); 
+    result = result.replace(/\/\*[\s\S]*?\*\//g, ''); 
     
+    // Optional: Strip console logs
     if (removeLogs) {
       result = result.replace(/console\.log\((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*\);?/g, '');
     }
 
+    // Minification logic
     result = result
       .replace(/\s+/g, ' ')
       .replace(/\s*([=+\-*/%&|^!<>?:;,.{}()\[\]])\s*/g, '$1')
@@ -38,113 +41,143 @@ const JSMinifier: React.FC = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleClear = () => {
+    setInputJS('');
+    setMinifiedJS('');
+  };
+
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0b0f1a] p-4 md:p-12 transition-colors duration-300 font-sans">
-      
-      {/* Header Section */}
-      <div className="max-w-5xl mx-auto text-center mb-12">
-        <div className="w-16 h-16 bg-indigo-600/10 text-indigo-600 dark:text-indigo-400 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-indigo-500/10 border border-indigo-100 dark:border-indigo-500/20">
-          <Code2 size={32} strokeWidth={2.5} />
-        </div>
-        <h1 className="text-4xl font-black text-slate-800 dark:text-white tracking-tight">
-          JS <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">Minifier</span>
-        </h1>
-        <p className="text-slate-500 dark:text-slate-400 mt-4 max-w-lg mx-auto text-sm font-medium">
-          Premium JavaScript compression with Indigo & Purple aesthetics. 
-        </p>
-      </div>
-
-      <div className="max-w-6xl mx-auto bg-white dark:bg-[#161b2c] rounded-[2.5rem] shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 py-10 px-4 font-sans">
+      <div className="max-w-5xl mx-auto">
         
-        {/* Toolbar */}
-        <div className="bg-indigo-50/30 dark:bg-[#0f1425] p-5 border-b border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-6">
-            <label className="flex items-center gap-2 cursor-pointer group">
-              <input 
-                type="checkbox" 
-                checked={removeLogs} 
-                onChange={() => setRemoveLogs(!removeLogs)}
-                className="w-4 h-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 dark:bg-slate-800 dark:border-slate-700" 
-              />
-              <span className="text-[10px] font-black text-slate-500 group-hover:text-indigo-600 transition-colors uppercase tracking-widest">Strip Console Logs</span>
-            </label>
-            <div className="h-4 w-[1px] bg-slate-200 dark:bg-slate-700 hidden md:block" />
-            <div className="flex items-center gap-1 text-[10px] font-black text-purple-500 uppercase tracking-widest">
-              <Sparkles size={12} /> Turbo Mode On
-            </div>
+        {/* Header Section - Purple Primary */}
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center p-3 bg-purple-600 rounded-lg shadow-lg shadow-purple-500/20 mb-4">
+            <Code2 className="w-6 h-6 text-white" />
           </div>
-          <button 
-            onClick={() => { setInputJS(''); setMinifiedJS(''); }}
-            className="text-[10px] font-black text-slate-400 hover:text-red-500 flex items-center gap-1 transition-all uppercase tracking-widest"
-          >
-            <Trash2 size={14} /> Reset Editor
-          </button>
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-white tracking-tight uppercase">JS Architect Minifier</h1>
+          <p className="text-slate-400 text-xs font-medium mt-1">Optimize your JavaScript by stripping comments, logs, and unnecessary whitespace.</p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-md border border-slate-200 dark:border-zinc-800 overflow-hidden mb-6">
           
-          {/* Input Area */}
-          <div className="p-6 border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800">
-            <div className="flex justify-between mb-3 px-1 font-bold text-[10px] text-slate-400 uppercase tracking-widest">
-              <span>Raw Code</span>
-              <span className="text-indigo-500">{inputJS.length} chars</span>
-            </div>
-            <textarea
-              value={inputJS}
-              onChange={(e) => setInputJS(e.target.value)}
-              placeholder="// Paste your JavaScript here..."
-              className="w-full h-96 p-6 bg-slate-50 dark:bg-[#0b0f1a] rounded-2xl border border-slate-200 dark:border-slate-800 focus:ring-2 focus:ring-indigo-500/30 outline-none font-mono text-sm dark:text-slate-300 resize-none transition-all scrollbar-hide shadow-inner"
-            />
-          </div>
-
-          {/* Output Area */}
-          <div className="p-6 bg-indigo-50/10 dark:bg-[#0f1425]/50">
-            <div className="flex justify-between mb-3 px-1 font-bold text-[10px] text-slate-400 uppercase tracking-widest">
-              <span className="text-purple-500">Minified Code</span>
+          {/* Toolbar */}
+          <div className="p-4 bg-slate-50/50 dark:bg-zinc-800/50 border-b border-slate-200 dark:border-zinc-800 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
               <button 
-                onClick={handleCopy}
-                disabled={!minifiedJS}
-                className={`flex items-center gap-1 transition-colors ${copied ? 'text-green-500' : 'text-slate-400 hover:text-indigo-500'}`}
+                onClick={handleMinify}
+                className="flex items-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold uppercase tracking-wider rounded-lg transition-all active:scale-95 shadow-md shadow-purple-500/10"
               >
-                {copied ? <Check size={14} /> : <Copy size={14} />} {copied ? 'COPIED' : 'COPY'}
+                <Zap className="w-3.5 h-3.5 fill-current" /> Minify JS
+              </button>
+              
+              <label className="flex items-center gap-2 cursor-pointer group">
+                <input 
+                  type="checkbox" 
+                  checked={removeLogs} 
+                  onChange={() => setRemoveLogs(!removeLogs)}
+                  className="w-4 h-4 rounded border-slate-300 text-purple-600 focus:ring-purple-500 dark:bg-zinc-800 dark:border-zinc-700" 
+                />
+                <span className="text-[10px] font-bold text-slate-500 group-hover:text-purple-600 transition-colors uppercase tracking-widest">Strip Logs</span>
+              </label>
+
+              <button 
+                onClick={handleClear}
+                className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-zinc-800 text-slate-500 dark:text-zinc-400 text-xs font-bold uppercase tracking-wider rounded-lg border border-slate-200 dark:border-zinc-700 hover:bg-red-50 hover:text-red-500 transition-all"
+              >
+                <Trash2 className="w-3.5 h-3.5" /> Clear
               </button>
             </div>
-            <textarea
-              readOnly
-              value={minifiedJS}
-              placeholder="Compressing..."
-              className="w-full h-96 p-6 bg-white dark:bg-[#161b2c] rounded-2xl border border-slate-200 dark:border-slate-800 font-mono text-sm text-indigo-700 dark:text-indigo-400 outline-none resize-none shadow-sm"
-            />
-          </div>
-        </div>
 
-        {/* Bottom Action Bar */}
-        <div className="p-8 bg-white dark:bg-[#161b2c] flex flex-col md:flex-row items-center justify-between gap-6 border-t border-slate-200 dark:border-slate-800">
-          <div className="flex gap-4">
             {minifiedJS && (
-              <div className="flex items-center gap-3 bg-indigo-50 dark:bg-indigo-500/10 px-5 py-3 rounded-2xl border border-indigo-100 dark:border-indigo-500/20 animate-in fade-in slide-in-from-left-4">
-                <div className="text-indigo-600 dark:text-indigo-400 text-xl font-black italic">
-                  -{Math.round(((inputJS.length - minifiedJS.length) / inputJS.length) * 100)}%
-                </div>
-                <div className="text-[9px] leading-tight text-indigo-700/60 dark:text-indigo-400/60 font-black uppercase tracking-widest">Efficiency<br/>Saved</div>
-              </div>
+               <div className="flex items-center gap-2 px-4 py-2 bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/20 rounded-lg">
+                  <Sparkles className="w-3 h-3 text-purple-600" />
+                  <span className="text-[10px] font-bold text-purple-600 uppercase">
+                    -{Math.round(((inputJS.length - minifiedJS.length) / inputJS.length) * 100)}% Optimized
+                  </span>
+               </div>
             )}
           </div>
 
-          <button 
-            onClick={handleMinify}
-            disabled={!inputJS}
-            className="w-full md:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-14 py-4 rounded-2xl font-black shadow-xl shadow-indigo-500/30 active:scale-95 disabled:opacity-50 transition-all flex items-center justify-center gap-3 tracking-tight"
-          >
-            <Zap size={20} fill="currentColor" /> MINIFY SCRIPT
-          </button>
-        </div>
-      </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+            {/* Input Pane */}
+            <div className="p-5 border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-zinc-800">
+              <div className="flex items-center gap-2 mb-3 text-slate-400">
+                <FileCode className="w-3.5 h-3.5" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-indigo-500">Source Script</span>
+              </div>
+              <textarea 
+                value={inputJS} 
+                onChange={(e) => setInputJS(e.target.value)} 
+                placeholder="// Paste JS here...
+function hello() {
+  console.log('Hello World');
+}"
+                className="w-full h-[380px] p-4 font-mono text-sm bg-slate-50 dark:bg-zinc-950/50 border border-slate-200 dark:border-zinc-800 rounded-lg resize-none outline-none focus:border-purple-500 text-slate-700 dark:text-zinc-300 transition-colors"
+              />
+            </div>
 
-      {/* Footer Info */}
-      <div className="max-w-4xl mx-auto mt-10 flex items-center justify-center gap-2 opacity-40 grayscale hover:grayscale-0 transition-all cursor-default">
-         <Scissors size={14} />
-         <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Built for Modern Developers</span>
+            {/* Output Pane */}
+            <div className="p-5 bg-slate-50/20 dark:bg-black/10 relative">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2 text-slate-400">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-purple-500">Minified Output</span>
+                </div>
+                {minifiedJS && (
+                  <button 
+                    onClick={handleCopy}
+                    className={`flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest transition-colors ${copied ? 'text-emerald-500' : 'text-indigo-600 hover:text-indigo-700'}`}
+                  >
+                    {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                    {copied ? 'Copied' : 'Copy JS'}
+                  </button>
+                )}
+              </div>
+              
+              <div className="w-full h-[380px] bg-white dark:bg-zinc-950 rounded-lg border border-slate-200 dark:border-zinc-800 overflow-hidden relative shadow-inner">
+                {minifiedJS ? (
+                  <pre className="w-full h-full p-5 font-mono text-xs text-indigo-600 dark:text-indigo-400 overflow-auto whitespace-pre-wrap break-all leading-relaxed">
+                    {minifiedJS}
+                  </pre>
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-300 dark:text-zinc-700">
+                    <Code2 className="w-10 h-10 mb-2 opacity-20" />
+                    <span className="text-[9px] font-bold uppercase tracking-widest">Awaiting JS Data</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Feature Highlights */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg border border-slate-200 dark:border-zinc-800">
+            <div className="flex items-center gap-2 mb-3 text-purple-600">
+              <Settings2 className="w-4 h-4" />
+              <h3 className="font-bold text-sm uppercase tracking-tight">Advanced Stripping</h3>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">
+              Enable "Strip Logs" to automatically remove console.log statements from your production code. This improves both security and performance by reducing console overhead.
+            </p>
+          </div>
+
+          <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg border border-slate-200 dark:border-zinc-800">
+            <div className="flex items-center gap-2 mb-3 text-indigo-600">
+              <Sparkles className="w-4 h-4" />
+              <h3 className="font-bold text-sm uppercase tracking-tight">Turbo Compression</h3>
+            </div>
+            <p className="text-xs text-slate-500 dark:text-zinc-400 leading-relaxed">
+              Uses high-efficiency regex patterns to eliminate dead weight while ensuring your logic stays intact. Ideal for fast-loading client-side scripts.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10 text-center">
+          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">JS Structural Engine &copy; 2026 • Optimized for Frontend</p>
+        </div>
+
       </div>
     </div>
   );

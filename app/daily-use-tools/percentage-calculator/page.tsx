@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import { Percent, calculator as CalcIcon, RefreshCcw, TrendingUp, ShoppingBag, Info, AlertCircle } from 'lucide-react';
+import { Percent, RefreshCcw, TrendingUp, ShoppingBag, AlertCircle, ChevronRight } from 'lucide-react';
 
 export default function PercentageCalculatorPage() {
     const [originalValue, setOriginalValue] = useState('');
     const [percentage, setPercentage] = useState('');
-    const [result, setResult] = useState<any>(null);
+    const [result, setResult] = useState<{ value: string; increase: string; decrease: string; percent: number } | null>(null);
     const [error, setError] = useState('');
 
     const calculatePercentage = () => {
@@ -38,97 +38,101 @@ export default function PercentageCalculatorPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-zinc-950 py-10 px-4">
-            <div className="max-w-4xl mx-auto">
+        <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 py-8 px-4">
+            <div className="max-w-4xl mx-auto mt-4">
                 
-                {/* Header Card */}
-                <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-xl overflow-hidden border border-gray-100 dark:border-zinc-800 mb-8">
-                    <div className="bg-gradient-to-r from-rose-500 to-pink-600 p-8 text-white">
-                        <div className="flex items-center gap-3 mb-2">
-                            <Percent className="w-8 h-8" />
-                            <h1 className="text-2xl sm:text-3xl font-bold">Percentage Calculator</h1>
+                {/* Main Compact Card */}
+                <div className="bg-white dark:bg-zinc-900 rounded-2xl shadow-sm overflow-hidden border border-slate-200 dark:border-zinc-800 mb-6">
+                    <div className="bg-gradient-to-r from-purple-600 to-indigo-700 p-6 text-white">
+                        <div className="flex items-center gap-3 mb-1">
+                            <Percent className="w-6 h-6" />
+                            <h1 className="text-xl font-bold tracking-tight">Percentage Calculator</h1>
                         </div>
-                        <p className="text-rose-100 text-sm">Easily calculate discounts, tax, and percentage differences.</p>
+                        <p className="text-purple-100 text-xs opacity-90 font-medium">Calculate discounts, tax, and percentage differences instantly.</p>
                     </div>
 
-                    <div className="p-6 sm:p-10">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div className="p-6 md:p-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
                             <div className="space-y-2">
-                                <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">Original Amount</label>
+                                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Original Amount</label>
                                 <input 
                                     type="number" 
                                     value={originalValue}
                                     onChange={(e) => setOriginalValue(e.target.value)}
                                     placeholder="e.g. 1000"
-                                    className="w-full p-4 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-rose-500 transition-all outline-none"
+                                    className="w-full p-3 bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 rounded-xl text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500 outline-none transition-all"
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">Percentage (%)</label>
+                                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Percentage (%)</label>
                                 <input 
                                     type="number" 
                                     value={percentage}
                                     onChange={(e) => setPercentage(e.target.value)}
                                     placeholder="e.g. 15"
-                                    className="w-full p-4 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-2xl text-gray-900 dark:text-white focus:ring-2 focus:ring-rose-500 transition-all outline-none"
+                                    className="w-full p-3 bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 rounded-xl text-sm text-slate-900 dark:text-white focus:ring-2 focus:ring-purple-500 outline-none transition-all"
                                 />
                             </div>
                         </div>
 
                         <button 
                             onClick={calculatePercentage}
-                            className="w-full py-4 bg-rose-500 hover:bg-rose-600 text-white font-bold rounded-2xl shadow-lg shadow-rose-500/20 transition-all active:scale-95 flex items-center justify-center gap-2 mb-8"
+                            className="w-full py-3.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-md shadow-purple-500/10 transition-all active:scale-[0.98] flex items-center justify-center gap-2 mb-6 text-sm"
                         >
-                            <RefreshCcw className="w-5 h-5" /> Calculate Results
+                            <RefreshCcw className="w-4 h-4" /> Calculate Results
                         </button>
 
                         {error && (
-                            <div className="flex items-center gap-2 p-4 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 rounded-2xl border border-red-100 dark:border-red-900/30">
-                                <AlertCircle className="w-5 h-5" /> {error}
+                            <div className="flex items-center gap-2 p-3 bg-rose-50 dark:bg-rose-900/10 text-rose-600 dark:text-rose-400 rounded-xl border border-rose-100 dark:border-rose-900/20 text-xs font-bold justify-center">
+                                <AlertCircle className="w-4 h-4" /> {error}
                             </div>
                         )}
 
                         {result && (
                             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 animate-in fade-in zoom-in duration-300">
-                                <div className="p-6 bg-rose-50 dark:bg-rose-900/10 border border-rose-100 dark:border-rose-900/20 rounded-3xl text-center">
-                                    <p className="text-[10px] font-black text-rose-600 dark:text-rose-400 uppercase mb-1">{result.percent}% Value</p>
-                                    <h2 className="text-3xl font-black text-gray-800 dark:text-white">{result.value}</h2>
+                                <div className="p-5 bg-purple-50 dark:bg-purple-900/10 border border-purple-100 dark:border-purple-900/20 rounded-2xl text-center">
+                                    <p className="text-[9px] font-bold text-purple-600 dark:text-purple-400 uppercase mb-1">{result.percent}% Value</p>
+                                    <h2 className="text-2xl font-black text-slate-800 dark:text-white">{result.value}</h2>
                                 </div>
-                                <div className="p-6 bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20 rounded-3xl text-center">
-                                    <p className="text-[10px] font-black text-green-600 dark:text-green-400 uppercase mb-1">With Increase</p>
-                                    <h2 className="text-2xl font-black text-gray-800 dark:text-white">{result.increase}</h2>
+                                <div className="p-5 bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/20 rounded-2xl text-center">
+                                    <p className="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 uppercase mb-1">With Increase</p>
+                                    <h2 className="text-2xl font-black text-slate-800 dark:text-white">{result.increase}</h2>
                                 </div>
-                                <div className="p-6 bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20 rounded-3xl text-center">
-                                    <p className="text-[10px] font-black text-blue-600 dark:text-blue-400 uppercase mb-1">With Discount</p>
-                                    <h2 className="text-2xl font-black text-gray-800 dark:text-white">{result.decrease}</h2>
+                                <div className="p-5 bg-indigo-50 dark:bg-indigo-900/10 border border-indigo-100 dark:border-indigo-900/20 rounded-2xl text-center">
+                                    <p className="text-[9px] font-bold text-indigo-600 dark:text-indigo-400 uppercase mb-1">With Discount</p>
+                                    <h2 className="text-2xl font-black text-slate-800 dark:text-white">{result.decrease}</h2>
                                 </div>
                             </div>
                         )}
                     </div>
                 </div>
 
-                {/* Helper Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2rem] border border-gray-100 dark:border-zinc-800">
-                        <div className="flex items-center gap-3 mb-4 text-rose-500">
-                            <ShoppingBag className="w-6 h-6" />
-                            <h3 className="font-bold text-lg">Shopping Tip</h3>
+                {/* Info Cards - Exact content from your code */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm">
+                        <div className="flex items-center gap-2 mb-3 text-purple-600">
+                            <ShoppingBag className="w-4 h-4" />
+                            <h3 className="font-bold text-sm tracking-tight uppercase">Shopping Tip</h3>
                         </div>
-                        <p className="text-sm text-gray-500 dark:text-zinc-500 leading-relaxed">
-                            Use the **"With Discount"** result to quickly find the final price of an item during a sale. (Original Price - Discounted Amount).
+                        <p className="text-[11px] text-slate-500 dark:text-zinc-400 leading-relaxed font-medium">
+                            Use the <strong className="text-slate-700 dark:text-zinc-300">"With Discount"</strong> result to quickly find the final price of an item during a sale. (Original Price - Discounted Amount).
                         </p>
                     </div>
 
-                    <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2rem] border border-gray-100 dark:border-zinc-800">
-                        <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                            <TrendingUp className="w-6 h-6" />
-                            <h3 className="font-bold text-lg">Business Growth</h3>
+                    <div className="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-slate-200 dark:border-zinc-800 shadow-sm">
+                        <div className="flex items-center gap-2 mb-3 text-indigo-600">
+                            <TrendingUp className="w-4 h-4" />
+                            <h3 className="font-bold text-sm tracking-tight uppercase">Business Growth</h3>
                         </div>
-                        <p className="text-sm text-gray-500 dark:text-zinc-500 leading-relaxed">
-                            Use the **"With Increase"** result to calculate markups, VAT/Tax, or profit margins on your services or products.
+                        <p className="text-[11px] text-slate-500 dark:text-zinc-400 leading-relaxed font-medium">
+                            Use the <strong className="text-slate-700 dark:text-zinc-300">"With Increase"</strong> result to calculate markups, VAT/Tax, or profit margins on your services or products.
                         </p>
                     </div>
+                </div>
+
+                <div className="mt-8 text-center text-[10px] text-slate-400 dark:text-zinc-600 font-bold uppercase tracking-widest">
+                    <p>Financial Precision Tools &copy; 2026</p>
                 </div>
 
             </div>

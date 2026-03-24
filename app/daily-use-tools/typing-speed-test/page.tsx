@@ -89,7 +89,7 @@ export default function TypingSpeedTestPage() {
             <div className="max-w-4xl mx-auto">
                 
                 {/* Header Section */}
-                <div className="bg-white dark:bg-zinc-900 rounded-[2.5rem] shadow-2xl shadow-purple-500/10 overflow-hidden border border-purple-100 dark:border-zinc-800 mb-8">
+                <div className="bg-white dark:bg-zinc-900 rounded-[1.0rem] shadow-2xl shadow-purple-500/10 overflow-hidden border border-purple-100 dark:border-zinc-800 mb-8">
                     <div className="bg-gradient-to-br from-purple-600 via-indigo-600 to-indigo-700 p-8 text-white">
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-3">

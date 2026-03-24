@@ -75,6 +75,7 @@ export const toolsData: Tool[] = [
   { name: "Tasbih Counter", icon: Star, link: "/tools/tasbih", category: "Islamic Tools", desc: "Digital tasbih counter" },
 
   // Media Tools
+  { name: "BG Remover", icon: Camera, link: "/media-tools/bg-remover", category: "Media Tools", desc: "Edit photos & images" },
   { name: "Video Editor", icon: Video, link: "/media-tools/video-editor", category: "Media Tools", desc: "Edit videos online" },
   { name: "Image Editor", icon: Camera, link: "/media-tools/image-editor", category: "Media Tools", desc: "Edit photos & images" },
   { name: "Mp3 Cutter", icon: Mic, link: "/media-tools/mp3-cutter", category: "Media Tools", desc: "Edit audio files" },
@@ -85,6 +86,7 @@ export const toolsData: Tool[] = [
   { name: "Content Scheduler", icon: Radio, link: "/media-tools/content-scheduler", category: "Media Tools", desc: "Voce Over" },
   { name: "Bangla Subtitle", icon: Radio, link: "/media-tools/bangla-subtitle", category: "Media Tools", desc: "Voce Over" },
   { name: "Youtube Downloader", icon: Radio, link: "/media-tools/youtube-downloader", category: "Media Tools", desc: "Voce Over" },
+  
   
   // Dokan Tools
   { name: "Product Manager", icon: Package, link: "/tools/product-manager", category: "Dokan Tools", desc: "Manage store products" },

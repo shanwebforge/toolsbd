@@ -58,7 +58,7 @@ const IconGenerator: React.FC = () => {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#0b0f1a] text-slate-900 dark:text-slate-100 flex items-center justify-center p-4 md:p-10 font-sans transition-colors duration-300">
       
-      <div className="max-w-6xl w-full bg-white dark:bg-[#161b2c] rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-slate-200 dark:border-slate-800">
+      <div className="max-w-6xl w-full bg-white dark:bg-[#161b2c] rounded-[1.0rem] shadow-2xl overflow-hidden flex flex-col lg:flex-row border border-slate-200 dark:border-slate-800">
         
         {/* PREVIEW AREA */}
         <div className="flex-[1.1] bg-slate-100 dark:bg-[#0f1425] p-10 flex flex-col items-center justify-center relative border-b lg:border-b-0 lg:border-r border-slate-200 dark:border-slate-800">

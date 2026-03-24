@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { ShieldCheck, Copy, RefreshCw, Lock, Zap, CheckCircle2, ShieldAlert, Key } from 'lucide-react';
+import { ShieldCheck, Copy, RefreshCw, Lock, Zap, CheckCircle2, ShieldAlert, Key, Fingerprint } from 'lucide-react';
 
 const PasswordGeneratorPage = () => {
   const [password, setPassword] = useState('');
   const [length, setLength] = useState(16);
   const [isCopied, setIsCopied] = useState(false);
-  const [strength, setStrength] = useState({ label: '', color: 'bg-zinc-200' });
+  const [strength, setStrength] = useState({ label: '', color: 'bg-slate-200' });
 
   const generatePassword = useCallback(() => {
     const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -17,7 +17,6 @@ const PasswordGeneratorPage = () => {
     const all = upper + lower + nums + symbols;
 
     let newPassword = "";
-    // Ensure at least one of each type
     newPassword += upper[Math.floor(Math.random() * upper.length)];
     newPassword += lower[Math.floor(Math.random() * lower.length)];
     newPassword += nums[Math.floor(Math.random() * nums.length)];
@@ -31,7 +30,6 @@ const PasswordGeneratorPage = () => {
     setPassword(shuffled);
     setIsCopied(false);
     
-    // Calculate Strength
     if (length < 10) setStrength({ label: 'Weak', color: 'bg-rose-500' });
     else if (length < 15) setStrength({ label: 'Good', color: 'bg-amber-500' });
     else setStrength({ label: 'Strong', color: 'bg-emerald-500' });
@@ -50,58 +48,53 @@ const PasswordGeneratorPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] py-16 px-4 selection:bg-indigo-500/30 font-sans">
-      {/* Background Glow */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-64 bg-purple-500/5 blur-[120px] pointer-events-none" />
-
+    <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 py-10 px-4 font-sans">
       <div className="max-w-2xl mx-auto relative">
         
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white dark:bg-zinc-900 shadow-sm border border-zinc-200 dark:border-zinc-800 rounded-full text-[10px] font-black text-purple-600 dark:text-purple-400 uppercase tracking-widest mb-6">
-            <ShieldCheck className="w-3.5 h-3.5" /> Security Suite
+        {/* Header - Purple Primary */}
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center justify-center p-3 bg-purple-600 rounded-lg shadow-lg shadow-purple-500/20 mb-4">
+            <Fingerprint className="w-6 h-6 text-white" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-black text-zinc-900 dark:text-white tracking-tight mb-4">
-            Fortress <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 font-serif italic font-medium px-2">Key</span>
+          <h1 className="text-2xl font-bold text-slate-800 dark:text-white tracking-tight uppercase">
+            Fortress <span className="text-purple-600">Key</span>
           </h1>
-          <p className="text-zinc-500 dark:text-zinc-400 text-sm font-medium">
-            Generate uncrackable passwords with military-grade randomness.
-          </p>
+          <p className="text-slate-400 text-xs font-medium mt-1">Generate uncrackable passwords with high-entropy randomness.</p>
         </div>
 
         {/* Main Interface Card */}
-        <div className="bg-white dark:bg-zinc-900/50 backdrop-blur-xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.04)] border border-white dark:border-zinc-800 overflow-hidden">
+        <div className="bg-white dark:bg-zinc-900 rounded-lg shadow-md border border-slate-200 dark:border-zinc-800 overflow-hidden">
           
           {/* Result Area */}
-          <div className="p-8 md:p-10 bg-zinc-50/50 dark:bg-zinc-800/20 border-b border-zinc-100 dark:border-zinc-800">
+          <div className="p-6 md:p-8 bg-slate-50/50 dark:bg-zinc-800/20 border-b border-slate-100 dark:border-zinc-800">
             <div className="relative group">
               <input 
                 type="text" 
                 value={password} 
                 readOnly 
-                className="w-full p-6 text-2xl md:text-3xl font-mono tracking-wider text-center bg-white dark:bg-zinc-950 border-2 border-dashed border-zinc-200 dark:border-zinc-700 rounded-3xl text-indigo-600 dark:text-indigo-400 focus:outline-none focus:ring-4 focus:ring-indigo-500/10 transition-all cursor-default"
+                className="w-full p-5 text-xl md:text-2xl font-mono tracking-widest text-center bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-700 rounded-lg text-indigo-600 dark:text-indigo-400 focus:outline-none focus:border-purple-500 transition-all cursor-default shadow-sm"
               />
               <div className="absolute top-2 right-2 flex gap-1">
                 <button 
                   onClick={generatePassword}
-                  className="p-3 bg-zinc-100 dark:bg-zinc-800 text-zinc-500 hover:text-indigo-600 rounded-xl transition-colors hover:bg-white dark:hover:bg-zinc-700 shadow-sm"
+                  className="p-2.5 bg-slate-100 dark:bg-zinc-800 text-slate-400 hover:text-purple-600 rounded-md transition-colors border border-slate-200 dark:border-zinc-700 shadow-sm"
                 >
-                  <RefreshCw className="w-5 h-5" />
+                  <RefreshCw className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
             {/* Strength Meter */}
-            <div className="mt-6 px-2">
-              <div className="flex justify-between items-end mb-2">
-                <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">Password Strength</span>
-                <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded ${strength.color.replace('bg-', 'text-')} bg-opacity-10`}>
+            <div className="mt-6">
+              <div className="flex justify-between items-end mb-2 px-1">
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Security Level</span>
+                <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-md ${strength.color.replace('bg-', 'text-')} bg-opacity-10 border border-current opacity-80`}>
                   {strength.label}
                 </span>
               </div>
-              <div className="h-1.5 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+              <div className="h-1.5 w-full bg-slate-200 dark:bg-zinc-800 rounded-full overflow-hidden">
                 <div 
-                  className={`h-full ${strength.color} transition-all duration-500`} 
+                  className={`h-full ${strength.color} transition-all duration-500 shadow-[0_0_8px] shadow-current`} 
                   style={{ width: `${(length / 32) * 100}%` }}
                 />
               </div>
@@ -109,14 +102,14 @@ const PasswordGeneratorPage = () => {
           </div>
 
           {/* Controls Area */}
-          <div className="p-8 md:p-10 space-y-8">
+          <div className="p-6 md:p-8 space-y-6">
             <div className="space-y-4">
-              <div className="flex justify-between items-center">
-                <label className="text-xs font-bold text-zinc-500 uppercase tracking-widest flex items-center gap-2">
-                  <Key className="w-3.5 h-3.5" /> Character Length
+              <div className="flex justify-between items-center px-1">
+                <label className="text-[10px] font-bold text-slate-500 dark:text-zinc-400 uppercase tracking-widest flex items-center gap-2">
+                  <Key className="w-3.5 h-3.5 text-indigo-500" /> Password Length
                 </label>
-                <span className="text-xl font-black text-indigo-600 dark:text-indigo-400 font-mono bg-indigo-50 dark:bg-indigo-900/30 px-3 py-1 rounded-lg">
-                  {length}
+                <span className="text-sm font-bold text-purple-600 dark:text-purple-400 font-mono bg-purple-50 dark:bg-purple-900/30 px-3 py-1 rounded-md border border-purple-100 dark:border-purple-800/50">
+                  {length < 10 ? `0${length}` : length}
                 </span>
               </div>
               <input 
@@ -125,48 +118,48 @@ const PasswordGeneratorPage = () => {
                 max="32" 
                 value={length} 
                 onChange={(e) => setLength(parseInt(e.target.value))}
-                className="w-full h-2 bg-zinc-100 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-indigo-600"
+                className="w-full h-1.5 bg-slate-100 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-purple-600"
               />
             </div>
 
             <button 
               onClick={handleCopy}
-              className={`w-full py-5 rounded-[1.5rem] text-sm font-black uppercase tracking-[0.2em] flex items-center justify-center gap-3 transition-all duration-500 shadow-xl ${
+              className={`w-full py-4 rounded-lg text-[11px] font-bold uppercase tracking-widest flex items-center justify-center gap-3 transition-all duration-300 shadow-md active:scale-[0.98] ${
                 isCopied 
-                ? 'bg-emerald-500 text-white shadow-emerald-500/20' 
-                : 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:scale-[1.02] active:scale-95'
+                ? 'bg-emerald-500 text-white shadow-emerald-500/10' 
+                : 'bg-purple-600 hover:bg-purple-700 text-white shadow-purple-500/10'
               }`}
             >
               {isCopied ? (
                 <>
-                  <CheckCircle2 className="w-5 h-5" /> Copied To Clipboard
+                  <CheckCircle2 className="w-4 h-4" /> Copied To Clipboard
                 </>
               ) : (
                 <>
-                  <Copy className="w-5 h-5" /> Copy Password
+                  <Copy className="w-4 h-4" /> Copy Secure Key
                 </>
               )}
             </button>
           </div>
 
           {/* Footer Info */}
-          <div className="px-10 py-5 bg-zinc-50/50 dark:bg-zinc-800/30 border-t border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
-            <div className="flex items-center gap-2 text-zinc-400">
+          <div className="px-6 py-4 bg-slate-50 dark:bg-zinc-800/30 border-t border-slate-100 dark:border-zinc-800 flex justify-between items-center">
+            <div className="flex items-center gap-2 text-slate-400">
               <ShieldAlert className="w-3.5 h-3.5" />
-              <span className="text-[10px] font-bold uppercase tracking-widest">End-to-End Local</span>
+              <span className="text-[9px] font-bold uppercase tracking-widest">Client-Side Only</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">AES-256 Ready</span>
+              <Zap className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+              <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Instant Entropy</span>
             </div>
           </div>
         </div>
 
-        {/* Floating Decoration */}
-        <div className="mt-8 flex justify-center gap-12 opacity-30 grayscale">
-          <Zap className="w-5 h-5 text-zinc-400" />
-          <Lock className="w-5 h-5 text-zinc-400" />
-          <ShieldCheck className="w-5 h-5 text-zinc-400" />
+        {/* Minimalist Footer Link */}
+        <div className="mt-8 flex justify-center gap-8 opacity-40 grayscale group-hover:grayscale-0 transition-all">
+          <Lock className="w-4 h-4 text-slate-400" />
+          <ShieldCheck className="w-4 h-4 text-slate-400" />
+          <Zap className="w-4 h-4 text-slate-400" />
         </div>
       </div>
     </div>

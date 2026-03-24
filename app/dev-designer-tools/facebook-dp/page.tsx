@@ -1,17 +1,19 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Camera, Download, UploadCloud, Sparkles, Image as ImageIcon, Frame, RefreshCcw, UserCircle } from 'lucide-react';
+import { Camera, Download, UploadCloud, Sparkles, Image as ImageIcon, Frame, RefreshCcw, UserCircle, ShieldCheck } from 'lucide-react';
 
 export default function FacebookDPMakerPage() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [frameUrl, setFrameUrl] = useState("https://i.ibb.co/DYFSgJS/sample-frame.png");
     const [hasImage, setHasImage] = useState(false);
+    const [isProcessing, setIsProcessing] = useState(false);
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (!file) return;
 
+        setIsProcessing(true);
         const reader = new FileReader();
         reader.onload = (event) => {
             const userImage = new Image();
@@ -32,6 +34,7 @@ export default function FacebookDPMakerPage() {
                 frameImage.onload = () => {
                     ctx.drawImage(frameImage, 0, 0, canvas.width, canvas.height);
                     setHasImage(true);
+                    setIsProcessing(false);
                 };
                 frameImage.src = frameUrl;
             };
@@ -51,126 +54,129 @@ export default function FacebookDPMakerPage() {
     };
 
     return (
-        <div className="min-h-screen bg-zinc-50 dark:bg-zinc-950 py-12 px-4">
-            <div className="max-w-5xl mx-auto">
+        <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 py-10 px-4 font-sans">
+            <div className="max-w-6xl mx-auto">
                 
-                {/* Header Section */}
+                {/* Header Section - Purple Primary */}
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 border border-indigo-200 dark:border-indigo-800">
-                        <Camera className="w-3.5 h-3.5" /> Studio Pro
+                    <div className="inline-flex items-center justify-center p-3 bg-purple-600 rounded-lg shadow-lg shadow-purple-500/20 mb-4">
+                        <Camera className="w-6 h-6 text-white" />
                     </div>
-                    <h1 className="text-4xl font-black text-gray-900 dark:text-white tracking-tighter mb-2">Facebook DP Maker</h1>
-                    <p className="text-sm text-gray-500 dark:text-zinc-500 font-medium max-w-xs mx-auto">Create stunning profile pictures with custom branding frames.</p>
+                    <h1 className="text-2xl font-bold text-slate-800 dark:text-white tracking-tight uppercase">FB Profile Architect</h1>
+                    <p className="text-slate-400 text-xs font-medium mt-1">Generate professional-grade profile pictures with high-fidelity frames.</p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                     
-                    {/* Controls - Left Side */}
-                    <div className="lg:col-span-2 space-y-6">
-                        <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] border border-gray-100 dark:border-zinc-800 shadow-xl shadow-indigo-500/5">
-                            <div className="flex items-center gap-2 mb-6">
-                                <Frame className="w-4 h-4 text-indigo-500" />
-                                <span className="text-xs font-black uppercase tracking-widest text-gray-800 dark:text-zinc-200">Editor Controls</span>
+                    {/* Controls - Left Side (4 Cols) */}
+                    <div className="lg:col-span-4 space-y-4">
+                        <div className="bg-white dark:bg-zinc-900 p-6 rounded-lg border border-slate-200 dark:border-zinc-800 shadow-md">
+                            <div className="flex items-center gap-2 mb-6 text-indigo-600 dark:text-indigo-400">
+                                <Frame className="w-4 h-4" />
+                                <span className="text-[10px] font-bold uppercase tracking-widest">Design Studio</span>
                             </div>
 
                             {/* Upload Area */}
-                            <div className="relative group">
+                            <div className="relative group mb-6">
                                 <input 
                                     type="file" 
                                     accept="image/*" 
                                     onChange={handleImageUpload} 
                                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                                 />
-                                <div className="p-8 border-2 border-dashed border-gray-100 dark:border-zinc-800 rounded-3xl text-center group-hover:border-indigo-500/50 transition-all bg-zinc-50/50 dark:bg-zinc-950/50">
-                                    <div className="w-12 h-12 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                                        <UploadCloud className="w-6 h-6 text-indigo-500" />
+                                <div className="p-8 border-2 border-dashed border-slate-200 dark:border-zinc-800 rounded-lg text-center group-hover:border-purple-500/50 transition-all bg-slate-50/50 dark:bg-zinc-950/50">
+                                    <div className="w-12 h-12 bg-white dark:bg-zinc-800 rounded-lg shadow-sm flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform border border-slate-100 dark:border-zinc-700">
+                                        <UploadCloud className="w-6 h-6 text-purple-600" />
                                     </div>
-                                    <h4 className="text-xs font-black uppercase tracking-widest text-gray-700 dark:text-zinc-300 mb-1">Upload Photo</h4>
-                                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">JPG, PNG up to 5MB</p>
+                                    <h4 className="text-[10px] font-bold uppercase tracking-widest text-slate-700 dark:text-zinc-300 mb-1">Upload Photo</h4>
+                                    <p className="text-[9px] text-slate-400 font-medium">PNG or JPG up to 5MB</p>
                                 </div>
                             </div>
 
-                            {/* Frame URL (Optional) */}
-                            <div className="mt-6">
-                                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400 block mb-2 px-1">Active Frame URL</label>
+                            {/* Frame URL Configuration */}
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400 px-1">Active Frame Source</label>
                                 <div className="flex gap-2">
                                     <input 
                                         type="text" 
                                         value={frameUrl}
                                         onChange={(e) => setFrameUrl(e.target.value)}
-                                        className="flex-1 p-3 bg-zinc-50 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 rounded-xl text-[10px] font-mono text-gray-500 outline-none focus:border-indigo-500"
+                                        className="flex-1 p-2.5 bg-slate-50 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 rounded-lg text-[10px] font-mono text-slate-500 outline-none focus:border-purple-500"
                                     />
-                                    <button className="p-3 bg-zinc-100 dark:bg-zinc-800 rounded-xl text-gray-400 hover:text-indigo-500 transition-colors">
-                                        <RefreshCcw className="w-4 h-4" />
+                                    <button className="p-2.5 bg-slate-100 dark:bg-zinc-800 rounded-lg text-slate-400 hover:text-purple-600 transition-colors border border-slate-200 dark:border-zinc-700">
+                                        <RefreshCcw className="w-3.5 h-3.5" />
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        {/* Download Action */}
+                        {/* Download Action - Purple Primary */}
                         <button 
                             onClick={downloadImage}
-                            disabled={!hasImage}
-                            className={`w-full py-4 rounded-[1.5rem] font-black uppercase tracking-[0.2em] text-[11px] flex items-center justify-center gap-3 transition-all shadow-xl shadow-indigo-500/20 active:scale-95 ${
-                                hasImage 
-                                ? 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white cursor-pointer' 
-                                : 'bg-zinc-200 dark:bg-zinc-800 text-gray-400 cursor-not-allowed shadow-none'
+                            disabled={!hasImage || isProcessing}
+                            className={`w-full py-4 rounded-lg font-bold uppercase tracking-widest text-[11px] flex items-center justify-center gap-3 transition-all active:scale-[0.98] ${
+                                hasImage && !isProcessing
+                                ? 'bg-purple-600 hover:bg-purple-700 text-white shadow-md shadow-purple-500/10' 
+                                : 'bg-slate-200 dark:bg-zinc-800 text-slate-400 cursor-not-allowed shadow-none border border-slate-300 dark:border-zinc-700'
                             }`}
                         >
-                            <Download className="w-4 h-4" /> Save Result
+                            <Download className="w-4 h-4" /> Save Final Result
                         </button>
                     </div>
 
-                    {/* Preview Area - Right Side */}
-                    <div className="lg:col-span-3">
-                        <div className="bg-white dark:bg-zinc-900 p-4 sm:p-10 rounded-[3rem] border border-gray-100 dark:border-zinc-800 shadow-2xl relative overflow-hidden">
+                    {/* Preview Area - Right Side (8 Cols) */}
+                    <div className="lg:col-span-8">
+                        <div className="bg-white dark:bg-zinc-900 p-6 sm:p-10 rounded-lg border border-slate-200 dark:border-zinc-800 shadow-md relative overflow-hidden flex flex-col items-center">
                             
-                            {/* Decorative Background */}
-                            <div className="absolute top-0 right-0 p-8 opacity-5 dark:opacity-10">
-                                <ImageIcon className="w-32 h-32" />
+                            {/* Canvas Section */}
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-lg blur opacity-10 group-hover:opacity-20 transition duration-1000"></div>
+                                <div className="relative bg-slate-100 dark:bg-zinc-950 rounded-lg overflow-hidden border-4 border-white dark:border-zinc-800 shadow-inner max-w-full">
+                                    <canvas 
+                                        ref={canvasRef} 
+                                        width="800" 
+                                        height="800" 
+                                        className="w-full max-w-[400px] aspect-square object-cover"
+                                    />
+                                    
+                                    {!hasImage && !isProcessing && (
+                                        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-slate-50/90 dark:bg-zinc-900/90 backdrop-blur-sm">
+                                            <UserCircle className="w-16 h-16 text-slate-200 dark:text-zinc-800 mb-4" />
+                                            <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Live Preview</span>
+                                            <p className="text-[9px] text-slate-400 mt-2 font-medium">Select a photo to begin customization</p>
+                                        </div>
+                                    )}
+
+                                    {isProcessing && (
+                                        <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/60 dark:bg-black/60 backdrop-blur-sm">
+                                            <RefreshCcw className="w-8 h-8 text-purple-600 animate-spin" />
+                                        </div>
+                                    )}
+                                </div>
                             </div>
 
-                            <div className="relative z-10 flex flex-col items-center">
-                                {/* Canvas Wrapper */}
-                                <div className="relative group">
-                                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-[2.2rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
-                                    <div className="relative bg-zinc-100 dark:bg-zinc-950 rounded-[2rem] overflow-hidden border-4 border-white dark:border-zinc-800 shadow-inner">
-                                        <canvas 
-                                            ref={canvasRef} 
-                                            width="800" 
-                                            height="800" 
-                                            className="w-full max-w-[400px] aspect-square object-cover"
-                                        />
-                                        
-                                        {!hasImage && (
-                                            <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-zinc-50/80 dark:bg-zinc-900/80 backdrop-blur-sm">
-                                                <UserCircle className="w-20 h-20 text-gray-200 dark:text-zinc-800 mb-4" />
-                                                <span className="text-xs font-black uppercase tracking-widest text-gray-400">Preview Area</span>
-                                                <p className="text-[10px] text-gray-400 mt-2">Upload a photo to see the magic</p>
-                                            </div>
-                                        )}
-                                    </div>
+                            {/* Features Row */}
+                            <div className="mt-8 grid grid-cols-3 gap-4 w-full max-w-lg">
+                                <div className="flex flex-col items-center gap-1.5 p-3 rounded-lg bg-slate-50 dark:bg-zinc-800/50 border border-slate-100 dark:border-zinc-800">
+                                    <ShieldCheck className="w-4 h-4 text-emerald-500" />
+                                    <span className="text-[8px] font-bold uppercase text-slate-500 dark:text-zinc-400">Secure Processing</span>
                                 </div>
-
-                                {/* Mini Info */}
-                                <div className="mt-8 flex gap-6">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                                        <span className="text-[9px] font-black uppercase text-gray-400 tracking-widest">High Resolution</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-2 h-2 rounded-full bg-indigo-500"></div>
-                                        <span className="text-[9px] font-black uppercase text-gray-400 tracking-widest">Auto Frame Fit</span>
-                                    </div>
-                                    <div className="flex items-center gap-2">
-                                        <Sparkles className="w-3 h-3 text-purple-400" />
-                                        <span className="text-[9px] font-black uppercase text-gray-400 tracking-widest">Premium Output</span>
-                                    </div>
+                                <div className="flex flex-col items-center gap-1.5 p-3 rounded-lg bg-slate-50 dark:bg-zinc-800/50 border border-slate-100 dark:border-zinc-800">
+                                    <Sparkles className="w-4 h-4 text-purple-500" />
+                                    <span className="text-[8px] font-bold uppercase text-slate-500 dark:text-zinc-400">HD Rendering</span>
+                                </div>
+                                <div className="flex flex-col items-center gap-1.5 p-3 rounded-lg bg-slate-50 dark:bg-zinc-800/50 border border-slate-100 dark:border-zinc-800">
+                                    <RefreshCcw className="w-4 h-4 text-indigo-500" />
+                                    <span className="text-[8px] font-bold uppercase text-slate-500 dark:text-zinc-400">Auto Layout</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                </div>
+
+                <div className="mt-10 text-center">
+                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Branding Engine &copy; 2026 • Build for Social Identity</p>
                 </div>
             </div>
         </div>

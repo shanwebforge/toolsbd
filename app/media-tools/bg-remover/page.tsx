@@ -53,7 +53,7 @@ export default function BgRemoverPage() {
         <div className="min-h-screen bg-black text-white p-6 flex flex-col items-center font-sans">
             <div className="text-center mb-10">
                 <h1 className="text-4xl font-black italic text-indigo-500 tracking-tighter uppercase">
-                    SHAN AI ENGINE 3
+                    SHAN AI ENGINE 4
                 </h1>
                 <p className="text-[10px] text-zinc-500 font-bold tracking-[0.3em] mt-2">
                     REMOVING BACKGROUND LIKE A PRO

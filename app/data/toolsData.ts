@@ -63,8 +63,7 @@ export const toolsData: Tool[] = [
   { name: "Employee Evaluation", icon: DollarSign, link: "/freelanching-tools/employee-evaluation", category: "Freelancing Tools", desc: "Track payments & income" },
   { name: "Fiverr Gig", icon: DollarSign, link: "/freelanching-tools/fiverr-gig-keyword-tool", category: "Freelancing Tools", desc: "Track payments & income" },
   { name: "Flyer Generator", icon: DollarSign, link: "/freelanching-tools/flyer-generator", category: "Freelancing Tools", desc: "Track payments & income" },
-  { name: "Payment Tracker", icon: DollarSign, link: "/freelanching-tools/#", category: "Freelancing Tools", desc: "Track payments & income" },
-
+ 
 
   // Islamic Tools
   { name: "Prayer Times", icon: Sun, link: "/tools/prayer-times", category: "Islamic Tools", desc: "Daily prayer times" },
@@ -89,20 +88,22 @@ export const toolsData: Tool[] = [
   
   
   // Dokan Tools
-  { name: "Product Manager", icon: Package, link: "/tools/product-manager", category: "Dokan Tools", desc: "Manage store products" },
-  { name: "Inventory Tracker", icon: Package, link: "/tools/inventory", category: "Dokan Tools", desc: "Track inventory" },
-  { name: "Order Manager", icon: ShoppingBag, link: "/tools/order-manager", category: "Dokan Tools", desc: "Manage customer orders" },
-  { name: "Customer Manager", icon: Users, link: "/tools/customer-manager", category: "Dokan Tools", desc: "Manage customers" },
-  { name: "Expense Tracker", icon: DollarSign, link: "/tools/expense", category: "Dokan Tools", desc: "Track store expenses" },
-  { name: "Barcode Generator", icon: Store, link: "/tools/barcode", category: "Dokan Tools", desc: "Generate barcodes" },
+  { name: "Product Manager", icon: Package, link: "/dokan-tools/product-manager", category: "Dokan Tools", desc: "Manage store products" },
+  { name: "Inventory Tracker", icon: Package, link: "/dokan-tools/inventory", category: "Dokan Tools", desc: "Track inventory" },
+  { name: "Order Manager", icon: ShoppingBag, link: "/dokan-tools/order-manager", category: "Dokan Tools", desc: "Manage customer orders" },
+  { name: "Customer Manager", icon: Users, link: "/dokan-tools/customer-manager", category: "Dokan Tools", desc: "Manage customers" },
+  { name: "Expense Tracker", icon: DollarSign, link: "/dokan-tools/expense", category: "Dokan Tools", desc: "Track store expenses" },
+  { name: "Barcode Generator", icon: Store, link: "/dokan-tools/barcode", category: "Dokan Tools", desc: "Generate barcodes" },
+  { name: "Coustomer Receipt", icon: Store, link: "/dokan-tools/receipt-print", category: "Dokan Tools", desc: "Generate barcodes" },
+  { name: "Discount Calculator", icon: Store, link: "/dokan-tools/discount-calculator", category: "Dokan Tools", desc: "Generate barcodes" },
 
   // Educational Tools
-  { name: "GPA Calculator", icon: GraduationCap, link: "/tools/gpa-calculator", category: "Educational Tools", desc: "Calculate GPA/CGPA" },
-  { name: "Math Solver", icon: Calculator, link: "/tools/math-solver", category: "Educational Tools", desc: "Solve math problems" },
-  { name: "Grammar Checker", icon: PenTool, link: "/tools/grammar", category: "Educational Tools", desc: "Check grammar & spelling" },
-  { name: "PDF Editor", icon: FileText, link: "/tools/pdf-editor", category: "Educational Tools", desc: "Edit PDF files" },
-  { name: "Dictionary", icon: BookOpen, link: "/tools/dictionary", category: "Educational Tools", desc: "English dictionary" },
-  { name: "Translator", icon: Globe, link: "/tools/translator", category: "Educational Tools", desc: "Translate languages" },
+  { name: "GPA Calculator", icon: GraduationCap, link: "/educational-tools/gpa-cgpa-calculator", category: "Educational Tools", desc: "Calculate GPA/CGPA" },
+  { name: "Math Solver", icon: Calculator, link: "/educational-tools/math-solver", category: "Educational Tools", desc: "Solve math problems" },
+  { name: "Grammar Checker", icon: PenTool, link: "/educational-tools/grammar-checker", category: "Educational Tools", desc: "Check grammar & spelling" },
+  { name: "PDF Editor", icon: FileText, link: "/educational-tools/pdf-editor", category: "Educational Tools", desc: "Edit PDF files" },
+  { name: "Dictionary", icon: BookOpen, link: "/educational-tools/dictionary", category: "Educational Tools", desc: "English dictionary" },
+  { name: "Translator", icon: Globe, link: "/educational-tools/translator", category: "Educational Tools", desc: "Translate languages" },
 
   // BD Special Tools
   { name: "NID Checker", icon: MapPin, link: "/tools/nid-checker", category: "BD Special Tools", desc: "Verify NID information" },

@@ -16,6 +16,7 @@
     "@imgly/background-removal-data": "^1.4.5",
     "@types/qrcode.react": "^1.0.5",
     "browser-image-compression": "^2.0.2",
+    "firebase": "^12.11.0",
     "html-to-image": "^1.11.13",
     "jsbarcode": "^3.12.3",
     "jspdf": "^4.2.1",

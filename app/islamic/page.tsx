@@ -1,44 +1,48 @@
 'use client';
 
-import Link from 'next/link';
+import { getToolsByCat } from '@/lib/data';
+import ToolCard from '@/components/ToolCard';
+import { Moon, Star, Bell, BookOpen } from 'lucide-react';
 
-const tools = [
-  { name: 'Digital Tasbih', href: '/islamic/digital-tasbih', description: 'Count your dhikr and prayers with a digital counter.' },
-  { name: 'Islamic Name Finder', href: '/islamic/islamic-name', description: 'Find the perfect Islamic name for your child.' },
-  { name: 'Islamic Quiz', href: '/islamic/islamic-quiz', description: 'Test your knowledge of Islam with this interactive quiz.' },
-  { name: 'Zakat Calculator', href: '/islamic/jakat-calculator', description: 'Calculate your Zakat with ease and accuracy.' },
-  { name: 'Quran Audio', href: '/islamic/quran-audio', description: 'Listen to the full Quran with translations.' },
-];
+export default function IslamicToolsPage() {
+  const tools = getToolsByCat('islamic-tools'); // 'islamic-tools' category theke data asbe
 
-const IslamicToolsPage = () => {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-center text-gray-900 dark:text-white mb-12">
-          Islamic Tools
-        </h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tools.map((tool) => (
-            <Link href={tool.href} key={tool.name}>
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out h-full flex flex-col p-6 transform hover:-translate-y-1">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
-                  {tool.name}
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 flex-grow">
-                  {tool.description}
-                </p>
-                <div className="mt-6">
-                  <span className="text-teal-500 dark:text-teal-400 font-semibold hover:underline">
-                    Open Tool &rarr;
-                  </span>
-                </div>
-              </div>
-            </Link>
-          ))}
+    <div className="max-w-7xl mx-auto px-4 py-10 md:p-10">
+      {/* Header Section */}
+      <div className="mb-10 space-y-3">
+        {/* Secondary Indigo Label */}
+        <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 mb-2">
+          <Moon size={18} />
+          <span className="text-xs font-bold uppercase tracking-[0.2em]">Faith & Daily Routine</span>
         </div>
+
+        {/* Primary Purple Title */}
+        <h1 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white">
+          Handy <span className="text-purple-600">Islamic Tools</span>
+        </h1>
+
+        {/* Description */}
+        <p className="text-gray-500 dark:text-zinc-400 max-w-2xl text-sm md:text-base leading-relaxed">
+          Enhance your spiritual journey with our collection of digital Islamic resources. 
+          From accurate prayer schedules to tasbeeh counters and lunar date conversion, 
+          we provide the essentials to support your daily worship.
+        </p>
+      </div>
+
+      {/* Grid Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {tools.length > 0 ? (
+          tools.map(tool => (
+            <ToolCard key={tool.id} {...tool} />
+          ))
+        ) : (
+          <div className="col-span-full py-20 text-center border-2 border-dashed border-indigo-100 dark:border-indigo-900/30 rounded-3xl">
+            <Star size={40} className="mx-auto text-purple-300 mb-4" />
+            <p className="text-gray-400 italic font-medium">No Islamic tools found in this category.</p>
+          </div>
+        )}
       </div>
     </div>
   );
-};
-
-export default IslamicToolsPage;
+}
